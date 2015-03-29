@@ -28,7 +28,6 @@
 		B1FD789C1AB608F6009DB201 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B1FD789B1AB608F6009DB201 /* Foundation.framework */; };
 		B1FD789E1AB60907009DB201 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = B1FD789D1AB60907009DB201 /* libsqlite3.dylib */; };
 		B1FD78A11AB6097A009DB201 /* DBManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B1FD78A01AB6097A009DB201 /* DBManager.m */; };
-		B1FD78A51AB61AA3009DB201 /* homeworkdb.sql in Resources */ = {isa = PBXBuildFile; fileRef = B1FD78A41AB61AA3009DB201 /* homeworkdb.sql */; };
 		BB0E90C061B77410D76F8D17 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D9A7EFCBDC4183C834FCF65F /* libPods.a */; };
 		D7607E791AB53B840042F642 /* allTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D7607E781AB53B840042F642 /* allTableViewController.m */; };
 		D7EC4ED91AB5FB0A00064369 /* 180.png in Resources */ = {isa = PBXBuildFile; fileRef = D7EC4ED41AB5FB0A00064369 /* 180.png */; };
@@ -50,6 +49,7 @@
 
 /* Begin PBXFileReference section */
 		71B554221B66B59E7BB6B5DA /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		B1F6D62C1AC8938000C9414F /* homeworkdb.sql */ = {isa = PBXFileReference; lastKnownFileType = file; path = homeworkdb.sql; sourceTree = "<group>"; };
 		B1FD78321AB4B1EF009DB201 /* HomeWork Scribe.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "HomeWork Scribe.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B1FD78361AB4B1EF009DB201 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B1FD78371AB4B1EF009DB201 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -88,7 +88,6 @@
 		B1FD789D1AB60907009DB201 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
 		B1FD789F1AB6097A009DB201 /* DBManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBManager.h; sourceTree = "<group>"; };
 		B1FD78A01AB6097A009DB201 /* DBManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DBManager.m; sourceTree = "<group>"; };
-		B1FD78A41AB61AA3009DB201 /* homeworkdb.sql */ = {isa = PBXFileReference; lastKnownFileType = file; name = homeworkdb.sql; path = ../../homeworkdb.sql; sourceTree = "<group>"; };
 		C6895AC8823DB1EC7602983F /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		D7607E771AB53B840042F642 /* allTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = allTableViewController.h; sourceTree = "<group>"; };
 		D7607E781AB53B840042F642 /* allTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = allTableViewController.m; sourceTree = "<group>"; };
@@ -163,7 +162,7 @@
 		B1FD78341AB4B1EF009DB201 /* HomeWork Scribe */ = {
 			isa = PBXGroup;
 			children = (
-				B1FD78A41AB61AA3009DB201 /* homeworkdb.sql */,
+				B1F6D62C1AC8938000C9414F /* homeworkdb.sql */,
 				B1FD78391AB4B1EF009DB201 /* AppDelegate.h */,
 				B1FD783A1AB4B1EF009DB201 /* AppDelegate.m */,
 				B1FD783C1AB4B1EF009DB201 /* ViewController.h */,
@@ -328,7 +327,6 @@
 				B1FD786D1AB4B6C4009DB201 /* hamb.png in Resources */,
 				B1FD78411AB4B1EF009DB201 /* Main.storyboard in Resources */,
 				D7EC4ED91AB5FB0A00064369 /* 180.png in Resources */,
-				B1FD78A51AB61AA3009DB201 /* homeworkdb.sql in Resources */,
 				B1FD78461AB4B1EF009DB201 /* LaunchScreen.xib in Resources */,
 				D7EC4EDB1AB5FB0A00064369 /* 58.png in Resources */,
 				D7EC4EDD1AB5FB0A00064369 /* 120.png in Resources */,

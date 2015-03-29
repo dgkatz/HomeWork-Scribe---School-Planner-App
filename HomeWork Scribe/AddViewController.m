@@ -23,24 +23,34 @@ XLFormDescriptor * form;
 - (IBAction)addAssignmnet:(id)sender {
     dataClass *obj = [dataClass getInstance];
     NSDictionary * values=[form formValues];
-    NSString *Subject = [[values objectForKey:@"SubjectPicker"] displayText];
-    NSString *Description = [[values objectForKey:@"Description"] displayText];
-    NSDate *date = [[values objectForKey:@"picker"]valueData];
-    [obj.assignmentData_Subject addObject:Subject];
-    [obj.assignmentData_Description addObject:Description];
-    [obj.assignmentData_Date addObject:date];
-    int d = [date timeIntervalSince1970];
-    NSLog(@"subject: %@ description: %@ date: %@",Subject,Description,date);
-    NSString *query = [NSString stringWithFormat:@"insert into assignmentData values(null, '%@', '%@', %d)", Description, Subject, d];
-    NSLog(@"query fot database ---> %@",query);
-    
-    // Execute the query.
-    [self.dbManager executeQuery:query];
+    if ([[values objectForKey:@"Description"]displayText]!=nil) {
+        
+        NSString *Subject = [[values objectForKey:@"SubjectPicker"] displayText];
+        NSString *Description = [[values objectForKey:@"Description"] displayText];
+        NSDate *date = [[values objectForKey:@"picker"]valueData];
+        [obj.assignmentData_Subject addObject:Subject];
+        [obj.assignmentData_Description addObject:Description];
+        [obj.assignmentData_Date addObject:date];
+        int d = [date timeIntervalSince1970];
+        NSLog(@"subject: %@ description: %@ date: %@",Subject,Description,date);
+        NSString *query = [NSString stringWithFormat:@"insert into assignmentData values(null, '%@', '%@', %d)", Description, Subject, d];
+        NSLog(@"query fot database ---> %@",query);
+        
+        // Execute the query.
+        [self.dbManager executeQuery:query];
+
     }
+
+else{
+    UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"Add Description" message:@"description can't be empty" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+    [alert show];
+}
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.dbManager = [[DBManager alloc] initWithDatabaseFilename:@"homeworkdb.sql"];
+        [self.dbManager executeQuery:@"create table if not exists assignmentData(hwID integer primary key, description text, subject text, due_date integer)"];
     self.navigationController.navigationBar.barTintColor = [UIColor colorWithRed:115/255.0 green:170/255.0 blue:217/255.0 alpha:1.0f];
     _barButton.target = self.revealViewController;
     _barButton.action = @selector(revealToggle:);

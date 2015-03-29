@@ -10,7 +10,7 @@
 #import "XLFormViewController.h"
 #import "DBManager.h"
 
-@interface AddViewController : XLFormViewController
+@interface AddViewController : XLFormViewController<UIAlertViewDelegate>
 @property(weak,nonatomic) IBOutlet UIBarButtonItem *barButton;
 @property (nonatomic, strong) DBManager *dbManager;
 

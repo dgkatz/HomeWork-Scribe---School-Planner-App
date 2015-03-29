@@ -26,20 +26,13 @@ NSMutableArray *counts;
 - (void)viewDidLoad {
     [super viewDidLoad];
     subjects=@[@"Math", @"Science", @"Social Studies", @"English", @"Language"];
-    counts=[[NSMutableArray alloc] init];
     self.dbManager = [[DBManager alloc] initWithDatabaseFilename:@"homeworkdb.sql"];
+    [self.dbManager executeQuery:@"create table if not exists assignmentData(hwID integer primary key, description text, subject text, due_date integer)"];
     self.navigationController.navigationBar.barTintColor = [UIColor colorWithRed:115/255.0 green:170/255.0 blue:217/255.0 alpha:1.0f];
     _barButton.target = self.revealViewController;
     _barButton.action = @selector(revealToggle:);
     [self.view addGestureRecognizer:self.revealViewController.panGestureRecognizer];
-    for (int i=0; i<[subjects count]; i++) {
-        [results removeAllObjects];
-        results=[self selectFromDb:[subjects objectAtIndex:i]];
-        int count=[results count];
-        NSNumber *val = [NSNumber numberWithInteger:count];
-        NSLog(@"%@ Count %@", [subjects objectAtIndex:i],val);
-        [counts addObject:val];
-    }
+    
     NSString *jb = @"Math";
     NSString *query = [NSString stringWithFormat:@"select * from assignmentData where subject = '%@'", jb];
     NSLog(@"%@",query);
@@ -74,6 +67,17 @@ NSMutableArray *counts;
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     // Return the number of rows in the section.
     int num = 0;
+    counts=[[NSMutableArray alloc] init];
+    results=[[NSMutableArray alloc] init];
+
+    for (int i=0; i<[subjects count]; i++) {
+        [results removeAllObjects];
+        results=[self selectFromDb:[subjects objectAtIndex:i]];
+        int count=[results count];
+        NSNumber *val = [NSNumber numberWithInteger:count];
+        NSLog(@"%@ Count %@", [subjects objectAtIndex:i],val);
+        [counts addObject:val];
+    }
     if (section == 0) {
         num=[[counts objectAtIndex:0] integerValue];
     }
@@ -96,20 +100,23 @@ NSMutableArray *counts;
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"reuseIdentifier" forIndexPath:indexPath];
     // Configure the cell...
-    if(indexPath.section==0){
-        [results removeAllObjects];
-        NSString *subject=[subjects objectAtIndex:0];
-        results=[self selectFromDb:subject];
-        for (int i = 0; i<[results count]; i++) {
-            NSString *desc = [[results objectAtIndex:i] objectAtIndex:[self.dbManager.arrColumnNames indexOfObject:@"description"]];
+    
+    int cellIndex=indexPath.row;
+    for (int i=0; i<5; i++) {
+        if(indexPath.section==i){
+            [results removeAllObjects];
+            NSString *subject=[subjects objectAtIndex:i];
+            results=[self selectFromDb:subject];
+            NSString *desc = [[results objectAtIndex:cellIndex] objectAtIndex:[self.dbManager.arrColumnNames indexOfObject:@"description"]];
             cell.textLabel.text=desc;
             NSLog(@"%@",desc);
-            NSNumber *timestamp = [[results objectAtIndex:i] objectAtIndex:[self.dbManager.arrColumnNames indexOfObject:@"due_date"]];
+            NSNumber *timestamp = [[results objectAtIndex:cellIndex] objectAtIndex:[self.dbManager.arrColumnNames indexOfObject:@"due_date"]];
             NSLog(@"%@",desc);
             NSLog(@"%@",timestamp);
         }
 
     }
+    
     return cell;
 }
 -(NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section{
@@ -125,25 +132,34 @@ NSMutableArray *counts;
     }
     return title;
 }
-/*
+
 // Override to support conditional editing of the table view.
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the specified item to be editable.
     return YES;
 }
-*/
 
-/*
+- (void)tableView: (UITableView *)tableView didSelectRowAtIndexPath: (NSIndexPath *)indexPath {[tableView setEditing:YES animated:YES]; }
+
 // Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    } else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
+
+- (void)tableView: (UITableView *)tableView commitEditingStyle: (UITableViewCellEditingStyle)editingStyle forRowAtIndexPath: (NSIndexPath *)indexPath {if (editingStyle == UITableViewCellEditingStyleDelete) {
+    // Delete the row from the data source
+    UITableViewCell *cell = [self.tableView cellForRowAtIndexPath:indexPath];
+    NSString *label=cell.textLabel.text;
+    NSString *deleteQuery= [NSString stringWithFormat: @"DELETE FROM assignmentData WHERE description='%@'",label];
+    NSLog(@"%@",deleteQuery);
+    [self.dbManager executeQuery:deleteQuery];
+    
+    // Delete row using the cool literal version of [NSArray arrayWithObject:indexPath]
+    
+    [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
+    [self viewDidLoad];
+    
 }
-*/
+    
+}
+
+
 
 /*
 // Override to support rearranging the table view.
