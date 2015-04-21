@@ -9,5 +9,10 @@
 #import <Foundation/Foundation.h>
 
 @interface Assignment : NSObject
+    @property(retain) NSString *description;
+    @property NSNumber *due_date;
+    @property NSString *subject;
+
++(NSArray *)getSortedList:(NSArray *) array;
 
 @end

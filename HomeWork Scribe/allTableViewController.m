@@ -12,7 +12,7 @@
 @interface allTableViewController ()
 
 @end
-
+int selected;
 NSMutableArray *results;
 NSArray *scienceResults;
 NSArray *socialResults;
@@ -22,20 +22,26 @@ NSArray *subjects;
 NSMutableArray *counts;
 
 @implementation allTableViewController
-
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    selected = (int)indexPath.row;
+    [self.tableView reloadData];
+}
 - (void)viewDidLoad {
     [super viewDidLoad];
+    NSLog(@"LAUNCHED");
+    self.navigationController.navigationItem.rightBarButtonItem = self.editButtonItem;
     subjects=@[@"Math", @"Science", @"Social Studies", @"English", @"Language"];
     self.dbManager = [[DBManager alloc] initWithDatabaseFilename:@"homeworkdb.sql"];
+    NSLog(@"created database magaer");
     [self.dbManager executeQuery:@"create table if not exists assignmentData(hwID integer primary key, description text, subject text, due_date integer)"];
-    self.navigationController.navigationBar.barTintColor = [UIColor colorWithRed:115/255.0 green:170/255.0 blue:217/255.0 alpha:1.0f];
+    NSLog(@"executed query");
     _barButton.target = self.revealViewController;
     _barButton.action = @selector(revealToggle:);
-    [self.view addGestureRecognizer:self.revealViewController.panGestureRecognizer];
+    NSLog(@"added gesture");
     
     NSString *jb = @"Math";
     NSString *query = [NSString stringWithFormat:@"select * from assignmentData where subject = '%@'", jb];
-    NSLog(@"%@",query);
+    NSLog(@"query is %@",query);
     
     // Load the relevant data.
        // Set the loaded data to the textfields.
@@ -49,6 +55,7 @@ NSMutableArray *counts;
 -(NSMutableArray*) selectFromDb:(NSString *) subject{
     NSString *query = [NSString stringWithFormat:@"select * from assignmentData where subject = '%@'", subject];
     NSMutableArray *returnArray=[[[NSArray alloc] initWithArray:[self.dbManager loadDataFromDB:query]] mutableCopy];
+    NSLog(@"Array retreived");
     return returnArray;
 }
 
@@ -111,12 +118,17 @@ NSMutableArray *counts;
             cell.textLabel.text=desc;
             NSLog(@"%@",desc);
             NSNumber *timestamp = [[results objectAtIndex:cellIndex] objectAtIndex:[self.dbManager.arrColumnNames indexOfObject:@"due_date"]];
+            NSDate *date = [NSDate dateWithTimeIntervalSince1970:timestamp.doubleValue];
+            NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
+            [dateFormat setDateFormat:@"yyyy-MM-dd"];
+            NSString *theDate = [dateFormat stringFromDate:date];
+            cell.detailTextLabel.text = [NSString stringWithFormat:@"%@",theDate];
             NSLog(@"%@",desc);
             NSLog(@"%@",timestamp);
         }
 
     }
-    
+    NSLog(@"Cell Created");
     return cell;
 }
 -(NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section{
@@ -127,8 +139,14 @@ NSMutableArray *counts;
     else if (section == 1){
         title = @"Science";
     }
+    else if (section == 2){
+        title = @"Social Studies";
+    }
+    else if (section == 3){
+        title = @"English";
+    }
     else{
-        title = @"Other";
+        title = @"Language";
     }
     return title;
 }
@@ -137,8 +155,6 @@ NSMutableArray *counts;
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
     return YES;
 }
-
-- (void)tableView: (UITableView *)tableView didSelectRowAtIndexPath: (NSIndexPath *)indexPath {[tableView setEditing:YES animated:YES]; }
 
 // Override to support editing the table view.
 
@@ -174,7 +190,16 @@ NSMutableArray *counts;
     return YES;
 }
 */
-
+-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    int returnint;
+    if (indexPath.row == selected) {
+        returnint = 100;
+    }
+    else{
+        returnint = 44;
+    }
+    return returnint;
+}
 /*
 #pragma mark - Navigation
 

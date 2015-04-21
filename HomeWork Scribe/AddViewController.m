@@ -7,6 +7,7 @@
 //
 
 #import "AddViewController.h"
+#import "allTableViewController.h"
 #import <XLFormTextView.h>
 #import <XLFormDescriptor.h>
 #import <XLFormRowDescriptor.h>
@@ -20,38 +21,11 @@
 XLFormDescriptor * form;
 
 @implementation AddViewController
-- (IBAction)addAssignmnet:(id)sender {
-    dataClass *obj = [dataClass getInstance];
-    NSDictionary * values=[form formValues];
-    if ([[values objectForKey:@"Description"]displayText]!=nil) {
-        
-        NSString *Subject = [[values objectForKey:@"SubjectPicker"] displayText];
-        NSString *Description = [[values objectForKey:@"Description"] displayText];
-        NSDate *date = [[values objectForKey:@"picker"]valueData];
-        [obj.assignmentData_Subject addObject:Subject];
-        [obj.assignmentData_Description addObject:Description];
-        [obj.assignmentData_Date addObject:date];
-        int d = [date timeIntervalSince1970];
-        NSLog(@"subject: %@ description: %@ date: %@",Subject,Description,date);
-        NSString *query = [NSString stringWithFormat:@"insert into assignmentData values(null, '%@', '%@', %d)", Description, Subject, d];
-        NSLog(@"query fot database ---> %@",query);
-        
-        // Execute the query.
-        [self.dbManager executeQuery:query];
-
-    }
-
-else{
-    UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"Add Description" message:@"description can't be empty" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
-    [alert show];
-}
-}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.dbManager = [[DBManager alloc] initWithDatabaseFilename:@"homeworkdb.sql"];
         [self.dbManager executeQuery:@"create table if not exists assignmentData(hwID integer primary key, description text, subject text, due_date integer)"];
-    self.navigationController.navigationBar.barTintColor = [UIColor colorWithRed:115/255.0 green:170/255.0 blue:217/255.0 alpha:1.0f];
     _barButton.target = self.revealViewController;
     _barButton.action = @selector(revealToggle:);
     [self.view addGestureRecognizer:self.revealViewController.panGestureRecognizer];
@@ -108,14 +82,46 @@ else{
     // Dispose of any resources that can be recreated.
 }
 
-/*
+
 #pragma mark - Navigation
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+    if ([segue.identifier isEqualToString:@"present"]) {
+        dataClass *obj = [dataClass getInstance];
+        NSDictionary * values=[form formValues];
+        if ([[values objectForKey:@"Description"]displayText]!=nil) {
+            
+            NSString *Subject = [[values objectForKey:@"SubjectPicker"] displayText];
+            NSString *Description = [[values objectForKey:@"Description"] displayText];
+            NSDate *date = [[values objectForKey:@"picker"]valueData];
+            NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
+            [dateFormat setDateFormat:@"yyyy-MM-dd"];
+            NSString *newDate = [dateFormat stringFromDate:date];
+            NSDateFormatter *dateFormat2 = [[NSDateFormatter alloc] init];
+            [dateFormat2 setDateFormat:@"yyyy-MM-dd"];
+            NSDate *finalDate = [dateFormat2 dateFromString:newDate];
+            [obj.assignmentData_Subject addObject:Subject];
+            [obj.assignmentData_Description addObject:Description];
+            [obj.assignmentData_Date addObject:finalDate];
+            int d = [finalDate timeIntervalSince1970];
+            NSLog(@"this is the date in add asignment%d",d);
+            NSLog(@"subject: %@ description: %@ date: %@",Subject,Description,date);
+            NSString *query = [NSString stringWithFormat:@"insert into assignmentData values(null, '%@', '%@', %d)", Description, Subject, d];
+            NSLog(@"query fot database ---> %@",query);
+            
+            // Execute the query.
+            [self.dbManager executeQuery:query];
+            //allTableViewController *VC = (allTableViewController *)[self.storyboard instantiateViewControllerWithIdentifier:@"all"];
+            //[self.navigationController presentViewController:VC animated:YES completion:nil];
+            
+        }
+        
+        else{
+            UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"Add Description" message:@"description can't be empty" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+            [alert show];
+        }
+
+    }
 }
-*/
 
 @end

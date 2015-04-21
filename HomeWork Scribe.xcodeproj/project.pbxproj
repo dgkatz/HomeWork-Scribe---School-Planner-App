@@ -35,6 +35,7 @@
 		D7EC4EDB1AB5FB0A00064369 /* 58.png in Resources */ = {isa = PBXBuildFile; fileRef = D7EC4ED61AB5FB0A00064369 /* 58.png */; };
 		D7EC4EDC1AB5FB0A00064369 /* 87.png in Resources */ = {isa = PBXBuildFile; fileRef = D7EC4ED71AB5FB0A00064369 /* 87.png */; };
 		D7EC4EDD1AB5FB0A00064369 /* 120.png in Resources */ = {isa = PBXBuildFile; fileRef = D7EC4ED81AB5FB0A00064369 /* 120.png */; };
+		D7F315B01AE6E26800397044 /* Assignment.m in Sources */ = {isa = PBXBuildFile; fileRef = D7F315AF1AE6E26800397044 /* Assignment.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -96,6 +97,8 @@
 		D7EC4ED61AB5FB0A00064369 /* 58.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 58.png; sourceTree = "<group>"; };
 		D7EC4ED71AB5FB0A00064369 /* 87.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 87.png; sourceTree = "<group>"; };
 		D7EC4ED81AB5FB0A00064369 /* 120.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 120.png; sourceTree = "<group>"; };
+		D7F315AE1AE6E26800397044 /* Assignment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Assignment.h; sourceTree = "<group>"; };
+		D7F315AF1AE6E26800397044 /* Assignment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Assignment.m; sourceTree = "<group>"; };
 		D9A7EFCBDC4183C834FCF65F /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -184,6 +187,8 @@
 				D7607E781AB53B840042F642 /* allTableViewController.m */,
 				B1FD789F1AB6097A009DB201 /* DBManager.h */,
 				B1FD78A01AB6097A009DB201 /* DBManager.m */,
+				D7F315AE1AE6E26800397044 /* Assignment.h */,
+				D7F315AF1AE6E26800397044 /* Assignment.m */,
 			);
 			path = "HomeWork Scribe";
 			sourceTree = "<group>";
@@ -395,6 +400,7 @@
 				B1FD78961AB4BC27009DB201 /* PDTSimpleCalendarViewHeader.m in Sources */,
 				B1FD783B1AB4B1EF009DB201 /* AppDelegate.m in Sources */,
 				D7607E791AB53B840042F642 /* allTableViewController.m in Sources */,
+				D7F315B01AE6E26800397044 /* Assignment.m in Sources */,
 				B1FD78381AB4B1EF009DB201 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
