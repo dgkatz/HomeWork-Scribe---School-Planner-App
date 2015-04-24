@@ -8,7 +8,8 @@
 
 #import <UIKit/UIKit.h>
 #import "DBManager.h"
-@interface allTableViewController : UITableViewController
+#import "JFMinimalNotification.h"
+@interface allTableViewController : UITableViewController<JFMinimalNotificationDelegate>
 @property (strong, nonatomic) IBOutlet UIBarButtonItem *barButton;
 @property (nonatomic, strong) DBManager *dbManager;
 

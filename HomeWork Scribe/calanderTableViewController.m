@@ -12,6 +12,7 @@
 @interface calanderTableViewController ()
 @end
 NSString *selectedDate;
+NSString *newDate;
 NSMutableArray *assignments;
 NSMutableArray *assignmentsForDay;
 PDTSimpleCalendarViewController *calendarViewController;
@@ -26,8 +27,9 @@ PDTSimpleCalendarViewController *calendarViewController;
      calendarViewController= [[PDTSimpleCalendarViewController alloc] init];
     //This is the default behavior, will display a full year starting the first of the current month
     [calendarViewController setDelegate:self];
-    
-    
+    [[PDTSimpleCalendarViewCell appearance] setCircleTodayColor:[UIColor grayColor]];
+    [[PDTSimpleCalendarViewCell appearance] setCircleSelectedColor:[UIColor orangeColor]];
+    [[PDTSimpleCalendarViewHeader appearance] setSeparatorColor:[UIColor orangeColor]];
     NSString *query = [NSString stringWithFormat:@"select * from assignmentData"];
     NSMutableArray *results=[[[NSArray alloc] initWithArray:[self.dbManager loadDataFromDB:query]] mutableCopy];
     for (int i=0; i<[results count]; i++) {
@@ -69,8 +71,7 @@ PDTSimpleCalendarViewController *calendarViewController;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    NSInteger *cellIndex=indexPath.row;
-    dataClass *obj = [dataClass getInstance];
+    int cellIndex = (int)indexPath.row;
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"identifier" forIndexPath:indexPath];
     NSString *subject = [[assignmentsForDay objectAtIndex:cellIndex] objectAtIndex:[self.dbManager.arrColumnNames indexOfObject:@"subject"]];
     NSString *desc=[[assignmentsForDay objectAtIndex:cellIndex] objectAtIndex:[self.dbManager.arrColumnNames indexOfObject:@"description"]];
@@ -78,6 +79,21 @@ PDTSimpleCalendarViewController *calendarViewController;
 
     cell.textLabel.text = subject;
     cell.detailTextLabel.text = desc;
+    if ([subject isEqualToString:@"Math"]) {
+        cell.textLabel.textColor = [UIColor colorWithRed:224/255.0 green:102/255.0 blue:102/255.0 alpha:1.0f];
+    }
+    else if ([subject isEqualToString:@"Science"]){
+        cell.textLabel.textColor = [UIColor colorWithRed:109/255.0 green:158/255.0 blue:235/255.0 alpha:1.0f];
+    }
+    else if ([subject isEqualToString:@"Social Studies"]){
+        cell.textLabel.textColor = [UIColor colorWithRed:106/255.0 green:168/255.0 blue:79/255.0 alpha:1.0f];
+    }
+    else if ([subject isEqualToString:@"English"]){
+        cell.textLabel.textColor = [UIColor colorWithRed:255/255.0 green:217/255.0 blue:102/255.0 alpha:1.0f];
+    }
+    else {
+        cell.textLabel.textColor = [UIColor colorWithRed:246/255.0 green:178/255.0 blue:107/255.0 alpha:1.0f];
+    }
     
     return cell;
 }
@@ -95,7 +111,7 @@ PDTSimpleCalendarViewController *calendarViewController;
     NSLog(@"Date Selected : %@",date);
     NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
     [dateFormat setDateFormat:@"yyyy-MM-dd"];
-    NSString *newDate = [dateFormat stringFromDate:date];
+    newDate = [dateFormat stringFromDate:date];
     NSDateFormatter *dateFormat2 = [[NSDateFormatter alloc] init];
     [dateFormat2 setDateFormat:@"yyyy-MM-dd"];
     NSDate *finalDate = [dateFormat2 dateFromString:newDate];
@@ -110,7 +126,9 @@ PDTSimpleCalendarViewController *calendarViewController;
     NSLog(@"Date Selected with Locale %@", [date descriptionWithLocale:[NSLocale systemLocale]]);
     [self.tableView reloadData];
 }
-
+-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    return 60;
+}
 /*
 // Override to support conditional editing of the table view.
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -150,6 +168,14 @@ PDTSimpleCalendarViewController *calendarViewController;
 
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if ([segue.identifier isEqualToString:@"thesegue"]) {
+        dataClass *obj = [dataClass getInstance];
+        NSIndexPath *selectedIndexPath = [self.tableView indexPathForSelectedRow];
+        UITableViewCell *cell = [self.tableView cellForRowAtIndexPath:selectedIndexPath];
+        obj.description1 = cell.detailTextLabel.text;
+        obj.subject = cell.textLabel.text;
+        obj.date = newDate;
+    }
 
 }
 

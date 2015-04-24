@@ -12,10 +12,14 @@
 @synthesize assignmentData_Subject;
 @synthesize assignmentData_Date;
 @synthesize assignmentData_Description;
-
-
-
-
+@synthesize description1;
+@synthesize subject;
+@synthesize date;
+@synthesize description1Edit;
+@synthesize subjectEdit;
+@synthesize dateEdit;
+@synthesize success;
+@synthesize note;
 
 
 static dataClass *instance = nil;

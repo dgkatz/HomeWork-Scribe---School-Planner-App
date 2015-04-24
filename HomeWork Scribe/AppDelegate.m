@@ -11,16 +11,47 @@
 @interface AppDelegate ()
 
 @end
-
+NSArray *defaultSubjectsArray;
 @implementation AppDelegate
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
     dataClass *obj = [dataClass getInstance];
+    
+    UIUserNotificationType types = UIUserNotificationTypeBadge |
+    UIUserNotificationTypeSound | UIUserNotificationTypeAlert;
+    
+    UIUserNotificationSettings *mySettings =
+    [UIUserNotificationSettings settingsForTypes:types categories:nil];
+    
+    [[UIApplication sharedApplication] registerUserNotificationSettings:mySettings];
+    
+
+    if ([[UINavigationBar class] respondsToSelector:@selector(appearance)])
+    {
+        [[UINavigationBar appearance] setBarTintColor:[UIColor colorWithRed:255/255.0 green:151/255.0 blue:0/255.0 alpha:1.0f]]; //// change
+        [[UINavigationBar appearance] setTintColor:[UIColor whiteColor]];
+        [[UINavigationBar appearance] setTitleTextAttributes:@{NSForegroundColorAttributeName : [UIColor whiteColor]}];
+        [[UINavigationBar appearance]setTranslucent:NO];
+    }
+
     obj.assignmentData_Subject = [[NSMutableArray alloc]init];
+    if ([[NSUserDefaults standardUserDefaults] boolForKey:@"HasLaunchedOnce"])
+    {
+        
+        // app already launched
+    }
+    else
+    {
+        [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"HasLaunchedOnce"];
+        [[NSUserDefaults standardUserDefaults] synchronize];
+        // This is the first launch ever
+    }
+
     return YES;
 }
+
 
 - (void)applicationWillResignActive:(UIApplication *)application {
     // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.

@@ -18,7 +18,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    menu = @[@"first",@"second",@"third"];
+    menu = @[@"first",@"second",@"5",@"third",@"6",@"4",@"7",@"8",@"9",@"10",@"11",@"12",@"13",@"14"];
+    self.tableView.scrollEnabled = NO;
     
 }
 
@@ -47,8 +48,25 @@
     
     return cell;
 }
-
-
+-(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
+    return 140;
+}
+- (UIView *) tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
+{
+    static NSString *CellIdentifier = @"header";
+    UITableViewCell *headerView = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    if (section == 0) {
+        if (headerView == nil){
+            [NSException raise:@"headerView == nil.." format:@"No cells with matching CellIdentifier loaded from your storyboard"];
+        }
+        
+    }
+    else{
+        headerView = nil;
+    }
+    
+    return headerView;
+}
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ( [segue isKindOfClass:[SWRevealViewControllerSegue class]]) {
         SWRevealViewControllerSegue *swSeque = (SWRevealViewControllerSegue *)segue;

@@ -69,10 +69,6 @@ XLFormDescriptor * form;
     [row.cellConfigAtConfigure setObject:[NSDate new] forKey:@"minimumDate"];
     [row.cellConfigAtConfigure setObject:[NSDate dateWithTimeIntervalSinceNow:INFINITY] forKey:@"maximumDate"];
     [section addFormRow:row];
-
-  
-    
-  
     self.form = form;
     
 }

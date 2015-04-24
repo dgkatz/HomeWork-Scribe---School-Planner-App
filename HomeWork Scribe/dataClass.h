@@ -12,9 +12,26 @@
     NSMutableArray *assignmentData_Subject;
     NSMutableArray *assignmentData_Date;
     NSMutableArray *assignmentData_Description;
+    NSString *description1;
+    NSString *date;
+    NSString *subject;
+    NSString *description1Edit;
+    NSString *dateEdit;
+    NSString *subjectEdit;
+    NSString *note;
+    BOOL success;
+
 }
 @property(nonatomic,retain)NSMutableArray *assignmentData_Subject;
 @property(nonatomic,retain)NSMutableArray *assignmentData_Date;
 @property(nonatomic,retain)NSMutableArray *assignmentData_Description;
+@property(strong)NSString *description1;
+@property(strong)NSString *date;
+@property(strong)NSString *subject;
+@property(strong)NSString *description1Edit;
+@property(strong)NSString *dateEdit;
+@property(strong)NSString *subjectEdit;
+@property(strong)NSString *note;;
+@property BOOL success;
 +(dataClass*)getInstance;
 @end
