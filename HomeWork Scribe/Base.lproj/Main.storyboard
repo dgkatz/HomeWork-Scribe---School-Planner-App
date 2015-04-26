@@ -1052,9 +1052,9 @@
         <image name="upcomingAssignmnets.png" width="48" height="48"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="bIA-bq-GQp"/>
         <segue reference="0iC-e2-Yo4"/>
-        <segue reference="a4G-xw-8qR"/>
+        <segue reference="bIA-bq-GQp"/>
+        <segue reference="aHZ-xW-scr"/>
         <segue reference="Ozt-K9-nBO"/>
     </inferredMetricsTieBreakers>
 </document>

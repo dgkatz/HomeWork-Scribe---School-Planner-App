@@ -13,12 +13,20 @@
 @end
 NSString *selectedDate;
 NSString *newDate;
+UILabel *noAssignmentsLabel;
 NSMutableArray *assignments;
 NSMutableArray *assignmentsForDay;
+NSMutableArray *initialArray;
 PDTSimpleCalendarViewController *calendarViewController;
 @implementation calanderTableViewController
 - (void)viewDidLoad {
     [super viewDidLoad];
+    noAssignmentsLabel = [[UILabel alloc]initWithFrame:CGRectMake(self.tableView.frame.size.width/2 - 150, self.tableView.frame.size.height/2, 300, 40)];
+    noAssignmentsLabel.text = @"You have no assignments for this day";
+    noAssignmentsLabel.textAlignment = NSTextAlignmentCenter;
+    noAssignmentsLabel.textColor = [UIColor darkGrayColor];
+    noAssignmentsLabel.font = [UIFont fontWithName:@"System-Light" size:17];
+    initialArray = [[NSMutableArray alloc]init];
     assignments=[[NSMutableArray alloc]init];
     self.dbManager = [[DBManager alloc] initWithDatabaseFilename:@"homeworkdb.sql"];
     _barButton.target = self.revealViewController;
@@ -45,6 +53,23 @@ PDTSimpleCalendarViewController *calendarViewController;
         NSLog(@"Sorted Assignment: %@ %@ %@",as.subject, as.description, as.due_date);
     }
     
+    if ([assignmentsForDay count] == 0) {
+        NSLog(@"empty");
+        NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
+        [dateFormat setDateFormat:@"yyyy-MM-dd"];
+        newDate = [dateFormat stringFromDate:[NSDate date]];
+        NSDateFormatter *dateFormat2 = [[NSDateFormatter alloc] init];
+        [dateFormat2 setDateFormat:@"yyyy-MM-dd"];
+        NSDate *finalDate = [dateFormat2 dateFromString:newDate];
+        int timestamp = [finalDate timeIntervalSince1970];
+        NSLog(@"the timestamp %d",timestamp);
+        NSString *query= [NSString stringWithFormat:@"SELECT * FROM assignmentData WHERE due_date=%d",timestamp];
+        NSLog(@" %@ ", query);
+        assignmentsForDay=[[NSMutableArray alloc]initWithArray:[self.dbManager loadDataFromDB:query]];
+        [self.tableView reloadData];
+    }
+    
+    
 }
 
 
@@ -66,7 +91,6 @@ PDTSimpleCalendarViewController *calendarViewController;
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     // Return the number of rows in the section.
-    
     return [assignmentsForDay count];
 }
 
@@ -103,9 +127,15 @@ PDTSimpleCalendarViewController *calendarViewController;
     return view;
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
-    return self.view.frame.size.height/2;
+    return self.view.frame.size.height/2 + 5;
 }
+-(BOOL)simpleCalendarViewCell:(PDTSimpleCalendarViewCell *)cell shouldUseCustomColorsForDate:(NSDate *)date{
+    
+        cell.textTodayColor = [UIColor greenColor];
 
+    
+    return YES;
+}
 - (void)simpleCalendarViewController:(PDTSimpleCalendarViewController *)controller didSelectDate:(NSDate *)date
 {
     NSLog(@"Date Selected : %@",date);
@@ -122,6 +152,12 @@ PDTSimpleCalendarViewController *calendarViewController;
     assignmentsForDay=[[NSMutableArray alloc]initWithArray:[self.dbManager loadDataFromDB:query]];
     if([assignmentsForDay count]>0){
         NSLog(@"assignment for day %@ %@ %@", [[assignmentsForDay objectAtIndex:0] objectAtIndex:0], [[assignmentsForDay objectAtIndex:0] objectAtIndex:1], [[assignmentsForDay objectAtIndex:0] objectAtIndex:2]);
+        [noAssignmentsLabel removeFromSuperview];
+        [self.tableView sendSubviewToBack:noAssignmentsLabel];
+    }
+    else{
+        [self.tableView addSubview:noAssignmentsLabel];
+        [self.tableView bringSubviewToFront:noAssignmentsLabel];
     }
     NSLog(@"Date Selected with Locale %@", [date descriptionWithLocale:[NSLocale systemLocale]]);
     [self.tableView reloadData];
