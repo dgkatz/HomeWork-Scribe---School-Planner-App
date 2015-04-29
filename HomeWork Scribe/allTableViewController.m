@@ -229,7 +229,7 @@ NSMutableArray *counts;
         UILabel *labelDetail = (UILabel *)[cell.contentView viewWithTag:11];
         obj.description1 = label.text;
         obj.subject = [self tableView:self.tableView titleForHeaderInSection:selectedIndexPath.section];
-        obj.date = labelDetail.text;;
+        obj.date = labelDetail.text;
     }
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.

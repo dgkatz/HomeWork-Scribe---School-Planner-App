@@ -14,6 +14,7 @@
 @interface calanderTableViewController ()
 @property (nonatomic, strong) NSMutableSet *shownIndexes;
 @property (nonatomic, assign) CATransform3D initialTransform;
+@property (nonatomic, strong) NSMutableArray *customDates;
 @end
 NSString *selectedDate;
 NSString *newDate;
@@ -72,10 +73,38 @@ PDTSimpleCalendarViewController *calendarViewController;
         assignmentsForDay=[[NSMutableArray alloc]initWithArray:[self.dbManager loadDataFromDB:query]];
         [self.tableView reloadData];
     }
-    
-    
+    NSString *allQuery= [NSString stringWithFormat:@"SELECT * FROM assignmentData"];
+    NSMutableArray *allReturnedAssignments =[[NSMutableArray alloc]initWithArray:[self.dbManager loadDataFromDB:allQuery]];
+    _customDates = [[NSMutableArray alloc]init];
+    for (int i = 0; i<[allReturnedAssignments count]; i++) {
+         NSNumber *timestamp = [[results objectAtIndex:i] objectAtIndex:[self.dbManager.arrColumnNames indexOfObject:@"due_date"]];
+        NSDate *date = [NSDate dateWithTimeIntervalSince1970:timestamp.doubleValue];
+        NSDateFormatter* dateFormatter = [[NSDateFormatter alloc] init];
+        dateFormatter.dateFormat = @"dd/MM/yyyy";
+        NSString *theDate = [dateFormatter stringFromDate:date];
+        NSDate *dateToAdd = [dateFormatter dateFromString:theDate];
+        [_customDates addObject:dateToAdd];
+    }
 }
 
+- (BOOL)simpleCalendarViewController:(PDTSimpleCalendarViewController *)controller shouldUseCustomColorsForDate:(NSDate *)date
+{
+    if ([self.customDates containsObject:date]) {
+        return YES;
+    }
+    
+    return NO;
+}
+
+- (UIColor *)simpleCalendarViewController:(PDTSimpleCalendarViewController *)controller circleColorForDate:(NSDate *)date
+{
+    return [UIColor redColor];
+}
+
+- (UIColor *)simpleCalendarViewController:(PDTSimpleCalendarViewController *)controller textColorForDate:(NSDate *)date
+{
+    return [UIColor whiteColor];
+}
 - (IBAction)back:(id)sender {
     allTableViewController *VC = (allTableViewController *)[self.storyboard instantiateViewControllerWithIdentifier:@"all"];
     
@@ -176,13 +205,7 @@ PDTSimpleCalendarViewController *calendarViewController;
 -(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
     return self.view.frame.size.height/2 + 5;
 }
--(BOOL)simpleCalendarViewCell:(PDTSimpleCalendarViewCell *)cell shouldUseCustomColorsForDate:(NSDate *)date{
-    
-        cell.textTodayColor = [UIColor greenColor];
 
-    
-    return YES;
-}
 - (void)simpleCalendarViewController:(PDTSimpleCalendarViewController *)controller didSelectDate:(NSDate *)date
 {
     NSLog(@"Date Selected : %@",date);
