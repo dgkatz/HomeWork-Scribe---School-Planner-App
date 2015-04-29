@@ -182,8 +182,7 @@ NSMutableArray *counts;
     [self.dbManager executeQuery:deleteQuery];
     
     // Delete row using the cool literal version of [NSArray arrayWithObject:indexPath]
-    
-    [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
+    [self.tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
     [self viewDidLoad];
     
 }

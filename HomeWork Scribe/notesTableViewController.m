@@ -9,6 +9,7 @@
 #import "notesTableViewController.h"
 #import "SWRevealViewController.h"
 #import "dataClass.h"
+#import "allTableViewController.h"
 @interface notesTableViewController ()
 
 @end
@@ -19,13 +20,19 @@ NSMutableArray *data;
     [super viewDidLoad];
     data = [[NSMutableArray alloc]initWithArray:[[NSUserDefaults standardUserDefaults]objectForKey:@"saved"]];
     NSLog(@"before delete : %@",data);
-    self.barButtton.target = self.revealViewController;
-    self.barButtton.action = @selector(revealToggle:);
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
     
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+}
+- (IBAction)back:(id)sender {
+    allTableViewController *VC = (allTableViewController *)[self.storyboard instantiateViewControllerWithIdentifier:@"all"];
+    
+    NSMutableArray *vcs =  [NSMutableArray arrayWithArray:self.navigationController.viewControllers];
+    [vcs insertObject:VC atIndex:[vcs count]-1];
+    [self.navigationController setViewControllers:vcs animated:NO];
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 - (void)didReceiveMemoryWarning {

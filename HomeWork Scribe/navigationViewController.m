@@ -19,7 +19,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     menu = @[@"first",@"second",@"5",@"third",@"6",@"4",@"7",@"8",@"9",@"10",@"11",@"12",@"13",@"14"];
-    self.tableView.scrollEnabled = NO;
+    self.tableView.scrollEnabled = YES;
     
 }
 

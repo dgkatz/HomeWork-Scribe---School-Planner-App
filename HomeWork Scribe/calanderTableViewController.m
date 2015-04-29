@@ -9,7 +9,11 @@
 #import "SWRevealViewController.h"
 #import "dataClass.h"
 #import "Assignment.h"
+#import "animator.h"
+#import "allTableViewController.h"
 @interface calanderTableViewController ()
+@property (nonatomic, strong) NSMutableSet *shownIndexes;
+@property (nonatomic, assign) CATransform3D initialTransform;
 @end
 NSString *selectedDate;
 NSString *newDate;
@@ -19,6 +23,9 @@ NSMutableArray *assignmentsForDay;
 NSMutableArray *initialArray;
 PDTSimpleCalendarViewController *calendarViewController;
 @implementation calanderTableViewController
+-(void)viewDidAppear:(BOOL)animated{
+    //self.dbManager = [[DBManager alloc] initWithDatabaseFilename:@"homeworkdb.sql"];
+}
 - (void)viewDidLoad {
     [super viewDidLoad];
     noAssignmentsLabel = [[UILabel alloc]initWithFrame:CGRectMake(self.tableView.frame.size.width/2 - 150, self.tableView.frame.size.height/2, 300, 40)];
@@ -29,14 +36,11 @@ PDTSimpleCalendarViewController *calendarViewController;
     initialArray = [[NSMutableArray alloc]init];
     assignments=[[NSMutableArray alloc]init];
     self.dbManager = [[DBManager alloc] initWithDatabaseFilename:@"homeworkdb.sql"];
-    _barButton.target = self.revealViewController;
-    _barButton.action = @selector(revealToggle:);
-    [self.view addGestureRecognizer:self.revealViewController.panGestureRecognizer];
      calendarViewController= [[PDTSimpleCalendarViewController alloc] init];
     //This is the default behavior, will display a full year starting the first of the current month
     [calendarViewController setDelegate:self];
-    [[PDTSimpleCalendarViewCell appearance] setCircleTodayColor:[UIColor grayColor]];
-    [[PDTSimpleCalendarViewCell appearance] setCircleSelectedColor:[UIColor orangeColor]];
+    [[PDTSimpleCalendarViewCell appearance] setCircleTodayColor:[UIColor orangeColor]];
+    [[PDTSimpleCalendarViewCell appearance] setCircleSelectedColor:[UIColor grayColor]];
     [[PDTSimpleCalendarViewHeader appearance] setSeparatorColor:[UIColor orangeColor]];
     NSString *query = [NSString stringWithFormat:@"select * from assignmentData"];
     NSMutableArray *results=[[[NSArray alloc] initWithArray:[self.dbManager loadDataFromDB:query]] mutableCopy];
@@ -72,16 +76,59 @@ PDTSimpleCalendarViewController *calendarViewController;
     
 }
 
+- (IBAction)back:(id)sender {
+    allTableViewController *VC = (allTableViewController *)[self.storyboard instantiateViewControllerWithIdentifier:@"all"];
+    
+    NSMutableArray *vcs =  [NSMutableArray arrayWithArray:self.navigationController.viewControllers];
+    [vcs insertObject:VC atIndex:[vcs count]-1];
+    [self.navigationController setViewControllers:vcs animated:NO];
+    [self.navigationController popViewControllerAnimated:YES];
+    /*
+    CATransition *animation = [CATransition animation];
+    [[self navigationController] pushViewController:VC animated:NO];
+    [animation setDuration:0.45];
+    [animation setType:kCATransitionPush];
+    [animation setSubtype:kCATransitionFromRight];
+    [animation setTimingFunction:[CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionDefault]];
+    [[VC.view layer] addAnimation:animation forKey:@"SwitchToView1"];
+     */
+    //[self navigationController:self.navigationController animationControllerForOperation:UINavigationControllerOperationPush fromViewController:VC1 toViewController:VC];
+}
+- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell  forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    CGFloat rotationAngleDegrees = -30;
+    CGFloat rotationAngleRadians = rotationAngleDegrees * (M_PI/180);
+    CGPoint offsetPositioning = CGPointMake(-100, 0.0);
+    
+    CATransform3D transform = CATransform3DIdentity;
+    transform = CATransform3DRotate(transform, rotationAngleRadians, -100.0, 0.0, 1.0);
+    transform = CATransform3DTranslate(transform, offsetPositioning.x, offsetPositioning.y, 0.0);
+    _initialTransform = transform;
+    
+    _shownIndexes = [NSMutableSet set];
+    
+    if (![self.shownIndexes containsObject:indexPath]) {
+        
+        [self.shownIndexes addObject:indexPath];
+        UIView *weeeeCell = [cell contentView];
+        
+        weeeeCell.layer.transform = self.initialTransform;
+        weeeeCell.layer.opacity = 0.4;
+        
+        [UIView animateWithDuration:1.2 delay:0.0 usingSpringWithDamping:.85 initialSpringVelocity:.8 options:0 animations:^{
+            weeeeCell.layer.transform = CATransform3DIdentity;
+            weeeeCell.layer.opacity = 1;
+        } completion:^(BOOL finished) {}];
+    }
+    
+}
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
 
-               
--(void)viewDidAppear:(BOOL)animated{
-    [self.tableView reloadData];
-}
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {

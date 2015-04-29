@@ -26,9 +26,7 @@ XLFormDescriptor * form;
     [super viewDidLoad];
     self.dbManager = [[DBManager alloc] initWithDatabaseFilename:@"homeworkdb.sql"];
         [self.dbManager executeQuery:@"create table if not exists assignmentData(hwID integer primary key, description text, subject text, due_date integer)"];
-    _barButton.target = self.revealViewController;
-    _barButton.action = @selector(revealToggle:);
-    [self.view addGestureRecognizer:self.revealViewController.panGestureRecognizer];
+    
     // Do any additional setup after loading the view.
     XLFormSectionDescriptor * section;
     XLFormRowDescriptor * row;
@@ -78,6 +76,14 @@ XLFormDescriptor * form;
     // Dispose of any resources that can be recreated.
 }
 
+- (IBAction)back:(id)sender {
+    allTableViewController *VC = (allTableViewController *)[self.storyboard instantiateViewControllerWithIdentifier:@"all"];
+    
+    NSMutableArray *vcs =  [NSMutableArray arrayWithArray:self.navigationController.viewControllers];
+    [vcs insertObject:VC atIndex:[vcs count]-1];
+    [self.navigationController setViewControllers:vcs animated:NO];
+    [self.navigationController popViewControllerAnimated:YES];
+}
 
 #pragma mark - Navigation
 

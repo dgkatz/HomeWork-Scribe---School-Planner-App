@@ -1,23 +1,36 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6751" systemVersion="14C109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES">
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6736"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" id="iN0-l3-epB">
-            <rect key="frame" x="0.0" y="0.0" width="480" height="480"/>
+            <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="180.png" translatesAutoresizingMaskIntoConstraints="NO" id="D1Q-lw-NKH">
-                    <rect key="frame" x="150" y="150" width="180" height="180"/>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="splahicon.png" translatesAutoresizingMaskIntoConstraints="NO" id="D1Q-lw-NKH">
+                    <rect key="frame" x="119" y="230" width="82" height="108"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="180" id="1xO-PL-f7z"/>
                         <constraint firstAttribute="width" constant="180" id="DN6-M6-yZ6"/>
                         <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="180" id="HUA-Mb-KOY"/>
                         <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="180" id="KEU-Bm-2qo"/>
+                        <constraint firstAttribute="width" secondItem="D1Q-lw-NKH" secondAttribute="height" multiplier="41:54" id="d41-oF-4Od"/>
+                        <constraint firstAttribute="width" secondItem="D1Q-lw-NKH" secondAttribute="height" multiplier="73:96" id="kMj-TF-DdH"/>
                     </constraints>
+                    <variation key="default">
+                        <mask key="constraints">
+                            <exclude reference="1xO-PL-f7z"/>
+                            <exclude reference="DN6-M6-yZ6"/>
+                            <exclude reference="HUA-Mb-KOY"/>
+                            <exclude reference="KEU-Bm-2qo"/>
+                            <exclude reference="kMj-TF-DdH"/>
+                        </mask>
+                    </variation>
                 </imageView>
             </subviews>
             <color key="backgroundColor" red="1" green="0.59229462990000004" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -28,7 +41,7 @@
                 <constraint firstAttribute="centerY" secondItem="D1Q-lw-NKH" secondAttribute="centerY" id="vfb-ns-ZV4"/>
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>
-            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
             <variation key="default">
                 <mask key="constraints">
                     <exclude reference="vfb-ns-ZV4"/>
@@ -38,6 +51,6 @@
         </view>
     </objects>
     <resources>
-        <image name="180.png" width="180" height="180"/>
+        <image name="splahicon.png" width="82" height="117"/>
     </resources>
 </document>

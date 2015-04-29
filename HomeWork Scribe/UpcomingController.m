@@ -10,6 +10,7 @@
 #import "Assignment.h"
 #import "SWRevealViewController.h"
 #import "dataClass.h"
+#import "allTableViewController.h"
 @interface UpcomingController ()
 
 @end
@@ -22,9 +23,6 @@ NSArray *sortedArray;
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.navigationItem.title = @"Upcoming Assignments";
-    _barButton.target = self.revealViewController;
-    _barButton.action = @selector(revealToggle:);
-    [self.view addGestureRecognizer:self.revealViewController.panGestureRecognizer];
     assignments = [[NSMutableArray alloc]init];
     int date= [[NSDate date] timeIntervalSince1970] + 172800;
     NSString *query= [NSString stringWithFormat: @"SELECT * FROM assignmentData WHERE due_date<%d",date];
@@ -72,10 +70,18 @@ NSArray *sortedArray;
     return [upAssignments count];
 }
 
+- (IBAction)back:(id)sender {
+    allTableViewController *VC = (allTableViewController *)[self.storyboard instantiateViewControllerWithIdentifier:@"all"];
+    
+    NSMutableArray *vcs =  [NSMutableArray arrayWithArray:self.navigationController.viewControllers];
+    [vcs insertObject:VC atIndex:[vcs count]-1];
+    [self.navigationController setViewControllers:vcs animated:NO];
+    [self.navigationController popViewControllerAnimated:YES];
+}
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"reuseIdentifier" forIndexPath:indexPath];
-    int index=indexPath.row;
+    int index= (int)indexPath.row;
     if (indexPath.row < [sortedArray count]) {
         Assignment *as=[sortedArray objectAtIndex:index];
         cell.textLabel.text=as.subject;

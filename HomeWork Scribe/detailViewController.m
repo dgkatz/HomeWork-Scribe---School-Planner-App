@@ -10,6 +10,7 @@
 #import "dataClass.h"
 #import "SWRevealViewController.h"
 #import "editAssignmentViewController.h"
+#import "SDiPhoneVersion.h"
 @interface detailViewController ()
 
 @end
@@ -27,15 +28,35 @@ UIColor *defaultcolor;
     [self presentViewController:purchaseContr animated:YES completion:nil];
 }
 -(void)editheAssignment{
+    static NSString *CellIdentifier = @"header";
+    UITableViewCell *headerView = [self.assignmentTableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    UILabel *duedateLabel = (UILabel *)[headerView.contentView viewWithTag:19];
+    UILabel *subjectLabel = (UILabel *)[headerView.contentView viewWithTag:20];
     dataClass *obj = [dataClass getInstance];
-    obj.subjectEdit = self.subjectLabel.text;
+    obj.subjectEdit = subjectLabel.text;
     obj.description1Edit = obj.description1;
-    obj.dateEdit = self.duedateLabel.text;
+    obj.dateEdit = duedateLabel.text;
     editAssignmentViewController *purchaseContr = (editAssignmentViewController *)[self.storyboard instantiateViewControllerWithIdentifier:@"editViewConrtller"];
     [self.navigationController pushViewController:purchaseContr animated:YES];
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
+    dataClass *obj = [dataClass getInstance];
+    if ([obj.subject isEqualToString:@"Math"]) {
+        defaultcolor = [UIColor colorWithRed:224/255.0 green:102/255.0 blue:102/255.0 alpha:1.0f];
+    }
+    else if ([obj.subject isEqualToString:@"Science"]){
+        defaultcolor = [UIColor colorWithRed:109/255.0 green:158/255.0 blue:235/255.0 alpha:1.0f];
+    }
+    else if ([obj.subject isEqualToString:@"Social Studies"]){
+        defaultcolor = [UIColor colorWithRed:106/255.0 green:168/255.0 blue:79/255.0 alpha:1.0f];
+    }
+    else if ([obj.subject isEqualToString:@"English"]){
+        defaultcolor = [UIColor colorWithRed:255/255.0 green:217/255.0 blue:102/255.0 alpha:1.0f];
+    }
+    else {
+        defaultcolor = [UIColor colorWithRed:246/255.0 green:178/255.0 blue:107/255.0 alpha:1.0f];
+    }
     UIBarButtonItem *flipButton = [[UIBarButtonItem alloc]
                                    initWithTitle:@"Edit"
                                    style:UIBarButtonItemStylePlain
@@ -48,29 +69,7 @@ UIColor *defaultcolor;
 
     self.dbManager = [[DBManager alloc] initWithDatabaseFilename:@"homeworkdb.sql"];
 
-    dataClass *obj = [dataClass getInstance];
-    self.duedateLabel.text = [NSString stringWithFormat:@"Due %@",obj.date];
-    self.subjectLabel.text = obj.subject;
-    if ([obj.subject isEqualToString:@"Math"]) {
-        self.subjectLabel.backgroundColor = [UIColor colorWithRed:224/255.0 green:102/255.0 blue:102/255.0 alpha:1.0f];
-        defaultcolor = [UIColor colorWithRed:224/255.0 green:102/255.0 blue:102/255.0 alpha:1.0f];
-    }
-    else if ([obj.subject isEqualToString:@"Science"]){
-        self.subjectLabel.backgroundColor = [UIColor colorWithRed:109/255.0 green:158/255.0 blue:235/255.0 alpha:1.0f];
-        defaultcolor = [UIColor colorWithRed:109/255.0 green:158/255.0 blue:235/255.0 alpha:1.0f];
-    }
-    else if ([obj.subject isEqualToString:@"Social Studies"]){
-        self.subjectLabel.backgroundColor = [UIColor colorWithRed:106/255.0 green:168/255.0 blue:79/255.0 alpha:1.0f];
-        defaultcolor = [UIColor colorWithRed:106/255.0 green:168/255.0 blue:79/255.0 alpha:1.0f];
-    }
-    else if ([obj.subject isEqualToString:@"English"]){
-        self.subjectLabel.backgroundColor = [UIColor colorWithRed:255/255.0 green:217/255.0 blue:102/255.0 alpha:1.0f];
-        defaultcolor = [UIColor colorWithRed:255/255.0 green:217/255.0 blue:102/255.0 alpha:1.0f];
-    }
-    else {
-        self.subjectLabel.backgroundColor = [UIColor colorWithRed:246/255.0 green:178/255.0 blue:107/255.0 alpha:1.0f];
-        defaultcolor = [UIColor colorWithRed:246/255.0 green:178/255.0 blue:107/255.0 alpha:1.0f];
-    }
+    
     menu = @[@"first",@"second",@"third"];
     self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
     self.assingmentcomButton.backgroundColor = defaultcolor;
@@ -87,8 +86,60 @@ UIColor *defaultcolor;
 }
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     // Return the number of rows in the section.
-    return [menu count];
+   return [menu count];
 }
+- (UIView *) tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
+{
+    static NSString *CellIdentifier = @"header";
+    UITableViewCell *headerView = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    UILabel *duedateLabel = (UILabel *)[headerView.contentView viewWithTag:20];
+    duedateLabel.adjustsFontSizeToFitWidth = YES;
+    UILabel *subjectLabel = (UILabel *)[headerView.contentView viewWithTag:19];
+    subjectLabel.adjustsFontSizeToFitWidth = YES;
+    if ([SDiPhoneVersion deviceSize] == iPhone47inch) {
+        //[duedateLabel setFont:[UIFont fontWithName:@"System-Light" size:27.0f]];
+        //[subjectLabel setFont:[UIFont fontWithName:@"System-Light" size:64.0f]];
+        //duedateLabel.font = [UIFont fontWithName:@"System-Light" size:27.0f];
+        //subjectLabel.font = [UIFont fontWithName:@"System-Light" size:64.0f];
+    }
+
+    dataClass *obj = [dataClass getInstance];
+    duedateLabel.text = [NSString stringWithFormat:@"Due %@",obj.date];
+    subjectLabel.text = obj.subject;
+    if ([obj.subject isEqualToString:@"Math"]) {
+        subjectLabel.backgroundColor = [UIColor colorWithRed:224/255.0 green:102/255.0 blue:102/255.0 alpha:1.0f];
+        defaultcolor = [UIColor colorWithRed:224/255.0 green:102/255.0 blue:102/255.0 alpha:1.0f];
+    }
+    else if ([obj.subject isEqualToString:@"Science"]){
+        subjectLabel.backgroundColor = [UIColor colorWithRed:109/255.0 green:158/255.0 blue:235/255.0 alpha:1.0f];
+        defaultcolor = [UIColor colorWithRed:109/255.0 green:158/255.0 blue:235/255.0 alpha:1.0f];
+    }
+    else if ([obj.subject isEqualToString:@"Social Studies"]){
+        subjectLabel.backgroundColor = [UIColor colorWithRed:106/255.0 green:168/255.0 blue:79/255.0 alpha:1.0f];
+        defaultcolor = [UIColor colorWithRed:106/255.0 green:168/255.0 blue:79/255.0 alpha:1.0f];
+    }
+    else if ([obj.subject isEqualToString:@"English"]){
+        subjectLabel.backgroundColor = [UIColor colorWithRed:255/255.0 green:217/255.0 blue:102/255.0 alpha:1.0f];
+        defaultcolor = [UIColor colorWithRed:255/255.0 green:217/255.0 blue:102/255.0 alpha:1.0f];
+    }
+    else {
+        subjectLabel.backgroundColor = [UIColor colorWithRed:246/255.0 green:178/255.0 blue:107/255.0 alpha:1.0f];
+        defaultcolor = [UIColor colorWithRed:246/255.0 green:178/255.0 blue:107/255.0 alpha:1.0f];
+    }
+    headerView.backgroundColor = defaultcolor;
+    if (section == 0) {
+        if (headerView == nil){
+            [NSException raise:@"headerView == nil.." format:@"No cells with matching CellIdentifier loaded from your storyboard"];
+        }
+        
+    }
+    else{
+        headerView = nil;
+    }
+    
+    return headerView;
+}
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     dataClass *obj = [dataClass getInstance];
     NSString *cellIdentifier = [menu objectAtIndex:indexPath.row];
@@ -114,7 +165,9 @@ UIColor *defaultcolor;
     return cell;
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    
     int height;
+    
     if (indexPath.row == 0) {
         height = 110;
     }
@@ -122,6 +175,22 @@ UIColor *defaultcolor;
         height = 44;
     }
     return height;
+}
+-(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
+    int returnHeight;
+    if ([SDiPhoneVersion deviceSize] == iPhone35inch) {
+        returnHeight = 175;
+    }
+    else if ([SDiPhoneVersion deviceSize] == iPhone4inch){
+        returnHeight = 260;
+    }
+    else if ([SDiPhoneVersion deviceSize] == iPhone47inch){
+        returnHeight = 320;
+    }
+    else{
+        returnHeight = 220;
+    }
+    return returnHeight;
 }
 -(void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
 {
