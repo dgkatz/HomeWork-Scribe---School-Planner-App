@@ -26,7 +26,7 @@
 
 #import <QuartzCore/QuartzCore.h>
 #import <UIKit/UIGestureRecognizerSubclass.h>
-
+#import "SDiPhoneVersion.h"
 #import "SWRevealViewController.h"
 
 //#pragma mark - SWDirectionPanGestureRecognizer
@@ -577,6 +577,12 @@ const int FrontViewPositionNone = 0xff;
     _rearViewPosition = FrontViewPositionLeft;
     _rightViewPosition = FrontViewPositionLeft;
     _rearViewRevealWidth = 260.0f;
+    if ([SDiPhoneVersion deviceSize] == iPhone47inch) {
+        _rearViewRevealWidth = 300.0f;
+    }
+    else if ([SDiPhoneVersion deviceSize] == iPhone55inch){
+        _rearViewRevealWidth = 330.0f;
+    }
     _rearViewRevealOverdraw = 60.0f;
     _rearViewRevealDisplacement = 40.0f;
     _rightViewRevealWidth = 260.0f;
@@ -590,7 +596,7 @@ const int FrontViewPositionNone = 0xff;
     _quickFlickVelocity = 250.0f;
     _toggleAnimationDuration = 0.25;
     _replaceViewAnimationDuration = 0.25;
-    _frontViewShadowRadius = 2.5f;
+    _frontViewShadowRadius = 0.0f;
     _frontViewShadowOffset = CGSizeMake(0.0f, 2.5f);
     _frontViewShadowOpacity = 1.0f;
     _userInteractionStore = YES;

@@ -75,6 +75,9 @@ PDTSimpleCalendarViewController *calendarViewController;
     }
     NSString *allQuery= [NSString stringWithFormat:@"SELECT * FROM assignmentData"];
     NSMutableArray *allReturnedAssignments =[[NSMutableArray alloc]initWithArray:[self.dbManager loadDataFromDB:allQuery]];
+    if ([allReturnedAssignments count] == 0) {
+        [self.view addSubview:noAssignmentsLabel];
+    }
     _customDates = [[NSMutableArray alloc]init];
     for (int i = 0; i<[allReturnedAssignments count]; i++) {
          NSNumber *timestamp = [[results objectAtIndex:i] objectAtIndex:[self.dbManager.arrColumnNames indexOfObject:@"due_date"]];
@@ -98,7 +101,41 @@ PDTSimpleCalendarViewController *calendarViewController;
 
 - (UIColor *)simpleCalendarViewController:(PDTSimpleCalendarViewController *)controller circleColorForDate:(NSDate *)date
 {
-    return [UIColor redColor];
+    NSDateFormatter* dateFormatter = [[NSDateFormatter alloc] init];
+    dateFormatter.dateFormat = @"dd/MM/yyyy";
+    NSString *theDate = [dateFormatter stringFromDate:date];
+    NSDate *dateToAdd = [dateFormatter dateFromString:theDate];
+    int occurrences = 0;
+    for(int i = 0; i<[_customDates count] ; i++){
+        NSDate *compareDate = (NSDate*)[_customDates objectAtIndex:i];
+        NSDateFormatter* dateFormatter = [[NSDateFormatter alloc] init];
+        dateFormatter.dateFormat = @"dd/MM/yyyy";
+        NSString *change = [dateFormatter stringFromDate:compareDate];
+        NSDate *add = [dateFormatter dateFromString:change];
+        occurrences += (add == dateToAdd ?1:0); //certain object is @"Apple"
+    }
+    NSLog(@"%d",occurrences);
+    NSCountedSet *set = [[NSCountedSet alloc] initWithArray:_customDates];
+    int num = (int)[set countForObject:dateToAdd];
+    NSLog(@"THIS IS THE NUMBER %d",num);
+    for (id item in set)
+    {
+        NSLog(@"Name=%@, Count=%lu", item, (unsigned long)[set countForObject:item]);
+    }
+    if (num == 1) {
+        return [UIColor colorWithRed:255/255.0 green:0/255.0 blue:0/255.0 alpha:.5f];
+    }
+    else if (num == 2){
+        return [UIColor colorWithRed:255/255.0 green:0/255.0 blue:0/255.0 alpha:.666666667f];
+    }
+    else if (num == 3){
+        return [UIColor colorWithRed:255/255.0 green:0/255.0 blue:0/255.0 alpha:.833333337f];
+
+    }
+    else{
+        return [UIColor colorWithRed:255/255.0 green:0/255.0 blue:0/255.0 alpha:1.0f];
+    }
+    
 }
 
 - (UIColor *)simpleCalendarViewController:(PDTSimpleCalendarViewController *)controller textColorForDate:(NSDate *)date
@@ -173,8 +210,9 @@ PDTSimpleCalendarViewController *calendarViewController;
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     int cellIndex = (int)indexPath.row;
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"identifier" forIndexPath:indexPath];
-    NSString *subject = [[assignmentsForDay objectAtIndex:cellIndex] objectAtIndex:[self.dbManager.arrColumnNames indexOfObject:@"subject"]];
-    NSString *desc=[[assignmentsForDay objectAtIndex:cellIndex] objectAtIndex:[self.dbManager.arrColumnNames indexOfObject:@"description"]];
+    NSArray *ar = [assignmentsForDay objectAtIndex:cellIndex];
+    NSString *subject = [ar objectAtIndex:2];
+    NSString *desc= [ar objectAtIndex:1];
 
 
     cell.textLabel.text = subject;

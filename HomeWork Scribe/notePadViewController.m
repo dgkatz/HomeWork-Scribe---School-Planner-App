@@ -12,9 +12,8 @@
 @interface notePadViewController ()
 
 @end
-
+NSString *str;
 @implementation notePadViewController
-
 - (void)viewDidLoad {
     [super viewDidLoad];
     dataClass *obj = [dataClass getInstance];
@@ -23,7 +22,7 @@
         obj.note = nil;
     }
     UIBarButtonItem *flipButton = [[UIBarButtonItem alloc]
-                                   initWithTitle:@"Done"
+                                   initWithTitle:@"Save"
                                    style:UIBarButtonItemStylePlain
                                    target:self
                                    action:@selector(add)];
@@ -31,6 +30,10 @@
     self.navigationItem.rightBarButtonItem = flipButton;
     
     // Do any additional setup after loading the view.
+}
+-(void)viewDidAppear:(BOOL)animated{
+    str = self.textField.text;
+
 }
 -(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
     NSLog(@"%@",[alertView buttonTitleAtIndex:buttonIndex]);
@@ -45,9 +48,27 @@
     
 }
 -(void)add{
+    BOOL savedBool = [[NSUserDefaults standardUserDefaults]boolForKey:@"editmode"];
+    if (savedBool == YES) {
+        savedBool = NO;
+        [[NSUserDefaults standardUserDefaults]setBool:savedBool forKey:@"editmode"];
+        [[NSUserDefaults standardUserDefaults]synchronize];
+        NSString *savedString = [[NSUserDefaults standardUserDefaults]objectForKey:@"subject"];
+        NSMutableArray *savedValues = [[NSMutableArray alloc]initWithArray:[[NSUserDefaults standardUserDefaults]objectForKey:savedString]];
+        [savedValues removeObject:str];
+        [[NSUserDefaults standardUserDefaults]setObject:savedValues forKey:savedString];
+        [[NSUserDefaults standardUserDefaults]synchronize];
+        
+        NSMutableArray *savedValues2 = [[NSMutableArray alloc]initWithArray:[[NSUserDefaults standardUserDefaults]objectForKey:savedString]];
+        [savedValues2 addObject:self.textField.text];
+        [[NSUserDefaults standardUserDefaults]setObject:savedValues2 forKey:savedString];
+        [[NSUserDefaults standardUserDefaults]synchronize];
+        
+    }
+    else {
     UIAlertView *chooseSubject = [[UIAlertView alloc]initWithTitle:@"Set Subject" message:nil delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"Math",@"Science",@"Social Studies",@"English",@"Language", nil];
     [chooseSubject show];
-    
+    }
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

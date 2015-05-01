@@ -9,6 +9,7 @@
 #import "allTableViewController.h"
 #import "dataClass.h"
 #import "SWRevealViewController.h"
+#import "AddViewController.h"
 @interface allTableViewController ()
 @property (nonatomic, strong) JFMinimalNotification* minimalNotification;
 
@@ -24,11 +25,58 @@ NSMutableArray *counts;
 
 @implementation allTableViewController
 
+
+- (void)revealController:(SWRevealViewController *)revealController willMoveToPosition:    (FrontViewPosition)position
+{
+    if(position == FrontViewPositionLeft) {
+        self.view.userInteractionEnabled = YES;
+        [UIView animateWithDuration:.25 delay:0.0 options:0
+                         animations:^{
+                             self.shadowView.alpha = 0.0;
+                         }
+                         completion:^(BOOL finished){
+                             if (finished) {
+                                 [self.shadowView removeFromSuperview];
+                                 // Do your method here after your animation.
+                             }
+                         }];
+    } else {
+        self.view.userInteractionEnabled = NO;
+        self.shadowView = [[UIView alloc]initWithFrame:self.navigationController.view.frame];
+        self.shadowView.backgroundColor = [UIColor blackColor];
+        self.shadowView.alpha = 0.0f;
+        [UIView animateWithDuration:.25 delay:0.0 options:0
+                         animations:^{
+                             self.shadowView.alpha = .3;
+                         }
+                         completion:nil];
+        [self.shadowView addGestureRecognizer:self.revealViewController.panGestureRecognizer];
+        [self.shadowView addGestureRecognizer:self.revealViewController.tapGestureRecognizer];
+        SWRevealViewController *revealController = [self revealViewController];
+        UITapGestureRecognizer *tap = [revealController tapGestureRecognizer];
+        [self.shadowView addGestureRecognizer:tap];
+        [self.navigationController.view addSubview:self.shadowView];
+        }
+}
+- (IBAction)addAssignmentSegue:(id)sender {
+    AddViewController *VC = (AddViewController *)[self.storyboard instantiateViewControllerWithIdentifier:@"add"];
+    [self.navigationController pushViewController:VC animated:YES];
+    
+}
+
+- (void)revealController:(SWRevealViewController *)revealController didMoveToPosition:    (FrontViewPosition)position
+{
+    if(position == FrontViewPositionLeft) {
+        self.view.userInteractionEnabled = YES;
+    } else {
+        self.view.userInteractionEnabled = NO;
+    }
+}
+
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     NSLog(@"LAUNCHED");
-    self.navigationItem.rightBarButtonItem = self.editButtonItem;
-    self.navigationItem.rightBarButtonItem.tintColor = [UIColor whiteColor];
     subjects=@[@"Math", @"Science", @"Social Studies", @"English", @"Language"];
     self.dbManager = [[DBManager alloc] initWithDatabaseFilename:@"homeworkdb.sql"];
     NSLog(@"created database magaer");
@@ -48,6 +96,11 @@ NSMutableArray *counts;
         
     }
 }
+
+-(void)viewDidAppear:(BOOL)animated{
+    self.revealViewController.delegate = self;
+}
+
 -(NSMutableArray*) selectFromDb:(NSString *) subject{
     NSString *query = [NSString stringWithFormat:@"select * from assignmentData where subject = '%@'", subject];
     NSMutableArray *returnArray=[[[NSArray alloc] initWithArray:[self.dbManager loadDataFromDB:query]] mutableCopy];
@@ -176,8 +229,8 @@ NSMutableArray *counts;
 - (void)tableView: (UITableView *)tableView commitEditingStyle: (UITableViewCellEditingStyle)editingStyle forRowAtIndexPath: (NSIndexPath *)indexPath {if (editingStyle == UITableViewCellEditingStyleDelete) {
     // Delete the row from the data source
     UITableViewCell *cell = [self.tableView cellForRowAtIndexPath:indexPath];
-    NSString *label=cell.textLabel.text;
-    NSString *deleteQuery= [NSString stringWithFormat: @"DELETE FROM assignmentData WHERE description='%@'",label];
+    UILabel *label = (UILabel *)[cell.contentView viewWithTag:10];
+    NSString *deleteQuery= [NSString stringWithFormat: @"DELETE FROM assignmentData WHERE description='%@'",label.text];
     NSLog(@"%@",deleteQuery);
     [self.dbManager executeQuery:deleteQuery];
     
@@ -225,6 +278,7 @@ NSMutableArray *counts;
         dataClass *obj = [dataClass getInstance];
         NSIndexPath *selectedIndexPath = [self.tableView indexPathForSelectedRow];
         UITableViewCell *cell = [self.tableView cellForRowAtIndexPath:selectedIndexPath];
+
         UILabel *label = (UILabel *)[cell.contentView viewWithTag:10];
         UILabel *labelDetail = (UILabel *)[cell.contentView viewWithTag:11];
         obj.description1 = label.text;

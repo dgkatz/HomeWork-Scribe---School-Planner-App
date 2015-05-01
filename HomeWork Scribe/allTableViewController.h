@@ -8,9 +8,10 @@
 
 #import <UIKit/UIKit.h>
 #import "DBManager.h"
+#import "SWRevealViewController.h"
 #import "JFMinimalNotification.h"
-@interface allTableViewController : UITableViewController<JFMinimalNotificationDelegate>
+@interface allTableViewController : UITableViewController<JFMinimalNotificationDelegate,SWRevealViewControllerDelegate>
 @property (strong, nonatomic) IBOutlet UIBarButtonItem *barButton;
 @property (nonatomic, strong) DBManager *dbManager;
-
+@property (strong, nonatomic)  UIView *shadowView;
 @end

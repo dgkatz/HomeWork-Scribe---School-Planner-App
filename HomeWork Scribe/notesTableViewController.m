@@ -15,7 +15,7 @@
 @end
 NSMutableArray *data;
 @implementation notesTableViewController
-
+BOOL editmode;
 - (void)viewDidLoad {
     [super viewDidLoad];
     data = [[NSMutableArray alloc]initWithArray:[[NSUserDefaults standardUserDefaults]objectForKey:@"saved"]];
@@ -51,19 +51,19 @@ NSMutableArray *data;
     // Return the number of rows in the section.
     int returnnum;
     if (section == 0) {
-        returnnum = [[[NSUserDefaults standardUserDefaults]objectForKey:@"Math"] count];
+        returnnum = (int)[[[NSUserDefaults standardUserDefaults]objectForKey:@"Math"] count];
     }
     else if (section == 1){
-        returnnum = [[[NSUserDefaults standardUserDefaults]objectForKey:@"Science"] count];
+        returnnum = (int)[[[NSUserDefaults standardUserDefaults]objectForKey:@"Science"] count];
     }
     else if (section == 2){
-        returnnum = [[[NSUserDefaults standardUserDefaults]objectForKey:@"Social Studies"] count];
+        returnnum = (int)[[[NSUserDefaults standardUserDefaults]objectForKey:@"Social Studies"] count];
     }
     else if (section == 3){
-        returnnum = [[[NSUserDefaults standardUserDefaults]objectForKey:@"English"] count];
+        returnnum = (int)[[[NSUserDefaults standardUserDefaults]objectForKey:@"English"] count];
     }
     else{
-        returnnum = [[[NSUserDefaults standardUserDefaults]objectForKey:@"Language"] count];
+        returnnum = (int)[[[NSUserDefaults standardUserDefaults]objectForKey:@"Language"] count];
     }
     return returnnum;
 }
@@ -110,13 +110,12 @@ NSMutableArray *data;
     }
 }
 
-/*
-// Override to support conditional editing of the table view.
+
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the specified item to be editable.
+    
     return YES;
 }
-*/
+
 
 /*
 // Override to support editing the table view.
@@ -146,20 +145,32 @@ NSMutableArray *data;
 - (void)tableView: (UITableView *)tableView commitEditingStyle: (UITableViewCellEditingStyle)editingStyle forRowAtIndexPath: (NSIndexPath *)indexPath {if (editingStyle == UITableViewCellEditingStyleDelete) {
     // Delete the row from the data source
     UITableViewCell *cell = [self.tableView cellForRowAtIndexPath:indexPath];
+    NSString *selectedSubject;
+    if (indexPath.section == 0) {
+        selectedSubject = @"Math";
+    }
+    else if (indexPath.section == 1){
+        selectedSubject = @"Science";
+    }
+    else if (indexPath.section == 2){
+        selectedSubject = @"Social Studies";
+    }
+    else if (indexPath.section == 3){
+        selectedSubject = @"English";
+    }
+    else{
+        selectedSubject = @"Language";
+    }
+    NSMutableArray *savedValues = [[NSMutableArray alloc]initWithArray:[[NSUserDefaults standardUserDefaults]objectForKey:[NSString stringWithFormat:@"%@",selectedSubject]]];
     NSString *label=cell.textLabel.text;
-    [data removeObject:[NSString stringWithFormat:@"%@",label]];
-    NSLog(@"after delete: %@",data);
-    [[NSUserDefaults standardUserDefaults]setObject:data forKey:@"saved"];
+    [savedValues removeObject:[NSString stringWithFormat:@"%@",label]];
+    [[NSUserDefaults standardUserDefaults]setObject:savedValues forKey:selectedSubject];
     [[NSUserDefaults standardUserDefaults]synchronize];
     [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
     [self viewDidLoad];
     
 }
     
-}
-
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
-    return YES;
 }
 #pragma mark - Navigation
 
@@ -170,8 +181,13 @@ NSMutableArray *data;
     if ([segue.identifier isEqualToString:@"showNote"]) {
         NSIndexPath *selectedIndexPath = [self.tableView indexPathForSelectedRow];
         UITableViewCell *cell = [self.tableView cellForRowAtIndexPath:selectedIndexPath];
+        NSString *titleForHeader = [self tableView:self.tableView titleForHeaderInSection:selectedIndexPath.section];
         dataClass *obj = [dataClass getInstance];
         obj.note = cell.textLabel.text;
+        editmode = YES;
+        [[NSUserDefaults standardUserDefaults]setBool:editmode forKey:@"editmode"];
+        [[NSUserDefaults standardUserDefaults]setObject:[NSString stringWithFormat:@"%@",titleForHeader] forKey:@"subject"];
+        [[NSUserDefaults standardUserDefaults]synchronize];
     }
 }
 

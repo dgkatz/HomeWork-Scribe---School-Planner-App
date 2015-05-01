@@ -8,6 +8,7 @@
 
 #import "navigationViewController.h"
 #import "SWRevealViewController.h"
+#import "SDiPhoneVersion.h"
 @interface navigationViewController ()
 
 @end
@@ -18,8 +19,9 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    menu = @[@"first",@"second",@"5",@"third",@"6",@"4",@"7",@"8",@"9",@"10",@"11",@"12",@"13",@"14"];
-    self.tableView.scrollEnabled = YES;
+    menu = @[@"first",@"5",@"third",@"6",@"4",@"7",@"8",@"9",@"10",@"11",@"12",@"13",@"14"];
+    self.tableView.scrollEnabled = NO;
+    
     
 }
 
@@ -44,10 +46,16 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     NSString *cellIdentifier = [menu objectAtIndex:indexPath.row];
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier forIndexPath:indexPath];
+    [[cell textLabel] setHighlightedTextColor:[UIColor whiteColor]];
     
+    // background image
+    UIView *bgColorView = [[UIView alloc] init];
+    bgColorView.backgroundColor = [UIColor orangeColor];
+    [cell setSelectedBackgroundView:bgColorView];
     
     return cell;
 }
+
 -(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
     return 140;
 }
@@ -55,6 +63,24 @@
 {
     static NSString *CellIdentifier = @"header";
     UITableViewCell *headerView = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    UIImageView *label = (UIImageView *)[headerView.contentView viewWithTag:27];
+    if ([SDiPhoneVersion deviceSize] == iPhone35inch) {
+        label.image = [UIImage imageNamed:@"320X140.png"];
+        NSLog(@"smallest");
+    }
+    else if ([SDiPhoneVersion deviceSize] == iPhone4inch){
+        label.image = [UIImage imageNamed:@"320X140.png"];
+        NSLog(@"smallest");
+
+    }
+    else if ([SDiPhoneVersion deviceSize] == iPhone47inch){
+        label.image = [UIImage imageNamed:@"375X140.png"];
+        NSLog(@"medium");
+    }
+    else if ([SDiPhoneVersion deviceSize] == iPhone55inch){
+        label.image = [UIImage imageNamed:@"414X140"];
+        NSLog(@"large");
+    }
     if (section == 0) {
         if (headerView == nil){
             [NSException raise:@"headerView == nil.." format:@"No cells with matching CellIdentifier loaded from your storyboard"];
