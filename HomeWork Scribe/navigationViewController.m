@@ -65,20 +65,20 @@
     UITableViewCell *headerView = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     UIImageView *label = (UIImageView *)[headerView.contentView viewWithTag:27];
     if ([SDiPhoneVersion deviceSize] == iPhone35inch) {
-        label.image = [UIImage imageNamed:@"320X140.png"];
+        label.image = [UIImage imageNamed:@"320X140Alt.png"];
         NSLog(@"smallest");
     }
     else if ([SDiPhoneVersion deviceSize] == iPhone4inch){
-        label.image = [UIImage imageNamed:@"320X140.png"];
+        label.image = [UIImage imageNamed:@"320X140Alt.png"];
         NSLog(@"smallest");
 
     }
     else if ([SDiPhoneVersion deviceSize] == iPhone47inch){
-        label.image = [UIImage imageNamed:@"375X140.png"];
+        label.image = [UIImage imageNamed:@"375X140Alt.png"];
         NSLog(@"medium");
     }
     else if ([SDiPhoneVersion deviceSize] == iPhone55inch){
-        label.image = [UIImage imageNamed:@"414X140"];
+        label.image = [UIImage imageNamed:@"414X140Alt"];
         NSLog(@"large");
     }
     if (section == 0) {

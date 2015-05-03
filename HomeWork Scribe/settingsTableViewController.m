@@ -16,7 +16,8 @@ NSArray *menu;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    menu = @[@"first",@"second"];
+    self.dbManager = [[DBManager alloc] initWithDatabaseFilename:@"homeworkdb.sql"];
+    menu = @[@"first",@"second",@"third"];
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
     
@@ -48,7 +49,21 @@ NSArray *menu;
     return cell;
 }
 
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    if (indexPath.row == 2) {
+        UIAlertView *deleteAlert = [[UIAlertView alloc]initWithTitle:@"Delete All Assignment Data" message:@"Are you sure you want to delete all your data?" delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"Delete", nil];
+        [deleteAlert dismissWithClickedButtonIndex:1 animated:YES];
+        [deleteAlert show];
+    }
+}
 
+-(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
+    if (buttonIndex == 1) {
+        NSString *deleteQuery= [NSString stringWithFormat: @"DELETE FROM assignmentDataa"];
+        NSLog(@"%@",deleteQuery);
+        [self.dbManager executeQuery:deleteQuery];
+    }
+}
 /*
 // Override to support conditional editing of the table view.
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {

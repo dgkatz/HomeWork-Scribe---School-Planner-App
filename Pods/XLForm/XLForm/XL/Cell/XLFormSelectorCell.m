@@ -218,6 +218,12 @@
     else if ([self.rowDescriptor.rowType isEqualToString:XLFormRowDescriptorTypeSelectorActionSheet]){
         UIActionSheet * actionSheet = [[UIActionSheet alloc] initWithTitle:self.rowDescriptor.selectorTitle delegate:self cancelButtonTitle:nil destructiveButtonTitle:nil otherButtonTitles:nil];
         actionSheet.tag = [self.rowDescriptor hash];
+        for (UIView *subview in actionSheet.subviews) {
+            if ([subview isKindOfClass:[UIButton class]]) {
+                UIButton *button = (UIButton *)subview;
+                [button setTitleColor:[UIColor orangeColor] forState:UIControlStateNormal];
+            }
+        }
         for (id option in self.rowDescriptor.selectorOptions) {
             [actionSheet addButtonWithTitle:[option displayText]];
         }

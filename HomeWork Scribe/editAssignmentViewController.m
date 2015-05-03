@@ -77,6 +77,20 @@ XLFormDescriptor * form;
     // Do any additional setup after loading the view.
 }
 
+- (void)willPresentActionSheet:(UIActionSheet *)actionSheet
+{
+    UIColor *customTitleColor = [UIColor greenColor];
+    for (UIView *subview in actionSheet.subviews) {
+        if ([subview isKindOfClass:[UIButton class]]) {
+            UIButton *button = (UIButton *)subview;
+            
+            [button setTitleColor:customTitleColor forState:UIControlStateHighlighted];
+            [button setTitleColor:customTitleColor forState:UIControlStateNormal];
+            [button setTitleColor:customTitleColor forState:UIControlStateSelected];
+        }
+    }
+}
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
@@ -122,5 +136,4 @@ XLFormDescriptor * form;
         
     }
 }
-
 @end

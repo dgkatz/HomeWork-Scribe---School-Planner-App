@@ -34,6 +34,9 @@
 		D711FD9D1AF3218B005C1F6B /* 320X140.png in Resources */ = {isa = PBXBuildFile; fileRef = D711FD9A1AF3218B005C1F6B /* 320X140.png */; };
 		D711FD9E1AF3218B005C1F6B /* 375X140.png in Resources */ = {isa = PBXBuildFile; fileRef = D711FD9B1AF3218B005C1F6B /* 375X140.png */; };
 		D711FD9F1AF3218B005C1F6B /* 414X140.png in Resources */ = {isa = PBXBuildFile; fileRef = D711FD9C1AF3218B005C1F6B /* 414X140.png */; };
+		D711FE351AF5B1A8005C1F6B /* 375X140Alt.png in Resources */ = {isa = PBXBuildFile; fileRef = D711FE321AF5B1A8005C1F6B /* 375X140Alt.png */; };
+		D711FE361AF5B1A8005C1F6B /* 414X140Alt.png in Resources */ = {isa = PBXBuildFile; fileRef = D711FE331AF5B1A8005C1F6B /* 414X140Alt.png */; };
+		D711FE371AF5B1A8005C1F6B /* 320X140Alt.png in Resources */ = {isa = PBXBuildFile; fileRef = D711FE341AF5B1A8005C1F6B /* 320X140Alt.png */; };
 		D7342E701AE813C600394432 /* detailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D7342E6F1AE813C600394432 /* detailViewController.m */; };
 		D739F0131AECA0C7000C2FF1 /* 29.png in Resources */ = {isa = PBXBuildFile; fileRef = D739F0121AECA0C7000C2FF1 /* 29.png */; };
 		D739F0151AECA12F000C2FF1 /* 40.png in Resources */ = {isa = PBXBuildFile; fileRef = D739F0141AECA12F000C2FF1 /* 40.png */; };
@@ -83,6 +86,7 @@
 		D784281F1AF0821D00669910 /* splahicon@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = D784281C1AF0821D00669910 /* splahicon@3x.png */; };
 		D78AD00D1AE99CBD00FD6CDC /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D78AD00C1AE99CBD00FD6CDC /* QuartzCore.framework */; };
 		D78AD0211AE9B3BB00FD6CDC /* UpcomingController.m in Sources */ = {isa = PBXBuildFile; fileRef = D78AD0201AE9B3BB00FD6CDC /* UpcomingController.m */; };
+		D7DDE7021AF5C66000C7D0EC /* CWStatusBarNotification.m in Sources */ = {isa = PBXBuildFile; fileRef = D7DDE7011AF5C66000C7D0EC /* CWStatusBarNotification.m */; };
 		D7EDD1371AE87282003EBABE /* editAssignmentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D7EDD1361AE87282003EBABE /* editAssignmentViewController.m */; };
 		D7EDD13E1AE89D03003EBABE /* settingsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D7EDD13D1AE89D03003EBABE /* settingsTableViewController.m */; };
 		D7EDD1411AE8A0CF003EBABE /* aboutTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D7EDD1401AE8A0CF003EBABE /* aboutTableViewController.m */; };
@@ -157,6 +161,9 @@
 		D711FD9A1AF3218B005C1F6B /* 320X140.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 320X140.png; sourceTree = "<group>"; };
 		D711FD9B1AF3218B005C1F6B /* 375X140.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 375X140.png; sourceTree = "<group>"; };
 		D711FD9C1AF3218B005C1F6B /* 414X140.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 414X140.png; sourceTree = "<group>"; };
+		D711FE321AF5B1A8005C1F6B /* 375X140Alt.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 375X140Alt.png; sourceTree = "<group>"; };
+		D711FE331AF5B1A8005C1F6B /* 414X140Alt.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 414X140Alt.png; sourceTree = "<group>"; };
+		D711FE341AF5B1A8005C1F6B /* 320X140Alt.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 320X140Alt.png; sourceTree = "<group>"; };
 		D7342E6E1AE813C600394432 /* detailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = detailViewController.h; sourceTree = "<group>"; };
 		D7342E6F1AE813C600394432 /* detailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = detailViewController.m; sourceTree = "<group>"; };
 		D739F0121AECA0C7000C2FF1 /* 29.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 29.png; sourceTree = "<group>"; };
@@ -227,6 +234,8 @@
 		D78AD0181AE9A1D700FD6CDC /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
 		D78AD01F1AE9B3BB00FD6CDC /* UpcomingController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UpcomingController.h; sourceTree = "<group>"; };
 		D78AD0201AE9B3BB00FD6CDC /* UpcomingController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UpcomingController.m; sourceTree = "<group>"; };
+		D7DDE7001AF5C66000C7D0EC /* CWStatusBarNotification.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CWStatusBarNotification.h; sourceTree = "<group>"; };
+		D7DDE7011AF5C66000C7D0EC /* CWStatusBarNotification.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CWStatusBarNotification.m; sourceTree = "<group>"; };
 		D7EDD1351AE87282003EBABE /* editAssignmentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = editAssignmentViewController.h; sourceTree = "<group>"; };
 		D7EDD1361AE87282003EBABE /* editAssignmentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = editAssignmentViewController.m; sourceTree = "<group>"; };
 		D7EDD13C1AE89D03003EBABE /* settingsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = settingsTableViewController.h; sourceTree = "<group>"; };
@@ -349,6 +358,7 @@
 				B1FD785C1AB4B21D009DB201 /* navigationViewController.m */,
 				D739F08E1AF03C6D000C2FF1 /* SDiPhoneVersion.h */,
 				D739F08F1AF03C6D000C2FF1 /* SDiPhoneVersion.m */,
+				D7DDE6FF1AF5C66000C7D0EC /* CWStatusBarNotification */,
 				B1FD78971AB4BD1B009DB201 /* PDTSimpleCalendar */,
 				B1FD78351AB4B1EF009DB201 /* Supporting Files */,
 				B1FD78631AB4B479009DB201 /* calanderTableViewController.h */,
@@ -391,6 +401,9 @@
 		B1FD78351AB4B1EF009DB201 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				D711FE321AF5B1A8005C1F6B /* 375X140Alt.png */,
+				D711FE331AF5B1A8005C1F6B /* 414X140Alt.png */,
+				D711FE341AF5B1A8005C1F6B /* 320X140Alt.png */,
 				D711FD9A1AF3218B005C1F6B /* 320X140.png */,
 				D711FD9B1AF3218B005C1F6B /* 375X140.png */,
 				D711FD9C1AF3218B005C1F6B /* 414X140.png */,
@@ -489,6 +502,15 @@
 				D742E8E81AE9699D009A4904 /* UIView+Round.m */,
 			);
 			name = notificationFramework;
+			sourceTree = "<group>";
+		};
+		D7DDE6FF1AF5C66000C7D0EC /* CWStatusBarNotification */ = {
+			isa = PBXGroup;
+			children = (
+				D7DDE7001AF5C66000C7D0EC /* CWStatusBarNotification.h */,
+				D7DDE7011AF5C66000C7D0EC /* CWStatusBarNotification.m */,
+			);
+			path = CWStatusBarNotification;
 			sourceTree = "<group>";
 		};
 		D7EDD1611AE8A7FA003EBABE /* InfColorPicker */ = {
@@ -613,6 +635,7 @@
 				D742E8F11AE97268009A4904 /* View.xib in Resources */,
 				D711FD991AF2DF1B005C1F6B /* menu@3x.png in Resources */,
 				D757E5821AEAE4D400654044 /* 87.png in Resources */,
+				D711FE361AF5B1A8005C1F6B /* 414X140Alt.png in Resources */,
 				D739F0741AF03060000C2FF1 /* settings@2x.png in Resources */,
 				B1FD78691AB4B627009DB201 /* navmenu.png in Resources */,
 				D739F08C1AF03914000C2FF1 /* back@2x.png in Resources */,
@@ -626,7 +649,9 @@
 				D739F0691AF03060000C2FF1 /* calendar@3x.png in Resources */,
 				D711FD9D1AF3218B005C1F6B /* 320X140.png in Resources */,
 				D757E5801AEAE4D400654044 /* 58.png in Resources */,
+				D711FE371AF5B1A8005C1F6B /* 320X140Alt.png in Resources */,
 				D784281E1AF0821D00669910 /* splahicon@2x.png in Resources */,
+				D711FE351AF5B1A8005C1F6B /* 375X140Alt.png in Resources */,
 				D739F0701AF03060000C2FF1 /* notes.png in Resources */,
 				B1FD78461AB4B1EF009DB201 /* LaunchScreen.xib in Resources */,
 				D784281D1AF0821D00669910 /* splahicon.png in Resources */,
@@ -720,6 +745,7 @@
 				D742E8E91AE9699D009A4904 /* JFMinimalNotification.m in Sources */,
 				D78AD0211AE9B3BB00FD6CDC /* UpcomingController.m in Sources */,
 				B1FD78961AB4BC27009DB201 /* PDTSimpleCalendarViewHeader.m in Sources */,
+				D7DDE7021AF5C66000C7D0EC /* CWStatusBarNotification.m in Sources */,
 				D739F0931AF07367000C2FF1 /* animator.m in Sources */,
 				D7EDD1751AE8A7FA003EBABE /* InfColorPickerNavigationController.m in Sources */,
 				B1FD783B1AB4B1EF009DB201 /* AppDelegate.m in Sources */,
@@ -861,6 +887,7 @@
 					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = "HomeWork Scribe/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "a1ebca18-e2ba-4d9b-96a3-cafcf89b019b";
@@ -880,6 +907,7 @@
 					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = "HomeWork Scribe/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "a1ebca18-e2ba-4d9b-96a3-cafcf89b019b";

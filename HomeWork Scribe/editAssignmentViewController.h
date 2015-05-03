@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "DBManager.h"
 #import "XLFormViewController.h"
-@interface editAssignmentViewController : XLFormViewController
+@interface editAssignmentViewController : XLFormViewController<UIActionSheetDelegate>
 @property(weak,nonatomic) IBOutlet UIBarButtonItem *barButton;
 @property (nonatomic, strong) DBManager *dbManager;
 @end

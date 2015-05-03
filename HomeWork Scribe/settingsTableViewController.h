@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-
-@interface settingsTableViewController : UITableViewController
-
+#import "DBManager.h"
+@interface settingsTableViewController : UITableViewController<UIAlertViewDelegate>
+@property (nonatomic, strong) DBManager *dbManager;
 @end

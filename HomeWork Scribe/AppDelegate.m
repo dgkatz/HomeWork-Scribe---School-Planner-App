@@ -48,6 +48,9 @@ NSArray *defaultSubjectsArray;
         [[NSUserDefaults standardUserDefaults] synchronize];
         // This is the first launch ever
     }
+    [[UIView appearanceWhenContainedIn:[UIAlertController class], nil] setTintColor:[UIColor orangeColor]];
+    //[[UIView appearanceWhenContainedIn:[UITableView class],[UIDatePicker class], nil] setBackgroundColor:[UIColor orangeColor]];
+    //if ([UIActionSheet respondsToSelector:selector])
 
     return YES;
 }

@@ -10,8 +10,12 @@
 #import "dataClass.h"
 #import "SWRevealViewController.h"
 #import "AddViewController.h"
+#import "detailViewController.h"
+#import "CWStatusBarNotification.h"
 @interface allTableViewController ()
 @property (nonatomic, strong) JFMinimalNotification* minimalNotification;
+@property (strong,nonatomic) detailViewController *expander;
+@property (nonatomic) CGRect chosenCellFrame;
 
 @end
 int selected;
@@ -21,8 +25,9 @@ NSArray *socialResults;
 NSArray *englishResults;
 NSArray *languageResuts;
 NSArray *subjects;
+NSMutableArray *theCounts;
 NSMutableArray *counts;
-
+NSTimer *timer;
 @implementation allTableViewController
 
 
@@ -76,6 +81,7 @@ NSMutableArray *counts;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    theCounts = [[NSMutableArray alloc]init];
     NSLog(@"LAUNCHED");
     subjects=@[@"Math", @"Science", @"Social Studies", @"English", @"Language"];
     self.dbManager = [[DBManager alloc] initWithDatabaseFilename:@"homeworkdb.sql"];
@@ -89,16 +95,25 @@ NSMutableArray *counts;
     NSString *jb = @"Math";
     NSString *query = [NSString stringWithFormat:@"select * from assignmentData where subject = '%@'", jb];
     NSLog(@"query is %@",query);
+    timer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(showNotification) userInfo:nil repeats:NO];
+}
+
+-(void)showNotification{
     dataClass *obj = [dataClass getInstance];
     if (obj.success == YES) {
         obj.success = NO;
-
-        
+        CWStatusBarNotification *notification = [CWStatusBarNotification new];
+        notification.notificationLabelBackgroundColor = [UIColor groupTableViewBackgroundColor];
+        notification.notificationLabelTextColor = [UIColor orangeColor];
+        notification.notificationLabelFont = [UIFont fontWithName:@"System-Light" size:20];
+        notification.notificationStyle = CWNotificationStyleNavigationBarNotification;
+        [notification displayNotificationWithMessage:@"You Completed an Assignment!" forDuration:1.0f];
     }
 }
 
 -(void)viewDidAppear:(BOOL)animated{
     self.revealViewController.delegate = self;
+    [self.tableView reloadData];
 }
 
 -(NSMutableArray*) selectFromDb:(NSString *) subject{
@@ -121,6 +136,7 @@ NSMutableArray *counts;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    NSLog(@"number of rows in section called");
     // Return the number of rows in the section.
     int num = 0;
     counts=[[NSMutableArray alloc] init];
@@ -136,19 +152,29 @@ NSMutableArray *counts;
     }
     if (section == 0) {
         num=[[counts objectAtIndex:0] integerValue];
+        [theCounts addObject:[NSNumber numberWithInt:num]];
+        NSLog(@"%d",num);
     }
     if (section == 1) {
         num=[[counts objectAtIndex:1] integerValue];
+        [theCounts addObject:[NSNumber numberWithInt:num]];
+        NSLog(@"%d",num);
     }
     if (section == 2) {
         num=[[counts objectAtIndex:2] integerValue];
+        [theCounts addObject:[NSNumber numberWithInt:num]];
+        NSLog(@"%d",num);
     }
     if (section == 3) {
         num=[[counts objectAtIndex:3] integerValue];
+        [theCounts addObject:[NSNumber numberWithInt:num]];
+        NSLog(@"%d",num);
     }
     if (section == 4) {
         num=[[counts objectAtIndex:4] integerValue];
-    }
+        [theCounts addObject:[NSNumber numberWithInt:num]];
+        NSLog(@"%d",num);
+}
    
     return num;
 }
@@ -199,22 +225,13 @@ NSMutableArray *counts;
     NSLog(@"Cell Created");
     return cell;
 }
+
 -(NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section{
-    NSString *title;
-    if (section == 0) {
-        title = @"Math";
-    }
-    else if (section == 1){
-        title = @"Science";
-    }
-    else if (section == 2){
-        title = @"Social Studies";
-    }
-    else if (section == 3){
-        title = @"English";
-    }
-    else{
-        title = @"Language";
+    results=[[NSMutableArray alloc] init];
+    results=[self selectFromDb:[subjects objectAtIndex:section]];
+    NSString *title = @"";
+    if (results.count) {
+        title = [subjects objectAtIndex:section];
     }
     return title;
 }
@@ -236,7 +253,8 @@ NSMutableArray *counts;
     
     // Delete row using the cool literal version of [NSArray arrayWithObject:indexPath]
     [self.tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    [self viewDidLoad];
+    [timer invalidate];
+    [self viewDidAppear:YES];
     
 }
     

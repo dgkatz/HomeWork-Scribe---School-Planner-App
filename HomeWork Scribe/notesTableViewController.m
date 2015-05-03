@@ -29,7 +29,7 @@ BOOL editmode;
 - (IBAction)back:(id)sender {
     allTableViewController *VC = (allTableViewController *)[self.storyboard instantiateViewControllerWithIdentifier:@"all"];
     
-    NSMutableArray *vcs =  [NSMutableArray arrayWithArray:self.navigationController.viewControllers];
+    NSMutableArray *vcs = [NSMutableArray arrayWithArray:self.navigationController.viewControllers];
     [vcs insertObject:VC atIndex:[vcs count]-1];
     [self.navigationController setViewControllers:vcs animated:NO];
     [self.navigationController popViewControllerAnimated:YES];
@@ -38,6 +38,10 @@ BOOL editmode;
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+-(void)viewDidAppear:(BOOL)animated{
+    [self.tableView reloadData];
 }
 
 #pragma mark - Table view data source

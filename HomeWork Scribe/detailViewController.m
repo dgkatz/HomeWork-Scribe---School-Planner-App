@@ -30,8 +30,8 @@ UIColor *defaultcolor;
 -(void)editheAssignment{
     static NSString *CellIdentifier = @"header";
     UITableViewCell *headerView = [self.assignmentTableView dequeueReusableCellWithIdentifier:CellIdentifier];
-    UILabel *duedateLabel = (UILabel *)[headerView.contentView viewWithTag:19];
-    UILabel *subjectLabel = (UILabel *)[headerView.contentView viewWithTag:20];
+    UILabel *duedateLabel = (UILabel *)[headerView.contentView viewWithTag:20];
+    UILabel *subjectLabel = (UILabel *)[headerView.contentView viewWithTag:19];
     dataClass *obj = [dataClass getInstance];
     obj.subjectEdit = subjectLabel.text;
     obj.description1Edit = obj.description1;
