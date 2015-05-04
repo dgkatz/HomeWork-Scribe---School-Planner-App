@@ -331,7 +331,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rO2-Ct-w2b" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1549" y="985"/>
+            <point key="canvasLocation" x="1598" y="985"/>
         </scene>
         <!--Add Assignment-->
         <scene sceneID="9Ma-RR-QiH">
@@ -557,7 +557,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eZe-dK-XGc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="404" y="1357"/>
+            <point key="canvasLocation" x="404" y="1384"/>
         </scene>
         <!--Settings-->
         <scene sceneID="629-GZ-gNZ">
@@ -602,7 +602,7 @@
                                     <segue destination="3HU-R4-JuK" kind="show" id="1Be-ez-MQD"/>
                                 </connections>
                             </tableViewCell>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="third" textLabel="dh7-Kf-ua2" style="IBUITableViewCellStyleDefault" id="ldW-y2-IoW">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="third" textLabel="dh7-Kf-ua2" style="IBUITableViewCellStyleDefault" id="ldW-y2-IoW">
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ldW-y2-IoW" id="gVf-hk-Q1P">
                                     <autoresizingMask key="autoresizingMask"/>
@@ -623,10 +623,10 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Settings" id="Kqc-8a-0hu">
-                        <barButtonItem key="rightBarButtonItem" title="Done" id="ehZ-iB-tRj">
+                        <barButtonItem key="leftBarButtonItem" image="back.png" id="ehZ-iB-tRj">
                             <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <connections>
-                                <segue destination="vXZ-lx-hvc" kind="presentation" id="CR6-rI-1PQ"/>
+                                <action selector="back:" destination="gWk-ii-AHm" id="vpx-qY-Z4F"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -680,19 +680,19 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.93725490196078431" green="0.93725490196078431" blue="0.95686274509803926" alpha="1" colorSpace="calibratedRGB"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="header" rowHeight="234" id="k4K-6E-oxb">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="header" rowHeight="270" id="k4K-6E-oxb">
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="k4K-6E-oxb" id="xsR-N9-6mk">
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="120.png" translatesAutoresizingMaskIntoConstraints="NO" id="sNd-T5-8Jk">
-                                            <rect key="frame" x="110" y="8" width="100" height="100"/>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="AboutScreenAppIcon.png" translatesAutoresizingMaskIntoConstraints="NO" id="sNd-T5-8Jk">
+                                            <rect key="frame" x="110" y="50" width="100" height="100"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="100" id="O1W-ll-bM6"/>
                                                 <constraint firstAttribute="height" constant="100" id="UAB-wb-NLq"/>
                                             </constraints>
                                         </imageView>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="HomeWork Scribe Version 1.0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="voh-rI-sMt">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Version 1.0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="voh-rI-sMt">
                                             <rect key="frame" x="73" y="109" width="175" height="21"/>
                                             <fontDescription key="fontDescription" type="system" weight="light" pointSize="11"/>
                                             <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
@@ -711,7 +711,7 @@
                                         <constraint firstItem="EPF-ti-SUU" firstAttribute="top" secondItem="voh-rI-sMt" secondAttribute="bottom" constant="9" id="NGV-f4-7rW"/>
                                         <constraint firstAttribute="centerX" secondItem="sNd-T5-8Jk" secondAttribute="centerX" id="QwM-2C-Y1d"/>
                                         <constraint firstAttribute="trailing" secondItem="EPF-ti-SUU" secondAttribute="trailing" constant="8" id="aZS-mG-3FC"/>
-                                        <constraint firstItem="sNd-T5-8Jk" firstAttribute="top" secondItem="xsR-N9-6mk" secondAttribute="top" constant="8" id="buM-db-iY2"/>
+                                        <constraint firstItem="sNd-T5-8Jk" firstAttribute="top" secondItem="xsR-N9-6mk" secondAttribute="top" constant="50" id="buM-db-iY2"/>
                                         <constraint firstAttribute="centerX" secondItem="voh-rI-sMt" secondAttribute="centerX" id="uNj-Lf-hTJ"/>
                                     </constraints>
                                 </tableViewCellContentView>
@@ -805,6 +805,27 @@
                                 </tableViewCellContentView>
                                 <color key="backgroundColor" red="1" green="0.59229462990000004" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                             </tableViewCell>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="third" textLabel="CKg-Ac-pHs" imageView="vty-fe-axg" style="IBUITableViewCellStyleDefault" id="MDH-8Z-FEH">
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="MDH-8Z-FEH" id="aqr-OY-P7a">
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="My Assignments" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="CKg-Ac-pHs">
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" weight="light" pointSize="16"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" image="list.png" id="vty-fe-axg">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </imageView>
+                                    </subviews>
+                                </tableViewCellContentView>
+                                <color key="backgroundColor" red="0.93725490196078431" green="0.93725490196078431" blue="0.95686274509803926" alpha="1" colorSpace="calibratedRGB"/>
+                                <connections>
+                                    <segue destination="Pw5-wp-dny" kind="custom" customClass="SWRevealViewControllerSegue" id="0iC-e2-Yo4"/>
+                                </connections>
+                            </tableViewCell>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="first" textLabel="9cw-BM-dmr" imageView="o9E-hh-POn" style="IBUITableViewCellStyleDefault" id="PRu-mS-Bsf">
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="PRu-mS-Bsf" id="qDD-TY-nu1">
@@ -845,27 +866,6 @@
                                 <color key="backgroundColor" red="0.93725490196078431" green="0.93725490196078431" blue="0.95686274509803926" alpha="1" colorSpace="calibratedRGB"/>
                                 <connections>
                                     <segue destination="514-qb-fmW" kind="custom" customClass="SWRevealViewControllerSegue" id="LBV-JZ-KCd"/>
-                                </connections>
-                            </tableViewCell>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="third" textLabel="CKg-Ac-pHs" imageView="vty-fe-axg" style="IBUITableViewCellStyleDefault" id="MDH-8Z-FEH">
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="MDH-8Z-FEH" id="aqr-OY-P7a">
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <subviews>
-                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="My Assignments" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="CKg-Ac-pHs">
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <fontDescription key="fontDescription" type="system" weight="light" pointSize="16"/>
-                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                        <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" image="list.png" id="vty-fe-axg">
-                                            <autoresizingMask key="autoresizingMask"/>
-                                        </imageView>
-                                    </subviews>
-                                </tableViewCellContentView>
-                                <color key="backgroundColor" red="0.93725490196078431" green="0.93725490196078431" blue="0.95686274509803926" alpha="1" colorSpace="calibratedRGB"/>
-                                <connections>
-                                    <segue destination="Pw5-wp-dny" kind="custom" customClass="SWRevealViewControllerSegue" id="0iC-e2-Yo4"/>
                                 </connections>
                             </tableViewCell>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="6" textLabel="0nF-9M-p0a" imageView="5wc-2z-GJ3" style="IBUITableViewCellStyleDefault" id="JZl-Vk-uoW">
@@ -1099,7 +1099,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="120.png" width="120" height="120"/>
+        <image name="AboutScreenAppIcon.png" width="100" height="100"/>
         <image name="back.png" width="22" height="21"/>
         <image name="calendar.png" width="30" height="32"/>
         <image name="clock.png" width="30" height="30"/>
@@ -1109,9 +1109,9 @@
         <image name="settings.png" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="1fi-I5-A6l"/>
+        <segue reference="bIA-bq-GQp"/>
         <segue reference="0iC-e2-Yo4"/>
         <segue reference="ufz-qF-Xne"/>
-        <segue reference="p4B-iT-7tG"/>
+        <segue reference="aHZ-xW-scr"/>
     </inferredMetricsTieBreakers>
 </document>

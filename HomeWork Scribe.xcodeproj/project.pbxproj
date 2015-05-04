@@ -86,6 +86,10 @@
 		D784281F1AF0821D00669910 /* splahicon@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = D784281C1AF0821D00669910 /* splahicon@3x.png */; };
 		D78AD00D1AE99CBD00FD6CDC /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D78AD00C1AE99CBD00FD6CDC /* QuartzCore.framework */; };
 		D78AD0211AE9B3BB00FD6CDC /* UpcomingController.m in Sources */ = {isa = PBXBuildFile; fileRef = D78AD0201AE9B3BB00FD6CDC /* UpcomingController.m */; };
+		D7BBB9891AF6DE4B00149DF2 /* notificationEditTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D7BBB9881AF6DE4B00149DF2 /* notificationEditTableViewController.m */; };
+		D7BBB9931AF6EE1B00149DF2 /* AboutScreenAppIcon@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = D7BBB9901AF6EE1B00149DF2 /* AboutScreenAppIcon@3x.png */; };
+		D7BBB9941AF6EE1B00149DF2 /* AboutScreenAppIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D7BBB9911AF6EE1B00149DF2 /* AboutScreenAppIcon@2x.png */; };
+		D7BBB9951AF6EE1B00149DF2 /* AboutScreenAppIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = D7BBB9921AF6EE1B00149DF2 /* AboutScreenAppIcon.png */; };
 		D7DDE7021AF5C66000C7D0EC /* CWStatusBarNotification.m in Sources */ = {isa = PBXBuildFile; fileRef = D7DDE7011AF5C66000C7D0EC /* CWStatusBarNotification.m */; };
 		D7EDD1371AE87282003EBABE /* editAssignmentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D7EDD1361AE87282003EBABE /* editAssignmentViewController.m */; };
 		D7EDD13E1AE89D03003EBABE /* settingsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D7EDD13D1AE89D03003EBABE /* settingsTableViewController.m */; };
@@ -234,6 +238,11 @@
 		D78AD0181AE9A1D700FD6CDC /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
 		D78AD01F1AE9B3BB00FD6CDC /* UpcomingController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UpcomingController.h; sourceTree = "<group>"; };
 		D78AD0201AE9B3BB00FD6CDC /* UpcomingController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UpcomingController.m; sourceTree = "<group>"; };
+		D7BBB9871AF6DE4B00149DF2 /* notificationEditTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = notificationEditTableViewController.h; sourceTree = "<group>"; };
+		D7BBB9881AF6DE4B00149DF2 /* notificationEditTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = notificationEditTableViewController.m; sourceTree = "<group>"; };
+		D7BBB9901AF6EE1B00149DF2 /* AboutScreenAppIcon@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "AboutScreenAppIcon@3x.png"; sourceTree = "<group>"; };
+		D7BBB9911AF6EE1B00149DF2 /* AboutScreenAppIcon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "AboutScreenAppIcon@2x.png"; sourceTree = "<group>"; };
+		D7BBB9921AF6EE1B00149DF2 /* AboutScreenAppIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = AboutScreenAppIcon.png; sourceTree = "<group>"; };
 		D7DDE7001AF5C66000C7D0EC /* CWStatusBarNotification.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CWStatusBarNotification.h; sourceTree = "<group>"; };
 		D7DDE7011AF5C66000C7D0EC /* CWStatusBarNotification.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CWStatusBarNotification.m; sourceTree = "<group>"; };
 		D7EDD1351AE87282003EBABE /* editAssignmentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = editAssignmentViewController.h; sourceTree = "<group>"; };
@@ -394,6 +403,8 @@
 				D757E56F1AE9FFCE00654044 /* notePadViewController.m */,
 				D739F0911AF07367000C2FF1 /* animator.h */,
 				D739F0921AF07367000C2FF1 /* animator.m */,
+				D7BBB9871AF6DE4B00149DF2 /* notificationEditTableViewController.h */,
+				D7BBB9881AF6DE4B00149DF2 /* notificationEditTableViewController.m */,
 			);
 			path = "HomeWork Scribe";
 			sourceTree = "<group>";
@@ -401,6 +412,9 @@
 		B1FD78351AB4B1EF009DB201 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				D7BBB9901AF6EE1B00149DF2 /* AboutScreenAppIcon@3x.png */,
+				D7BBB9911AF6EE1B00149DF2 /* AboutScreenAppIcon@2x.png */,
+				D7BBB9921AF6EE1B00149DF2 /* AboutScreenAppIcon.png */,
 				D711FE321AF5B1A8005C1F6B /* 375X140Alt.png */,
 				D711FE331AF5B1A8005C1F6B /* 414X140Alt.png */,
 				D711FE341AF5B1A8005C1F6B /* 320X140Alt.png */,
@@ -620,6 +634,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D739F06C1AF03060000C2FF1 /* clock@3x.png in Resources */,
+				D7BBB9951AF6EE1B00149DF2 /* AboutScreenAppIcon.png in Resources */,
 				D739F06F1AF03060000C2FF1 /* list@3x.png in Resources */,
 				D739F0131AECA0C7000C2FF1 /* 29.png in Resources */,
 				D7EDD1761AE8A7FA003EBABE /* InfColorPickerView.xib in Resources */,
@@ -640,7 +655,9 @@
 				B1FD78691AB4B627009DB201 /* navmenu.png in Resources */,
 				D739F08C1AF03914000C2FF1 /* back@2x.png in Resources */,
 				D739F06A1AF03060000C2FF1 /* clock.png in Resources */,
+				D7BBB9931AF6EE1B00149DF2 /* AboutScreenAppIcon@3x.png in Resources */,
 				D739F0191AECA1E7000C2FF1 /* 152.png in Resources */,
+				D7BBB9941AF6EE1B00149DF2 /* AboutScreenAppIcon@2x.png in Resources */,
 				D757E5811AEAE4D400654044 /* 80.png in Resources */,
 				D739F06B1AF03060000C2FF1 /* clock@2x.png in Resources */,
 				D739F0721AF03060000C2FF1 /* notes@3x.png in Resources */,
@@ -739,6 +756,7 @@
 				B1FD78941AB4BC27009DB201 /* PDTSimpleCalendarViewController.m in Sources */,
 				D7EDD1601AE8A650003EBABE /* colorPickerViewController.m in Sources */,
 				D7EDD1791AE8A7FA003EBABE /* InfSourceColorView.m in Sources */,
+				D7BBB9891AF6DE4B00149DF2 /* notificationEditTableViewController.m in Sources */,
 				B1FD78931AB4BC27009DB201 /* PDTSimpleCalendarViewCell.m in Sources */,
 				D7EDD1371AE87282003EBABE /* editAssignmentViewController.m in Sources */,
 				D742E8EA1AE9699D009A4904 /* JFMinimalNotificationArt.m in Sources */,

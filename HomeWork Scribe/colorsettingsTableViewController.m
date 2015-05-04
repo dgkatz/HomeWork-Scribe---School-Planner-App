@@ -74,22 +74,6 @@ NSArray *colorArray;
     return cell;
 }
 
--(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    selectedindex = indexPath.row;
-    InfColorPickerController* picker = [ InfColorPickerController colorPickerViewController ];
-    
-    picker.sourceColor = color;
-    picker.delegate = self;
-    
-    [picker presentModallyOverViewController:self];
-}
-- (void) colorPickerControllerDidFinish: (InfColorPickerController*) picker
-{
-    color = picker.resultColor;
-    
-    [self dismissViewControllerAnimated:YES completion:nil];
-    [self.tableView reloadData];
-}
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation

@@ -1,23 +1,22 @@
 //
-//  aboutTableViewController.m
+//  notificationEditTableViewController.m
 //  HomeWork Scribe
 //
-//  Created by Daniel Katz on 4/22/15.
+//  Created by Daniel Katz on 5/3/15.
 //  Copyright (c) 2015 Stratton Apps. All rights reserved.
 //
 
-#import "aboutTableViewController.h"
+#import "notificationEditTableViewController.h"
 
-@interface aboutTableViewController ()
+@interface notificationEditTableViewController ()
 
 @end
-NSArray *menu;
-@implementation aboutTableViewController
+
+@implementation notificationEditTableViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    menu = @[@"first",@"second"];
-    self.tableView.scrollEnabled = NO;
+    
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
     
@@ -30,52 +29,29 @@ NSArray *menu;
     // Dispose of any resources that can be recreated.
 }
 
+#pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+#warning Potentially incomplete method implementation.
     // Return the number of sections.
-    return 1;
+    return 0;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+#warning Incomplete method implementation.
     // Return the number of rows in the section.
-    return [menu count];
+    return 0;
 }
 
-
+/*
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    NSString *cellIdentifier = [menu objectAtIndex:indexPath.row];
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier forIndexPath:indexPath];
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:<#@"reuseIdentifier"#> forIndexPath:indexPath];
+    
+    // Configure the cell...
     
     return cell;
 }
-- (UIView *) tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
-{
-    static NSString *CellIdentifier = @"header";
-    UITableViewCell *headerView = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-    if (section == 0) {
-        if (headerView == nil){
-            [NSException raise:@"headerView == nil.." format:@"No cells with matching CellIdentifier loaded from your storyboard"];
-        }
-        
-    }
-    else{
-        headerView = nil;
-    }
-    
-    return headerView;
-}
--(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
-    return 270;
-}
--(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    return 44;
-}
-
--(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    if (indexPath.row == 0) {
-        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"http://dgkatz.wix.com/homeworkscribe"]];
-    }
-}
+*/
 
 /*
 // Override to support conditional editing of the table view.

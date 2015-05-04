@@ -148,10 +148,14 @@ UIColor *defaultcolor;
         UILabel *label = (UILabel *)[cell.contentView viewWithTag:1];
         label.text = obj.description1;
         label.textColor = defaultcolor;
-
+        
     }
     else if (indexPath.row == 1){
         UISwitch *switchnotif = (UISwitch *)[cell.contentView viewWithTag:2];
+        BOOL switchValue = [[NSUserDefaults standardUserDefaults]boolForKey:[NSString stringWithFormat:@"%@%@",obj.description1,obj.subject]];
+        NSString *rez = switchValue == YES ? @"YES" : @"NO";
+        NSLog(@"switch value is %@",rez);
+        [switchnotif setOn:switchValue animated:YES];
         [switchnotif addTarget:self action:@selector(notifSwitchValueChange:) forControlEvents:UIControlEventValueChanged];
         switchnotif.onTintColor = defaultcolor;
         UILabel *notifLabel = (UILabel *)[cell.contentView viewWithTag:3];
@@ -222,10 +226,11 @@ UIColor *defaultcolor;
 {
     dataClass *obj = [dataClass getInstance];
     BOOL state = [sender isOn];
+    [[NSUserDefaults standardUserDefaults]setBool:state forKey:[NSString stringWithFormat:@"%@%@",obj.description1,obj.subject]];
+    [[NSUserDefaults standardUserDefaults]synchronize];
     NSString *rez = state == YES ? @"YES" : @"NO";
     NSLog(@"%@",rez);
-    if ([rez isEqualToString:@"YES"]) {        
-        
+    if ([rez isEqualToString:@"YES"]) {
         UILocalNotification* localNotification = [[UILocalNotification alloc] init];
         localNotification.fireDate = [NSDate
                                       dateWithTimeIntervalSinceNow:2];//86400
@@ -244,7 +249,7 @@ UIColor *defaultcolor;
             NSData *data = [[NSUserDefaults standardUserDefaults]objectForKey:[NSString stringWithFormat:@"%@",obj.description1]];
             UILocalNotification *localNotif = [NSKeyedUnarchiver unarchiveObjectWithData:data];
             [[UIApplication sharedApplication] cancelLocalNotification:localNotif];
-
+            
         }
     }
     
