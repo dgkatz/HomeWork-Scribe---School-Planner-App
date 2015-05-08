@@ -8,6 +8,8 @@
 
 #import "AppDelegate.h"
 #import "dataClass.h"
+#import "SWRevealViewController.h"
+#import "setUpViewController.h"
 @interface AppDelegate ()
 
 @end
@@ -27,7 +29,8 @@ NSArray *defaultSubjectsArray;
     
     [[UIApplication sharedApplication] registerUserNotificationSettings:mySettings];
     
-
+    self.window = [[UIWindow alloc] initWithFrame:UIScreen.mainScreen.bounds];
+    [UITextField appearance].keyboardAppearance = UIKeyboardAppearanceDark;
     if ([[UINavigationBar class] respondsToSelector:@selector(appearance)])
     {
         [[UINavigationBar appearance] setBarTintColor:[UIColor colorWithRed:255/255.0 green:151/255.0 blue:0/255.0 alpha:1.0f]]; //// change
@@ -37,15 +40,29 @@ NSArray *defaultSubjectsArray;
     }
 
     obj.assignmentData_Subject = [[NSMutableArray alloc]init];
+    UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main"
+                                                            bundle: nil];
+//    UINavigationController *VC = (UINavigationController *)[mainStoryboard instantiateViewControllerWithIdentifier:@"setupnav"];
+//    self.window.rootViewController = VC;
+//    [self.window makeKeyAndVisible];
+    UINavigationController *VC = (UINavigationController *)[mainStoryboard instantiateViewControllerWithIdentifier:@"setupnav"];
+    self.window.rootViewController = VC;
+    [self.window makeKeyAndVisible];
     if ([[NSUserDefaults standardUserDefaults] boolForKey:@"HasLaunchedOnce"])
     {
-        
+//        SWRevealViewController *VC = (SWRevealViewController *)[mainStoryboard instantiateViewControllerWithIdentifier:@"begin"];
+//        self.window.rootViewController = VC;
+//        [self.window makeKeyAndVisible];
         // app already launched
     }
     else
     {
         [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"HasLaunchedOnce"];
         [[NSUserDefaults standardUserDefaults] synchronize];
+        UINavigationController *VC = (UINavigationController *)[mainStoryboard instantiateViewControllerWithIdentifier:@"setupnav"];
+        self.window.rootViewController = VC;
+        [self.window makeKeyAndVisible];
+
         // This is the first launch ever
     }
     [[UIView appearanceWhenContainedIn:[UIAlertController class], nil] setTintColor:[UIColor orangeColor]];

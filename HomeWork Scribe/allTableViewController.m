@@ -28,6 +28,7 @@ NSArray *subjects;
 NSMutableArray *theCounts;
 NSMutableArray *counts;
 NSTimer *timer;
+UILabel *noAssignmentsLabel;
 @implementation allTableViewController
 
 
@@ -78,11 +79,29 @@ NSTimer *timer;
     }
 }
 
+- (UIBarPosition)positionForBar:(id <UIBarPositioning>)bar
+{
+    return UIBarPositionTopAttached;
+}
+
+-(void)showUpcomingAssignemtns{
+    
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    noAssignmentsLabel = [[UILabel alloc]initWithFrame:CGRectMake(self.tableView.frame.size.width/2 - 150, self.tableView.frame.size.height/2 - 100, 300, 60)];
+    noAssignmentsLabel.text = @"You currently have no assignments, click the + button to add one";
+    noAssignmentsLabel.textAlignment = NSTextAlignmentCenter;
+    noAssignmentsLabel.textColor = [UIColor darkGrayColor];
+    noAssignmentsLabel.font = [UIFont fontWithName:@"System-Light" size:17];
+    noAssignmentsLabel.numberOfLines = 0;
+    noAssignmentsLabel.textColor = [UIColor orangeColor];
     theCounts = [[NSMutableArray alloc]init];
     NSLog(@"LAUNCHED");
+    //self.navigationController.toolbar.delegate = self;
+    //UIToolbar *toolBar = self.navigationController.toolbar;
+    //toolBar.delegate = self;
     subjects=@[@"Math", @"Science", @"Social Studies", @"English", @"Language"];
     self.dbManager = [[DBManager alloc] initWithDatabaseFilename:@"homeworkdb.sql"];
     NSLog(@"created database magaer");
@@ -175,6 +194,7 @@ NSTimer *timer;
         [theCounts addObject:[NSNumber numberWithInt:num]];
         NSLog(@"%d",num);
 }
+    
    
     return num;
 }
@@ -232,7 +252,19 @@ NSTimer *timer;
     NSString *title = @"";
     if (results.count) {
         title = [subjects objectAtIndex:section];
+        UILabel *label = (UILabel *)[self.tableView viewWithTag:1234];
+        [label removeFromSuperview];
     }
+    NSString *allQuery= [NSString stringWithFormat:@"SELECT * FROM assignmentData"];
+    NSMutableArray *allReturnedAssignments =[[NSMutableArray alloc]initWithArray:[self.dbManager loadDataFromDB:allQuery]];
+    if ([allReturnedAssignments count] == 0) {
+        [self.view addSubview:noAssignmentsLabel];
+    }
+    else{
+        [noAssignmentsLabel removeFromSuperview];
+        [self.tableView sendSubviewToBack:noAssignmentsLabel];
+    }
+
     return title;
 }
 

@@ -41,6 +41,7 @@ UIColor *defaultcolor;
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.navigationController.toolbar.hidden = YES;
     dataClass *obj = [dataClass getInstance];
     if ([obj.subject isEqualToString:@"Math"]) {
         defaultcolor = [UIColor colorWithRed:224/255.0 green:102/255.0 blue:102/255.0 alpha:1.0f];
@@ -57,6 +58,15 @@ UIColor *defaultcolor;
     else {
         defaultcolor = [UIColor colorWithRed:246/255.0 green:178/255.0 blue:107/255.0 alpha:1.0f];
     }
+    UIBarButtonItem *backButton = [[UIBarButtonItem alloc]
+                                   initWithTitle:nil
+                                   style:UIBarButtonItemStylePlain
+                                   target:self
+                                   action:@selector(backClicked)];
+    backButton.tintColor = [UIColor whiteColor];
+    backButton.image = [UIImage imageNamed:@"back.png"];
+    self.navigationItem.leftBarButtonItem = backButton;
+    
     UIBarButtonItem *flipButton = [[UIBarButtonItem alloc]
                                    initWithTitle:@"Edit"
                                    style:UIBarButtonItemStylePlain
@@ -66,7 +76,7 @@ UIColor *defaultcolor;
 
     self.navigationItem.rightBarButtonItem = flipButton;
     self.assignmentTableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
-
+    self.navigationItem.title = @"Assignment Details";
     self.dbManager = [[DBManager alloc] initWithDatabaseFilename:@"homeworkdb.sql"];
 
     
@@ -74,6 +84,11 @@ UIColor *defaultcolor;
     self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
     self.assingmentcomButton.backgroundColor = defaultcolor;
     // Do any additional setup after loading the view.
+}
+
+- (void)backClicked
+{
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 - (void)didReceiveMemoryWarning {

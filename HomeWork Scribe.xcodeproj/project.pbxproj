@@ -37,29 +37,14 @@
 		D711FE351AF5B1A8005C1F6B /* 375X140Alt.png in Resources */ = {isa = PBXBuildFile; fileRef = D711FE321AF5B1A8005C1F6B /* 375X140Alt.png */; };
 		D711FE361AF5B1A8005C1F6B /* 414X140Alt.png in Resources */ = {isa = PBXBuildFile; fileRef = D711FE331AF5B1A8005C1F6B /* 414X140Alt.png */; };
 		D711FE371AF5B1A8005C1F6B /* 320X140Alt.png in Resources */ = {isa = PBXBuildFile; fileRef = D711FE341AF5B1A8005C1F6B /* 320X140Alt.png */; };
+		D71244F71AF85A4700566E9F /* setUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D71244F61AF85A4700566E9F /* setUpViewController.m */; };
+		D71244FA1AF85F6500566E9F /* subjectSetUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D71244F91AF85F6500566E9F /* subjectSetUpViewController.m */; };
+		D71244FD1AF986FF00566E9F /* customSubjectPickerTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D71244FC1AF986FF00566E9F /* customSubjectPickerTableViewController.m */; };
 		D7342E701AE813C600394432 /* detailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D7342E6F1AE813C600394432 /* detailViewController.m */; };
 		D739F0131AECA0C7000C2FF1 /* 29.png in Resources */ = {isa = PBXBuildFile; fileRef = D739F0121AECA0C7000C2FF1 /* 29.png */; };
 		D739F0151AECA12F000C2FF1 /* 40.png in Resources */ = {isa = PBXBuildFile; fileRef = D739F0141AECA12F000C2FF1 /* 40.png */; };
 		D739F0171AECA188000C2FF1 /* 76.png in Resources */ = {isa = PBXBuildFile; fileRef = D739F0161AECA188000C2FF1 /* 76.png */; };
 		D739F0191AECA1E7000C2FF1 /* 152.png in Resources */ = {isa = PBXBuildFile; fileRef = D739F0181AECA1E7000C2FF1 /* 152.png */; };
-		D739F0641AF03060000C2FF1 /* addicon.png in Resources */ = {isa = PBXBuildFile; fileRef = D739F0521AF03060000C2FF1 /* addicon.png */; };
-		D739F0651AF03060000C2FF1 /* addicon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D739F0531AF03060000C2FF1 /* addicon@2x.png */; };
-		D739F0661AF03060000C2FF1 /* addicon@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = D739F0541AF03060000C2FF1 /* addicon@3x.png */; };
-		D739F0671AF03060000C2FF1 /* calendar.png in Resources */ = {isa = PBXBuildFile; fileRef = D739F0551AF03060000C2FF1 /* calendar.png */; };
-		D739F0681AF03060000C2FF1 /* calendar@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D739F0561AF03060000C2FF1 /* calendar@2x.png */; };
-		D739F0691AF03060000C2FF1 /* calendar@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = D739F0571AF03060000C2FF1 /* calendar@3x.png */; };
-		D739F06A1AF03060000C2FF1 /* clock.png in Resources */ = {isa = PBXBuildFile; fileRef = D739F0581AF03060000C2FF1 /* clock.png */; };
-		D739F06B1AF03060000C2FF1 /* clock@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D739F0591AF03060000C2FF1 /* clock@2x.png */; };
-		D739F06C1AF03060000C2FF1 /* clock@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = D739F05A1AF03060000C2FF1 /* clock@3x.png */; };
-		D739F06D1AF03060000C2FF1 /* list.png in Resources */ = {isa = PBXBuildFile; fileRef = D739F05B1AF03060000C2FF1 /* list.png */; };
-		D739F06E1AF03060000C2FF1 /* list@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D739F05C1AF03060000C2FF1 /* list@2x.png */; };
-		D739F06F1AF03060000C2FF1 /* list@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = D739F05D1AF03060000C2FF1 /* list@3x.png */; };
-		D739F0701AF03060000C2FF1 /* notes.png in Resources */ = {isa = PBXBuildFile; fileRef = D739F05E1AF03060000C2FF1 /* notes.png */; };
-		D739F0711AF03060000C2FF1 /* notes@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D739F05F1AF03060000C2FF1 /* notes@2x.png */; };
-		D739F0721AF03060000C2FF1 /* notes@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = D739F0601AF03060000C2FF1 /* notes@3x.png */; };
-		D739F0731AF03060000C2FF1 /* settings.png in Resources */ = {isa = PBXBuildFile; fileRef = D739F0611AF03060000C2FF1 /* settings.png */; };
-		D739F0741AF03060000C2FF1 /* settings@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D739F0621AF03060000C2FF1 /* settings@2x.png */; };
-		D739F0751AF03060000C2FF1 /* settings@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = D739F0631AF03060000C2FF1 /* settings@3x.png */; };
 		D739F08B1AF03914000C2FF1 /* back.png in Resources */ = {isa = PBXBuildFile; fileRef = D739F0881AF03914000C2FF1 /* back.png */; };
 		D739F08C1AF03914000C2FF1 /* back@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D739F0891AF03914000C2FF1 /* back@2x.png */; };
 		D739F08D1AF03914000C2FF1 /* back@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = D739F08A1AF03914000C2FF1 /* back@3x.png */; };
@@ -90,6 +75,19 @@
 		D7BBB9931AF6EE1B00149DF2 /* AboutScreenAppIcon@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = D7BBB9901AF6EE1B00149DF2 /* AboutScreenAppIcon@3x.png */; };
 		D7BBB9941AF6EE1B00149DF2 /* AboutScreenAppIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D7BBB9911AF6EE1B00149DF2 /* AboutScreenAppIcon@2x.png */; };
 		D7BBB9951AF6EE1B00149DF2 /* AboutScreenAppIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = D7BBB9921AF6EE1B00149DF2 /* AboutScreenAppIcon.png */; };
+		D7C992011AFB070800A3F48C /* calender.png in Resources */ = {isa = PBXBuildFile; fileRef = D7C991FE1AFB070800A3F48C /* calender.png */; };
+		D7C992021AFB070800A3F48C /* calender@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D7C991FF1AFB070800A3F48C /* calender@2x.png */; };
+		D7C992031AFB070800A3F48C /* calender@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = D7C992001AFB070800A3F48C /* calender@3x.png */; };
+		D7C992071AFB074600A3F48C /* clock.png in Resources */ = {isa = PBXBuildFile; fileRef = D7C992041AFB074600A3F48C /* clock.png */; };
+		D7C992081AFB074600A3F48C /* clock@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D7C992051AFB074600A3F48C /* clock@2x.png */; };
+		D7C992091AFB074600A3F48C /* clock@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = D7C992061AFB074600A3F48C /* clock@3x.png */; };
+		D7C9920D1AFB077000A3F48C /* list.png in Resources */ = {isa = PBXBuildFile; fileRef = D7C9920A1AFB077000A3F48C /* list.png */; };
+		D7C9920E1AFB077000A3F48C /* list@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D7C9920B1AFB077000A3F48C /* list@2x.png */; };
+		D7C9920F1AFB077000A3F48C /* list@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = D7C9920C1AFB077000A3F48C /* list@3x.png */; };
+		D7C992131AFB07B400A3F48C /* settings.png in Resources */ = {isa = PBXBuildFile; fileRef = D7C992101AFB07B400A3F48C /* settings.png */; };
+		D7C992141AFB07B400A3F48C /* settings@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D7C992111AFB07B400A3F48C /* settings@2x.png */; };
+		D7C992151AFB07B400A3F48C /* settings@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = D7C992121AFB07B400A3F48C /* settings@3x.png */; };
+		D7C992431AFC2A2D00A3F48C /* selectdateSmallViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D7C992421AFC2A2D00A3F48C /* selectdateSmallViewController.m */; };
 		D7DDE7021AF5C66000C7D0EC /* CWStatusBarNotification.m in Sources */ = {isa = PBXBuildFile; fileRef = D7DDE7011AF5C66000C7D0EC /* CWStatusBarNotification.m */; };
 		D7EDD1371AE87282003EBABE /* editAssignmentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D7EDD1361AE87282003EBABE /* editAssignmentViewController.m */; };
 		D7EDD13E1AE89D03003EBABE /* settingsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D7EDD13D1AE89D03003EBABE /* settingsTableViewController.m */; };
@@ -168,30 +166,18 @@
 		D711FE321AF5B1A8005C1F6B /* 375X140Alt.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 375X140Alt.png; sourceTree = "<group>"; };
 		D711FE331AF5B1A8005C1F6B /* 414X140Alt.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 414X140Alt.png; sourceTree = "<group>"; };
 		D711FE341AF5B1A8005C1F6B /* 320X140Alt.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 320X140Alt.png; sourceTree = "<group>"; };
+		D71244F51AF85A4700566E9F /* setUpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = setUpViewController.h; sourceTree = "<group>"; };
+		D71244F61AF85A4700566E9F /* setUpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = setUpViewController.m; sourceTree = "<group>"; };
+		D71244F81AF85F6500566E9F /* subjectSetUpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = subjectSetUpViewController.h; sourceTree = "<group>"; };
+		D71244F91AF85F6500566E9F /* subjectSetUpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = subjectSetUpViewController.m; sourceTree = "<group>"; };
+		D71244FB1AF986FF00566E9F /* customSubjectPickerTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = customSubjectPickerTableViewController.h; sourceTree = "<group>"; };
+		D71244FC1AF986FF00566E9F /* customSubjectPickerTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = customSubjectPickerTableViewController.m; sourceTree = "<group>"; };
 		D7342E6E1AE813C600394432 /* detailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = detailViewController.h; sourceTree = "<group>"; };
 		D7342E6F1AE813C600394432 /* detailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = detailViewController.m; sourceTree = "<group>"; };
 		D739F0121AECA0C7000C2FF1 /* 29.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 29.png; sourceTree = "<group>"; };
 		D739F0141AECA12F000C2FF1 /* 40.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 40.png; sourceTree = "<group>"; };
 		D739F0161AECA188000C2FF1 /* 76.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 76.png; sourceTree = "<group>"; };
 		D739F0181AECA1E7000C2FF1 /* 152.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 152.png; sourceTree = "<group>"; };
-		D739F0521AF03060000C2FF1 /* addicon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = addicon.png; sourceTree = "<group>"; };
-		D739F0531AF03060000C2FF1 /* addicon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "addicon@2x.png"; sourceTree = "<group>"; };
-		D739F0541AF03060000C2FF1 /* addicon@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "addicon@3x.png"; sourceTree = "<group>"; };
-		D739F0551AF03060000C2FF1 /* calendar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = calendar.png; sourceTree = "<group>"; };
-		D739F0561AF03060000C2FF1 /* calendar@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "calendar@2x.png"; sourceTree = "<group>"; };
-		D739F0571AF03060000C2FF1 /* calendar@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "calendar@3x.png"; sourceTree = "<group>"; };
-		D739F0581AF03060000C2FF1 /* clock.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = clock.png; sourceTree = "<group>"; };
-		D739F0591AF03060000C2FF1 /* clock@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "clock@2x.png"; sourceTree = "<group>"; };
-		D739F05A1AF03060000C2FF1 /* clock@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "clock@3x.png"; sourceTree = "<group>"; };
-		D739F05B1AF03060000C2FF1 /* list.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = list.png; sourceTree = "<group>"; };
-		D739F05C1AF03060000C2FF1 /* list@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "list@2x.png"; sourceTree = "<group>"; };
-		D739F05D1AF03060000C2FF1 /* list@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "list@3x.png"; sourceTree = "<group>"; };
-		D739F05E1AF03060000C2FF1 /* notes.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = notes.png; sourceTree = "<group>"; };
-		D739F05F1AF03060000C2FF1 /* notes@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "notes@2x.png"; sourceTree = "<group>"; };
-		D739F0601AF03060000C2FF1 /* notes@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "notes@3x.png"; sourceTree = "<group>"; };
-		D739F0611AF03060000C2FF1 /* settings.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = settings.png; sourceTree = "<group>"; };
-		D739F0621AF03060000C2FF1 /* settings@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "settings@2x.png"; sourceTree = "<group>"; };
-		D739F0631AF03060000C2FF1 /* settings@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "settings@3x.png"; sourceTree = "<group>"; };
 		D739F0881AF03914000C2FF1 /* back.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = back.png; sourceTree = "<group>"; };
 		D739F0891AF03914000C2FF1 /* back@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "back@2x.png"; sourceTree = "<group>"; };
 		D739F08A1AF03914000C2FF1 /* back@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "back@3x.png"; sourceTree = "<group>"; };
@@ -243,6 +229,20 @@
 		D7BBB9901AF6EE1B00149DF2 /* AboutScreenAppIcon@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "AboutScreenAppIcon@3x.png"; sourceTree = "<group>"; };
 		D7BBB9911AF6EE1B00149DF2 /* AboutScreenAppIcon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "AboutScreenAppIcon@2x.png"; sourceTree = "<group>"; };
 		D7BBB9921AF6EE1B00149DF2 /* AboutScreenAppIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = AboutScreenAppIcon.png; sourceTree = "<group>"; };
+		D7C991FE1AFB070800A3F48C /* calender.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = calender.png; sourceTree = "<group>"; };
+		D7C991FF1AFB070800A3F48C /* calender@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "calender@2x.png"; sourceTree = "<group>"; };
+		D7C992001AFB070800A3F48C /* calender@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "calender@3x.png"; sourceTree = "<group>"; };
+		D7C992041AFB074600A3F48C /* clock.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = clock.png; sourceTree = "<group>"; };
+		D7C992051AFB074600A3F48C /* clock@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "clock@2x.png"; sourceTree = "<group>"; };
+		D7C992061AFB074600A3F48C /* clock@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "clock@3x.png"; sourceTree = "<group>"; };
+		D7C9920A1AFB077000A3F48C /* list.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = list.png; sourceTree = "<group>"; };
+		D7C9920B1AFB077000A3F48C /* list@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "list@2x.png"; sourceTree = "<group>"; };
+		D7C9920C1AFB077000A3F48C /* list@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "list@3x.png"; sourceTree = "<group>"; };
+		D7C992101AFB07B400A3F48C /* settings.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = settings.png; sourceTree = "<group>"; };
+		D7C992111AFB07B400A3F48C /* settings@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "settings@2x.png"; sourceTree = "<group>"; };
+		D7C992121AFB07B400A3F48C /* settings@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "settings@3x.png"; sourceTree = "<group>"; };
+		D7C992411AFC2A2D00A3F48C /* selectdateSmallViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = selectdateSmallViewController.h; sourceTree = "<group>"; };
+		D7C992421AFC2A2D00A3F48C /* selectdateSmallViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = selectdateSmallViewController.m; sourceTree = "<group>"; };
 		D7DDE7001AF5C66000C7D0EC /* CWStatusBarNotification.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CWStatusBarNotification.h; sourceTree = "<group>"; };
 		D7DDE7011AF5C66000C7D0EC /* CWStatusBarNotification.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CWStatusBarNotification.m; sourceTree = "<group>"; };
 		D7EDD1351AE87282003EBABE /* editAssignmentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = editAssignmentViewController.h; sourceTree = "<group>"; };
@@ -405,6 +405,14 @@
 				D739F0921AF07367000C2FF1 /* animator.m */,
 				D7BBB9871AF6DE4B00149DF2 /* notificationEditTableViewController.h */,
 				D7BBB9881AF6DE4B00149DF2 /* notificationEditTableViewController.m */,
+				D71244F51AF85A4700566E9F /* setUpViewController.h */,
+				D71244F61AF85A4700566E9F /* setUpViewController.m */,
+				D71244F81AF85F6500566E9F /* subjectSetUpViewController.h */,
+				D71244F91AF85F6500566E9F /* subjectSetUpViewController.m */,
+				D71244FB1AF986FF00566E9F /* customSubjectPickerTableViewController.h */,
+				D71244FC1AF986FF00566E9F /* customSubjectPickerTableViewController.m */,
+				D7C992411AFC2A2D00A3F48C /* selectdateSmallViewController.h */,
+				D7C992421AFC2A2D00A3F48C /* selectdateSmallViewController.m */,
 			);
 			path = "HomeWork Scribe";
 			sourceTree = "<group>";
@@ -412,6 +420,18 @@
 		B1FD78351AB4B1EF009DB201 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				D7C992101AFB07B400A3F48C /* settings.png */,
+				D7C992111AFB07B400A3F48C /* settings@2x.png */,
+				D7C992121AFB07B400A3F48C /* settings@3x.png */,
+				D7C9920A1AFB077000A3F48C /* list.png */,
+				D7C9920B1AFB077000A3F48C /* list@2x.png */,
+				D7C9920C1AFB077000A3F48C /* list@3x.png */,
+				D7C992041AFB074600A3F48C /* clock.png */,
+				D7C992051AFB074600A3F48C /* clock@2x.png */,
+				D7C992061AFB074600A3F48C /* clock@3x.png */,
+				D7C991FE1AFB070800A3F48C /* calender.png */,
+				D7C991FF1AFB070800A3F48C /* calender@2x.png */,
+				D7C992001AFB070800A3F48C /* calender@3x.png */,
 				D7BBB9901AF6EE1B00149DF2 /* AboutScreenAppIcon@3x.png */,
 				D7BBB9911AF6EE1B00149DF2 /* AboutScreenAppIcon@2x.png */,
 				D7BBB9921AF6EE1B00149DF2 /* AboutScreenAppIcon.png */,
@@ -421,24 +441,6 @@
 				D711FD9A1AF3218B005C1F6B /* 320X140.png */,
 				D711FD9B1AF3218B005C1F6B /* 375X140.png */,
 				D711FD9C1AF3218B005C1F6B /* 414X140.png */,
-				D739F0521AF03060000C2FF1 /* addicon.png */,
-				D739F0531AF03060000C2FF1 /* addicon@2x.png */,
-				D739F0541AF03060000C2FF1 /* addicon@3x.png */,
-				D739F0551AF03060000C2FF1 /* calendar.png */,
-				D739F0561AF03060000C2FF1 /* calendar@2x.png */,
-				D739F0571AF03060000C2FF1 /* calendar@3x.png */,
-				D739F0581AF03060000C2FF1 /* clock.png */,
-				D739F0591AF03060000C2FF1 /* clock@2x.png */,
-				D739F05A1AF03060000C2FF1 /* clock@3x.png */,
-				D739F05B1AF03060000C2FF1 /* list.png */,
-				D739F05C1AF03060000C2FF1 /* list@2x.png */,
-				D739F05D1AF03060000C2FF1 /* list@3x.png */,
-				D739F05E1AF03060000C2FF1 /* notes.png */,
-				D739F05F1AF03060000C2FF1 /* notes@2x.png */,
-				D739F0601AF03060000C2FF1 /* notes@3x.png */,
-				D739F0611AF03060000C2FF1 /* settings.png */,
-				D739F0621AF03060000C2FF1 /* settings@2x.png */,
-				D739F0631AF03060000C2FF1 /* settings@3x.png */,
 				D739F0181AECA1E7000C2FF1 /* 152.png */,
 				D739F0161AECA188000C2FF1 /* 76.png */,
 				D784281A1AF0821D00669910 /* splahicon.png */,
@@ -633,58 +635,52 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D739F06C1AF03060000C2FF1 /* clock@3x.png in Resources */,
 				D7BBB9951AF6EE1B00149DF2 /* AboutScreenAppIcon.png in Resources */,
-				D739F06F1AF03060000C2FF1 /* list@3x.png in Resources */,
+				D7C9920F1AFB077000A3F48C /* list@3x.png in Resources */,
 				D739F0131AECA0C7000C2FF1 /* 29.png in Resources */,
 				D7EDD1761AE8A7FA003EBABE /* InfColorPickerView.xib in Resources */,
-				D739F0681AF03060000C2FF1 /* calendar@2x.png in Resources */,
-				D739F06E1AF03060000C2FF1 /* list@2x.png in Resources */,
 				D739F0151AECA12F000C2FF1 /* 40.png in Resources */,
 				D739F0171AECA188000C2FF1 /* 76.png in Resources */,
-				D739F0651AF03060000C2FF1 /* addicon@2x.png in Resources */,
+				D7C992131AFB07B400A3F48C /* settings.png in Resources */,
+				D7C992081AFB074600A3F48C /* clock@2x.png in Resources */,
 				D711FD981AF2DF1B005C1F6B /* menu@2x.png in Resources */,
+				D7C992091AFB074600A3F48C /* clock@3x.png in Resources */,
 				D757E5841AEAE4D400654044 /* 180.png in Resources */,
 				D7F315B81AE70DA100397044 /* menuIcon.png in Resources */,
-				D739F0731AF03060000C2FF1 /* settings.png in Resources */,
 				D742E8F11AE97268009A4904 /* View.xib in Resources */,
+				D7C992151AFB07B400A3F48C /* settings@3x.png in Resources */,
 				D711FD991AF2DF1B005C1F6B /* menu@3x.png in Resources */,
 				D757E5821AEAE4D400654044 /* 87.png in Resources */,
+				D7C992021AFB070800A3F48C /* calender@2x.png in Resources */,
+				D7C992071AFB074600A3F48C /* clock.png in Resources */,
 				D711FE361AF5B1A8005C1F6B /* 414X140Alt.png in Resources */,
-				D739F0741AF03060000C2FF1 /* settings@2x.png in Resources */,
 				B1FD78691AB4B627009DB201 /* navmenu.png in Resources */,
+				D7C992011AFB070800A3F48C /* calender.png in Resources */,
 				D739F08C1AF03914000C2FF1 /* back@2x.png in Resources */,
-				D739F06A1AF03060000C2FF1 /* clock.png in Resources */,
 				D7BBB9931AF6EE1B00149DF2 /* AboutScreenAppIcon@3x.png in Resources */,
 				D739F0191AECA1E7000C2FF1 /* 152.png in Resources */,
 				D7BBB9941AF6EE1B00149DF2 /* AboutScreenAppIcon@2x.png in Resources */,
 				D757E5811AEAE4D400654044 /* 80.png in Resources */,
-				D739F06B1AF03060000C2FF1 /* clock@2x.png in Resources */,
-				D739F0721AF03060000C2FF1 /* notes@3x.png in Resources */,
-				D739F0711AF03060000C2FF1 /* notes@2x.png in Resources */,
+				D7C992141AFB07B400A3F48C /* settings@2x.png in Resources */,
 				B1FD78411AB4B1EF009DB201 /* Main.storyboard in Resources */,
-				D739F0691AF03060000C2FF1 /* calendar@3x.png in Resources */,
 				D711FD9D1AF3218B005C1F6B /* 320X140.png in Resources */,
 				D757E5801AEAE4D400654044 /* 58.png in Resources */,
 				D711FE371AF5B1A8005C1F6B /* 320X140Alt.png in Resources */,
 				D784281E1AF0821D00669910 /* splahicon@2x.png in Resources */,
 				D711FE351AF5B1A8005C1F6B /* 375X140Alt.png in Resources */,
-				D739F0701AF03060000C2FF1 /* notes.png in Resources */,
 				B1FD78461AB4B1EF009DB201 /* LaunchScreen.xib in Resources */,
 				D784281D1AF0821D00669910 /* splahicon.png in Resources */,
 				D784281F1AF0821D00669910 /* splahicon@3x.png in Resources */,
+				D7C992031AFB070800A3F48C /* calender@3x.png in Resources */,
 				D711FD9E1AF3218B005C1F6B /* 375X140.png in Resources */,
-				D739F0671AF03060000C2FF1 /* calendar.png in Resources */,
 				D711FD9F1AF3218B005C1F6B /* 414X140.png in Resources */,
+				D7C9920D1AFB077000A3F48C /* list.png in Resources */,
+				D7C9920E1AFB077000A3F48C /* list@2x.png in Resources */,
 				D711FD971AF2DF1B005C1F6B /* menu.png in Resources */,
-				D739F0641AF03060000C2FF1 /* addicon.png in Resources */,
 				D739F08D1AF03914000C2FF1 /* back@3x.png in Resources */,
 				D772AEE11AE83E06001B71B0 /* Logo.png in Resources */,
 				D757E5831AEAE4D400654044 /* 120.png in Resources */,
-				D739F06D1AF03060000C2FF1 /* list.png in Resources */,
-				D739F0661AF03060000C2FF1 /* addicon@3x.png in Resources */,
 				D739F08B1AF03914000C2FF1 /* back.png in Resources */,
-				D739F0751AF03060000C2FF1 /* settings@3x.png in Resources */,
 				B1FD78431AB4B1EF009DB201 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -741,6 +737,7 @@
 				B1FD78951AB4BC27009DB201 /* PDTSimpleCalendarViewFlowLayout.m in Sources */,
 				B1FD789A1AB4C461009DB201 /* AddViewController.m in Sources */,
 				D757E5701AE9FFCE00654044 /* notePadViewController.m in Sources */,
+				D71244F71AF85A4700566E9F /* setUpViewController.m in Sources */,
 				D7342E701AE813C600394432 /* detailViewController.m in Sources */,
 				B1FD78651AB4B479009DB201 /* calanderTableViewController.m in Sources */,
 				B1FD783E1AB4B1EF009DB201 /* ViewController.m in Sources */,
@@ -750,6 +747,7 @@
 				D742E8EB1AE9699D009A4904 /* NSInvocation+Constructors.m in Sources */,
 				D7EDD1721AE8A7FA003EBABE /* InfColorBarPicker.m in Sources */,
 				B1FD78601AB4B22D009DB201 /* SWRevealViewController.m in Sources */,
+				D71244FD1AF986FF00566E9F /* customSubjectPickerTableViewController.m in Sources */,
 				D7EDD1441AE8A4AD003EBABE /* colorsettingsTableViewController.m in Sources */,
 				D7EDD13E1AE89D03003EBABE /* settingsTableViewController.m in Sources */,
 				B1FD78A11AB6097A009DB201 /* DBManager.m in Sources */,
@@ -774,6 +772,8 @@
 				D7F315B01AE6E26800397044 /* Assignment.m in Sources */,
 				D7EDD1781AE8A7FA003EBABE /* InfHSBSupport.m in Sources */,
 				D7EDD1731AE8A7FA003EBABE /* InfColorIndicatorView.m in Sources */,
+				D7C992431AFC2A2D00A3F48C /* selectdateSmallViewController.m in Sources */,
+				D71244FA1AF85F6500566E9F /* subjectSetUpViewController.m in Sources */,
 				D7EDD1411AE8A0CF003EBABE /* aboutTableViewController.m in Sources */,
 				B1FD78381AB4B1EF009DB201 /* main.m in Sources */,
 			);

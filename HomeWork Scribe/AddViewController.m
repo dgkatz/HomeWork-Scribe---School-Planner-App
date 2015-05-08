@@ -24,6 +24,12 @@ XLFormDescriptor * form;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.navigationController.toolbar.hidden = YES;
+
+//    [self.navigationController.navigationBar setBackgroundImage:[UIImage new] forBarMetrics:UIBarMetricsDefault];
+//    self.navigationController.navigationBar.shadowImage = [UIImage new];
+//    self.navigationController.navigationBar.translucent = YES;
+//    self.tableView.backgroundColor = [UIColor colorWithRed:255/255.0 green:151/255.0 blue:0/255.0 alpha:1.0f];
     self.dbManager = [[DBManager alloc] initWithDatabaseFilename:@"homeworkdb.sql"];
         [self.dbManager executeQuery:@"create table if not exists assignmentData(hwID integer primary key, description text, subject text, due_date integer)"];
     
@@ -53,19 +59,27 @@ XLFormDescriptor * form;
                             [XLFormOptionsObject formOptionsObjectWithValue:@(4) displayText:@"English"]
                             ];
     row.value = [XLFormOptionsObject formOptionsObjectWithValue:@(2) displayText:@"Math"];
+//    [row.cellConfigAtConfigure setObject:[UIColor colorWithRed:255/255.0 green:151/255.0 blue:0/255.0 alpha:1.0f] forKey:@"backgroundColor"];
+//    [row.cellConfig setObject:[UIColor whiteColor] forKey:@"textLabel.color"];
+//    [row.cellConfig setObject:[UIColor whiteColor] forKey:@"detailTextLabel.color"];
     [section addFormRow:row];
-
     
     // Second Section
     section = [XLFormSectionDescriptor formSection];
     [form addFormSection:section];
     
     row = [XLFormRowDescriptor formRowDescriptorWithTag:@"Description" rowType:XLFormRowDescriptorTypeText title:@"Description"];
+//    [row.cellConfigAtConfigure setObject:[UIColor colorWithRed:255/255.0 green:151/255.0 blue:0/255.0 alpha:1.0f] forKey:@"backgroundColor"];
+//    [row.cellConfig setObject:[UIColor whiteColor] forKey:@"textLabel.color"];
+//    [row.cellConfig setObject:[UIColor whiteColor] forKey:@"detailTextLabel.color"];
     [section addFormRow:row];
     row = [XLFormRowDescriptor formRowDescriptorWithTag:@"picker" rowType:XLFormRowDescriptorTypeDate title:@"Due Date"];
     row.value = [NSDate new];
-    [row.cellConfigAtConfigure setObject:[NSDate new] forKey:@"minimumDate"];
-    [row.cellConfigAtConfigure setObject:[NSDate dateWithTimeIntervalSinceNow:INFINITY] forKey:@"maximumDate"];
+//    [row.cellConfigAtConfigure setObject:[NSDate new] forKey:@"minimumDate"];
+//    [row.cellConfigAtConfigure setObject:[NSDate dateWithTimeIntervalSinceNow:INFINITY] forKey:@"maximumDate"];
+//    [row.cellConfigAtConfigure setObject:[UIColor colorWithRed:255/255.0 green:151/255.0 blue:0/255.0 alpha:1.0f] forKey:@"backgroundColor"];
+//    [row.cellConfig setObject:[UIColor whiteColor] forKey:@"textLabel.color"];
+//    [row.cellConfig setObject:[UIColor whiteColor] forKey:@"detailTextLabel.color"];
     [section addFormRow:row];
     self.form = form;
     
