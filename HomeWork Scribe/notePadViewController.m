@@ -13,9 +13,11 @@
 
 @end
 NSString *str;
+NSArray *subjects;
 @implementation notePadViewController
 - (void)viewDidLoad {
     [super viewDidLoad];
+    subjects=[[NSUserDefaults standardUserDefaults] objectForKey:@"usersSubjects"];
     dataClass *obj = [dataClass getInstance];
     if (obj.note) {
         self.textField.text = obj.note;
@@ -66,7 +68,10 @@ NSString *str;
         
     }
     else {
-    UIAlertView *chooseSubject = [[UIAlertView alloc]initWithTitle:@"Set Subject" message:nil delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"Math",@"Science",@"Social Studies",@"English",@"Language", nil];
+    UIAlertView *chooseSubject = [[UIAlertView alloc]initWithTitle:@"Set Subject" message:nil delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:nil];
+        for(NSString *buttonTitle in subjects) {
+            [chooseSubject addButtonWithTitle:buttonTitle];
+        }
     [chooseSubject show];
     }
 }

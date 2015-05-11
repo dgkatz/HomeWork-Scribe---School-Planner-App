@@ -151,7 +151,19 @@ PDTSimpleCalendarViewController *calendarViewController;
     
 }
 - (IBAction)doneClicked:(id)sender {
+    [[NSUserDefaults standardUserDefaults]setObject:self.subjects forKey:@"usersSubjects"];
     
+    NSArray *colorArray = [[NSArray alloc]initWithObjects:[UIColor colorWithRed:224/255.0 green:102/255.0 blue:102/255.0 alpha:1.0f],[UIColor colorWithRed:109/255.0 green:158/255.0 blue:235/255.0 alpha:1.0f],[UIColor colorWithRed:106/255.0 green:168/255.0 blue:79/255.0 alpha:1.0f],[UIColor colorWithRed:255/255.0 green:217/255.0 blue:102/255.0 alpha:1.0f],[UIColor colorWithRed:246/255.0 green:178/255.0 blue:107/255.0 alpha:1.0f], nil];
+    NSMutableArray *sortedColorArray = [[NSMutableArray alloc]init];
+    for (int i = 0; i < [self.subjects count]; i ++) {
+        int randint = arc4random_uniform((int)[colorArray count]);
+        UIColor *randColor = [colorArray objectAtIndex:randint];
+        NSData *colorData = [NSKeyedArchiver archivedDataWithRootObject:randColor];
+        [sortedColorArray addObject:colorData];
+    }
+    [[NSUserDefaults standardUserDefaults]setObject:sortedColorArray forKey:@"usersColors"];
+    NSLog(@"Array of sibjects when done clicked %@",self.subjects);
+    [[NSUserDefaults standardUserDefaults]synchronize];
     SWRevealViewController *VC = (SWRevealViewController *)[self.storyboard instantiateViewControllerWithIdentifier:@"begin"];
     [self presentViewController:VC animated:YES completion:nil];
     /*

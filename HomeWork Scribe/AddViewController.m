@@ -52,13 +52,27 @@ XLFormDescriptor * form;
     
     // Subject
     row = [XLFormRowDescriptor formRowDescriptorWithTag:@"SubjectPicker" rowType:XLFormRowDescriptorTypeSelectorActionSheet title:@"Subject"];
+    NSArray *savedSubjects= [[NSUserDefaults standardUserDefaults]objectForKey:@"usersSubjects"];
+    NSLog(@"subjects have length: %lu", (unsigned long)[savedSubjects count]);
+    NSMutableArray *options= [[NSMutableArray alloc] init];
+    for (int i=0; i<[savedSubjects count]; i++) {
+        XLFormOptionsObject *obj=[XLFormOptionsObject formOptionsObjectWithValue:@(i) displayText:[savedSubjects objectAtIndex:i]];
+        [options addObject:obj];
+        
+        NSLog(@"form options: %@ ", obj.displayText);
+    }
+    
+    row.selectorOptions=options;
+    /**
     row.selectorOptions = @[[XLFormOptionsObject formOptionsObjectWithValue:@(0) displayText:@"Math"],
                             [XLFormOptionsObject formOptionsObjectWithValue:@(1) displayText:@"Science"],
                             [XLFormOptionsObject formOptionsObjectWithValue:@(2) displayText:@"Social Studies"],
                             [XLFormOptionsObject formOptionsObjectWithValue:@(3) displayText:@"Language"],
                             [XLFormOptionsObject formOptionsObjectWithValue:@(4) displayText:@"English"]
                             ];
-    row.value = [XLFormOptionsObject formOptionsObjectWithValue:@(2) displayText:@"Math"];
+     **/
+
+        row.value = [XLFormOptionsObject formOptionsObjectWithValue:@(2) displayText:@"Math"];
 //    [row.cellConfigAtConfigure setObject:[UIColor colorWithRed:255/255.0 green:151/255.0 blue:0/255.0 alpha:1.0f] forKey:@"backgroundColor"];
 //    [row.cellConfig setObject:[UIColor whiteColor] forKey:@"textLabel.color"];
 //    [row.cellConfig setObject:[UIColor whiteColor] forKey:@"detailTextLabel.color"];

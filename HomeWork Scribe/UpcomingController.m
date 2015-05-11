@@ -18,10 +18,12 @@
 NSMutableArray *upAssignments;
 NSMutableArray *assignments;
 NSArray *sortedArray;
+NSArray *subjects;
 @implementation UpcomingController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    subjects=[[NSUserDefaults standardUserDefaults] objectForKey:@"usersSubjects"];
     self.navigationItem.title = @"Upcoming Assignments";
     assignments = [[NSMutableArray alloc]init];
     int date= [[NSDate date] timeIntervalSince1970] + 172800;
@@ -87,22 +89,11 @@ NSArray *sortedArray;
         cell.textLabel.text=as.subject;
         cell.detailTextLabel.text=as.description;
     }
-    if ([cell.textLabel.text isEqualToString:@"Math"]) {
-        cell.textLabel.textColor = [UIColor colorWithRed:224/255.0 green:102/255.0 blue:102/255.0 alpha:1.0f];
-    }
-    else if ([cell.textLabel.text isEqualToString:@"Science"]){
-        cell.textLabel.textColor = [UIColor colorWithRed:109/255.0 green:158/255.0 blue:235/255.0 alpha:1.0f];
-    }
-    else if ([cell.textLabel.text isEqualToString:@"Social Studies"]){
-        cell.textLabel.textColor = [UIColor colorWithRed:106/255.0 green:168/255.0 blue:79/255.0 alpha:1.0f];
-    }
-    else if ([cell.textLabel.text isEqualToString:@"English"]){
-        cell.textLabel.textColor = [UIColor colorWithRed:255/255.0 green:217/255.0 blue:102/255.0 alpha:1.0f];
-    }
-    else {
-        cell.textLabel.textColor = [UIColor colorWithRed:246/255.0 green:178/255.0 blue:107/255.0 alpha:1.0f];
-    }
-
+    int indexNum = [subjects indexOfObject:cell.textLabel.text];
+    NSArray *colors =[[NSUserDefaults standardUserDefaults] objectForKey:@"usersColors"];
+    NSData *colorData = [colors objectAtIndex:indexNum];
+    UIColor *color = [NSKeyedUnarchiver unarchiveObjectWithData:colorData];
+    cell.textLabel.textColor = color;
     return cell;
 }
 
@@ -155,10 +146,13 @@ NSArray *sortedArray;
         NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
         [dateFormat setDateFormat:@"yyyy-MM-dd"];
         NSString *theDate = [dateFormat stringFromDate:date];
-        
+        NSArray *colorArray = [[NSUserDefaults standardUserDefaults]objectForKey:@"usersColors"];
         obj.description1 = cell.detailTextLabel.text;
         obj.subject = cell.textLabel.text;
         obj.date = theDate;
+        int indexNum = [subjects indexOfObject:cell.textLabel.text];
+        NSData *colorData = [colorArray objectAtIndex:indexNum];
+        obj.defaultColor = [NSKeyedUnarchiver unarchiveObjectWithData:colorData];
     }
 }
 

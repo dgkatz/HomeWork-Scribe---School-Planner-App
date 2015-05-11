@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-
+#import <UIKit/UIKit.h>
 @interface dataClass : NSObject {
     NSMutableArray *assignmentData_Subject;
     NSMutableArray *assignmentData_Date;
@@ -20,6 +20,7 @@
     NSString *subjectEdit;
     NSString *note;
     BOOL success;
+    UIColor *defaultColor;
 
 }
 @property(nonatomic,retain)NSMutableArray *assignmentData_Subject;
@@ -32,6 +33,7 @@
 @property(strong)NSString *dateEdit;
 @property(strong)NSString *subjectEdit;
 @property(strong)NSString *note;;
+@property(strong)UIColor *defaultColor;
 @property BOOL success;
 +(dataClass*)getInstance;
 @end

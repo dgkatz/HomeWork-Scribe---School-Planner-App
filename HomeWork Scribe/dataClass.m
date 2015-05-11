@@ -20,7 +20,7 @@
 @synthesize dateEdit;
 @synthesize success;
 @synthesize note;
-
+@synthesize defaultColor;
 
 static dataClass *instance = nil;
 

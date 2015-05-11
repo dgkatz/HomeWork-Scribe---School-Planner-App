@@ -27,6 +27,13 @@ UIColor *defaultcolor;
     //menu is only an example
     [self presentViewController:purchaseContr animated:YES completion:nil];
 }
+-(void)viewWillAppear:(BOOL)animated{
+    dataClass *obj = [dataClass getInstance];
+    defaultcolor = obj.defaultColor;
+    NSLog(@"default color = %@",defaultcolor);
+    self.assingmentcomButton.backgroundColor = defaultcolor;
+
+}
 -(void)editheAssignment{
     static NSString *CellIdentifier = @"header";
     UITableViewCell *headerView = [self.assignmentTableView dequeueReusableCellWithIdentifier:CellIdentifier];
@@ -43,21 +50,6 @@ UIColor *defaultcolor;
     [super viewDidLoad];
     self.navigationController.toolbar.hidden = YES;
     dataClass *obj = [dataClass getInstance];
-    if ([obj.subject isEqualToString:@"Math"]) {
-        defaultcolor = [UIColor colorWithRed:224/255.0 green:102/255.0 blue:102/255.0 alpha:1.0f];
-    }
-    else if ([obj.subject isEqualToString:@"Science"]){
-        defaultcolor = [UIColor colorWithRed:109/255.0 green:158/255.0 blue:235/255.0 alpha:1.0f];
-    }
-    else if ([obj.subject isEqualToString:@"Social Studies"]){
-        defaultcolor = [UIColor colorWithRed:106/255.0 green:168/255.0 blue:79/255.0 alpha:1.0f];
-    }
-    else if ([obj.subject isEqualToString:@"English"]){
-        defaultcolor = [UIColor colorWithRed:255/255.0 green:217/255.0 blue:102/255.0 alpha:1.0f];
-    }
-    else {
-        defaultcolor = [UIColor colorWithRed:246/255.0 green:178/255.0 blue:107/255.0 alpha:1.0f];
-    }
     UIBarButtonItem *backButton = [[UIBarButtonItem alloc]
                                    initWithTitle:nil
                                    style:UIBarButtonItemStylePlain
@@ -82,7 +74,6 @@ UIColor *defaultcolor;
     
     menu = @[@"first",@"second",@"third"];
     self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
-    self.assingmentcomButton.backgroundColor = defaultcolor;
     // Do any additional setup after loading the view.
 }
 
@@ -121,26 +112,6 @@ UIColor *defaultcolor;
     dataClass *obj = [dataClass getInstance];
     duedateLabel.text = [NSString stringWithFormat:@"Due %@",obj.date];
     subjectLabel.text = obj.subject;
-    if ([obj.subject isEqualToString:@"Math"]) {
-        subjectLabel.backgroundColor = [UIColor colorWithRed:224/255.0 green:102/255.0 blue:102/255.0 alpha:1.0f];
-        defaultcolor = [UIColor colorWithRed:224/255.0 green:102/255.0 blue:102/255.0 alpha:1.0f];
-    }
-    else if ([obj.subject isEqualToString:@"Science"]){
-        subjectLabel.backgroundColor = [UIColor colorWithRed:109/255.0 green:158/255.0 blue:235/255.0 alpha:1.0f];
-        defaultcolor = [UIColor colorWithRed:109/255.0 green:158/255.0 blue:235/255.0 alpha:1.0f];
-    }
-    else if ([obj.subject isEqualToString:@"Social Studies"]){
-        subjectLabel.backgroundColor = [UIColor colorWithRed:106/255.0 green:168/255.0 blue:79/255.0 alpha:1.0f];
-        defaultcolor = [UIColor colorWithRed:106/255.0 green:168/255.0 blue:79/255.0 alpha:1.0f];
-    }
-    else if ([obj.subject isEqualToString:@"English"]){
-        subjectLabel.backgroundColor = [UIColor colorWithRed:255/255.0 green:217/255.0 blue:102/255.0 alpha:1.0f];
-        defaultcolor = [UIColor colorWithRed:255/255.0 green:217/255.0 blue:102/255.0 alpha:1.0f];
-    }
-    else {
-        subjectLabel.backgroundColor = [UIColor colorWithRed:246/255.0 green:178/255.0 blue:107/255.0 alpha:1.0f];
-        defaultcolor = [UIColor colorWithRed:246/255.0 green:178/255.0 blue:107/255.0 alpha:1.0f];
-    }
     headerView.backgroundColor = defaultcolor;
     if (section == 0) {
         if (headerView == nil){
@@ -246,9 +217,18 @@ UIColor *defaultcolor;
     NSString *rez = state == YES ? @"YES" : @"NO";
     NSLog(@"%@",rez);
     if ([rez isEqualToString:@"YES"]) {
+        NSString *dateString = obj.date;
+        NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+        // this is imporant - we set our input date format to match our input string
+        // if format doesn't match you'll get nil from your string, so be careful
+        [dateFormatter setDateFormat:@"dd-MM-yyyy"];
+        NSDate *dateFromString = [[NSDate alloc] init];
+        // voila!
+        dateFromString = [dateFormatter dateFromString:dateString];
+        int unix = [dateFromString timeIntervalSince1970];
         UILocalNotification* localNotification = [[UILocalNotification alloc] init];
         localNotification.fireDate = [NSDate
-                                      dateWithTimeIntervalSinceNow:2];//86400
+                                      dateWithTimeIntervalSinceNow:unix];//86400
         localNotification.repeatInterval = 0;
         localNotification.alertBody = [NSString stringWithFormat:@"You have an assignment due for %@: %@",obj.subject,obj.description1];
         localNotification.alertAction = @"Show me the item";

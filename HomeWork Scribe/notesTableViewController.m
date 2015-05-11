@@ -14,10 +14,12 @@
 
 @end
 NSMutableArray *data;
+NSArray *subjects;
 @implementation notesTableViewController
 BOOL editmode;
 - (void)viewDidLoad {
     [super viewDidLoad];
+    subjects=[[NSUserDefaults standardUserDefaults] objectForKey:@"usersSubjects"];
     data = [[NSMutableArray alloc]initWithArray:[[NSUserDefaults standardUserDefaults]objectForKey:@"saved"]];
     NSLog(@"before delete : %@",data);
     // Uncomment the following line to preserve selection between presentations.
@@ -48,70 +50,28 @@ BOOL editmode;
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     // Return the number of sections.
-    return 5;
+    return [subjects count];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     // Return the number of rows in the section.
     int returnnum;
-    if (section == 0) {
-        returnnum = (int)[[[NSUserDefaults standardUserDefaults]objectForKey:@"Math"] count];
-    }
-    else if (section == 1){
-        returnnum = (int)[[[NSUserDefaults standardUserDefaults]objectForKey:@"Science"] count];
-    }
-    else if (section == 2){
-        returnnum = (int)[[[NSUserDefaults standardUserDefaults]objectForKey:@"Social Studies"] count];
-    }
-    else if (section == 3){
-        returnnum = (int)[[[NSUserDefaults standardUserDefaults]objectForKey:@"English"] count];
-    }
-    else{
-        returnnum = (int)[[[NSUserDefaults standardUserDefaults]objectForKey:@"Language"] count];
-    }
+    returnnum = (int)[[[NSUserDefaults standardUserDefaults]objectForKey:[subjects objectAtIndex:section]] count];
     return returnnum;
 }
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"reuseIdentifier" forIndexPath:indexPath];
-    if (indexPath.section == 0) {
-        cell.textLabel.text = [[[NSUserDefaults standardUserDefaults]objectForKey:@"Math"] objectAtIndex:indexPath.row];
+    cell.textLabel.text = [[[NSUserDefaults standardUserDefaults]objectForKey:[subjects objectAtIndex:indexPath.section]] objectAtIndex:indexPath.row];
 
-    }
-    else if (indexPath.section == 1){
-        cell.textLabel.text = [[[NSUserDefaults standardUserDefaults]objectForKey:@"Science"] objectAtIndex:indexPath.row];
-    }
-    else if (indexPath.section == 2){
-        cell.textLabel.text = [[[NSUserDefaults standardUserDefaults]objectForKey:@"Social Studies"] objectAtIndex:indexPath.row];
-    }
-    else if (indexPath.section == 3){
-        cell.textLabel.text = [[[NSUserDefaults standardUserDefaults]objectForKey:@"English"] objectAtIndex:indexPath.row];
-    }
-    else if (indexPath.section == 4){
-        cell.textLabel.text = [[[NSUserDefaults standardUserDefaults]objectForKey:@"Language"] objectAtIndex:indexPath.row];
-    }
     cell.textLabel.textColor = [UIColor orangeColor];
     // Configure the cell...
     
     return cell;
 }
 -(NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section{
-    if (section == 0) {
-        return @"Math";
-    }
-    else if (section == 1){
-        return @"Science";
-    }
-    else if (section == 2){
-        return @"Social Studies";
-    }
-    else if (section == 3){
-        return @"English";
-    }
-    else{
-        return @"Language";
-    }
+    return [subjects objectAtIndex:section];
 }
 
 
@@ -150,21 +110,7 @@ BOOL editmode;
     // Delete the row from the data source
     UITableViewCell *cell = [self.tableView cellForRowAtIndexPath:indexPath];
     NSString *selectedSubject;
-    if (indexPath.section == 0) {
-        selectedSubject = @"Math";
-    }
-    else if (indexPath.section == 1){
-        selectedSubject = @"Science";
-    }
-    else if (indexPath.section == 2){
-        selectedSubject = @"Social Studies";
-    }
-    else if (indexPath.section == 3){
-        selectedSubject = @"English";
-    }
-    else{
-        selectedSubject = @"Language";
-    }
+    selectedSubject = [subjects objectAtIndex:indexPath.section];
     NSMutableArray *savedValues = [[NSMutableArray alloc]initWithArray:[[NSUserDefaults standardUserDefaults]objectForKey:[NSString stringWithFormat:@"%@",selectedSubject]]];
     NSString *label=cell.textLabel.text;
     [savedValues removeObject:[NSString stringWithFormat:@"%@",label]];

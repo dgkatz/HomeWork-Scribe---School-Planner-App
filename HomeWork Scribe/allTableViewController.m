@@ -102,7 +102,7 @@ UILabel *noAssignmentsLabel;
     //self.navigationController.toolbar.delegate = self;
     //UIToolbar *toolBar = self.navigationController.toolbar;
     //toolBar.delegate = self;
-    subjects=@[@"Math", @"Science", @"Social Studies", @"English", @"Language"];
+    subjects=[[NSUserDefaults standardUserDefaults] objectForKey:@"usersSubjects"];
     self.dbManager = [[DBManager alloc] initWithDatabaseFilename:@"homeworkdb.sql"];
     NSLog(@"created database magaer");
     [self.dbManager executeQuery:@"create table if not exists assignmentData(hwID integer primary key, description text, subject text, due_date integer)"];
@@ -169,32 +169,8 @@ UILabel *noAssignmentsLabel;
         NSLog(@"%@ Count %@", [subjects objectAtIndex:i],val);
         [counts addObject:val];
     }
-    if (section == 0) {
-        num=[[counts objectAtIndex:0] integerValue];
-        [theCounts addObject:[NSNumber numberWithInt:num]];
-        NSLog(@"%d",num);
-    }
-    if (section == 1) {
-        num=[[counts objectAtIndex:1] integerValue];
-        [theCounts addObject:[NSNumber numberWithInt:num]];
-        NSLog(@"%d",num);
-    }
-    if (section == 2) {
-        num=[[counts objectAtIndex:2] integerValue];
-        [theCounts addObject:[NSNumber numberWithInt:num]];
-        NSLog(@"%d",num);
-    }
-    if (section == 3) {
-        num=[[counts objectAtIndex:3] integerValue];
-        [theCounts addObject:[NSNumber numberWithInt:num]];
-        NSLog(@"%d",num);
-    }
-    if (section == 4) {
-        num=[[counts objectAtIndex:4] integerValue];
-        [theCounts addObject:[NSNumber numberWithInt:num]];
-        NSLog(@"%d",num);
-}
-    
+
+    num=[[counts objectAtIndex:section] integerValue];
    
     return num;
 }
@@ -206,7 +182,7 @@ UILabel *noAssignmentsLabel;
     // Configure the cell...
     
     int cellIndex=indexPath.row;
-    for (int i=0; i<5; i++) {
+    for (int i=0; i<[subjects count]; i++) {
         if(indexPath.section==i){
             [results removeAllObjects];
             NSString *subject=[subjects objectAtIndex:i];
@@ -214,6 +190,12 @@ UILabel *noAssignmentsLabel;
             NSString *desc = [[results objectAtIndex:cellIndex] objectAtIndex:[self.dbManager.arrColumnNames indexOfObject:@"description"]];
             UILabel *label = (UILabel *)[cell.contentView viewWithTag:10];
             label.text=desc;
+            NSArray *colors =[[NSUserDefaults standardUserDefaults] objectForKey:@"usersColors"];
+            NSData *colorData = [colors objectAtIndex:i];
+            UIColor *color = [NSKeyedUnarchiver unarchiveObjectWithData:colorData];
+            label.textColor = color;
+            
+            /*
             if (i == 0) {
                 label.textColor = [UIColor colorWithRed:224/255.0 green:102/255.0 blue:102/255.0 alpha:1.0f];
             }
@@ -229,6 +211,7 @@ UILabel *noAssignmentsLabel;
             else{
                 label.textColor = [UIColor colorWithRed:246/255.0 green:178/255.0 blue:107/255.0 alpha:1.0f];
             }
+             */
             NSLog(@"%@",desc);
             NSNumber *timestamp = [[results objectAtIndex:cellIndex] objectAtIndex:[self.dbManager.arrColumnNames indexOfObject:@"due_date"]];
             NSDate *date = [NSDate dateWithTimeIntervalSince1970:timestamp.doubleValue];
@@ -328,12 +311,14 @@ UILabel *noAssignmentsLabel;
         dataClass *obj = [dataClass getInstance];
         NSIndexPath *selectedIndexPath = [self.tableView indexPathForSelectedRow];
         UITableViewCell *cell = [self.tableView cellForRowAtIndexPath:selectedIndexPath];
-
+        NSArray *colorArray = [[NSUserDefaults standardUserDefaults]objectForKey:@"usersColors"];
         UILabel *label = (UILabel *)[cell.contentView viewWithTag:10];
         UILabel *labelDetail = (UILabel *)[cell.contentView viewWithTag:11];
         obj.description1 = label.text;
         obj.subject = [self tableView:self.tableView titleForHeaderInSection:selectedIndexPath.section];
         obj.date = labelDetail.text;
+        NSData *colorData = [colorArray objectAtIndex:selectedIndexPath.section];
+        obj.defaultColor = [NSKeyedUnarchiver unarchiveObjectWithData:colorData];
     }
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.

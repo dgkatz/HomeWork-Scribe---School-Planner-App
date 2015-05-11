@@ -19,7 +19,8 @@ NSArray *colorArray;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    data = @[@"Math",@"Science",@"Social Studies",@"English",@"Language"];
+    data = [[NSUserDefaults standardUserDefaults] objectForKey:@"usersSubjects"];
+
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
     
@@ -48,28 +49,11 @@ NSArray *colorArray;
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"reuseIdentifier" forIndexPath:indexPath];
     cell.textLabel.text = [data objectAtIndex:indexPath.row];
-    if (colorArray == nil) {
-        if (indexPath.row == 0) {
-            cell.textLabel.textColor = [UIColor colorWithRed:224/255.0 green:102/255.0 blue:102/255.0 alpha:1.0f];
-        }
-        else if (indexPath.row == 1){
-            cell.textLabel.textColor = [UIColor colorWithRed:109/255.0 green:158/255.0 blue:235/255.0 alpha:1.0f];
-        }
-        else if (indexPath.row == 2){
-            cell.textLabel.textColor = [UIColor colorWithRed:106/255.0 green:168/255.0 blue:79/255.0 alpha:1.0f];
-        }
-        else if (indexPath.row == 3){
-            cell.textLabel.textColor = [UIColor colorWithRed:255/255.0 green:217/255.0 blue:102/255.0 alpha:1.0f];
-        }
-        else{
-            cell.textLabel.textColor = [UIColor colorWithRed:246/255.0 green:178/255.0 blue:107/255.0 alpha:1.0f];
-        }
-
-    }
-    else{
-        cell.textLabel.textColor = [colorArray objectAtIndex:indexPath.row];
-    }
-    // Configure the cell...
+    int indexNum = [data indexOfObject:cell.textLabel.text];
+    NSArray *colors =[[NSUserDefaults standardUserDefaults] objectForKey:@"usersColors"];
+    NSData *colorData = [colors objectAtIndex:indexNum];
+    UIColor *color = [NSKeyedUnarchiver unarchiveObjectWithData:colorData];
+    cell.textLabel.textColor = color;    // Configure the cell...
     
     return cell;
 }

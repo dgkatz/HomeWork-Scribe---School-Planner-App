@@ -22,6 +22,8 @@ UILabel *noAssignmentsLabel;
 NSMutableArray *assignments;
 NSMutableArray *assignmentsForDay;
 NSMutableArray *initialArray;
+NSArray *subjects;
+NSMutableArray *results;
 PDTSimpleCalendarViewController *calendarViewController;
 @implementation calanderTableViewController
 -(void)viewDidAppear:(BOOL)animated{
@@ -29,6 +31,8 @@ PDTSimpleCalendarViewController *calendarViewController;
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
+    results = [[NSMutableArray alloc]init];
+    subjects=[[NSUserDefaults standardUserDefaults] objectForKey:@"usersSubjects"];
     noAssignmentsLabel = [[UILabel alloc]initWithFrame:CGRectMake(self.tableView.frame.size.width/2 - 150, self.tableView.frame.size.height/2, 300, 40)];
     noAssignmentsLabel.text = @"You have no assignments for this day";
     noAssignmentsLabel.textAlignment = NSTextAlignmentCenter;
@@ -217,6 +221,12 @@ PDTSimpleCalendarViewController *calendarViewController;
 
     cell.textLabel.text = subject;
     cell.detailTextLabel.text = desc;
+    int index = [subjects indexOfObject:subject];
+    NSArray *colors =[[NSUserDefaults standardUserDefaults] objectForKey:@"usersColors"];
+    NSData *colorData = [colors objectAtIndex:index];
+    UIColor *color = [NSKeyedUnarchiver unarchiveObjectWithData:colorData];
+    cell.textLabel.textColor = color;
+    /*
     if ([subject isEqualToString:@"Math"]) {
         cell.textLabel.textColor = [UIColor colorWithRed:224/255.0 green:102/255.0 blue:102/255.0 alpha:1.0f];
     }
@@ -232,9 +242,11 @@ PDTSimpleCalendarViewController *calendarViewController;
     else {
         cell.textLabel.textColor = [UIColor colorWithRed:246/255.0 green:178/255.0 blue:107/255.0 alpha:1.0f];
     }
+     */
     
     return cell;
 }
+        
 -(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
 {
        UIView *view = calendarViewController.view;

@@ -33,7 +33,7 @@ NSArray *defaultSubjectsArray;
     [UITextField appearance].keyboardAppearance = UIKeyboardAppearanceDark;
     if ([[UINavigationBar class] respondsToSelector:@selector(appearance)])
     {
-        [[UINavigationBar appearance] setBarTintColor:[UIColor colorWithRed:255/255.0 green:151/255.0 blue:0/255.0 alpha:1.0f]]; //// change
+        [[UINavigationBar appearance] setBarTintColor:[UIColor colorWithRed:255/255.0 green:151/255.0 blue:0/255.0 alpha:1.0f]]; //// change'l.
         [[UINavigationBar appearance] setTintColor:[UIColor whiteColor]];
         [[UINavigationBar appearance] setTitleTextAttributes:@{NSForegroundColorAttributeName : [UIColor whiteColor]}];
         [[UINavigationBar appearance]setTranslucent:NO];
@@ -48,7 +48,8 @@ NSArray *defaultSubjectsArray;
     UINavigationController *VC = (UINavigationController *)[mainStoryboard instantiateViewControllerWithIdentifier:@"setupnav"];
     self.window.rootViewController = VC;
     [self.window makeKeyAndVisible];
-    if ([[NSUserDefaults standardUserDefaults] boolForKey:@"HasLaunchedOnce"])
+
+    if ([[NSUserDefaults standardUserDefaults] boolForKey:@"HasLaunchedOnce1"])
     {
 //        SWRevealViewController *VC = (SWRevealViewController *)[mainStoryboard instantiateViewControllerWithIdentifier:@"begin"];
 //        self.window.rootViewController = VC;
@@ -57,7 +58,7 @@ NSArray *defaultSubjectsArray;
     }
     else
     {
-        [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"HasLaunchedOnce"];
+        [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"HasLaunchedOnce1"];
         [[NSUserDefaults standardUserDefaults] synchronize];
         UINavigationController *VC = (UINavigationController *)[mainStoryboard instantiateViewControllerWithIdentifier:@"setupnav"];
         self.window.rootViewController = VC;
