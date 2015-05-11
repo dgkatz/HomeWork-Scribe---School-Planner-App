@@ -228,7 +228,7 @@ UIColor *defaultcolor;
         int unix = [dateFromString timeIntervalSince1970];
         UILocalNotification* localNotification = [[UILocalNotification alloc] init];
         localNotification.fireDate = [NSDate
-                                      dateWithTimeIntervalSinceNow:unix];//86400
+                                      dateWithTimeIntervalSinceNow:2];//86400
         localNotification.repeatInterval = 0;
         localNotification.alertBody = [NSString stringWithFormat:@"You have an assignment due for %@: %@",obj.subject,obj.description1];
         localNotification.alertAction = @"Show me the item";

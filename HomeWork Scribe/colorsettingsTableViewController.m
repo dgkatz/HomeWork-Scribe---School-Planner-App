@@ -15,10 +15,14 @@ NSArray *data;
 UIColor *color;
 int selectedindex;
 NSArray *colorArray;
+NSMutableArray *subjects;
 @implementation colorsettingsTableViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    subjects=[[[NSUserDefaults standardUserDefaults] objectForKey:@"usersSubjects"] mutableCopy];
+    self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    self.navigationItem.rightBarButtonItem.tintColor = [UIColor whiteColor];
     data = [[NSUserDefaults standardUserDefaults] objectForKey:@"usersSubjects"];
 
     // Uncomment the following line to preserve selection between presentations.
@@ -49,7 +53,7 @@ NSArray *colorArray;
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"reuseIdentifier" forIndexPath:indexPath];
     cell.textLabel.text = [data objectAtIndex:indexPath.row];
-    int indexNum = [data indexOfObject:cell.textLabel.text];
+    int indexNum = (int)[data indexOfObject:cell.textLabel.text];
     NSArray *colors =[[NSUserDefaults standardUserDefaults] objectForKey:@"usersColors"];
     NSData *colorData = [colors objectAtIndex:indexNum];
     UIColor *color = [NSKeyedUnarchiver unarchiveObjectWithData:colorData];
@@ -57,6 +61,27 @@ NSArray *colorArray;
     
     return cell;
 }
+
+- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    return YES;
+}
+
+- (void)tableView: (UITableView *)tableView commitEditingStyle: (UITableViewCellEditingStyle)editingStyle forRowAtIndexPath: (NSIndexPath *)indexPath {if (editingStyle == UITableViewCellEditingStyleDelete) {
+    // Delete the row from the data source
+    UITableViewCell *cell = [self.tableView cellForRowAtIndexPath:indexPath];
+    NSString *selectedSubject;
+    selectedSubject = [subjects objectAtIndex:indexPath.row];
+    [subjects removeObject:[NSString stringWithFormat:@"%@",selectedSubject]];
+    [[NSUserDefaults standardUserDefaults]setObject:subjects forKey:@"usersSubjects"];
+    [[NSUserDefaults standardUserDefaults]synchronize];
+    [self viewDidLoad];
+    [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
+    
+}
+    
+}
+
 
 #pragma mark - Navigation
 

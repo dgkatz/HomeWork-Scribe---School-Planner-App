@@ -153,7 +153,7 @@ PDTSimpleCalendarViewController *calendarViewController;
 - (IBAction)doneClicked:(id)sender {
     [[NSUserDefaults standardUserDefaults]setObject:self.subjects forKey:@"usersSubjects"];
     
-    NSArray *colorArray = [[NSArray alloc]initWithObjects:[UIColor colorWithRed:224/255.0 green:102/255.0 blue:102/255.0 alpha:1.0f],[UIColor colorWithRed:109/255.0 green:158/255.0 blue:235/255.0 alpha:1.0f],[UIColor colorWithRed:106/255.0 green:168/255.0 blue:79/255.0 alpha:1.0f],[UIColor colorWithRed:255/255.0 green:217/255.0 blue:102/255.0 alpha:1.0f],[UIColor colorWithRed:246/255.0 green:178/255.0 blue:107/255.0 alpha:1.0f], nil];
+    NSArray *colorArray = [[NSArray alloc]initWithObjects:[UIColor colorWithRed:224/255.0 green:102/255.0 blue:102/255.0 alpha:1.0f],[UIColor colorWithRed:109/255.0 green:158/255.0 blue:235/255.0 alpha:1.0f],[UIColor colorWithRed:106/255.0 green:168/255.0 blue:79/255.0 alpha:1.0f],[UIColor colorWithRed:255/255.0 green:217/255.0 blue:102/255.0 alpha:1.0f],[UIColor colorWithRed:246/255.0 green:178/255.0 blue:107/255.0 alpha:1.0f],[UIColor colorWithRed:204/255.0 green:65/255.0 blue:37/255.0 alpha:1.0] ,[UIColor colorWithRed:118/255.0 green:165/255.0 blue:175/255.0 alpha:1.0f],[UIColor colorWithRed:142/255.0 green:124/255.0 blue:195/255.0 alpha:1.0f],[UIColor colorWithRed:194/255.0 green:123/255.0 blue:160/255.0 alpha:1.0f],nil];
     NSMutableArray *sortedColorArray = [[NSMutableArray alloc]init];
     for (int i = 0; i < [self.subjects count]; i ++) {
         int randint = arc4random_uniform((int)[colorArray count]);

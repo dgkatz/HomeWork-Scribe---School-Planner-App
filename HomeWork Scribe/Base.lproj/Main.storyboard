@@ -887,7 +887,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2Bl-RW-4a7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1062" y="810"/>
+            <point key="canvasLocation" x="-1049" y="805"/>
         </scene>
         <!--About Table View Controller-->
         <scene sceneID="5A0-qU-wV8">
@@ -1097,7 +1097,7 @@
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" image="notes.png" id="5wc-2z-GJ3">
+                                        <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" image="pencil.png" id="5wc-2z-GJ3">
                                             <autoresizingMask key="autoresizingMask"/>
                                         </imageView>
                                     </subviews>
@@ -1323,14 +1323,14 @@
         <image name="clock.png" width="29" height="29"/>
         <image name="list.png" width="29" height="29"/>
         <image name="menu.png" width="22" height="23"/>
-        <image name="notes.png" width="30" height="30"/>
+        <image name="pencil.png" width="29" height="29"/>
         <image name="settings.png" width="29" height="29"/>
         <image name="splahicon.png" width="82" height="117"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="1fi-I5-A6l"/>
+        <segue reference="bIA-bq-GQp"/>
         <segue reference="0iC-e2-Yo4"/>
-        <segue reference="p4B-iT-7tG"/>
         <segue reference="ufz-qF-Xne"/>
+        <segue reference="p4B-iT-7tG"/>
     </inferredMetricsTieBreakers>
 </document>

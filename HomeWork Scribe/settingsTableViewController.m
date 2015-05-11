@@ -72,7 +72,7 @@ NSArray *menu;
 
 -(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
     if (buttonIndex == 1) {
-        NSString *deleteQuery= [NSString stringWithFormat: @"DELETE FROM assignmentDataa"];
+        NSString *deleteQuery= [NSString stringWithFormat: @"DELETE FROM assignmentData"];
         NSLog(@"%@",deleteQuery);
         [self.dbManager executeQuery:deleteQuery];
     }
