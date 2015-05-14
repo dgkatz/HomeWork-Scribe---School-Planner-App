@@ -7,11 +7,13 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
 
 @interface Assignment : NSObject
     @property(retain) NSString *description;
     @property NSNumber *due_date;
     @property NSString *subject;
+    @property UIImage *img;
 
 +(NSArray *)getSortedList:(NSArray *) array;
 

@@ -45,15 +45,12 @@ NSArray *defaultSubjectsArray;
 //    UINavigationController *VC = (UINavigationController *)[mainStoryboard instantiateViewControllerWithIdentifier:@"setupnav"];
 //    self.window.rootViewController = VC;
 //    [self.window makeKeyAndVisible];
-    UINavigationController *VC = (UINavigationController *)[mainStoryboard instantiateViewControllerWithIdentifier:@"setupnav"];
-    self.window.rootViewController = VC;
-    [self.window makeKeyAndVisible];
 
     if ([[NSUserDefaults standardUserDefaults] boolForKey:@"HasLaunchedOnce1"])
     {
-//        SWRevealViewController *VC = (SWRevealViewController *)[mainStoryboard instantiateViewControllerWithIdentifier:@"begin"];
-//        self.window.rootViewController = VC;
-//        [self.window makeKeyAndVisible];
+        SWRevealViewController *VC = (SWRevealViewController *)[mainStoryboard instantiateViewControllerWithIdentifier:@"begin"];
+        self.window.rootViewController = VC;
+        [self.window makeKeyAndVisible];
         // app already launched
     }
     else

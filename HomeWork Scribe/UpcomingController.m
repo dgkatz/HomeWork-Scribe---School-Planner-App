@@ -11,6 +11,7 @@
 #import "SWRevealViewController.h"
 #import "dataClass.h"
 #import "allTableViewController.h"
+#import "KxMenu.h"
 @interface UpcomingController ()
 
 @end
@@ -19,15 +20,29 @@ NSMutableArray *upAssignments;
 NSMutableArray *assignments;
 NSArray *sortedArray;
 NSArray *subjects;
+NSString *setting;
 @implementation UpcomingController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
     subjects=[[NSUserDefaults standardUserDefaults] objectForKey:@"usersSubjects"];
-    self.navigationItem.title = @"Upcoming Assignments";
+    if (self.navigationItem.title == nil) {
+        self.navigationItem.title = @"Upcoming Assignments";
+        setting = @"upcoming";
+    }
+    
     assignments = [[NSMutableArray alloc]init];
-    int date= [[NSDate date] timeIntervalSince1970] + 172800;
-    NSString *query= [NSString stringWithFormat: @"SELECT * FROM assignmentData WHERE due_date<%d",date];
+    int currentdate= [[NSDate date] timeIntervalSince1970];
+    NSString *query;
+    if ([setting isEqualToString:@"upcoming"]) {
+        int date = [[NSDate date] timeIntervalSince1970] + 172800;
+        query = [NSString stringWithFormat: @"SELECT * FROM assignmentData WHERE due_date BETWEEN %d AND %d",currentdate , date];
+    }
+    else if ([setting isEqualToString: @"overdue"]){
+        query = [NSString stringWithFormat: @"SELECT * FROM assignmentData WHERE due_date<%d",currentdate];
+    }
+    
     NSLog(@"%@",query);
     self.dbManager = [[DBManager alloc] initWithDatabaseFilename:@"homeworkdb.sql"];
     upAssignments= [[NSMutableArray alloc] initWithArray:[self.dbManager loadDataFromDB:query]];
@@ -51,6 +66,7 @@ NSArray *subjects;
     
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    [self.tableView reloadData];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -96,7 +112,57 @@ NSArray *subjects;
     cell.textLabel.textColor = color;
     return cell;
 }
+- (IBAction)organize:(id)sender {
+    NSArray *menuItems =
+    @[
+      
+        [KxMenuItem menuItem:@"Upcoming"
+                     image:NULL
+                    target:self
+                    action:@selector(pushMenuItem:)],
+      
+      [KxMenuItem menuItem:@"Overdue"
+                     image:NULL
+                    target:self
+                    action:@selector(pushMenuItem:)],
+      
+      [KxMenuItem menuItem:@"Completed"
+                     image:NULL
+                    target:self
+                    action:@selector(pushMenuItem:)],
+      ];
+    UIBarButtonItem *viewButton = sender;
+    UIView *view = [viewButton valueForKey:@"view"];
+    CGRect frame  =view.frame;
+    CGFloat x = frame.origin.x;
+    CGFloat y = frame.origin.y;
+    CGFloat width = frame.size.width;
+    CGFloat height = frame.size.height;
+    y = y - 20;
+    CGRect newrect = CGRectMake(x, y, width, height);
+    [KxMenu showMenuInView:self.view fromRect:newrect menuItems:menuItems];
+}
 
+-(void)pushMenuItem:(id)sender{
+    KxMenuItem *first = sender;
+    NSString *str = first.title;
+    if ([str isEqualToString:@"Upcoming"]) {
+        NSLog(@"Upcoming Chosen");
+        self.navigationItem.title = @"Upcoming Assignments";
+        setting = @"upcoming";
+    }
+    else if ([str isEqualToString:@"Overdue"]){
+        NSLog(@"Overdue chosen");
+        self.navigationItem.title = @"Overdue Assignments";
+        setting = @"overdue";
+    }
+    if ([str isEqualToString:@"completed"]){
+        NSLog(@"completed chosen");
+        self.navigationItem.title = @"Completed Assignments";
+    }
+    [self viewDidLoad];
+
+}
 
 /*
 // Override to support conditional editing of the table view.

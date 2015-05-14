@@ -28,6 +28,7 @@ NSArray *subjects;
 NSMutableArray *theCounts;
 NSMutableArray *counts;
 NSTimer *timer;
+NSMutableArray *assignmentImageData;
 UILabel *noAssignmentsLabel;
 @implementation allTableViewController
 
@@ -105,7 +106,8 @@ UILabel *noAssignmentsLabel;
     subjects=[[NSUserDefaults standardUserDefaults] objectForKey:@"usersSubjects"];
     self.dbManager = [[DBManager alloc] initWithDatabaseFilename:@"homeworkdb.sql"];
     NSLog(@"created database magaer");
-    [self.dbManager executeQuery:@"create table if not exists assignmentData(hwID integer primary key, description text, subject text, due_date integer)"];
+    //[self.dbManager executeQuery:@"drop table if exists assignmentData"];
+    [self.dbManager executeQuery:@"create table if not exists assignmentData(hwID integer primary key, description text, subject text, due_date integer, image text)"];
     NSLog(@"executed query");
     _barButton.target = self.revealViewController;
     _barButton.action = @selector(revealToggle:);
@@ -180,8 +182,8 @@ UILabel *noAssignmentsLabel;
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"reuseIdentifier" forIndexPath:indexPath];
     // Configure the cell...
-    
-    int cellIndex=indexPath.row;
+    assignmentImageData = [[NSMutableArray alloc]init];
+    int cellIndex= (int)indexPath.row;
     for (int i=0; i<[subjects count]; i++) {
         if(indexPath.section==i){
             [results removeAllObjects];
@@ -194,24 +196,6 @@ UILabel *noAssignmentsLabel;
             NSData *colorData = [colors objectAtIndex:i];
             UIColor *color = [NSKeyedUnarchiver unarchiveObjectWithData:colorData];
             label.textColor = color;
-            
-            /*
-            if (i == 0) {
-                label.textColor = [UIColor colorWithRed:224/255.0 green:102/255.0 blue:102/255.0 alpha:1.0f];
-            }
-            else if (i == 1){
-                label.textColor = [UIColor colorWithRed:109/255.0 green:158/255.0 blue:235/255.0 alpha:1.0f];
-            }
-            else if (i == 2){
-                label.textColor = [UIColor colorWithRed:106/255.0 green:168/255.0 blue:79/255.0 alpha:1.0f];
-            }
-            else if (i == 3){
-                label.textColor = [UIColor colorWithRed:255/255.0 green:217/255.0 blue:102/255.0 alpha:1.0f];
-            }
-            else{
-                label.textColor = [UIColor colorWithRed:246/255.0 green:178/255.0 blue:107/255.0 alpha:1.0f];
-            }
-             */
             NSLog(@"%@",desc);
             NSNumber *timestamp = [[results objectAtIndex:cellIndex] objectAtIndex:[self.dbManager.arrColumnNames indexOfObject:@"due_date"]];
             NSDate *date = [NSDate dateWithTimeIntervalSince1970:timestamp.doubleValue];
@@ -319,6 +303,15 @@ UILabel *noAssignmentsLabel;
         obj.date = labelDetail.text;
         NSData *colorData = [colorArray objectAtIndex:selectedIndexPath.section];
         obj.defaultColor = [NSKeyedUnarchiver unarchiveObjectWithData:colorData];
+        
+        
+        NSString *query = [NSString stringWithFormat:@"select * from assignmentData where description = '%@'", obj.description1];
+        NSMutableArray *returnArray=[[[NSArray alloc] initWithArray:[self.dbManager loadDataFromDB:query]] mutableCopy];
+        NSArray *arr = [returnArray objectAtIndex:0];
+        if ([arr objectAtIndex:4]) {
+            NSString *retreivedBase64ImgString = [arr objectAtIndex:4];
+            obj.imgData = [[NSData alloc] initWithBase64EncodedString:retreivedBase64ImgString options:kNilOptions];
+        }
     }
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.

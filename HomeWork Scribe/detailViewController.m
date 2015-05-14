@@ -112,7 +112,21 @@ UIColor *defaultcolor;
     dataClass *obj = [dataClass getInstance];
     duedateLabel.text = [NSString stringWithFormat:@"Due %@",obj.date];
     subjectLabel.text = obj.subject;
-    headerView.backgroundColor = defaultcolor;
+    if (obj.imgData) {
+        UIImageView *imageVuew = [[UIImageView alloc]initWithFrame:headerView.frame];
+        NSData *data = obj.imgData;
+        UIImage *image =[UIImage imageWithData:[NSData dataWithData:data]];
+        //UIImage
+        //image = [UIImage imageNamed:@"375X140Alt.png"];
+        //NSData *dataFromImage = UIImagePNGRepresentation(image);
+        //UIImage *imageFromData = [UIImage imageWithData:dataFromImage];
+        //[UIImage imageWithData:[NSData dataWithData:[arr objectAtIndex:4]]];
+        UIImageView *cellImage = (UIImageView *)[headerView.contentView viewWithTag:12345];
+        cellImage.image = image;
+    }
+    else{
+        headerView.backgroundColor = defaultcolor;
+    }
     if (section == 0) {
         if (headerView == nil){
             [NSException raise:@"headerView == nil.." format:@"No cells with matching CellIdentifier loaded from your storyboard"];
@@ -225,10 +239,10 @@ UIColor *defaultcolor;
         NSDate *dateFromString = [[NSDate alloc] init];
         // voila!
         dateFromString = [dateFormatter dateFromString:dateString];
-        int unix = [dateFromString timeIntervalSince1970];
+        int unix = (int)[dateFromString timeIntervalSince1970];
         UILocalNotification* localNotification = [[UILocalNotification alloc] init];
         localNotification.fireDate = [NSDate
-                                      dateWithTimeIntervalSinceNow:2];//86400
+                                      dateWithTimeIntervalSinceNow:unix];//86400
         localNotification.repeatInterval = 0;
         localNotification.alertBody = [NSString stringWithFormat:@"You have an assignment due for %@: %@",obj.subject,obj.description1];
         localNotification.alertAction = @"Show me the item";

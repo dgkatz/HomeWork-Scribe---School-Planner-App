@@ -13,5 +13,5 @@
 @interface AddViewController : XLFormViewController<UIAlertViewDelegate>
 @property(weak,nonatomic) IBOutlet UIBarButtonItem *barButton;
 @property (nonatomic, strong) DBManager *dbManager;
-
+extern NSString *const XLFormRowDescriptorTypeImage;
 @end

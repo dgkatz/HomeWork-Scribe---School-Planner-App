@@ -21,6 +21,8 @@
 @synthesize success;
 @synthesize note;
 @synthesize defaultColor;
+@synthesize  imgData;
+@synthesize assignmentImage;
 
 static dataClass *instance = nil;
 

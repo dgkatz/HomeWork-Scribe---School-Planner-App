@@ -10,11 +10,13 @@
 #import "allTableViewController.h"
 #import <XLFormTextView.h>
 #import <XLFormDescriptor.h>
+#import "XLFormImageSelectorCell.h"
 #import <XLFormRowDescriptor.h>
 #import <XLFormSectionDescriptor.h>
 #import <XLForm.h>
 #import "SWRevealViewController.h"
 #import "dataClass.h"
+#import "XLFormImageSelectorCell.h"
 @interface AddViewController ()
 
 @end
@@ -24,14 +26,15 @@ XLFormDescriptor * form;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    NSString *const XLFormRowDescriptorTypeImage = @"Test";
     self.navigationController.toolbar.hidden = YES;
-
+    [[XLFormViewController cellClassesForRowDescriptorTypes] setObject:[XLFormImageSelectorCell class] forKey:@"Test"];
 //    [self.navigationController.navigationBar setBackgroundImage:[UIImage new] forBarMetrics:UIBarMetricsDefault];
 //    self.navigationController.navigationBar.shadowImage = [UIImage new];
 //    self.navigationController.navigationBar.translucent = YES;
 //    self.tableView.backgroundColor = [UIColor colorWithRed:255/255.0 green:151/255.0 blue:0/255.0 alpha:1.0f];
     self.dbManager = [[DBManager alloc] initWithDatabaseFilename:@"homeworkdb.sql"];
-        [self.dbManager executeQuery:@"create table if not exists assignmentData(hwID integer primary key, description text, subject text, due_date integer)"];
+        [self.dbManager executeQuery:@"create table if not exists assignmentData(hwID integer primary key, description text, subject text, due_date integer, image blob)"];
     
     // Do any additional setup after loading the view.
     XLFormSectionDescriptor * section;
@@ -95,6 +98,10 @@ XLFormDescriptor * form;
 //    [row.cellConfig setObject:[UIColor whiteColor] forKey:@"textLabel.color"];
 //    [row.cellConfig setObject:[UIColor whiteColor] forKey:@"detailTextLabel.color"];
     [section addFormRow:row];
+    row = [XLFormRowDescriptor formRowDescriptorWithTag:@"image" rowType:XLFormRowDescriptorTypeImage title:@"  Image Note"];
+
+    [section addFormRow: row];
+    
     self.form = form;
     
 }
@@ -119,11 +126,17 @@ XLFormDescriptor * form;
     if ([segue.identifier isEqualToString:@"present"]) {
         dataClass *obj = [dataClass getInstance];
         NSDictionary * values=[form formValues];
+        NSLog(@"%@",[form formValues]);
         if ([[values objectForKey:@"Description"]displayText]!=nil) {
-            
             NSString *Subject = [[values objectForKey:@"SubjectPicker"] displayText];
             NSString *Description = [[values objectForKey:@"Description"] displayText];
             NSDate *date = [[values objectForKey:@"picker"]valueData];
+            UIImage *img = [values objectForKey:@"image"];
+            NSLog(@"the image : %@",img);
+            NSData *dataFromImg = UIImagePNGRepresentation(img);
+            NSString *base64ImgString = [dataFromImg base64EncodedStringWithOptions:kNilOptions];
+            UInt8 *rawData = [dataFromImg bytes];
+            NSLog(@"The data: %@",dataFromImg);
             NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
             [dateFormat setDateFormat:@"yyyy-MM-dd"];
             NSString *newDate = [dateFormat stringFromDate:date];
@@ -136,7 +149,7 @@ XLFormDescriptor * form;
             int d = [finalDate timeIntervalSince1970];
             NSLog(@"this is the date in add asignment%d",d);
             NSLog(@"subject: %@ description: %@ date: %@",Subject,Description,date);
-            NSString *query = [NSString stringWithFormat:@"insert into assignmentData values(null, '%@', '%@', %d)", Description, Subject, d];
+            NSString *query = [NSString stringWithFormat:@"insert into assignmentData values(null, '%@', '%@', %d ,'%@')", Description, Subject, d,base64ImgString];
             NSLog(@"query fot database ---> %@",query);
             
             // Execute the query.
