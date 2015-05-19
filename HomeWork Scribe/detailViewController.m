@@ -11,13 +11,25 @@
 #import "SWRevealViewController.h"
 #import "editAssignmentViewController.h"
 #import "SDiPhoneVersion.h"
+#import "detailImageViewController.h"
 @interface detailViewController ()
 
 @end
 NSArray *menu;
 UIColor *defaultcolor;
+UIImage *imag;
 @implementation detailViewController
 
+
+-(void)viewDidDisappear:(BOOL)animated{
+    [self.navigationController.navigationBar setBackgroundImage:nil
+                                                  forBarMetrics:UIBarMetricsDefault];
+}
+
+-(void)viewWillDisappear:(BOOL)animated{
+    [self.navigationController.navigationBar setBackgroundImage:nil
+                                                  forBarMetrics:UIBarMetricsDefault];
+}
 - (IBAction)assignmentCompleted:(id)sender {
     dataClass *obj = [dataClass getInstance];
     NSString *deleteQuery= [NSString stringWithFormat: @"DELETE FROM assignmentData WHERE description='%@'",obj.description1];
@@ -28,6 +40,10 @@ UIColor *defaultcolor;
     [self presentViewController:purchaseContr animated:YES completion:nil];
 }
 -(void)viewWillAppear:(BOOL)animated{
+    [self.navigationController.navigationBar setBackgroundImage:[UIImage new] forBarMetrics:UIBarMetricsDefault];
+    self.navigationController.navigationBar.shadowImage = [UIImage new];
+    self.navigationController.navigationBar.translucent = YES;
+    self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
     dataClass *obj = [dataClass getInstance];
     defaultcolor = obj.defaultColor;
     NSLog(@"default color = %@",defaultcolor);
@@ -48,6 +64,10 @@ UIColor *defaultcolor;
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self.navigationController.navigationBar setBackgroundImage:[UIImage new] forBarMetrics:UIBarMetricsDefault];
+    self.navigationController.navigationBar.shadowImage = [UIImage new];
+    self.navigationController.navigationBar.translucent = YES;
+    self.assignmentTableView.frame = self.navigationController.view.frame;
     self.navigationController.toolbar.hidden = YES;
     dataClass *obj = [dataClass getInstance];
     UIBarButtonItem *backButton = [[UIBarButtonItem alloc]
@@ -98,11 +118,7 @@ UIColor *defaultcolor;
 {
     static NSString *CellIdentifier = @"header";
     UITableViewCell *headerView = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-    UILabel *duedateLabel = (UILabel *)[headerView.contentView viewWithTag:20];
-    duedateLabel.adjustsFontSizeToFitWidth = YES;
-    UILabel *subjectLabel = (UILabel *)[headerView.contentView viewWithTag:19];
-    subjectLabel.adjustsFontSizeToFitWidth = YES;
-    if ([SDiPhoneVersion deviceSize] == iPhone47inch) {
+        if ([SDiPhoneVersion deviceSize] == iPhone47inch) {
         //[duedateLabel setFont:[UIFont fontWithName:@"System-Light" size:27.0f]];
         //[subjectLabel setFont:[UIFont fontWithName:@"System-Light" size:64.0f]];
         //duedateLabel.font = [UIFont fontWithName:@"System-Light" size:27.0f];
@@ -110,22 +126,35 @@ UIColor *defaultcolor;
     }
 
     dataClass *obj = [dataClass getInstance];
-    duedateLabel.text = [NSString stringWithFormat:@"Due %@",obj.date];
-    subjectLabel.text = obj.subject;
+    UIImageView *cellImage = (UIImageView *)[headerView.contentView viewWithTag:12345];
     if (obj.imgData) {
-        UIImageView *imageVuew = [[UIImageView alloc]initWithFrame:headerView.frame];
         NSData *data = obj.imgData;
-        UIImage *image =[UIImage imageWithData:[NSData dataWithData:data]];
+        UIImage *image =[UIImage imageWithData: data];
+        imag = image;
         //UIImage
         //image = [UIImage imageNamed:@"375X140Alt.png"];
         //NSData *dataFromImage = UIImagePNGRepresentation(image);
         //UIImage *imageFromData = [UIImage imageWithData:dataFromImage];
         //[UIImage imageWithData:[NSData dataWithData:[arr objectAtIndex:4]]];
-        UIImageView *cellImage = (UIImageView *)[headerView.contentView viewWithTag:12345];
         cellImage.image = image;
+        UILabel *duedateLabel = (UILabel *)[headerView viewWithTag:20];
+        duedateLabel.adjustsFontSizeToFitWidth = YES;
+        UILabel *subjectLabel = (UILabel *)[headerView viewWithTag:19];
+        subjectLabel.adjustsFontSizeToFitWidth = YES;
+        UIButton *imageSelect = (UIButton *)[headerView viewWithTag:1000000];
+        [imageSelect addTarget:self action:@selector(expandImage) forControlEvents:UIControlEventTouchUpInside];
+        duedateLabel.text = [NSString stringWithFormat:@"Due %@",obj.date];
+        subjectLabel.text = obj.subject;
+
     }
     else{
         headerView.backgroundColor = defaultcolor;
+        UILabel *duedateLabel = (UILabel *)[headerView viewWithTag:20];
+        duedateLabel.adjustsFontSizeToFitWidth = YES;
+        UILabel *subjectLabel = (UILabel *)[headerView viewWithTag:19];
+        subjectLabel.adjustsFontSizeToFitWidth = YES;
+        duedateLabel.text = [NSString stringWithFormat:@"Due %@",obj.date];
+        subjectLabel.text = @"TEST";
     }
     if (section == 0) {
         if (headerView == nil){
@@ -138,6 +167,13 @@ UIColor *defaultcolor;
     }
     
     return headerView;
+}
+
+-(void)expandImage{
+    dataClass *obj = [dataClass getInstance];
+    obj.chosenAssignmentImage = imag;
+   detailImageViewController *purchaseContr = (detailImageViewController *)[self.storyboard instantiateViewControllerWithIdentifier:@"imagedetail"];
+    [self.navigationController pushViewController:purchaseContr animated:YES];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {

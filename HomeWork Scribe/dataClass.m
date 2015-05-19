@@ -14,6 +14,7 @@
 @synthesize assignmentData_Description;
 @synthesize description1;
 @synthesize subject;
+@synthesize ID;
 @synthesize date;
 @synthesize description1Edit;
 @synthesize subjectEdit;
@@ -23,6 +24,7 @@
 @synthesize defaultColor;
 @synthesize  imgData;
 @synthesize assignmentImage;
+@synthesize chosenAssignmentImage;
 
 static dataClass *instance = nil;
 

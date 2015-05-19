@@ -34,7 +34,7 @@ XLFormDescriptor * form;
 //    self.navigationController.navigationBar.translucent = YES;
 //    self.tableView.backgroundColor = [UIColor colorWithRed:255/255.0 green:151/255.0 blue:0/255.0 alpha:1.0f];
     self.dbManager = [[DBManager alloc] initWithDatabaseFilename:@"homeworkdb.sql"];
-        [self.dbManager executeQuery:@"create table if not exists assignmentData(hwID integer primary key, description text, subject text, due_date integer, image blob)"];
+        [self.dbManager executeQuery:@"create table if not exists assignmentData(hwID integer primary key, description text, subject text, due_date integer, image text)"];
     
     // Do any additional setup after loading the view.
     XLFormSectionDescriptor * section;
@@ -131,12 +131,28 @@ XLFormDescriptor * form;
             NSString *Subject = [[values objectForKey:@"SubjectPicker"] displayText];
             NSString *Description = [[values objectForKey:@"Description"] displayText];
             NSDate *date = [[values objectForKey:@"picker"]valueData];
-            UIImage *img = [values objectForKey:@"image"];
+            //UIImage *img = [[values objectForKey:@"image"]valueData];
+            UIImage *img=[form formRowWithTag:@"image"].value;
+            NSLog(@"The value of valuedata = %@",img);
+            if ([values objectForKey:@"image"] == NULL) {
+                NSLog(@"Error: No image selected");
+            }
+            //else{
+                //img = [values objectForKey:@"image"];
+             //   img = [UIImage imageWithCGImage:(__bridge CGImageRef)([values objectForKey:@"image"])];
+            //}
+            NSString *base64ImgString;
+            if (img) {
+                NSData *dataFromImg = UIImagePNGRepresentation(img);
+                base64ImgString = [dataFromImg base64EncodedStringWithOptions:kNilOptions];
+            }
+            else{
+                NSLog(@"base 64 string is null");
+                base64ImgString = NULL;
+            }
             NSLog(@"the image : %@",img);
-            NSData *dataFromImg = UIImagePNGRepresentation(img);
-            NSString *base64ImgString = [dataFromImg base64EncodedStringWithOptions:kNilOptions];
-            UInt8 *rawData = [dataFromImg bytes];
-            NSLog(@"The data: %@",dataFromImg);
+            
+            //UInt8 *rawData = [dataFromImg bytes];
             NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
             [dateFormat setDateFormat:@"yyyy-MM-dd"];
             NSString *newDate = [dateFormat stringFromDate:date];

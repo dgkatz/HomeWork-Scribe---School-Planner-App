@@ -89,8 +89,18 @@ UILabel *noAssignmentsLabel;
     
 }
 
+-(void)viewDidAppear:(BOOL)animated{
+    self.revealViewController.delegate = self;
+    [self.tableView reloadData];
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self.navigationController.navigationBar setBackgroundImage:nil forBarMetrics:UIBarMetricsDefault];
+    self.navigationController.navigationBar.barStyle = UIBarStyleDefault;
+    self.navigationController.navigationBar.barTintColor = [UIColor colorWithRed:255/255.0 green:151/255.0 blue:0/255.0 alpha:1.0f];
+    self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
+    self.navigationController.navigationBar.translucent = NO;
     noAssignmentsLabel = [[UILabel alloc]initWithFrame:CGRectMake(self.tableView.frame.size.width/2 - 150, self.tableView.frame.size.height/2 - 100, 300, 60)];
     noAssignmentsLabel.text = @"You currently have no assignments, click the + button to add one";
     noAssignmentsLabel.textAlignment = NSTextAlignmentCenter;
@@ -132,15 +142,9 @@ UILabel *noAssignmentsLabel;
     }
 }
 
--(void)viewDidAppear:(BOOL)animated{
-    self.revealViewController.delegate = self;
-    [self.tableView reloadData];
-}
-
 -(NSMutableArray*) selectFromDb:(NSString *) subject{
     NSString *query = [NSString stringWithFormat:@"select * from assignmentData where subject = '%@'", subject];
     NSMutableArray *returnArray=[[[NSArray alloc] initWithArray:[self.dbManager loadDataFromDB:query]] mutableCopy];
-    NSLog(@"Array retreived");
     return returnArray;
 }
 
@@ -190,6 +194,10 @@ UILabel *noAssignmentsLabel;
             NSString *subject=[subjects objectAtIndex:i];
             results=[self selectFromDb:subject];
             NSString *desc = [[results objectAtIndex:cellIndex] objectAtIndex:[self.dbManager.arrColumnNames indexOfObject:@"description"]];
+            NSNumber *Id=[[results objectAtIndex:cellIndex] objectAtIndex:[self.dbManager.arrColumnNames indexOfObject:@"hwID"]];
+            UILabel *IdLabel = (UILabel *)[cell.contentView viewWithTag:999];
+            IdLabel.text= [NSString stringWithFormat:@"%@",Id];
+            IdLabel.textColor = [UIColor clearColor];
             UILabel *label = (UILabel *)[cell.contentView viewWithTag:10];
             label.text=desc;
             NSArray *colors =[[NSUserDefaults standardUserDefaults] objectForKey:@"usersColors"];
@@ -209,7 +217,6 @@ UILabel *noAssignmentsLabel;
         }
 
     }
-    NSLog(@"Cell Created");
     return cell;
 }
 
@@ -247,7 +254,6 @@ UILabel *noAssignmentsLabel;
     UITableViewCell *cell = [self.tableView cellForRowAtIndexPath:indexPath];
     UILabel *label = (UILabel *)[cell.contentView viewWithTag:10];
     NSString *deleteQuery= [NSString stringWithFormat: @"DELETE FROM assignmentData WHERE description='%@'",label.text];
-    NSLog(@"%@",deleteQuery);
     [self.dbManager executeQuery:deleteQuery];
     
     // Delete row using the cool literal version of [NSArray arrayWithObject:indexPath]
@@ -298,17 +304,20 @@ UILabel *noAssignmentsLabel;
         NSArray *colorArray = [[NSUserDefaults standardUserDefaults]objectForKey:@"usersColors"];
         UILabel *label = (UILabel *)[cell.contentView viewWithTag:10];
         UILabel *labelDetail = (UILabel *)[cell.contentView viewWithTag:11];
+        UILabel *IdLabel=(UILabel *)[cell.contentView viewWithTag:999];
         obj.description1 = label.text;
         obj.subject = [self tableView:self.tableView titleForHeaderInSection:selectedIndexPath.section];
+        NSLog(@"the subject chosen is %@",obj.subject);
         obj.date = labelDetail.text;
         NSData *colorData = [colorArray objectAtIndex:selectedIndexPath.section];
         obj.defaultColor = [NSKeyedUnarchiver unarchiveObjectWithData:colorData];
+        obj.ID=IdLabel.text;
         
-        
-        NSString *query = [NSString stringWithFormat:@"select * from assignmentData where description = '%@'", obj.description1];
+        NSString *query = [NSString stringWithFormat:@"select * from assignmentData where hwID = '%@'", obj.ID];
+        NSLog(@"ID query is: %@", query);
         NSMutableArray *returnArray=[[[NSArray alloc] initWithArray:[self.dbManager loadDataFromDB:query]] mutableCopy];
         NSArray *arr = [returnArray objectAtIndex:0];
-        if ([arr objectAtIndex:4]) {
+        if (arr.count>4) {
             NSString *retreivedBase64ImgString = [arr objectAtIndex:4];
             obj.imgData = [[NSData alloc] initWithBase64EncodedString:retreivedBase64ImgString options:kNilOptions];
         }

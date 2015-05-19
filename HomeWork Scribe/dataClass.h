@@ -19,10 +19,12 @@
     NSString *dateEdit;
     NSString *subjectEdit;
     NSString *note;
+    NSString *ID;
     NSData *imgData;
     BOOL success;
     UIColor *defaultColor;
     UIImage *assignmentImage;
+    UIImage *chosenAssignmentImage;
 
 }
 @property(nonatomic,retain)NSMutableArray *assignmentData_Subject;
@@ -30,12 +32,14 @@
 @property(nonatomic,retain)NSMutableArray *assignmentData_Description;
 @property(strong)NSString *description1;
 @property(strong)NSData *imgData;
+@property(strong)NSString *ID;
 @property(strong)NSString *date;
 @property(strong)NSString *subject;
 @property(strong)NSString *description1Edit;
 @property(strong)NSString *dateEdit;
 @property(strong)NSString *subjectEdit;
 @property(strong)UIImage *assignmentImage;
+@property(strong)UIImage *chosenAssignmentImage;
 @property(strong)NSString *note;;
 @property(strong)UIColor *defaultColor;
 @property BOOL success;
