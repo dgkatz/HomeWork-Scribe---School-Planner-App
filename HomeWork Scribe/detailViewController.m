@@ -12,6 +12,9 @@
 #import "editAssignmentViewController.h"
 #import "SDiPhoneVersion.h"
 #import "detailImageViewController.h"
+#import "GAI.h"
+#import "GAIDictionaryBuilder.h"
+#import "GAIFields.h"
 @interface detailViewController ()
 
 @end
@@ -40,6 +43,11 @@ UIImage *imag;
     [self presentViewController:purchaseContr animated:YES completion:nil];
 }
 -(void)viewWillAppear:(BOOL)animated{
+    id tracker = [[GAI sharedInstance] defaultTracker];
+    [tracker set:kGAIScreenName
+           value:@"Detail Screen"];
+    [tracker send:[[GAIDictionaryBuilder createScreenView] build]];
+    
     [self.navigationController.navigationBar setBackgroundImage:[UIImage new] forBarMetrics:UIBarMetricsDefault];
     self.navigationController.navigationBar.shadowImage = [UIImage new];
     self.navigationController.navigationBar.translucent = YES;

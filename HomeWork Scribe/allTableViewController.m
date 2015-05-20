@@ -12,6 +12,9 @@
 #import "AddViewController.h"
 #import "detailViewController.h"
 #import "CWStatusBarNotification.h"
+#import "GAI.h"
+#import "GAIFields.h"
+#import "GAIDictionaryBuilder.h"
 @interface allTableViewController ()
 @property (nonatomic, strong) JFMinimalNotification* minimalNotification;
 @property (strong,nonatomic) detailViewController *expander;
@@ -90,6 +93,12 @@ UILabel *noAssignmentsLabel;
 }
 
 -(void)viewDidAppear:(BOOL)animated{
+    id tracker = [[GAI sharedInstance] defaultTracker];
+    [tracker set:kGAIScreenName
+           value:@"My Assignments Screen"];
+    [tracker send:[[GAIDictionaryBuilder createScreenView] build]];
+    
+    
     self.revealViewController.delegate = self;
     [self.tableView reloadData];
 }
