@@ -13,6 +13,7 @@
     @property(retain) NSString *description;
     @property NSNumber *due_date;
     @property NSString *subject;
+    @property NSNumber *ID;
     @property UIImage *img;
 
 +(NSArray *)getSortedList:(NSArray *) array;

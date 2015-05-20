@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "DBManager.h"
-@interface settingsTableViewController : UITableViewController<UIAlertViewDelegate>
+#import <MessageUI/MessageUI.h>
+@interface settingsTableViewController : UITableViewController<UIAlertViewDelegate, MFMailComposeViewControllerDelegate>
 @property (nonatomic, strong) DBManager *dbManager;
 @end

@@ -217,15 +217,30 @@ PDTSimpleCalendarViewController *calendarViewController;
     NSArray *ar = [assignmentsForDay objectAtIndex:cellIndex];
     NSString *subject = [ar objectAtIndex:2];
     NSString *desc= [ar objectAtIndex:1];
-
-
+    NSNumber *theID = [ar objectAtIndex:0];
+    NSLog(@"The ID at cell is %@",theID);
+    NSString *idstr = [NSString stringWithFormat:@"%@",theID];
     cell.textLabel.text = subject;
-    cell.detailTextLabel.text = desc;
-    int index = [subjects indexOfObject:subject];
+    cell.detailTextLabel.text = [NSString stringWithFormat:@"%@-%@",desc,idstr];
+    NSMutableAttributedString *text =
+    [[NSMutableAttributedString alloc]
+     initWithString:cell.detailTextLabel.text];
+
+    [text addAttribute:NSForegroundColorAttributeName
+                 value:[UIColor clearColor]
+                 range:NSMakeRange([desc length], [idstr length] + 1)];
+    [cell.detailTextLabel setAttributedText: text];
+    NSLog(@"cell text is %@",cell.detailTextLabel.text);
+    int index = (int)[subjects indexOfObject:subject];
     NSArray *colors =[[NSUserDefaults standardUserDefaults] objectForKey:@"usersColors"];
     NSData *colorData = [colors objectAtIndex:index];
     UIColor *color = [NSKeyedUnarchiver unarchiveObjectWithData:colorData];
     cell.textLabel.textColor = color;
+    cell.tag = (int)theID;
+    
+//    UILabel *IdLabel = (UILabel *)[cell.contentView viewWithTag:999];
+//    IdLabel.text= [NSString stringWithFormat:@"%@",Id];
+//    IdLabel.textColor = [UIColor clearColor];
     /*
     if ([subject isEqualToString:@"Math"]) {
         cell.textLabel.textColor = [UIColor colorWithRed:224/255.0 green:102/255.0 blue:102/255.0 alpha:1.0f];
@@ -327,10 +342,24 @@ PDTSimpleCalendarViewController *calendarViewController;
     if ([segue.identifier isEqualToString:@"thesegue"]) {
         dataClass *obj = [dataClass getInstance];
         NSIndexPath *selectedIndexPath = [self.tableView indexPathForSelectedRow];
-        UITableViewCell *cell = [self.tableView cellForRowAtIndexPath:selectedIndexPath];
+        UITableViewCell *cell = (UITableViewCell*)sender;
+        NSArray* foo = [cell.detailTextLabel.text componentsSeparatedByString: @"-"];
+        NSString* theID = [foo objectAtIndex: 1];
+        obj.ID = theID;
         obj.description1 = cell.detailTextLabel.text;
         obj.subject = cell.textLabel.text;
         obj.date = newDate;
+        obj.defaultColor = cell.textLabel.textColor;
+        
+        NSString *query = [NSString stringWithFormat:@"select * from assignmentData where hwID = '%@'", obj.ID];
+
+        NSMutableArray *returnArray=[[[NSArray alloc] initWithArray:[self.dbManager loadDataFromDB:query]] mutableCopy];
+        NSArray *arr = [returnArray objectAtIndex:0];
+        if (arr.count>4) {
+            NSString *retreivedBase64ImgString = [arr objectAtIndex:4];
+            obj.imgData = [[NSData alloc] initWithBase64EncodedString:retreivedBase64ImgString options:kNilOptions];
+        }
+
     }
 
 }

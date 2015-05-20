@@ -126,6 +126,7 @@ UIImage *imag;
 {
     static NSString *CellIdentifier = @"header";
     UITableViewCell *headerView = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    headerView.backgroundColor = defaultcolor;
         if ([SDiPhoneVersion deviceSize] == iPhone47inch) {
         //[duedateLabel setFont:[UIFont fontWithName:@"System-Light" size:27.0f]];
         //[subjectLabel setFont:[UIFont fontWithName:@"System-Light" size:64.0f]];
@@ -145,6 +146,7 @@ UIImage *imag;
         //UIImage *imageFromData = [UIImage imageWithData:dataFromImage];
         //[UIImage imageWithData:[NSData dataWithData:[arr objectAtIndex:4]]];
         cellImage.image = image;
+        cellImage.alpha = .7;
         UILabel *duedateLabel = (UILabel *)[headerView viewWithTag:20];
         duedateLabel.adjustsFontSizeToFitWidth = YES;
         UILabel *subjectLabel = (UILabel *)[headerView viewWithTag:19];
@@ -162,7 +164,7 @@ UIImage *imag;
         UILabel *subjectLabel = (UILabel *)[headerView viewWithTag:19];
         subjectLabel.adjustsFontSizeToFitWidth = YES;
         duedateLabel.text = [NSString stringWithFormat:@"Due %@",obj.date];
-        subjectLabel.text = @"TEST";
+        subjectLabel.text = obj.subject;
     }
     if (section == 0) {
         if (headerView == nil){
@@ -190,7 +192,9 @@ UIImage *imag;
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier forIndexPath:indexPath];
     if (indexPath.row == 0) {
         UILabel *label = (UILabel *)[cell.contentView viewWithTag:1];
-        label.text = obj.description1;
+        NSArray* foo = [obj.description1 componentsSeparatedByString: @"-"];
+        NSString* theID = [foo objectAtIndex: 0];
+        label.text = theID;
         label.textColor = defaultcolor;
         
     }

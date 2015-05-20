@@ -278,7 +278,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JDF-lP-TPJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-49" y="72"/>
+            <point key="canvasLocation" x="-55" y="66"/>
         </scene>
         <!--Calander-->
         <scene sceneID="8Xn-SO-h93">
@@ -850,7 +850,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eZe-dK-XGc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="404" y="1384"/>
+            <point key="canvasLocation" x="411" y="1374"/>
         </scene>
         <!--Settings-->
         <scene sceneID="629-GZ-gNZ">
@@ -907,6 +907,47 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="fourth" id="YNj-OU-FG6">
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="YNj-OU-FG6" id="wn6-58-1Lt">
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="email.png" translatesAutoresizingMaskIntoConstraints="NO" id="OOg-PE-JCs">
+                                            <rect key="frame" x="293" y="12" width="18" height="18"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" secondItem="OOg-PE-JCs" secondAttribute="height" multiplier="1:1" id="3Ma-9p-TC3"/>
+                                                <constraint firstAttribute="width" secondItem="OOg-PE-JCs" secondAttribute="height" multiplier="1:1" id="PBY-3y-0lq"/>
+                                            </constraints>
+                                            <variation key="default">
+                                                <mask key="constraints">
+                                                    <exclude reference="3Ma-9p-TC3"/>
+                                                </mask>
+                                            </variation>
+                                        </imageView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Give us feedback" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iJo-ch-sk5">
+                                            <rect key="frame" x="16" y="4" width="251" height="35"/>
+                                            <fontDescription key="fontDescription" type="system" weight="light" pointSize="16"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstAttribute="trailing" secondItem="OOg-PE-JCs" secondAttribute="trailing" constant="8" id="2yd-QK-5D1"/>
+                                        <constraint firstAttribute="bottom" secondItem="OOg-PE-JCs" secondAttribute="bottom" constant="12" id="51m-B7-0Ny"/>
+                                        <constraint firstAttribute="centerY" secondItem="OOg-PE-JCs" secondAttribute="centerY" id="FQO-on-BxV"/>
+                                        <constraint firstItem="iJo-ch-sk5" firstAttribute="top" secondItem="wn6-58-1Lt" secondAttribute="top" constant="4" id="HJy-tL-VNs"/>
+                                        <constraint firstItem="OOg-PE-JCs" firstAttribute="top" secondItem="wn6-58-1Lt" secondAttribute="top" constant="12" id="Pt1-kU-UwF"/>
+                                        <constraint firstItem="iJo-ch-sk5" firstAttribute="leading" secondItem="wn6-58-1Lt" secondAttribute="leading" constant="16" id="qJn-yG-obE"/>
+                                        <constraint firstAttribute="bottom" secondItem="iJo-ch-sk5" secondAttribute="bottom" constant="4" id="wku-Bx-Cbu"/>
+                                    </constraints>
+                                    <variation key="default">
+                                        <mask key="constraints">
+                                            <exclude reference="51m-B7-0Ny"/>
+                                            <exclude reference="Pt1-kU-UwF"/>
+                                        </mask>
+                                    </variation>
                                 </tableViewCellContentView>
                             </tableViewCell>
                         </prototypes>
@@ -1020,7 +1061,7 @@
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="http://homeworkscribe.com" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="nEE-tZ-gqe">
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="http://strattonapps.com" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="nEE-tZ-gqe">
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                             <color key="textColor" red="0.55686274509803924" green="0.55686274509803924" blue="0.57647058823529407" alpha="1" colorSpace="calibratedRGB"/>
@@ -1402,6 +1443,7 @@
         <image name="back.png" width="29" height="29"/>
         <image name="calender.png" width="29" height="29"/>
         <image name="clock.png" width="29" height="29"/>
+        <image name="email.png" width="18" height="18"/>
         <image name="list.png" width="29" height="29"/>
         <image name="menu.png" width="29" height="29"/>
         <image name="pencil.png" width="29" height="29"/>
@@ -1411,7 +1453,7 @@
     <inferredMetricsTieBreakers>
         <segue reference="bIA-bq-GQp"/>
         <segue reference="ePc-1L-54Y"/>
-        <segue reference="p4B-iT-7tG"/>
         <segue reference="ufz-qF-Xne"/>
+        <segue reference="2dd-y7-MpQ"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -8,6 +8,7 @@
 
 #import "settingsTableViewController.h"
 #import "allTableViewController.h"
+#import "SDiPhoneVersion.h"
 @interface settingsTableViewController ()
 
 @end
@@ -17,7 +18,7 @@ NSArray *menu;
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.dbManager = [[DBManager alloc] initWithDatabaseFilename:@"homeworkdb.sql"];
-    menu = @[@"first",@"second",@"third"];
+    menu = @[@"first",@"second",@"third",@"fourth"];
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
     
@@ -34,7 +35,7 @@ NSArray *menu;
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     // Return the number of sections.
-    return 2;
+    return 3;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -46,6 +47,9 @@ NSArray *menu;
     else if (section == 1){
         romNum = 1;
     }
+    else{
+        romNum = 1;
+    }
     return romNum;
 }
 
@@ -54,8 +58,11 @@ NSArray *menu;
     if (indexPath.section == 0) {
         cellIdentifier = [menu objectAtIndex:indexPath.row];
     }
-    else{
+    else if (indexPath.section == 1){
         cellIdentifier = @"third";
+    }
+    else{
+        cellIdentifier = @"fourth";
     }
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier forIndexPath:indexPath];
     
@@ -68,7 +75,46 @@ NSArray *menu;
         [deleteAlert dismissWithClickedButtonIndex:1 animated:YES];
         [deleteAlert show];
     }
+    else if (indexPath.section == 2){
+        NSString *device = [SDiPhoneVersion deviceName];
+        NSString *df = [[UIDevice currentDevice] systemVersion];
+        NSString *emailTitle = @"HomeWork Scribe Feedback";
+        NSString *messageBody = [NSString stringWithFormat:@"\n\n\n\n\n----------------------------\nDevice Details:\n Platform: %@\n%@\nApp Version: 1.32",df,device];
+        NSArray *toRecipents = [NSArray arrayWithObject:@"info@strattonapps.com"];
+        
+        MFMailComposeViewController *mc = [[MFMailComposeViewController alloc] init];
+        mc.mailComposeDelegate = self;
+        [mc setSubject:emailTitle];
+        [mc setMessageBody:messageBody isHTML:NO];
+        [mc setToRecipients:toRecipents];
+        
+        // Present mail view controller on screen
+        mc.navigationBar.tintColor = [UIColor whiteColor];
+        
+        [self presentViewController:mc animated:YES completion:NULL];
+    }
 }
+
+
+- (void) mailComposeController:(MFMailComposeViewController *)controller didFinishWithResult:(MFMailComposeResult)result error:(NSError *)error
+{
+    
+    if (result == MFMailComposeResultCancelled) {
+        
+    }
+    else if (result == MFMailComposeResultSaved){
+        
+    }
+    else if (result == MFMailComposeResultSent){
+        
+    }
+    else{
+        
+    }
+    // Close the Mail Interface
+    [self dismissViewControllerAnimated:YES completion:NULL];
+}
+
 
 -(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
     if (buttonIndex == 1) {
@@ -85,7 +131,6 @@ NSArray *menu;
     NSMutableArray *vcs =  [NSMutableArray arrayWithArray:self.navigationController.viewControllers];
     [vcs insertObject:VC atIndex:[vcs count]-1];
     [self.navigationController setViewControllers:vcs animated:NO];
-    [self.navigationController popViewControllerAnimated:YES];
     /*
      CATransition *animation = [CATransition animation];
      [[self navigationController] pushViewController:VC animated:NO];

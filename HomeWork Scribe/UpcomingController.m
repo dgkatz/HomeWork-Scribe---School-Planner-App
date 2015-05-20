@@ -52,6 +52,7 @@ NSString *setting;
         assignment.due_date=[[upAssignments objectAtIndex:i] objectAtIndex:[self.dbManager.arrColumnNames indexOfObject:@"due_date"]];
         assignment.subject=[[upAssignments objectAtIndex:i] objectAtIndex:[self.dbManager.arrColumnNames indexOfObject:@"subject"]];
         assignment.description=[[upAssignments objectAtIndex:i] objectAtIndex:[self.dbManager.arrColumnNames indexOfObject:@"description"]];
+        assignment.ID=[[upAssignments objectAtIndex:i] objectAtIndex:[self.dbManager.arrColumnNames indexOfObject:@"hwID"]];
         [assignments addObject:assignment];
     }
     sortedArray=[[NSArray alloc]initWithArray:[Assignment getSortedList:assignments]];
@@ -100,16 +101,30 @@ NSString *setting;
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"reuseIdentifier" forIndexPath:indexPath];
     int index= (int)indexPath.row;
+    NSString *theID;
+    NSString *theDesc;
     if (indexPath.row < [sortedArray count]) {
         Assignment *as=[sortedArray objectAtIndex:index];
         cell.textLabel.text=as.subject;
         cell.detailTextLabel.text=as.description;
+        theDesc = as.description;
+        theID = [NSString stringWithFormat:@"%@",as.ID];
+        
     }
-    int indexNum = [subjects indexOfObject:cell.textLabel.text];
+    int indexNum = (int)[subjects indexOfObject:cell.textLabel.text];
     NSArray *colors =[[NSUserDefaults standardUserDefaults] objectForKey:@"usersColors"];
     NSData *colorData = [colors objectAtIndex:indexNum];
     UIColor *color = [NSKeyedUnarchiver unarchiveObjectWithData:colorData];
     cell.textLabel.textColor = color;
+    
+    cell.detailTextLabel.text = [NSString stringWithFormat:@"%@-%@",cell.detailTextLabel.text,theID];
+    NSMutableAttributedString *text =
+    [[NSMutableAttributedString alloc]
+     initWithString:cell.detailTextLabel.text];
+    [text addAttribute:NSForegroundColorAttributeName
+                 value:[UIColor clearColor]
+                 range:NSMakeRange([theDesc length], [theID length] + 1)];
+    [cell.detailTextLabel setAttributedText: text];
     return cell;
 }
 - (IBAction)organize:(id)sender {
@@ -216,7 +231,22 @@ NSString *setting;
         obj.description1 = cell.detailTextLabel.text;
         obj.subject = cell.textLabel.text;
         obj.date = theDate;
-        int indexNum = [subjects indexOfObject:cell.textLabel.text];
+        NSArray* foo = [cell.detailTextLabel.text componentsSeparatedByString: @"-"];
+        NSString* theIDstring = [foo objectAtIndex: 1];
+        obj.ID = theIDstring;
+        
+        NSString *query = [NSString stringWithFormat:@"select * from assignmentData where hwID = '%@'", obj.ID];
+        
+        NSMutableArray *returnArray=[[[NSArray alloc] initWithArray:[self.dbManager loadDataFromDB:query]] mutableCopy];
+        NSArray *arr = [returnArray objectAtIndex:0];
+        if (arr.count>4) {
+            NSString *retreivedBase64ImgString = [arr objectAtIndex:4];
+            obj.imgData = [[NSData alloc] initWithBase64EncodedString:retreivedBase64ImgString options:kNilOptions];
+        }
+
+        
+        
+        int indexNum = (int)[subjects indexOfObject:cell.textLabel.text];
         NSData *colorData = [colorArray objectAtIndex:indexNum];
         obj.defaultColor = [NSKeyedUnarchiver unarchiveObjectWithData:colorData];
     }
