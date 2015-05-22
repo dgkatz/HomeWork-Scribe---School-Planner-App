@@ -18,7 +18,7 @@ NSArray *menu;
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.dbManager = [[DBManager alloc] initWithDatabaseFilename:@"homeworkdb.sql"];
-    menu = @[@"first",@"second",@"third",@"fourth"];
+    menu = @[@"first",@"second",@"third",@"fifth",@"fourth"];
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
     
@@ -48,7 +48,7 @@ NSArray *menu;
         romNum = 1;
     }
     else{
-        romNum = 1;
+        romNum = 2;
     }
     return romNum;
 }
@@ -62,7 +62,12 @@ NSArray *menu;
         cellIdentifier = @"third";
     }
     else{
-        cellIdentifier = @"fourth";
+        if (indexPath.row == 0) {
+            cellIdentifier = @"fifth";
+        }
+        else{
+            cellIdentifier = @"fourth";
+        }
     }
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier forIndexPath:indexPath];
     
@@ -76,6 +81,7 @@ NSArray *menu;
         [deleteAlert show];
     }
     else if (indexPath.section == 2){
+        if (indexPath.row == 1) {
         NSString *device = [SDiPhoneVersion deviceName];
         NSString *df = [[UIDevice currentDevice] systemVersion];
         NSString *emailTitle = @"HomeWork Scribe Feedback";
@@ -92,6 +98,23 @@ NSArray *menu;
         mc.navigationBar.tintColor = [UIColor whiteColor];
         
         [self presentViewController:mc animated:YES completion:NULL];
+        }
+        else{
+            NSString *emailTitle = @"HomeWork Scribe Feedback";
+            NSString *messageBody = [NSString stringWithFormat:@"\n\n\nI thought you might enjoy the HomeWork Scribe App. Check it out at:<br/><br/><a href='https://itunes.apple.com/us/app/homework-scribe/id989963468?ls=1&mt=8'>HomeWork Scribe</a><br/><br/> HomeWork Scribe makes it easy to add, and keep track of homework assignments. All you have to do is add the assignment and your done."];
+            NSArray *toRecipents = [NSArray arrayWithObject:@""];
+            MFMailComposeViewController *mc = [[MFMailComposeViewController alloc] init];
+            mc.mailComposeDelegate = self;
+            [mc setSubject:emailTitle];
+            [mc setMessageBody:messageBody isHTML:NO];
+            [mc setToRecipients:toRecipents];
+            
+            // Present mail view controller on screen
+            mc.navigationBar.tintColor = [UIColor whiteColor];
+            
+            [self presentViewController:mc animated:YES completion:NULL];
+
+        }
     }
 }
 
@@ -131,6 +154,7 @@ NSArray *menu;
     NSMutableArray *vcs =  [NSMutableArray arrayWithArray:self.navigationController.viewControllers];
     [vcs insertObject:VC atIndex:[vcs count]-1];
     [self.navigationController setViewControllers:vcs animated:NO];
+    [self.navigationController popViewControllerAnimated:YES];
     /*
      CATransition *animation = [CATransition animation];
      [[self navigationController] pushViewController:VC animated:NO];

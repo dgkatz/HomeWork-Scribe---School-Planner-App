@@ -12,6 +12,9 @@
 #import "dataClass.h"
 #import "allTableViewController.h"
 #import "KxMenu.h"
+#import "GAIFields.h"
+#import "GAI.h"
+#import "GAIDictionaryBuilder.h"
 @interface UpcomingController ()
 
 @end
@@ -22,6 +25,12 @@ NSArray *sortedArray;
 NSArray *subjects;
 NSString *setting;
 @implementation UpcomingController
+
+-(void)viewDidAppear:(BOOL)animated{
+    id tracker = [[GAI sharedInstance] defaultTracker];
+    [tracker set:kGAIScreenName value:@"Upcoming Assignments Screen"];
+    [tracker send:[[GAIDictionaryBuilder createScreenView] build]];
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -140,11 +149,6 @@ NSString *setting;
                      image:NULL
                     target:self
                     action:@selector(pushMenuItem:)],
-      
-      [KxMenuItem menuItem:@"Completed"
-                     image:NULL
-                    target:self
-                    action:@selector(pushMenuItem:)],
       ];
     UIBarButtonItem *viewButton = sender;
     UIView *view = [viewButton valueForKey:@"view"];
@@ -170,10 +174,6 @@ NSString *setting;
         NSLog(@"Overdue chosen");
         self.navigationItem.title = @"Overdue Assignments";
         setting = @"overdue";
-    }
-    if ([str isEqualToString:@"completed"]){
-        NSLog(@"completed chosen");
-        self.navigationItem.title = @"Completed Assignments";
     }
     [self viewDidLoad];
 

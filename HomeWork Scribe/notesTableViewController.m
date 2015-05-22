@@ -10,6 +10,9 @@
 #import "SWRevealViewController.h"
 #import "dataClass.h"
 #import "allTableViewController.h"
+#import "GAIDictionaryBuilder.h"
+#import "GAI.h"
+#import "GAIFields.h"
 @interface notesTableViewController ()
 
 @end
@@ -44,6 +47,10 @@ BOOL editmode;
 
 -(void)viewDidAppear:(BOOL)animated{
     [self.tableView reloadData];
+    id tracker = [[GAI sharedInstance] defaultTracker];
+    [tracker set:kGAIScreenName value:@"Notes Screen"];
+    [tracker send:[[GAIDictionaryBuilder createScreenView] build]];
+
 }
 
 #pragma mark - Table view data source

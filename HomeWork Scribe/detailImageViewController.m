@@ -9,6 +9,9 @@
 #import "detailImageViewController.h"
 #import "dataClass.h"
 #import "detailViewController.h"
+#import "GAIFields.h"
+#import "GAIDictionaryBuilder.h"
+#import "GAI.h"
 @interface detailImageViewController ()
 
 @end
@@ -19,6 +22,9 @@
     self.navigationController.navigationBar.shadowImage = [UIImage new];
     self.navigationController.navigationBar.translucent = YES;
     self.navigationController.navigationBar.tintColor = [UIColor orangeColor];
+    id tracker = [[GAI sharedInstance] defaultTracker];
+    [tracker set:kGAIScreenName value:@"Image Screen"];
+    [tracker send:[[GAIDictionaryBuilder createScreenView] build]];
 }
 -(void)viewWillAppear:(BOOL)animated{
     [self.navigationController.navigationBar setBackgroundImage:[UIImage new] forBarMetrics:UIBarMetricsDefault];

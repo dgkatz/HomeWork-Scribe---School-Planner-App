@@ -11,6 +11,9 @@
 #import "Assignment.h"
 #import "animator.h"
 #import "allTableViewController.h"
+#import "GAIDictionaryBuilder.h"
+#import "GAI.h"
+#import "GAIFields.h"
 @interface calanderTableViewController ()
 @property (nonatomic, strong) NSMutableSet *shownIndexes;
 @property (nonatomic, assign) CATransform3D initialTransform;
@@ -27,6 +30,10 @@ NSMutableArray *results;
 PDTSimpleCalendarViewController *calendarViewController;
 @implementation calanderTableViewController
 -(void)viewDidAppear:(BOOL)animated{
+    id tracker = [[GAI sharedInstance] defaultTracker];
+    [tracker set:kGAIScreenName value:@"My Calender Screen"];
+    [tracker send:[[GAIDictionaryBuilder createScreenView] build]];
+
     //self.dbManager = [[DBManager alloc] initWithDatabaseFilename:@"homeworkdb.sql"];
 }
 - (void)viewDidLoad {

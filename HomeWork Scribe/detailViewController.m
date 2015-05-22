@@ -23,7 +23,12 @@ UIColor *defaultcolor;
 UIImage *imag;
 @implementation detailViewController
 
+-(void)viewDidAppear:(BOOL)animated{
+    id tracker = [[GAI sharedInstance] defaultTracker];
+    [tracker set:kGAIScreenName value:@"Detail Screen"];
+    [tracker send:[[GAIDictionaryBuilder createScreenView] build]];
 
+}
 -(void)viewDidDisappear:(BOOL)animated{
     [self.navigationController.navigationBar setBackgroundImage:nil
                                                   forBarMetrics:UIBarMetricsDefault];
@@ -43,11 +48,6 @@ UIImage *imag;
     [self presentViewController:purchaseContr animated:YES completion:nil];
 }
 -(void)viewWillAppear:(BOOL)animated{
-    id tracker = [[GAI sharedInstance] defaultTracker];
-    [tracker set:kGAIScreenName
-           value:@"Detail Screen"];
-    [tracker send:[[GAIDictionaryBuilder createScreenView] build]];
-    
     [self.navigationController.navigationBar setBackgroundImage:[UIImage new] forBarMetrics:UIBarMetricsDefault];
     self.navigationController.navigationBar.shadowImage = [UIImage new];
     self.navigationController.navigationBar.translucent = YES;

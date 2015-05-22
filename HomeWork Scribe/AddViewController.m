@@ -17,13 +17,20 @@
 #import "SWRevealViewController.h"
 #import "dataClass.h"
 #import "XLFormImageSelectorCell.h"
+#import "GAI.h"
+#import "GAIFields.h"
+#import "GAIDictionaryBuilder.h"
 @interface AddViewController ()
 
 @end
 XLFormDescriptor * form;
 
 @implementation AddViewController
-
+-(void)viewDidAppear:(BOOL)animated{
+    id tracker = [[GAI sharedInstance] defaultTracker];
+    [tracker set:kGAIScreenName value:@"Add Assignments Screen"];
+    [tracker send:[[GAIDictionaryBuilder createScreenView] build]];
+}
 - (void)viewDidLoad {
     [super viewDidLoad];
     NSString *const XLFormRowDescriptorTypeImage = @"Test";
@@ -150,7 +157,7 @@ XLFormDescriptor * form;
                 NSLog(@"base 64 string is null");
                 base64ImgString = NULL;
             }
-            NSLog(@"the image : %@",img);
+            //NSLog(@"the image : %@",img);
             
             //UInt8 *rawData = [dataFromImg bytes];
             NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
@@ -166,7 +173,7 @@ XLFormDescriptor * form;
             NSLog(@"this is the date in add asignment%d",d);
             NSLog(@"subject: %@ description: %@ date: %@",Subject,Description,date);
             NSString *query = [NSString stringWithFormat:@"insert into assignmentData values(null, '%@', '%@', %d ,'%@')", Description, Subject, d,base64ImgString];
-            NSLog(@"query fot database ---> %@",query);
+            //NSLog(@"query fot database ---> %@",query);
             
             // Execute the query.
             [self.dbManager executeQuery:query];

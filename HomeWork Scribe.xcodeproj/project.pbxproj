@@ -129,7 +129,10 @@
 		D7EC7D891B0D1C34001C64E6 /* ic_email_black_24dp.png in Resources */ = {isa = PBXBuildFile; fileRef = D7EC7D861B0D1C34001C64E6 /* ic_email_black_24dp.png */; };
 		D7EC7D8A1B0D1C34001C64E6 /* email@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = D7EC7D871B0D1C34001C64E6 /* email@3x.png */; };
 		D7EC7D8C1B0D1CD6001C64E6 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D7EC7D8B1B0D1CD6001C64E6 /* MessageUI.framework */; };
-		D7EC7D8E1B0D1EF0001C64E6 /* libGoogleAnalyticsServices.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D7EC7D8D1B0D1EF0001C64E6 /* libGoogleAnalyticsServices.a */; };
+		D7EC7DC81B0ECEDF001C64E6 /* libGoogleAnalyticsServices.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D7EC7DC71B0ECEDF001C64E6 /* libGoogleAnalyticsServices.a */; };
+		D7EC7DCC1B0ED1E7001C64E6 /* share.png in Resources */ = {isa = PBXBuildFile; fileRef = D7EC7DC91B0ED1E7001C64E6 /* share.png */; };
+		D7EC7DCD1B0ED1E7001C64E6 /* share@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = D7EC7DCA1B0ED1E7001C64E6 /* share@3x.png */; };
+		D7EC7DCE1B0ED1E7001C64E6 /* share@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D7EC7DCB1B0ED1E7001C64E6 /* share@2x.png */; };
 		D7EDD1371AE87282003EBABE /* editAssignmentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D7EDD1361AE87282003EBABE /* editAssignmentViewController.m */; };
 		D7EDD13E1AE89D03003EBABE /* settingsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D7EDD13D1AE89D03003EBABE /* settingsTableViewController.m */; };
 		D7EDD1411AE8A0CF003EBABE /* aboutTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D7EDD1401AE8A0CF003EBABE /* aboutTableViewController.m */; };
@@ -355,7 +358,10 @@
 		D7EC7D861B0D1C34001C64E6 /* ic_email_black_24dp.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_email_black_24dp.png; sourceTree = "<group>"; };
 		D7EC7D871B0D1C34001C64E6 /* email@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "email@3x.png"; sourceTree = "<group>"; };
 		D7EC7D8B1B0D1CD6001C64E6 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
-		D7EC7D8D1B0D1EF0001C64E6 /* libGoogleAnalyticsServices.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libGoogleAnalyticsServices.a; sourceTree = "<group>"; };
+		D7EC7DC71B0ECEDF001C64E6 /* libGoogleAnalyticsServices.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libGoogleAnalyticsServices.a; path = ../../GoogleAnalyticsServicesiOS_3.12/libGoogleAnalyticsServices.a; sourceTree = "<group>"; };
+		D7EC7DC91B0ED1E7001C64E6 /* share.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = share.png; sourceTree = "<group>"; };
+		D7EC7DCA1B0ED1E7001C64E6 /* share@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "share@3x.png"; sourceTree = "<group>"; };
+		D7EC7DCB1B0ED1E7001C64E6 /* share@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "share@2x.png"; sourceTree = "<group>"; };
 		D7EDD1351AE87282003EBABE /* editAssignmentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = editAssignmentViewController.h; sourceTree = "<group>"; };
 		D7EDD1361AE87282003EBABE /* editAssignmentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = editAssignmentViewController.m; sourceTree = "<group>"; };
 		D7EDD13C1AE89D03003EBABE /* settingsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = settingsTableViewController.h; sourceTree = "<group>"; };
@@ -401,7 +407,7 @@
 				D78AD00D1AE99CBD00FD6CDC /* QuartzCore.framework in Frameworks */,
 				D742E8EF1AE969A9009A4904 /* CoreGraphics.framework in Frameworks */,
 				B1FD789E1AB60907009DB201 /* libsqlite3.dylib in Frameworks */,
-				D7EC7D8E1B0D1EF0001C64E6 /* libGoogleAnalyticsServices.a in Frameworks */,
+				D7EC7DC81B0ECEDF001C64E6 /* libGoogleAnalyticsServices.a in Frameworks */,
 				B1FD789C1AB608F6009DB201 /* Foundation.framework in Frameworks */,
 				BB0E90C061B77410D76F8D17 /* libPods.a in Frameworks */,
 			);
@@ -472,7 +478,7 @@
 		B1FD78341AB4B1EF009DB201 /* HomeWork Scribe */ = {
 			isa = PBXGroup;
 			children = (
-				D7EC7D8D1B0D1EF0001C64E6 /* libGoogleAnalyticsServices.a */,
+				D7EC7DC71B0ECEDF001C64E6 /* libGoogleAnalyticsServices.a */,
 				D7E1B27D1B04114D00560108 /* homeworkdb.sql */,
 				D7E1B23F1B03FB5F00560108 /* XLFormImageSelectorCell.h */,
 				D7E1B2401B03FB5F00560108 /* XLFormImageSelectorCell.m */,
@@ -592,6 +598,9 @@
 				D7E1B2571B03FE4C00560108 /* AFURLResponseSerialization.m */,
 				D7E1B2581B03FE4C00560108 /* AFURLSessionManager.h */,
 				D7E1B2591B03FE4C00560108 /* AFURLSessionManager.m */,
+				D7EC7DC91B0ED1E7001C64E6 /* share.png */,
+				D7EC7DCA1B0ED1E7001C64E6 /* share@3x.png */,
+				D7EC7DCB1B0ED1E7001C64E6 /* share@2x.png */,
 				D7EC7D851B0D1C34001C64E6 /* email.png */,
 				D7EC7D861B0D1C34001C64E6 /* ic_email_black_24dp.png */,
 				D7EC7D871B0D1C34001C64E6 /* email@3x.png */,
@@ -832,6 +841,8 @@
 				D73991F41B065CFE000D4164 /* back@2x.png in Resources */,
 				D7EC7D881B0D1C34001C64E6 /* email.png in Resources */,
 				D76A90701B01523C0065F987 /* pencil@2x.png in Resources */,
+				D7EC7DCE1B0ED1E7001C64E6 /* share@2x.png in Resources */,
+				D7EC7DCC1B0ED1E7001C64E6 /* share.png in Resources */,
 				D7EC7D8A1B0D1C34001C64E6 /* email@3x.png in Resources */,
 				D7C992081AFB074600A3F48C /* clock@2x.png in Resources */,
 				D7C992091AFB074600A3F48C /* clock@3x.png in Resources */,
@@ -882,6 +893,7 @@
 				D73991EC1B065A40000D4164 /* menu.png in Resources */,
 				D76A90801B0152D90065F987 /* Icon152.png in Resources */,
 				D772AEE11AE83E06001B71B0 /* Logo.png in Resources */,
+				D7EC7DCD1B0ED1E7001C64E6 /* share@3x.png in Resources */,
 				D757E5831AEAE4D400654044 /* 120.png in Resources */,
 				B1FD78431AB4B1EF009DB201 /* Images.xcassets in Resources */,
 			);
@@ -1120,8 +1132,8 @@
 			baseConfigurationReference = 71B554221B66B59E7BB6B5DA /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Korrent Corporation";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Korrent Corporation";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -1135,9 +1147,10 @@
 					Scribe,
 					"$(PROJECT_DIR)/HomeWork",
 					Scribe,
+					/Users/danielkatz/Desktop/GoogleAnalyticsServicesiOS_3.12,
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "a1ebca18-e2ba-4d9b-96a3-cafcf89b019b";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
@@ -1147,8 +1160,8 @@
 			baseConfigurationReference = C6895AC8823DB1EC7602983F /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Korrent Corporation";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Korrent Corporation";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -1162,9 +1175,10 @@
 					Scribe,
 					"$(PROJECT_DIR)/HomeWork",
 					Scribe,
+					/Users/danielkatz/Desktop/GoogleAnalyticsServicesiOS_3.12,
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "a1ebca18-e2ba-4d9b-96a3-cafcf89b019b";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
