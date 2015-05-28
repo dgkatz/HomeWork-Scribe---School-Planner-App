@@ -8,6 +8,7 @@
 
 #import "colorsettingsTableViewController.h"
 #import "InfColorPicker.h"
+#import "dataClass.h"
 @interface colorsettingsTableViewController ()
 
 @end
@@ -16,10 +17,16 @@ UIColor *color;
 int selectedindex;
 NSArray *colorArray;
 NSMutableArray *subjects;
+int selectedHeightIndex;
 @implementation colorsettingsTableViewController
+
+-(void)viewDidAppear:(BOOL)animated{
+    [self.tableView reloadData];
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    selectedHeightIndex = 20;
     subjects=[[[NSUserDefaults standardUserDefaults] objectForKey:@"usersSubjects"] mutableCopy];
     self.navigationItem.rightBarButtonItem = self.editButtonItem;
     self.navigationItem.rightBarButtonItem.tintColor = [UIColor whiteColor];
@@ -48,7 +55,6 @@ NSMutableArray *subjects;
     // Return the number of rows in the section.
     return [data count];
 }
-
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"reuseIdentifier" forIndexPath:indexPath];
@@ -82,11 +88,22 @@ NSMutableArray *subjects;
     
 }
 
+-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+            return 44;
+}
 
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if ([segue.identifier isEqualToString:@"subjectDetail"]) {
+        UITableViewCell *cell = (UITableViewCell*)sender;
+        dataClass *obj = [dataClass getInstance];
+        obj.defaultColor = cell.textLabel.textColor;
+        obj.subject = cell.textLabel.text;
+
+
+    }
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
 }

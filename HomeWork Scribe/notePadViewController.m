@@ -38,8 +38,8 @@ NSArray *subjects;
 
 }
 -(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
-    NSLog(@"%@",[alertView buttonTitleAtIndex:buttonIndex]);
-    NSLog(@"%ld",(long)buttonIndex);
+    //nslog(@"%@",[alertView buttonTitleAtIndex:buttonIndex]);
+    //nslog(@"%ld",(long)buttonIndex);
         NSMutableArray *savedValues = [[NSMutableArray alloc]initWithArray:[[NSUserDefaults standardUserDefaults]objectForKey:[NSString stringWithFormat:@"%@",[alertView buttonTitleAtIndex:buttonIndex]]]];
         NSString *saveString = self.textField.text;
         [savedValues addObject:saveString];

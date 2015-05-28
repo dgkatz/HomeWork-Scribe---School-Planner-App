@@ -15,6 +15,9 @@
 #import "GAI.h"
 #import "GAIFields.h"
 #import "GAIDictionaryBuilder.h"
+#import "BFPaperButton.h"
+#import "OZLExpandableTableView.h"
+#import "LCZoomTransition.h"
 @interface allTableViewController ()
 @property (nonatomic, strong) JFMinimalNotification* minimalNotification;
 @property (strong,nonatomic) detailViewController *expander;
@@ -22,6 +25,8 @@
 
 @end
 int selected;
+UIButton *addButtonCircle;
+UILabel *buttonLabel;
 NSMutableArray *results;
 NSArray *scienceResults;
 NSArray *socialResults;
@@ -33,6 +38,7 @@ NSMutableArray *counts;
 NSTimer *timer;
 NSMutableArray *assignmentImageData;
 UILabel *noAssignmentsLabel;
+
 @implementation allTableViewController
 
 
@@ -68,7 +74,7 @@ UILabel *noAssignmentsLabel;
         [self.navigationController.view addSubview:self.shadowView];
         }
 }
-- (IBAction)addAssignmentSegue:(id)sender {
+- (void)addAssignmentSegue{
     AddViewController *VC = (AddViewController *)[self.storyboard instantiateViewControllerWithIdentifier:@"add"];
     [self.navigationController pushViewController:VC animated:YES];
     
@@ -103,8 +109,39 @@ UILabel *noAssignmentsLabel;
     [self.tableView reloadData];
 }
 
+
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
+    CGRect frame = addButtonCircle.frame;
+    frame.origin.y = scrollView.contentOffset.y + self.tableView.frame.size.height - 28 - addButtonCircle.frame.size.height;
+    addButtonCircle.frame = frame;
+    
+    [self.view bringSubviewToFront:addButtonCircle];
+    
+    CGRect frame2 = buttonLabel.frame;
+    frame2.origin.y = scrollView.contentOffset.y + self.tableView.frame.size.height - buttonLabel.frame.size.height - 10;
+    buttonLabel.frame = frame2;
+    
+    [self.view bringSubviewToFront:buttonLabel];
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
+    addButtonCircle = [[UIButton alloc]initWithFrame:CGRectMake(self.tableView.frame.size.width - 80, self.tableView.frame.size.height - 150, 56, 56)];
+    addButtonCircle.layer.cornerRadius = 28;
+    addButtonCircle.clipsToBounds = YES;
+    addButtonCircle.backgroundColor = [UIColor orangeColor];
+    addButtonCircle.layer.masksToBounds = NO;
+    addButtonCircle.layer.shadowOffset = CGSizeMake(3, 4);
+    addButtonCircle.layer.shadowRadius = 5;
+    addButtonCircle.layer.shadowOpacity = 0.5;
+    [addButtonCircle addTarget:self action:@selector(addAssignmentSegue) forControlEvents:UIControlEventTouchUpInside];
+    [self.tableView addSubview:addButtonCircle];
+    buttonLabel = [[UILabel alloc]initWithFrame:CGRectMake(addButtonCircle.frame.origin.x - 20, addButtonCircle.frame.origin.y - 21, addButtonCircle.frame.size.width + 40, addButtonCircle.frame.size.height + 40)];
+    buttonLabel.text = @"+";
+    buttonLabel.font = [UIFont systemFontOfSize:28];
+    buttonLabel.textAlignment = NSTextAlignmentCenter;
+    buttonLabel.textColor = [UIColor whiteColor];
+    [self.tableView addSubview:buttonLabel];
     [self.navigationController.navigationBar setBackgroundImage:nil forBarMetrics:UIBarMetricsDefault];
     self.navigationController.navigationBar.barStyle = UIBarStyleDefault;
     self.navigationController.navigationBar.barTintColor = [UIColor colorWithRed:255/255.0 green:151/255.0 blue:0/255.0 alpha:1.0f];
@@ -118,23 +155,27 @@ UILabel *noAssignmentsLabel;
     noAssignmentsLabel.numberOfLines = 0;
     noAssignmentsLabel.textColor = [UIColor orangeColor];
     theCounts = [[NSMutableArray alloc]init];
-    NSLog(@"LAUNCHED");
+    //nslog(@"LAUNCHED");
     //self.navigationController.toolbar.delegate = self;
     //UIToolbar *toolBar = self.navigationController.toolbar;
     //toolBar.delegate = self;
     subjects=[[NSUserDefaults standardUserDefaults] objectForKey:@"usersSubjects"];
     self.dbManager = [[DBManager alloc] initWithDatabaseFilename:@"homeworkdb.sql"];
-    NSLog(@"created database magaer");
+    //nslog(@"created database magaer");
     //[self.dbManager executeQuery:@"drop table if exists assignmentData"];
     [self.dbManager executeQuery:@"create table if not exists assignmentData(hwID integer primary key, description text, subject text, due_date integer, image text)"];
-    NSLog(@"executed query");
+    //nslog(@"executed query");
     _barButton.target = self.revealViewController;
     _barButton.action = @selector(revealToggle:);
-    NSLog(@"added gesture");
-    
+    //nslog(@"added gesture");
+    [self.dbManager executeQuery:@"SELECT image from assignmentData"];
+    if (SQLITE_ERROR){
+        [self.dbManager executeQuery:@"ALTER TABLE assignmentData ADD COLUMN image text"];
+        //nslog(@"Missing image column, so create one");
+    }
     NSString *jb = @"Math";
     NSString *query = [NSString stringWithFormat:@"select * from assignmentData where subject = '%@'", jb];
-    NSLog(@"query is %@",query);
+    //nslog(@"query is %@",query);
     timer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(showNotification) userInfo:nil repeats:NO];
 }
 
@@ -170,7 +211,7 @@ UILabel *noAssignmentsLabel;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    NSLog(@"number of rows in section called");
+    //nslog(@"number of rows in section called");
     // Return the number of rows in the section.
     int num = 0;
     counts=[[NSMutableArray alloc] init];
@@ -181,7 +222,7 @@ UILabel *noAssignmentsLabel;
         results=[self selectFromDb:[subjects objectAtIndex:i]];
         int count=[results count];
         NSNumber *val = [NSNumber numberWithInteger:count];
-        NSLog(@"%@ Count %@", [subjects objectAtIndex:i],val);
+        //nslog(@"%@ Count %@", [subjects objectAtIndex:i],val);
         [counts addObject:val];
     }
 
@@ -213,7 +254,7 @@ UILabel *noAssignmentsLabel;
             NSData *colorData = [colors objectAtIndex:i];
             UIColor *color = [NSKeyedUnarchiver unarchiveObjectWithData:colorData];
             label.textColor = color;
-            NSLog(@"%@",desc);
+            //nslog(@"%@",desc);
             NSNumber *timestamp = [[results objectAtIndex:cellIndex] objectAtIndex:[self.dbManager.arrColumnNames indexOfObject:@"due_date"]];
             NSDate *date = [NSDate dateWithTimeIntervalSince1970:timestamp.doubleValue];
             NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
@@ -221,8 +262,8 @@ UILabel *noAssignmentsLabel;
             NSString *theDate = [dateFormat stringFromDate:date];
             UILabel *labelDetail = (UILabel *)[cell.contentView viewWithTag:11];
             labelDetail.text = [NSString stringWithFormat:@"%@",theDate];
-            NSLog(@"%@",desc);
-            NSLog(@"%@",timestamp);
+            //nslog(@"%@",desc);
+            //nslog(@"%@",timestamp);
         }
 
     }
@@ -306,9 +347,12 @@ UILabel *noAssignmentsLabel;
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    NSIndexPath *selectedIndexPath = [self.tableView indexPathForSelectedRow];
     if ([segue.identifier isEqualToString:@"showthedetail"]) {
+        // pass the custom transition to the destination controller
+        // so it can use it when setting up its gesture recognizers
+        //[[segue destinationViewController] addGestureRecognizer:self.transition];
         dataClass *obj = [dataClass getInstance];
-        NSIndexPath *selectedIndexPath = [self.tableView indexPathForSelectedRow];
         UITableViewCell *cell = [self.tableView cellForRowAtIndexPath:selectedIndexPath];
         NSArray *colorArray = [[NSUserDefaults standardUserDefaults]objectForKey:@"usersColors"];
         UILabel *label = (UILabel *)[cell.contentView viewWithTag:10];
@@ -316,14 +360,14 @@ UILabel *noAssignmentsLabel;
         UILabel *IdLabel=(UILabel *)[cell.contentView viewWithTag:999];
         obj.description1 = label.text;
         obj.subject = [self tableView:self.tableView titleForHeaderInSection:selectedIndexPath.section];
-        NSLog(@"the subject chosen is %@",obj.subject);
+        //nslog(@"the subject chosen is %@",obj.subject);
         obj.date = labelDetail.text;
         NSData *colorData = [colorArray objectAtIndex:selectedIndexPath.section];
         obj.defaultColor = [NSKeyedUnarchiver unarchiveObjectWithData:colorData];
         obj.ID=IdLabel.text;
         
         NSString *query = [NSString stringWithFormat:@"select * from assignmentData where hwID = '%@'", obj.ID];
-        NSLog(@"ID query is: %@", query);
+        //nslog(@"ID query is: %@", query);
         NSMutableArray *returnArray=[[[NSArray alloc] initWithArray:[self.dbManager loadDataFromDB:query]] mutableCopy];
         NSArray *arr = [returnArray objectAtIndex:0];
         if (arr.count>4) {

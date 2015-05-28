@@ -15,7 +15,7 @@
     if (self) {
         NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
         self.documentsDirectory = [paths objectAtIndex:0];
-        NSLog(@"Database at : %@",self.documentsDirectory);
+        ////nslog(@"Database at : %@",self.documentsDirectory);
         
         // Keep the database filename.
         self.databaseFilename = dbFilename;
@@ -37,7 +37,7 @@
         
         // Check if any error occurred during copying and display it.
         if (error != nil) {
-            NSLog(@"%@", [error localizedDescription]);
+            //nslog(@"%@", [error localizedDescription]);
         }
     }
 }
@@ -126,13 +126,13 @@
                 }
                 else {
                     // If could not execute the query show the error message on the debugger.
-                    NSLog(@"DB Error: %s", sqlite3_errmsg(sqlite3Database));
+                    //nslog(@"DB Error: %s", sqlite3_errmsg(sqlite3Database));
                 }
             }
         }
         else {
             // In the database cannot be opened then show the error message on the debugger.
-            NSLog(@"Cannot open %s", sqlite3_errmsg(sqlite3Database));
+            //nslog(@"Cannot open %s", sqlite3_errmsg(sqlite3Database));
         }
         
         // Release the compiled statement from memory.

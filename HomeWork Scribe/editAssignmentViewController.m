@@ -99,13 +99,13 @@ XLFormDescriptor * form;
     // Subject
     row = [XLFormRowDescriptor formRowDescriptorWithTag:@"SubjectPicker" rowType:XLFormRowDescriptorTypeSelectorActionSheet title:@"Subject"];
     NSArray *savedSubjects= [[NSUserDefaults standardUserDefaults]objectForKey:@"usersSubjects"];
-    NSLog(@"subjects have length: %lu", (unsigned long)[savedSubjects count]);
+    ////nslog(@"subjects have length: %lu", (unsigned long)[savedSubjects count]);
     NSMutableArray *options= [[NSMutableArray alloc] init];
     for (int i=0; i<[savedSubjects count]; i++) {
         XLFormOptionsObject *obj=[XLFormOptionsObject formOptionsObjectWithValue:@(i) displayText:[savedSubjects objectAtIndex:i]];
         [options addObject:obj];
         
-        NSLog(@"form options: %@ ", obj.displayText);
+        //nslog(@"form options: %@ ", obj.displayText);
     }
     
     row.selectorOptions=options;
@@ -181,7 +181,7 @@ XLFormDescriptor * form;
         NSDictionary * values=[form formValues];
         if ([[values objectForKey:@"Description"]displayText]!=nil) {
             NSString *deleteQuery= [NSString stringWithFormat: @"DELETE FROM assignmentData WHERE description='%@'",obj.description1Edit];
-            NSLog(@"%@",deleteQuery);
+            //nslog(@"%@",deleteQuery);
             [self.dbManager executeQuery:deleteQuery];
             NSString *Subject = [[values objectForKey:@"SubjectPicker"] displayText];
             NSString *Description = [[values objectForKey:@"Description"] displayText];
@@ -196,10 +196,10 @@ XLFormDescriptor * form;
             [obj.assignmentData_Description addObject:Description];
             [obj.assignmentData_Date addObject:finalDate];
             int d = [finalDate timeIntervalSince1970];
-            NSLog(@"this is the date in add asignment%d",d);
-            NSLog(@"subject: %@ description: %@ date: %@",Subject,Description,date);
+            //nslog(@"this is the date in add asignment%d",d);
+            //nslog(@"subject: %@ description: %@ date: %@",Subject,Description,date);
             NSString *query = [NSString stringWithFormat:@"insert into assignmentData values(null, '%@', '%@', %d)", Description, Subject, d];
-            NSLog(@"query fot database ---> %@",query);
+            //nslog(@"query fot database ---> %@",query);
             
             // Execute the query.
             [self.dbManager executeQuery:query];

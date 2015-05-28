@@ -52,10 +52,10 @@ NSString *setting;
         query = [NSString stringWithFormat: @"SELECT * FROM assignmentData WHERE due_date<%d",currentdate];
     }
     
-    NSLog(@"%@",query);
+    //nslog(@"%@",query);
     self.dbManager = [[DBManager alloc] initWithDatabaseFilename:@"homeworkdb.sql"];
     upAssignments= [[NSMutableArray alloc] initWithArray:[self.dbManager loadDataFromDB:query]];
-    NSLog(@"number of assignments %lu", (unsigned long)[upAssignments count]);
+    //nslog(@"number of assignments %lu", (unsigned long)[upAssignments count]);
     for (int i=0; i<[upAssignments count]; i++) {
         Assignment *assignment=[Assignment new];
         assignment.due_date=[[upAssignments objectAtIndex:i] objectAtIndex:[self.dbManager.arrColumnNames indexOfObject:@"due_date"]];
@@ -67,7 +67,7 @@ NSString *setting;
     sortedArray=[[NSArray alloc]initWithArray:[Assignment getSortedList:assignments]];
     for(int i=0;i<[sortedArray count];i++){
         Assignment *as=[sortedArray objectAtIndex:i];
-        NSLog(@"Sorted Assignment: %@ %@ %@",as.subject, as.description, as.due_date);
+        //nslog(@"Sorted Assignment: %@ %@ %@",as.subject, as.description, as.due_date);
     }
 
     
@@ -154,7 +154,7 @@ NSString *setting;
     UIView *view = [viewButton valueForKey:@"view"];
     CGRect frame  =view.frame;
     CGFloat x = frame.origin.x;
-    CGFloat y = frame.origin.y;
+    CGFloat y = 70;
     CGFloat width = frame.size.width;
     CGFloat height = frame.size.height;
     y = y - 20;
@@ -166,12 +166,12 @@ NSString *setting;
     KxMenuItem *first = sender;
     NSString *str = first.title;
     if ([str isEqualToString:@"Upcoming"]) {
-        NSLog(@"Upcoming Chosen");
+        //nslog(@"Upcoming Chosen");
         self.navigationItem.title = @"Upcoming Assignments";
         setting = @"upcoming";
     }
     else if ([str isEqualToString:@"Overdue"]){
-        NSLog(@"Overdue chosen");
+        //nslog(@"Overdue chosen");
         self.navigationItem.title = @"Overdue Assignments";
         setting = @"overdue";
     }
@@ -238,7 +238,11 @@ NSString *setting;
         NSString *query = [NSString stringWithFormat:@"select * from assignmentData where hwID = '%@'", obj.ID];
         
         NSMutableArray *returnArray=[[[NSArray alloc] initWithArray:[self.dbManager loadDataFromDB:query]] mutableCopy];
-        NSArray *arr = [returnArray objectAtIndex:0];
+        NSArray *arr;
+        if ([returnArray count] > 0) {
+            arr = [returnArray objectAtIndex:0];
+            
+        }
         if (arr.count>4) {
             NSString *retreivedBase64ImgString = [arr objectAtIndex:4];
             obj.imgData = [[NSData alloc] initWithBase64EncodedString:retreivedBase64ImgString options:kNilOptions];

@@ -66,11 +66,11 @@ PDTSimpleCalendarViewController *calendarViewController;
     NSArray *sortedArray=[[NSArray alloc]initWithArray:[Assignment getSortedList:assignments]];
     for(int i=0;i<[sortedArray count];i++){
         Assignment *as=[sortedArray objectAtIndex:i];
-        NSLog(@"Sorted Assignment: %@ %@ %@",as.subject, as.description, as.due_date);
+        //nslog(@"Sorted Assignment: %@ %@ %@",as.subject, as.description, as.due_date);
     }
     
     if ([assignmentsForDay count] == 0) {
-        NSLog(@"empty");
+        //nslog(@"empty");
         NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
         [dateFormat setDateFormat:@"yyyy-MM-dd"];
         newDate = [dateFormat stringFromDate:[NSDate date]];
@@ -78,9 +78,9 @@ PDTSimpleCalendarViewController *calendarViewController;
         [dateFormat2 setDateFormat:@"yyyy-MM-dd"];
         NSDate *finalDate = [dateFormat2 dateFromString:newDate];
         int timestamp = [finalDate timeIntervalSince1970];
-        NSLog(@"the timestamp %d",timestamp);
+        //nslog(@"the timestamp %d",timestamp);
         NSString *query= [NSString stringWithFormat:@"SELECT * FROM assignmentData WHERE due_date=%d",timestamp];
-        NSLog(@" %@ ", query);
+        //nslog(@" %@ ", query);
         assignmentsForDay=[[NSMutableArray alloc]initWithArray:[self.dbManager loadDataFromDB:query]];
         [self.tableView reloadData];
     }
@@ -125,13 +125,13 @@ PDTSimpleCalendarViewController *calendarViewController;
         NSDate *add = [dateFormatter dateFromString:change];
         occurrences += (add == dateToAdd ?1:0); //certain object is @"Apple"
     }
-    NSLog(@"%d",occurrences);
+    //nslog(@"%d",occurrences);
     NSCountedSet *set = [[NSCountedSet alloc] initWithArray:_customDates];
     int num = (int)[set countForObject:dateToAdd];
-    NSLog(@"THIS IS THE NUMBER %d",num);
+    //nslog(@"THIS IS THE NUMBER %d",num);
     for (id item in set)
     {
-        NSLog(@"Name=%@, Count=%lu", item, (unsigned long)[set countForObject:item]);
+        //nslog(@"Name=%@, Count=%lu", item, (unsigned long)[set countForObject:item]);
     }
     if (num == 1) {
         return [UIColor colorWithRed:255/255.0 green:0/255.0 blue:0/255.0 alpha:.5f];
@@ -225,7 +225,7 @@ PDTSimpleCalendarViewController *calendarViewController;
     NSString *subject = [ar objectAtIndex:2];
     NSString *desc= [ar objectAtIndex:1];
     NSNumber *theID = [ar objectAtIndex:0];
-    NSLog(@"The ID at cell is %@",theID);
+    //nslog(@"The ID at cell is %@",theID);
     NSString *idstr = [NSString stringWithFormat:@"%@",theID];
     cell.textLabel.text = subject;
     cell.detailTextLabel.text = [NSString stringWithFormat:@"%@-%@",desc,idstr];
@@ -237,7 +237,7 @@ PDTSimpleCalendarViewController *calendarViewController;
                  value:[UIColor clearColor]
                  range:NSMakeRange([desc length], [idstr length] + 1)];
     [cell.detailTextLabel setAttributedText: text];
-    NSLog(@"cell text is %@",cell.detailTextLabel.text);
+    //nslog(@"cell text is %@",cell.detailTextLabel.text);
     int index = (int)[subjects indexOfObject:subject];
     NSArray *colors =[[NSUserDefaults standardUserDefaults] objectForKey:@"usersColors"];
     NSData *colorData = [colors objectAtIndex:index];
@@ -280,7 +280,7 @@ PDTSimpleCalendarViewController *calendarViewController;
 
 - (void)simpleCalendarViewController:(PDTSimpleCalendarViewController *)controller didSelectDate:(NSDate *)date
 {
-    NSLog(@"Date Selected : %@",date);
+    //nslog(@"Date Selected : %@",date);
     NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
     [dateFormat setDateFormat:@"yyyy-MM-dd"];
     newDate = [dateFormat stringFromDate:date];
@@ -288,12 +288,12 @@ PDTSimpleCalendarViewController *calendarViewController;
     [dateFormat2 setDateFormat:@"yyyy-MM-dd"];
     NSDate *finalDate = [dateFormat2 dateFromString:newDate];
     int timestamp = [finalDate timeIntervalSince1970];
-    NSLog(@"the timestamp %d",timestamp);
+    //nslog(@"the timestamp %d",timestamp);
     NSString *query= [NSString stringWithFormat:@"SELECT * FROM assignmentData WHERE due_date=%d",timestamp];
-    NSLog(@" %@ ", query);
+    //nslog(@" %@ ", query);
     assignmentsForDay=[[NSMutableArray alloc]initWithArray:[self.dbManager loadDataFromDB:query]];
     if([assignmentsForDay count]>0){
-        NSLog(@"assignment for day %@ %@ %@", [[assignmentsForDay objectAtIndex:0] objectAtIndex:0], [[assignmentsForDay objectAtIndex:0] objectAtIndex:1], [[assignmentsForDay objectAtIndex:0] objectAtIndex:2]);
+        //nslog(@"assignment for day %@ %@ %@", [[assignmentsForDay objectAtIndex:0] objectAtIndex:0], [[assignmentsForDay objectAtIndex:0] objectAtIndex:1], [[assignmentsForDay objectAtIndex:0] objectAtIndex:2]);
         [noAssignmentsLabel removeFromSuperview];
         [self.tableView sendSubviewToBack:noAssignmentsLabel];
     }
@@ -301,7 +301,7 @@ PDTSimpleCalendarViewController *calendarViewController;
         [self.tableView addSubview:noAssignmentsLabel];
         [self.tableView bringSubviewToFront:noAssignmentsLabel];
     }
-    NSLog(@"Date Selected with Locale %@", [date descriptionWithLocale:[NSLocale systemLocale]]);
+    //nslog(@"Date Selected with Locale %@", [date descriptionWithLocale:[NSLocale systemLocale]]);
     [self.tableView reloadData];
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{

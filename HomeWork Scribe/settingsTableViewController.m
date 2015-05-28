@@ -14,11 +14,11 @@
 @end
 NSArray *menu;
 @implementation settingsTableViewController
-
 - (void)viewDidLoad {
     [super viewDidLoad];
+
     self.dbManager = [[DBManager alloc] initWithDatabaseFilename:@"homeworkdb.sql"];
-    menu = @[@"first",@"second",@"third",@"fifth",@"fourth"];
+    menu = @[@"first",@"second",@"sixth",@"third",@"fifth",@"fourth"];
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
     
@@ -35,16 +35,19 @@ NSArray *menu;
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     // Return the number of sections.
-    return 3;
+    return 4;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     // Return the number of rows in the section.
     int romNum;
     if (section == 0) {
-        romNum = 2;
+        romNum = 1;
     }
     else if (section == 1){
+        romNum = 2;
+    }
+    else if(section == 2){
         romNum = 1;
     }
     else{
@@ -59,6 +62,15 @@ NSArray *menu;
         cellIdentifier = [menu objectAtIndex:indexPath.row];
     }
     else if (indexPath.section == 1){
+        if (indexPath.row == 0) {
+            cellIdentifier = @"second";
+
+        }
+        else{
+            cellIdentifier = @"sixth";
+        }
+    }
+    else if (indexPath.section == 2){
         cellIdentifier = @"third";
     }
     else{
@@ -75,12 +87,12 @@ NSArray *menu;
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    if (indexPath.section == 1) {
+    if (indexPath.section == 2) {
         UIAlertView *deleteAlert = [[UIAlertView alloc]initWithTitle:@"Delete All Assignment Data" message:@"Are you sure you want to delete all your data?" delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"Delete", nil];
         [deleteAlert dismissWithClickedButtonIndex:1 animated:YES];
         [deleteAlert show];
     }
-    else if (indexPath.section == 2){
+    else if (indexPath.section == 3){
         if (indexPath.row == 1) {
         NSString *device = [SDiPhoneVersion deviceName];
         NSString *df = [[UIDevice currentDevice] systemVersion];
@@ -142,7 +154,7 @@ NSArray *menu;
 -(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
     if (buttonIndex == 1) {
         NSString *deleteQuery= [NSString stringWithFormat: @"DELETE FROM assignmentData"];
-        NSLog(@"%@",deleteQuery);
+        //NSLog(@"%@",deleteQuery);
         [self.dbManager executeQuery:deleteQuery];
     }
 }

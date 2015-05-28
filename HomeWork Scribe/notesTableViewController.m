@@ -24,7 +24,7 @@ BOOL editmode;
     [super viewDidLoad];
     subjects=[[NSUserDefaults standardUserDefaults] objectForKey:@"usersSubjects"];
     data = [[NSMutableArray alloc]initWithArray:[[NSUserDefaults standardUserDefaults]objectForKey:@"saved"]];
-    NSLog(@"before delete : %@",data);
+    //NSLog(@"before delete : %@",data);
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
     

@@ -52,7 +52,7 @@ PDTSimpleCalendarViewController *calendarViewController;
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     self.subjects = [[NSMutableArray alloc]initWithArray:[[NSUserDefaults standardUserDefaults]objectForKey:@"chosenSubjects"]];
-    NSLog(@"the subjects at number of rows in section %@",self.subjects);
+    //nslog(@"the subjects at number of rows in section %@",self.subjects);
 
     if (section == 0) {
         return [self.subjects count];
@@ -71,7 +71,7 @@ PDTSimpleCalendarViewController *calendarViewController;
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     self.subjects = [[NSMutableArray alloc]initWithArray:[[NSUserDefaults standardUserDefaults]objectForKey:@"chosenSubjects"]];
-    NSLog(@"Array at cellforroatindexpath %@",self.subjects);
+    //nslog(@"Array at cellforroatindexpath %@",self.subjects);
     UITableViewCell *cell;
     if (indexPath.section == 0) {
        cell = [tableView dequeueReusableCellWithIdentifier:@"identifier" forIndexPath:indexPath];
@@ -140,10 +140,10 @@ PDTSimpleCalendarViewController *calendarViewController;
     // Delete the row from the data source
     UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
     NSString *stringToDelete = cell.textLabel.text;
-    NSLog(@"string to delete %@",stringToDelete);
+    //nslog(@"string to delete %@",stringToDelete);
     NSMutableArray *savedArray = [[NSMutableArray alloc]initWithArray:[[NSUserDefaults standardUserDefaults]objectForKey:@"chosenSubjects"]];
     [savedArray removeObjectAtIndex:indexPath.row];
-    NSLog(@"Array at delte %@",savedArray);
+    //nslog(@"Array at delte %@",savedArray);
     [[NSUserDefaults standardUserDefaults]setObject:savedArray forKey:@"chosenSubjects"];
     [[NSUserDefaults standardUserDefaults]synchronize];
     // Delete row using the cool literal version of [NSArray arrayWithObject:indexPath]
@@ -172,7 +172,7 @@ PDTSimpleCalendarViewController *calendarViewController;
         [sortedColorArray addObject:colorData];
     }
     [[NSUserDefaults standardUserDefaults]setObject:sortedColorArray forKey:@"usersColors"];
-    NSLog(@"Array of sibjects when done clicked %@",self.subjects);
+    //nslog(@"Array of sibjects when done clicked %@",self.subjects);
     [[NSUserDefaults standardUserDefaults]synchronize];
     SWRevealViewController *VC = (SWRevealViewController *)[self.storyboard instantiateViewControllerWithIdentifier:@"begin"];
     [self presentViewController:VC animated:YES completion:nil];

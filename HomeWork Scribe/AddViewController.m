@@ -63,13 +63,13 @@ XLFormDescriptor * form;
     // Subject
     row = [XLFormRowDescriptor formRowDescriptorWithTag:@"SubjectPicker" rowType:XLFormRowDescriptorTypeSelectorActionSheet title:@"Subject"];
     NSArray *savedSubjects= [[NSUserDefaults standardUserDefaults]objectForKey:@"usersSubjects"];
-    NSLog(@"subjects have length: %lu", (unsigned long)[savedSubjects count]);
+    ////nslog(@"subjects have length: %lu", (unsigned long)[savedSubjects count]);
     NSMutableArray *options= [[NSMutableArray alloc] init];
     for (int i=0; i<[savedSubjects count]; i++) {
         XLFormOptionsObject *obj=[XLFormOptionsObject formOptionsObjectWithValue:@(i) displayText:[savedSubjects objectAtIndex:i]];
         [options addObject:obj];
         
-        NSLog(@"form options: %@ ", obj.displayText);
+        //nslog(@"form options: %@ ", obj.displayText);
     }
     
     row.selectorOptions=options;
@@ -133,16 +133,16 @@ XLFormDescriptor * form;
     if ([segue.identifier isEqualToString:@"present"]) {
         dataClass *obj = [dataClass getInstance];
         NSDictionary * values=[form formValues];
-        NSLog(@"%@",[form formValues]);
+        //nslog(@"%@",[form formValues]);
         if ([[values objectForKey:@"Description"]displayText]!=nil) {
             NSString *Subject = [[values objectForKey:@"SubjectPicker"] displayText];
             NSString *Description = [[values objectForKey:@"Description"] displayText];
             NSDate *date = [[values objectForKey:@"picker"]valueData];
             //UIImage *img = [[values objectForKey:@"image"]valueData];
             UIImage *img=[form formRowWithTag:@"image"].value;
-            NSLog(@"The value of valuedata = %@",img);
+            //nslog(@"The value of valuedata = %@",img);
             if ([values objectForKey:@"image"] == NULL) {
-                NSLog(@"Error: No image selected");
+                //nslog(@"Error: No image selected");
             }
             //else{
                 //img = [values objectForKey:@"image"];
@@ -154,10 +154,10 @@ XLFormDescriptor * form;
                 base64ImgString = [dataFromImg base64EncodedStringWithOptions:kNilOptions];
             }
             else{
-                NSLog(@"base 64 string is null");
+                //nslog(@"base 64 string is null");
                 base64ImgString = NULL;
             }
-            //NSLog(@"the image : %@",img);
+            ////nslog(@"the image : %@",img);
             
             //UInt8 *rawData = [dataFromImg bytes];
             NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
@@ -170,10 +170,10 @@ XLFormDescriptor * form;
             [obj.assignmentData_Description addObject:Description];
             [obj.assignmentData_Date addObject:finalDate];
             int d = [finalDate timeIntervalSince1970];
-            NSLog(@"this is the date in add asignment%d",d);
-            NSLog(@"subject: %@ description: %@ date: %@",Subject,Description,date);
+            //nslog(@"this is the date in add asignment%d",d);
+            //nslog(@"subject: %@ description: %@ date: %@",Subject,Description,date);
             NSString *query = [NSString stringWithFormat:@"insert into assignmentData values(null, '%@', '%@', %d ,'%@')", Description, Subject, d,base64ImgString];
-            //NSLog(@"query fot database ---> %@",query);
+            ////nslog(@"query fot database ---> %@",query);
             
             // Execute the query.
             [self.dbManager executeQuery:query];

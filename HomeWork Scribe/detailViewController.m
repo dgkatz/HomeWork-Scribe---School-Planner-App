@@ -15,8 +15,8 @@
 #import "GAI.h"
 #import "GAIDictionaryBuilder.h"
 #import "GAIFields.h"
+#import "LCZoomTransition.h"
 @interface detailViewController ()
-
 @end
 NSArray *menu;
 UIColor *defaultcolor;
@@ -48,13 +48,25 @@ UIImage *imag;
     [self presentViewController:purchaseContr animated:YES completion:nil];
 }
 -(void)viewWillAppear:(BOOL)animated{
-    [self.navigationController.navigationBar setBackgroundImage:[UIImage new] forBarMetrics:UIBarMetricsDefault];
-    self.navigationController.navigationBar.shadowImage = [UIImage new];
-    self.navigationController.navigationBar.translucent = YES;
-    self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
-    dataClass *obj = [dataClass getInstance];
+    [UIView animateWithDuration:.2 delay:0.0 options:0
+                     animations:^{
+                         self.navigationController.navigationBar.alpha = .5;
+                     }
+                     completion:^(BOOL finished){
+                         if (finished) {
+                             [self.navigationController.navigationBar setBackgroundImage:[UIImage new] forBarMetrics:UIBarMetricsDefault];
+                             self.navigationController.navigationBar.shadowImage = [UIImage new];
+                             self.navigationController.navigationBar.translucent = YES;
+                             self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
+                             self.navigationController.navigationBar.alpha = 1;
+
+                             // Do your method here after your animation.
+                         }
+     
+    }];
+        dataClass *obj = [dataClass getInstance];
     defaultcolor = obj.defaultColor;
-    NSLog(@"default color = %@",defaultcolor);
+    //nslog(@"default color = %@",defaultcolor);
     self.assingmentcomButton.backgroundColor = defaultcolor;
 
 }
@@ -202,7 +214,7 @@ UIImage *imag;
         UISwitch *switchnotif = (UISwitch *)[cell.contentView viewWithTag:2];
         BOOL switchValue = [[NSUserDefaults standardUserDefaults]boolForKey:[NSString stringWithFormat:@"%@%@",obj.description1,obj.subject]];
         NSString *rez = switchValue == YES ? @"YES" : @"NO";
-        NSLog(@"switch value is %@",rez);
+        //nslog(@"switch value is %@",rez);
         [switchnotif setOn:switchValue animated:YES];
         [switchnotif addTarget:self action:@selector(notifSwitchValueChange:) forControlEvents:UIControlEventValueChanged];
         switchnotif.onTintColor = defaultcolor;
@@ -264,7 +276,7 @@ UIImage *imag;
 -(void)buttonClciked{
     dataClass *obj = [dataClass getInstance];
     NSString *deleteQuery= [NSString stringWithFormat: @"DELETE FROM assignmentData WHERE description='%@'",obj.description1];
-    NSLog(@"%@",deleteQuery);
+    //nslog(@"%@",deleteQuery);
     [self.dbManager executeQuery:deleteQuery];
     SWRevealViewController *purchaseContr = (SWRevealViewController *)[self.storyboard instantiateViewControllerWithIdentifier:@"begin"];
     //menu is only an example
@@ -277,7 +289,7 @@ UIImage *imag;
     [[NSUserDefaults standardUserDefaults]setBool:state forKey:[NSString stringWithFormat:@"%@%@",obj.description1,obj.subject]];
     [[NSUserDefaults standardUserDefaults]synchronize];
     NSString *rez = state == YES ? @"YES" : @"NO";
-    NSLog(@"%@",rez);
+    //nslog(@"%@",rez);
     if ([rez isEqualToString:@"YES"]) {
         NSString *dateString = obj.date;
         NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];

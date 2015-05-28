@@ -20,15 +20,13 @@ NSArray *defaultSubjectsArray;
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    
-    
     [GAI sharedInstance].trackUncaughtExceptions = YES;
     
     // Optional: set Google Analytics dispatch interval to e.g. 20 seconds.
     [GAI sharedInstance].dispatchInterval = 20;
     
     // Optional: set Logger to VERBOSE for debug information.
-    [[[GAI sharedInstance] logger] setLogLevel:kGAILogLevelVerbose];
+    [[[GAI sharedInstance] logger] setLogLevel:kGAILogLevelNone];
     
     // Initialize tracker. Replace with your tracking ID.
     [[GAI sharedInstance] trackerWithTrackingId:@"UA-63188021-1"];
@@ -80,7 +78,14 @@ NSArray *defaultSubjectsArray;
     [[UIView appearanceWhenContainedIn:[UIAlertController class], nil] setTintColor:[UIColor orangeColor]];
     //[[UIView appearanceWhenContainedIn:[UITableView class],[UIDatePicker class], nil] setBackgroundColor:[UIColor orangeColor]];
     //if ([UIActionSheet respondsToSelector:selector])
-
+    application.applicationIconBadgeNumber = 0;
+    
+    
+    UIPageControl *pageControl = [UIPageControl appearance];
+    pageControl.pageIndicatorTintColor = [UIColor darkGrayColor];
+    pageControl.currentPageIndicatorTintColor = [UIColor orangeColor];
+    pageControl.backgroundColor = [UIColor groupTableViewBackgroundColor];
+    
     return YES;
 }
 

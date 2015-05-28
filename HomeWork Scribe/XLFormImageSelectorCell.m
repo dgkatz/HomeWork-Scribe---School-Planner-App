@@ -63,7 +63,7 @@ NSString *const kFormImageSelectorCellImageRequest = @"imageRequest";
                                            }
                                        }
                                        failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error) {
-                                           NSLog(@"Failed to download image");
+                                           //NSLog(@"Failed to download image");
                                        }];
     }
 }
@@ -151,7 +151,8 @@ NSString *const kFormImageSelectorCellImageRequest = @"imageRequest";
 
 -(void)dealloc
 {
-    [self.textLabel removeObserver:self forKeyPath:@"text"];
+   // [self.textLabel addObserver:self forKeyPath:@"image note" options:NSKeyValueObservingOptionOld | NSKeyValueObservingOptionNew context:0];
+    [self.textLabel removeObserver:self forKeyPath:@"image note"];
 }
 
 #pragma mark - UIActionSheetDelegate
@@ -201,13 +202,13 @@ NSString *const kFormImageSelectorCellImageRequest = @"imageRequest";
 
 -(UIImageView *)imageView
 {
-    dataClass *obj = [dataClass getInstance];
+    //dataClass *obj = [dataClass getInstance];
     if (_imageView) return _imageView;
     _imageView = [UIImageView autolayoutView];
     _imageView.layer.masksToBounds = YES;
     _imageView.contentMode = UIViewContentModeScaleAspectFit;
     _imageView.layer.cornerRadius = _imageHeight / 2.0;
-    obj.assignmentImage = _imageView;
+    //obj.assignmentImage = _imageView;
     return _imageView;
 }
 
