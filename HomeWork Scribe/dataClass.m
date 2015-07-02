@@ -25,6 +25,10 @@
 @synthesize  imgData;
 @synthesize assignmentImage;
 @synthesize chosenAssignmentImage;
+@synthesize NotifSetting;
+@synthesize notifIsOn;
+@synthesize timestamp;
+@synthesize globalDeviceWidth;
 
 static dataClass *instance = nil;
 

@@ -5,7 +5,8 @@
 //  Created by Daniel Katz on 3/15/15.
 //  Copyright (c) 2015 Stratton Apps. All rights reserved.
 //
-
+#define IDIOM    UI_USER_INTERFACE_IDIOM()
+#define IPAD     UIUserInterfaceIdiomPad
 #import "allTableViewController.h"
 #import "dataClass.h"
 #import "SWRevealViewController.h"
@@ -15,9 +16,11 @@
 #import "GAI.h"
 #import "GAIFields.h"
 #import "GAIDictionaryBuilder.h"
-#import "BFPaperButton.h"
 #import "OZLExpandableTableView.h"
 #import "LCZoomTransition.h"
+#import <BFPaperTableViewCell/BFPaperTableViewCell.h>
+#import <BFPaperButton/BFPaperButton.h>
+#import <UIColor+BFPaperColors.h>
 @interface allTableViewController ()
 @property (nonatomic, strong) JFMinimalNotification* minimalNotification;
 @property (strong,nonatomic) detailViewController *expander;
@@ -25,9 +28,10 @@
 
 @end
 int selected;
-UIButton *addButtonCircle;
+BFPaperButton *addButtonCircle;
 UILabel *buttonLabel;
 NSMutableArray *results;
+UIView *selectionLine;
 NSArray *scienceResults;
 NSArray *socialResults;
 NSArray *englishResults;
@@ -36,9 +40,9 @@ NSArray *subjects;
 NSMutableArray *theCounts;
 NSMutableArray *counts;
 NSTimer *timer;
+int selectedButton;
 NSMutableArray *assignmentImageData;
 UILabel *noAssignmentsLabel;
-
 @implementation allTableViewController
 
 
@@ -126,14 +130,10 @@ UILabel *noAssignmentsLabel;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    addButtonCircle = [[UIButton alloc]initWithFrame:CGRectMake(self.tableView.frame.size.width - 80, self.tableView.frame.size.height - 150, 56, 56)];
-    addButtonCircle.layer.cornerRadius = 28;
-    addButtonCircle.clipsToBounds = YES;
-    addButtonCircle.backgroundColor = [UIColor orangeColor];
-    addButtonCircle.layer.masksToBounds = NO;
-    addButtonCircle.layer.shadowOffset = CGSizeMake(3, 4);
-    addButtonCircle.layer.shadowRadius = 5;
-    addButtonCircle.layer.shadowOpacity = 0.5;
+    addButtonCircle = [[BFPaperButton alloc] initWithFrame:CGRectMake(self.tableView.frame.size.width - 80, self.tableView.frame.size.height - 150, 56, 56) raised:YES];
+    [addButtonCircle setBackgroundColor:[UIColor orangeColor]];
+    addButtonCircle.cornerRadius = addButtonCircle.frame.size.width / 2;
+    addButtonCircle.rippleFromTapLocation = YES;
     [addButtonCircle addTarget:self action:@selector(addAssignmentSegue) forControlEvents:UIControlEventTouchUpInside];
     [self.tableView addSubview:addButtonCircle];
     buttonLabel = [[UILabel alloc]initWithFrame:CGRectMake(addButtonCircle.frame.origin.x - 20, addButtonCircle.frame.origin.y - 21, addButtonCircle.frame.size.width + 40, addButtonCircle.frame.size.height + 40)];
@@ -163,7 +163,7 @@ UILabel *noAssignmentsLabel;
     self.dbManager = [[DBManager alloc] initWithDatabaseFilename:@"homeworkdb.sql"];
     //nslog(@"created database magaer");
     //[self.dbManager executeQuery:@"drop table if exists assignmentData"];
-    [self.dbManager executeQuery:@"create table if not exists assignmentData(hwID integer primary key, description text, subject text, due_date integer, image text)"];
+    [self.dbManager executeQuery:@"create table if not exists assignmentData(hwID integer primary key, description text, subject text, due_date integer, image text, notification text)"];
     //nslog(@"executed query");
     _barButton.target = self.revealViewController;
     _barButton.action = @selector(revealToggle:);
@@ -173,6 +173,19 @@ UILabel *noAssignmentsLabel;
         [self.dbManager executeQuery:@"ALTER TABLE assignmentData ADD COLUMN image text"];
         //nslog(@"Missing image column, so create one");
     }
+    [self.dbManager executeQuery:@"SELECT notification from assignmentData"];
+    if (SQLITE_ERROR){
+        [self.dbManager executeQuery:@"ALTER TABLE assignmentData ADD COLUMN notification text"];
+        //nslog(@"Missing image column, so create one");
+    }
+    [self.dbManager executeQuery:@"SELECT notificationIsOn from assignmentData"];
+    if (SQLITE_ERROR){
+        [self.dbManager executeQuery:@"ALTER TABLE assignmentData ADD COLUMN notificationIsOn integer"];
+        //nslog(@"Missing image column, so create one");
+    }
+
+
+    
     NSString *jb = @"Math";
     NSString *query = [NSString stringWithFormat:@"select * from assignmentData where subject = '%@'", jb];
     //nslog(@"query is %@",query);
@@ -231,10 +244,16 @@ UILabel *noAssignmentsLabel;
     return num;
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    return 60;
+    if ( IDIOM == IPAD ) {
+        return 80;
+    }
+    else{
+        return 60;
+    }
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"reuseIdentifier" forIndexPath:indexPath];
+
     // Configure the cell...
     assignmentImageData = [[NSMutableArray alloc]init];
     int cellIndex= (int)indexPath.row;
@@ -258,10 +277,11 @@ UILabel *noAssignmentsLabel;
             NSNumber *timestamp = [[results objectAtIndex:cellIndex] objectAtIndex:[self.dbManager.arrColumnNames indexOfObject:@"due_date"]];
             NSDate *date = [NSDate dateWithTimeIntervalSince1970:timestamp.doubleValue];
             NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
-            [dateFormat setDateFormat:@"yyyy-MM-dd"];
+            [dateFormat setDateFormat:@"dd-MMM"];
             NSString *theDate = [dateFormat stringFromDate:date];
+            NSArray *comp = [theDate componentsSeparatedByString:@"-"];
             UILabel *labelDetail = (UILabel *)[cell.contentView viewWithTag:11];
-            labelDetail.text = [NSString stringWithFormat:@"%@",theDate];
+            labelDetail.text = [NSString stringWithFormat:@"%@ %@",[comp objectAtIndex:1],[comp objectAtIndex:0]];
             //nslog(@"%@",desc);
             //nslog(@"%@",timestamp);
         }
@@ -370,9 +390,16 @@ UILabel *noAssignmentsLabel;
         //nslog(@"ID query is: %@", query);
         NSMutableArray *returnArray=[[[NSArray alloc] initWithArray:[self.dbManager loadDataFromDB:query]] mutableCopy];
         NSArray *arr = [returnArray objectAtIndex:0];
+        NSLog(@"da count bro %d",[arr count]);
         if (arr.count>4) {
             NSString *retreivedBase64ImgString = [arr objectAtIndex:4];
+            NSString *returnedNotif = [arr objectAtIndex:5];
+            obj.NotifSetting = returnedNotif;
             obj.imgData = [[NSData alloc] initWithBase64EncodedString:retreivedBase64ImgString options:kNilOptions];
+            obj.timestamp = (int)[arr objectAtIndex:3];
+            if (arr.count == 7) {
+                obj.notifIsOn = (int)[arr objectAtIndex:6];
+            }
         }
     }
     // Get the new view controller using [segue destinationViewController].

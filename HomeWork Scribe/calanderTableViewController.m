@@ -5,6 +5,8 @@
 //  Created by Family on 3/14/15.
 //  Copyright (c) 2015 Stratton Apps. All rights reserved.
 //
+#define IDIOM    UI_USER_INTERFACE_IDIOM()
+#define IPAD     UIUserInterfaceIdiomPad
 #import "calanderTableViewController.h"
 #import "SWRevealViewController.h"
 #import "dataClass.h"
@@ -305,7 +307,12 @@ PDTSimpleCalendarViewController *calendarViewController;
     [self.tableView reloadData];
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    return 60;
+    if ( IDIOM == IPAD ) {
+        return 80;
+    }
+    else{
+        return 60;
+    }
 }
 /*
 // Override to support conditional editing of the table view.

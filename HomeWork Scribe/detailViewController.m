@@ -16,6 +16,10 @@
 #import "GAIDictionaryBuilder.h"
 #import "GAIFields.h"
 #import "LCZoomTransition.h"
+#import <BFPaperButton/BFPaperButton.h>
+#import <UIColor+BFPaperColors.h>
+#define IDIOM    UI_USER_INTERFACE_IDIOM()
+#define IPAD     UIUserInterfaceIdiomPad
 @interface detailViewController ()
 @end
 NSArray *menu;
@@ -64,10 +68,10 @@ UIImage *imag;
                          }
      
     }];
-        dataClass *obj = [dataClass getInstance];
+    dataClass *obj = [dataClass getInstance];
     defaultcolor = obj.defaultColor;
     //nslog(@"default color = %@",defaultcolor);
-    self.assingmentcomButton.backgroundColor = defaultcolor;
+    [self.assingmentcomButton setBackgroundColor:defaultcolor];
 
 }
 -(void)editheAssignment{
@@ -106,7 +110,11 @@ UIImage *imag;
                                    action:@selector(editheAssignment)];
     flipButton.tintColor = [UIColor whiteColor];
 
-    self.navigationItem.rightBarButtonItem = flipButton;
+    UIBarButtonItem *flipButton2 = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemAction target:self action:@selector(share)];
+    flipButton2.tintColor = [UIColor whiteColor];
+    NSArray *items = @[flipButton
+                       ,flipButton2];
+    self.navigationItem.rightBarButtonItems = items;
     self.assignmentTableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
     self.navigationItem.title = @"Assignment Details";
     self.dbManager = [[DBManager alloc] initWithDatabaseFilename:@"homeworkdb.sql"];
@@ -115,6 +123,99 @@ UIImage *imag;
     menu = @[@"first",@"second",@"third"];
     self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
     // Do any additional setup after loading the view.
+}
+-(void)share{
+    BOOL shareEnableded = [[NSUserDefaults standardUserDefaults]boolForKey:@"UnlockSharing"];
+    if (shareEnableded == NO) {
+        UIAlertView *share = [[UIAlertView alloc]initWithTitle:@"Feature not available" message:@"To unlcok sharing assignment feature, share the app with a friend first" delegate:self cancelButtonTitle:@"Maybe later" otherButtonTitles:@"Share with friend", nil];
+        [share show];
+    }
+    else{
+        UIActionSheet *shareActionSheet = [[UIActionSheet alloc]initWithTitle:@"Choose how to share assignment" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:@"Email",@"Text", nil];
+        //[shareActionSheet showInView:[UIApplication sharedApplication].keyWindow];
+        [shareActionSheet showInView:self.view];
+    }
+    
+}
+
+-(void)actionSheet:(UIActionSheet *)actionSheet didDismissWithButtonIndex:(NSInteger)buttonIndex{
+    if (buttonIndex == 0) {
+        dataClass *obj = [dataClass getInstance];
+        MFMailComposeViewController *mc= [[MFMailComposeViewController alloc]init];
+        mc.mailComposeDelegate = self;
+        NSString *subject = [NSString stringWithFormat:@"Assignment due for %@",obj.subject];
+        NSString *body = [NSString stringWithFormat:@"There is an assignment due for %@: %@ , due %@",obj.subject,obj.description1,obj.date];
+        UIImageView *cellImage = (UIImageView *)[self.assignmentTableView viewWithTag:12345];
+        [mc addAttachmentData:UIImagePNGRepresentation(cellImage.image) mimeType:@"image/png" fileName:@"icon.png"];
+        [mc setSubject:subject];
+        [mc setMessageBody:body isHTML:NO];
+        [mc setToRecipients:@[]];
+        mc.navigationBar.tintColor = [UIColor whiteColor];
+        [self presentViewController:mc animated:YES completion:NULL];
+    }
+    else if (buttonIndex == 1){
+        dataClass *obj = [dataClass getInstance];
+        MFMessageComposeViewController *mc= [[MFMessageComposeViewController alloc]init];
+        mc.messageComposeDelegate = self;
+        //NSString *subject = [NSString stringWithFormat:@"Assignment due for %@",obj.subject];
+        NSString *body = [NSString stringWithFormat:@"There is an assignment due for %@: %@ , due %@",obj.subject,obj.description1,obj.date];
+        UIImageView *cellImage = (UIImageView *)[self.assignmentTableView viewWithTag:12345];
+        [mc addAttachmentData:UIImagePNGRepresentation(cellImage.image) typeIdentifier:@"image/png" filename:@"icon.png"];
+        [mc setBody:body];
+        [mc setRecipients:@[]];
+        mc.navigationBar.tintColor = [UIColor whiteColor];
+        [self presentViewController:mc animated:YES completion:NULL];
+    }
+    
+}
+
+-(void)alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex{
+    if (buttonIndex == 1) {
+        MFMailComposeViewController *mc= [[MFMailComposeViewController alloc]init];
+        mc.mailComposeDelegate = self;
+        NSString *subject = @"HomeWork Scribe app";
+        NSString *body = [NSString stringWithFormat:@"Check out HomeWork Scribe in the App Store : %@",[NSURL URLWithString:@"https://itunes.apple.com/us/app/homework-scribe/id989963468?ls=1&mt=8"]];
+        UIImage *icon = [UIImage imageNamed:@"Icon180g.png"];
+        [mc addAttachmentData:UIImagePNGRepresentation(icon) mimeType:@"image/png" fileName:@"icon.png"];
+        [mc setSubject:subject];
+        [mc setMessageBody:body isHTML:NO];
+        [mc setToRecipients:@[]];
+        mc.navigationBar.tintColor = [UIColor whiteColor];
+        [self presentViewController:mc animated:YES completion:NULL];
+    }
+}
+
+-(void)messageComposeViewController:(MFMessageComposeViewController *)controller didFinishWithResult:(MessageComposeResult)result{
+    if (result == MessageComposeResultCancelled) {
+        
+    }
+    else if (result == MessageComposeResultFailed){
+        
+    }
+    else if (result == MFMailComposeResultSaved){
+        
+    }
+    else if (result == MessageComposeResultSent){
+        
+    }
+    [controller dismissViewControllerAnimated:YES completion:nil];
+}
+
+-(void)mailComposeController:(MFMailComposeViewController *)controller didFinishWithResult:(MFMailComposeResult)result error:(NSError *)error{
+    if (result == MFMailComposeResultCancelled) {
+        
+    }
+    else if (result == MFMailComposeResultFailed){
+        
+    }
+    else if (result == MFMailComposeResultSaved){
+        
+    }
+    else if (result == MFMailComposeResultSent){
+        [[NSUserDefaults standardUserDefaults]setBool:YES forKey:@"UnlockSharing"];
+        [[NSUserDefaults standardUserDefaults]synchronize];
+    }
+    [controller dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (void)backClicked
@@ -211,18 +312,13 @@ UIImage *imag;
         
     }
     else if (indexPath.row == 1){
-        UISwitch *switchnotif = (UISwitch *)[cell.contentView viewWithTag:2];
-        BOOL switchValue = [[NSUserDefaults standardUserDefaults]boolForKey:[NSString stringWithFormat:@"%@%@",obj.description1,obj.subject]];
-        NSString *rez = switchValue == YES ? @"YES" : @"NO";
-        //nslog(@"switch value is %@",rez);
-        [switchnotif setOn:switchValue animated:YES];
-        [switchnotif addTarget:self action:@selector(notifSwitchValueChange:) forControlEvents:UIControlEventValueChanged];
-        switchnotif.onTintColor = defaultcolor;
         UILabel *notifLabel = (UILabel *)[cell.contentView viewWithTag:3];
+        notifLabel.text = [NSString stringWithFormat:@"Notification set for: %@",obj.NotifSetting];
         notifLabel.textColor = defaultcolor;
     }
     else{
-        UIButton *deleteButton = (UIButton *)[cell.contentView viewWithTag:100];
+        BFPaperButton *deleteButton = [[BFPaperButton alloc]initWithRaised:YES];
+        deleteButton = (BFPaperButton *)[cell.contentView viewWithTag:100];
         [deleteButton addTarget:self action:@selector(buttonClciked) forControlEvents:UIControlEventTouchUpInside];
         deleteButton.backgroundColor = defaultcolor;
     }
@@ -233,10 +329,20 @@ UIImage *imag;
     int height;
     
     if (indexPath.row == 0) {
-        height = 110;
+        if ( IDIOM == IPAD ) {
+            height = 140;
+        }
+        else{
+            height = 110;
+        }
     }
     else{
-        height = 44;
+        if ( IDIOM == IPAD ) {
+            height = 70;
+        }
+        else{
+            height = 44;
+        }
     }
     return height;
 }
@@ -251,8 +357,11 @@ UIImage *imag;
     else if ([SDiPhoneVersion deviceSize] == iPhone47inch){
         returnHeight = 320;
     }
+    else if ([SDiPhoneVersion deviceSize] == iPhone55inch){
+        returnHeight = 400;
+    }
     else{
-        returnHeight = 220;
+        returnHeight = 400;
     }
     return returnHeight;
 }
@@ -286,8 +395,15 @@ UIImage *imag;
 {
     dataClass *obj = [dataClass getInstance];
     BOOL state = [sender isOn];
-    [[NSUserDefaults standardUserDefaults]setBool:state forKey:[NSString stringWithFormat:@"%@%@",obj.description1,obj.subject]];
-    [[NSUserDefaults standardUserDefaults]synchronize];
+    NSString *deleteQuery= [NSString stringWithFormat: @"DELETE FROM assignmentData WHERE hwID='%@'",obj.ID];
+    //nslog(@"%@",deleteQuery);
+    [self.dbManager executeQuery:deleteQuery];
+    
+    NSString *query = [NSString stringWithFormat:@"insert into assignmentData values('%@','%@','%@',%d,'%@','%@',%d)",obj.ID, obj.description1, obj.subject, obj.timestamp,[obj.imgData base64EncodedStringWithOptions:kNilOptions],obj.NotifSetting,state];
+    ////nslog(@"query fot database ---> %@",query);
+    
+    // Execute the query.
+    [self.dbManager executeQuery:query];
     NSString *rez = state == YES ? @"YES" : @"NO";
     //nslog(@"%@",rez);
     if ([rez isEqualToString:@"YES"]) {

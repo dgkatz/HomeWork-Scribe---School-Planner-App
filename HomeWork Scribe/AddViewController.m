@@ -27,6 +27,7 @@ XLFormDescriptor * form;
 
 @implementation AddViewController
 -(void)viewDidAppear:(BOOL)animated{
+    self.form.delegate = self;
     id tracker = [[GAI sharedInstance] defaultTracker];
     [tracker set:kGAIScreenName value:@"Add Assignments Screen"];
     [tracker send:[[GAIDictionaryBuilder createScreenView] build]];
@@ -46,9 +47,7 @@ XLFormDescriptor * form;
     // Do any additional setup after loading the view.
     XLFormSectionDescriptor * section;
     XLFormRowDescriptor * row;
-    
     form = [XLFormDescriptor formDescriptorWithTitle:nil];
-    
     // First section
     section = [XLFormSectionDescriptor formSection];
     [form addFormSection:section];
@@ -56,8 +55,6 @@ XLFormDescriptor * form;
     section = [XLFormSectionDescriptor formSection];
     [form addFormSection:section];
 
-    section = [XLFormSectionDescriptor formSection];
-    [form addFormSection:section];
 
     
     // Subject
@@ -83,20 +80,23 @@ XLFormDescriptor * form;
      **/
 
         row.value = [XLFormOptionsObject formOptionsObjectWithValue:@(2) displayText:@"Math"];
+
 //    [row.cellConfigAtConfigure setObject:[UIColor colorWithRed:255/255.0 green:151/255.0 blue:0/255.0 alpha:1.0f] forKey:@"backgroundColor"];
 //    [row.cellConfig setObject:[UIColor whiteColor] forKey:@"textLabel.color"];
 //    [row.cellConfig setObject:[UIColor whiteColor] forKey:@"detailTextLabel.color"];
     [section addFormRow:row];
     
     // Second Section
-    section = [XLFormSectionDescriptor formSection];
-    [form addFormSection:section];
+    //section = [XLFormSectionDescriptor formSection];
+    //[form addFormSection:section];
     
     row = [XLFormRowDescriptor formRowDescriptorWithTag:@"Description" rowType:XLFormRowDescriptorTypeText title:@"Description"];
 //    [row.cellConfigAtConfigure setObject:[UIColor colorWithRed:255/255.0 green:151/255.0 blue:0/255.0 alpha:1.0f] forKey:@"backgroundColor"];
 //    [row.cellConfig setObject:[UIColor whiteColor] forKey:@"textLabel.color"];
 //    [row.cellConfig setObject:[UIColor whiteColor] forKey:@"detailTextLabel.color"];
     [section addFormRow:row];
+    //section = [XLFormSectionDescriptor formSection];
+    //[form addFormSection:section];
     row = [XLFormRowDescriptor formRowDescriptorWithTag:@"picker" rowType:XLFormRowDescriptorTypeDate title:@"Due Date"];
     row.value = [NSDate new];
 //    [row.cellConfigAtConfigure setObject:[NSDate new] forKey:@"minimumDate"];
@@ -105,14 +105,27 @@ XLFormDescriptor * form;
 //    [row.cellConfig setObject:[UIColor whiteColor] forKey:@"textLabel.color"];
 //    [row.cellConfig setObject:[UIColor whiteColor] forKey:@"detailTextLabel.color"];
     [section addFormRow:row];
+    section = [XLFormSectionDescriptor formSection];
+    [form addFormSection:section];
     row = [XLFormRowDescriptor formRowDescriptorWithTag:@"image" rowType:XLFormRowDescriptorTypeImage title:@"  Image Note"];
 
     [section addFormRow: row];
     
+    section = [XLFormSectionDescriptor formSection];
+    [form addFormSection:section];
+    row = [XLFormRowDescriptor formRowDescriptorWithTag:@"notification" rowType:XLFormRowDescriptorTypeSelectorPush title:@"Notification"];
+    row.selectorOptions = @[[XLFormOptionsObject formOptionsObjectWithValue:@(0) displayText:@"7:00 am on due date"],
+                            [XLFormOptionsObject formOptionsObjectWithValue:@(1) displayText:@"Night before due date"],
+                            [XLFormOptionsObject formOptionsObjectWithValue:@(2) displayText:@"One day before due date"],
+                            [XLFormOptionsObject formOptionsObjectWithValue:@(3) displayText:@"None"],
+                            ];
+    row.value = [XLFormOptionsObject formOptionsObjectWithValue:@(3) displayText:@"None"];
+    [section addFormRow:row];
+
+    
     self.form = form;
     
 }
-
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
@@ -137,6 +150,7 @@ XLFormDescriptor * form;
         if ([[values objectForKey:@"Description"]displayText]!=nil) {
             NSString *Subject = [[values objectForKey:@"SubjectPicker"] displayText];
             NSString *Description = [[values objectForKey:@"Description"] displayText];
+            NSString *notification = [[values objectForKey:@"notification"]displayText];
             NSDate *date = [[values objectForKey:@"picker"]valueData];
             //UIImage *img = [[values objectForKey:@"image"]valueData];
             UIImage *img=[form formRowWithTag:@"image"].value;
@@ -170,16 +184,43 @@ XLFormDescriptor * form;
             [obj.assignmentData_Description addObject:Description];
             [obj.assignmentData_Date addObject:finalDate];
             int d = [finalDate timeIntervalSince1970];
+            NSLog(@"%d",d);
             //nslog(@"this is the date in add asignment%d",d);
             //nslog(@"subject: %@ description: %@ date: %@",Subject,Description,date);
-            NSString *query = [NSString stringWithFormat:@"insert into assignmentData values(null, '%@', '%@', %d ,'%@')", Description, Subject, d,base64ImgString];
+            NSString *query = [NSString stringWithFormat:@"insert into assignmentData values(null,'%@','%@',%d,'%@','%@',%d)", Description, Subject, d,base64ImgString,notification,1];
             ////nslog(@"query fot database ---> %@",query);
             
             // Execute the query.
             [self.dbManager executeQuery:query];
-            //allTableViewController *VC = (allTableViewController *)[self.storyboard instantiateViewControllerWithIdentifier:@"all"];
-            //[self.navigationController presentViewController:VC animated:YES completion:nil];
             
+            UILocalNotification* localNotification = [[UILocalNotification alloc] init];
+            localNotification.repeatInterval = 0;
+            localNotification.alertBody = [NSString stringWithFormat:@"You have an assignment due for %@: %@",obj.subject,obj.description1];
+            localNotification.alertAction = @"Show me the item";
+            localNotification.timeZone = [NSTimeZone defaultTimeZone];
+            localNotification.applicationIconBadgeNumber = [[UIApplication sharedApplication] applicationIconBadgeNumber] + 1;
+            int fireDate;
+            if ([notification isEqualToString:@"7:00 am on due date"]) {
+                fireDate = d + 10800;
+                localNotification.fireDate = [NSDate dateWithTimeIntervalSince1970:fireDate];
+                [[UIApplication sharedApplication] scheduleLocalNotification:localNotification];
+            }
+            else if ([notification isEqualToString:@"Night before due date"]){
+                fireDate = d - 36000;
+                localNotification.fireDate = [NSDate dateWithTimeIntervalSince1970:fireDate];
+                [[UIApplication sharedApplication] scheduleLocalNotification:localNotification];
+            }
+            else if ([notification isEqualToString:@"One day before due date"]){
+                fireDate = d - 57600;
+                localNotification.fireDate = [NSDate dateWithTimeIntervalSince1970:fireDate];
+                [[UIApplication sharedApplication] scheduleLocalNotification:localNotification];
+            }
+            else{
+                NSLog(@"do nothing");
+            }
+            /*allTableViewController *VC = (allTableViewController *)[self.storyboard instantiateViewControllerWithIdentifier:@"all"];
+            [self.navigationController presentViewController:VC animated:YES completion:nil];
+            */
         }
         
         else{

@@ -4,25 +4,65 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
+		<key>Pods-BFPaperButton.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>Pods-BFPaperTableViewCell.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>Pods-BFPaperView.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>Pods-UIColor+BFPaperColors.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Pods-XLForm.xcscheme</key>
 		<dict>
-			<key>orderHint</key>
-			<integer>2</integer>
+			<key>isShown</key>
+			<false/>
 		</dict>
 		<key>Pods.xcscheme</key>
 		<dict>
-			<key>orderHint</key>
-			<integer>1</integer>
+			<key>isShown</key>
+			<false/>
 		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>3A6D0D8A0D7BBEF145A1BB3A</key>
+		<key>49CD209F34D28BAAB00BC1D6</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>A6DCED75B681AD9CBD267CC0</key>
+		<key>50C8539D935B564ECC2BC2F8</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>540875345F7A93F9D64DEFE5</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>87F5ACDE58559BA1C0ECFCEE</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>B9745D3C2C11F072FC9E429D</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>EE5255821AC1730C1013BAD3</key>
 		<dict>
 			<key>primary</key>
 			<true/>

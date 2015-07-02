@@ -32,7 +32,7 @@ NSArray *defaultSubjectsArray;
     [[GAI sharedInstance] trackerWithTrackingId:@"UA-63188021-1"];
     // Override point for customization after application launch.
     dataClass *obj = [dataClass getInstance];
-    
+    obj.globalDeviceWidth = self.window.frame.size.width;
     UIUserNotificationType types = UIUserNotificationTypeBadge |
     UIUserNotificationTypeSound | UIUserNotificationTypeAlert;
     
@@ -68,6 +68,7 @@ NSArray *defaultSubjectsArray;
     else
     {
         [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"HasLaunchedOnce1"];
+        [[NSUserDefaults standardUserDefaults]setBool:NO forKey:@"UnlockSharing"];
         [[NSUserDefaults standardUserDefaults] synchronize];
         UINavigationController *VC = (UINavigationController *)[mainStoryboard instantiateViewControllerWithIdentifier:@"setupnav"];
         self.window.rootViewController = VC;

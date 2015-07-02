@@ -1,6 +1,6 @@
 GCC_PREPROCESSOR_DEFINITIONS = $(inherited) COCOAPODS=1
-HEADER_SEARCH_PATHS = $(inherited) "${PODS_ROOT}/Headers/Public" "${PODS_ROOT}/Headers/Public/XLForm"
-OTHER_CFLAGS = $(inherited) -isystem "${PODS_ROOT}/Headers/Public" -isystem "${PODS_ROOT}/Headers/Public/XLForm"
-OTHER_LDFLAGS = $(inherited) -ObjC -l"Pods-XLForm" -framework "CoreGraphics" -framework "Foundation" -framework "UIKit"
+HEADER_SEARCH_PATHS = $(inherited) "${PODS_ROOT}/Headers/Public" "${PODS_ROOT}/Headers/Public/BFPaperButton" "${PODS_ROOT}/Headers/Public/BFPaperTableViewCell" "${PODS_ROOT}/Headers/Public/BFPaperView" "${PODS_ROOT}/Headers/Public/UIColor+BFPaperColors" "${PODS_ROOT}/Headers/Public/XLForm"
+OTHER_CFLAGS = $(inherited) -isystem "${PODS_ROOT}/Headers/Public" -isystem "${PODS_ROOT}/Headers/Public/BFPaperButton" -isystem "${PODS_ROOT}/Headers/Public/BFPaperTableViewCell" -isystem "${PODS_ROOT}/Headers/Public/BFPaperView" -isystem "${PODS_ROOT}/Headers/Public/UIColor+BFPaperColors" -isystem "${PODS_ROOT}/Headers/Public/XLForm"
+OTHER_LDFLAGS = $(inherited) -ObjC -l"Pods-BFPaperButton" -l"Pods-BFPaperTableViewCell" -l"Pods-BFPaperView" -l"Pods-UIColor+BFPaperColors" -l"Pods-XLForm" -framework "CoreGraphics" -framework "Foundation" -framework "UIKit"
 OTHER_LIBTOOLFLAGS = $(OTHER_LDFLAGS)
 PODS_ROOT = ${SRCROOT}/Pods

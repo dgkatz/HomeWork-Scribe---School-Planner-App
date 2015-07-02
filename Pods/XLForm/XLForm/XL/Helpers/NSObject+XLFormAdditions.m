@@ -42,7 +42,7 @@
 
 -(id)valueData
 {
-    if ([self isKindOfClass:[NSString class]] || [self isKindOfClass:[NSNumber class]] || [self isKindOfClass:[NSDate class]] || [self isKindOfClass:[UIImageView class]]){
+    if ([self isKindOfClass:[NSString class]] || [self isKindOfClass:[NSNumber class]] || [self isKindOfClass:[NSDate class]]){
         return self;
     }
     if ([self isKindOfClass:[NSArray class]]) {

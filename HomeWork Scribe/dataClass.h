@@ -25,7 +25,10 @@
     UIColor *defaultColor;
     UIImage *assignmentImage;
     UIImage *chosenAssignmentImage;
-
+    NSString *NotifSetting;
+    int notifIsOn;
+    int timestamp;
+    int globalDeviceWidth;
 }
 @property(nonatomic,retain)NSMutableArray *assignmentData_Subject;
 @property(nonatomic,retain)NSMutableArray *assignmentData_Date;
@@ -41,7 +44,13 @@
 @property(strong)UIImage *assignmentImage;
 @property(strong)UIImage *chosenAssignmentImage;
 @property(strong)NSString *note;;
+@property(strong)NSString *NotifSetting;;
 @property(strong)UIColor *defaultColor;
 @property BOOL success;
+@property int notifIsOn;
+@property int timestamp;
+@property int globalDeviceWidth;
+
+
 +(dataClass*)getInstance;
 @end

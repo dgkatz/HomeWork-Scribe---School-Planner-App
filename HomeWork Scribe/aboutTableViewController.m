@@ -73,7 +73,20 @@ NSArray *menu;
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     if (indexPath.row == 0) {
-        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"http://dgkatz.wix.com/homeworkscribe"]];
+        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"http://www.strattonapps.com/"]];
+    }
+    else if (indexPath.row == 1){
+        if( [[UIApplication sharedApplication]
+             canOpenURL:[NSURL URLWithString:@"fb://"]] )
+        {
+            NSURL *url = [NSURL URLWithString:@"fb://profile/970845049609925"];
+            [[UIApplication sharedApplication] openURL:url];
+        }
+        else{
+            UIApplication *mySafari = [UIApplication sharedApplication];
+            [mySafari openURL:[NSURL URLWithString:@"https://www.facebook.com/strattonApps"]];
+        }
+
     }
 }
 

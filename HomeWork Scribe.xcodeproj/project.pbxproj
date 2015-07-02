@@ -37,6 +37,7 @@
 		D71244F71AF85A4700566E9F /* setUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D71244F61AF85A4700566E9F /* setUpViewController.m */; };
 		D71244FA1AF85F6500566E9F /* subjectSetUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D71244F91AF85F6500566E9F /* subjectSetUpViewController.m */; };
 		D71244FD1AF986FF00566E9F /* customSubjectPickerTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D71244FC1AF986FF00566E9F /* customSubjectPickerTableViewController.m */; };
+		D71E347D1B4335A4008A1B40 /* libGoogleAnalyticsServices.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D71E347C1B4335A4008A1B40 /* libGoogleAnalyticsServices.a */; };
 		D7271DAD1B12369C009FDD9E /* Icon29g.png in Resources */ = {isa = PBXBuildFile; fileRef = D7271DA41B12369C009FDD9E /* Icon29g.png */; };
 		D7271DAE1B12369C009FDD9E /* Icon40g.png in Resources */ = {isa = PBXBuildFile; fileRef = D7271DA51B12369C009FDD9E /* Icon40g.png */; };
 		D7271DAF1B12369C009FDD9E /* Icon58g.png in Resources */ = {isa = PBXBuildFile; fileRef = D7271DA61B12369C009FDD9E /* Icon58g.png */; };
@@ -84,9 +85,6 @@
 		D784281F1AF0821D00669910 /* splahicon@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = D784281C1AF0821D00669910 /* splahicon@3x.png */; };
 		D78AD00D1AE99CBD00FD6CDC /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D78AD00C1AE99CBD00FD6CDC /* QuartzCore.framework */; };
 		D78AD0211AE9B3BB00FD6CDC /* UpcomingController.m in Sources */ = {isa = PBXBuildFile; fileRef = D78AD0201AE9B3BB00FD6CDC /* UpcomingController.m */; };
-		D7A22D1A1B1684EB0024E894 /* libGoogleAnalyticsServices.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D7A22D191B1684EB0024E894 /* libGoogleAnalyticsServices.a */; };
-		D7A22D201B1696E90024E894 /* BFPaperButton.m in Sources */ = {isa = PBXBuildFile; fileRef = D7A22D1F1B1696E90024E894 /* BFPaperButton.m */; };
-		D7A22D231B16986F0024E894 /* UIColor+BFPaperColors.m in Sources */ = {isa = PBXBuildFile; fileRef = D7A22D221B16986F0024E894 /* UIColor+BFPaperColors.m */; };
 		D7A22D261B169BFE0024E894 /* LCZoomTransition.m in Sources */ = {isa = PBXBuildFile; fileRef = D7A22D251B169BFE0024E894 /* LCZoomTransition.m */; };
 		D7A22D291B16A4620024E894 /* OZLExpandableTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = D7A22D281B16A4620024E894 /* OZLExpandableTableView.m */; };
 		D7BBB9891AF6DE4B00149DF2 /* notificationEditTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D7BBB9881AF6DE4B00149DF2 /* notificationEditTableViewController.m */; };
@@ -132,6 +130,9 @@
 		D7E1B2791B03FE6100560108 /* UIProgressView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = D7E1B26F1B03FE6100560108 /* UIProgressView+AFNetworking.m */; };
 		D7E1B27A1B03FE6100560108 /* UIRefreshControl+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = D7E1B2711B03FE6100560108 /* UIRefreshControl+AFNetworking.m */; };
 		D7E1B27B1B03FE6100560108 /* UIWebView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = D7E1B2731B03FE6100560108 /* UIWebView+AFNetworking.m */; };
+		D7E78F7F1B1BB38700D90086 /* banner6plus.png in Resources */ = {isa = PBXBuildFile; fileRef = D7E78F7C1B1BB38700D90086 /* banner6plus.png */; };
+		D7E78F801B1BB38700D90086 /* banner45.png in Resources */ = {isa = PBXBuildFile; fileRef = D7E78F7D1B1BB38700D90086 /* banner45.png */; };
+		D7E78F851B1BB49400D90086 /* banner6.png in Resources */ = {isa = PBXBuildFile; fileRef = D7E78F841B1BB49400D90086 /* banner6.png */; };
 		D7EA06F11B02AB3E00F85008 /* KxMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = D7EA06F01B02AB3E00F85008 /* KxMenu.m */; };
 		D7EC7D721B0B7A87001C64E6 /* detailImageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D7EC7D711B0B7A87001C64E6 /* detailImageViewController.m */; };
 		D7EC7D801B0CA3BE001C64E6 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D7EC7D7F1B0CA3BE001C64E6 /* CoreData.framework */; };
@@ -230,6 +231,7 @@
 		D71244F91AF85F6500566E9F /* subjectSetUpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = subjectSetUpViewController.m; sourceTree = "<group>"; };
 		D71244FB1AF986FF00566E9F /* customSubjectPickerTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = customSubjectPickerTableViewController.h; sourceTree = "<group>"; };
 		D71244FC1AF986FF00566E9F /* customSubjectPickerTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = customSubjectPickerTableViewController.m; sourceTree = "<group>"; };
+		D71E347C1B4335A4008A1B40 /* libGoogleAnalyticsServices.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libGoogleAnalyticsServices.a; sourceTree = "<group>"; };
 		D7271DA41B12369C009FDD9E /* Icon29g.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon29g.png; sourceTree = "<group>"; };
 		D7271DA51B12369C009FDD9E /* Icon40g.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon40g.png; sourceTree = "<group>"; };
 		D7271DA61B12369C009FDD9E /* Icon58g.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon58g.png; sourceTree = "<group>"; };
@@ -299,11 +301,6 @@
 		D78AD0181AE9A1D700FD6CDC /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
 		D78AD01F1AE9B3BB00FD6CDC /* UpcomingController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UpcomingController.h; sourceTree = "<group>"; };
 		D78AD0201AE9B3BB00FD6CDC /* UpcomingController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UpcomingController.m; sourceTree = "<group>"; };
-		D7A22D191B1684EB0024E894 /* libGoogleAnalyticsServices.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libGoogleAnalyticsServices.a; sourceTree = "<group>"; };
-		D7A22D1E1B1696E90024E894 /* BFPaperButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BFPaperButton.h; sourceTree = "<group>"; };
-		D7A22D1F1B1696E90024E894 /* BFPaperButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BFPaperButton.m; sourceTree = "<group>"; };
-		D7A22D211B16986F0024E894 /* UIColor+BFPaperColors.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+BFPaperColors.h"; sourceTree = "<group>"; };
-		D7A22D221B16986F0024E894 /* UIColor+BFPaperColors.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+BFPaperColors.m"; sourceTree = "<group>"; };
 		D7A22D241B169BFE0024E894 /* LCZoomTransition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LCZoomTransition.h; sourceTree = "<group>"; };
 		D7A22D251B169BFE0024E894 /* LCZoomTransition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LCZoomTransition.m; sourceTree = "<group>"; };
 		D7A22D271B16A4620024E894 /* OZLExpandableTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OZLExpandableTableView.h; sourceTree = "<group>"; };
@@ -376,6 +373,9 @@
 		D7E1B2721B03FE6100560108 /* UIWebView+AFNetworking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIWebView+AFNetworking.h"; sourceTree = "<group>"; };
 		D7E1B2731B03FE6100560108 /* UIWebView+AFNetworking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIWebView+AFNetworking.m"; sourceTree = "<group>"; };
 		D7E1B27D1B04114D00560108 /* homeworkdb.sql */ = {isa = PBXFileReference; lastKnownFileType = file; path = homeworkdb.sql; sourceTree = "<group>"; };
+		D7E78F7C1B1BB38700D90086 /* banner6plus.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = banner6plus.png; sourceTree = "<group>"; };
+		D7E78F7D1B1BB38700D90086 /* banner45.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = banner45.png; sourceTree = "<group>"; };
+		D7E78F841B1BB49400D90086 /* banner6.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = banner6.png; sourceTree = "<group>"; };
 		D7EA06EF1B02AB3E00F85008 /* KxMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KxMenu.h; sourceTree = "<group>"; };
 		D7EA06F01B02AB3E00F85008 /* KxMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KxMenu.m; sourceTree = "<group>"; };
 		D7EC7D701B0B7A87001C64E6 /* detailImageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = detailImageViewController.h; sourceTree = "<group>"; };
@@ -447,7 +447,7 @@
 				D7EC7D8C1B0D1CD6001C64E6 /* MessageUI.framework in Frameworks */,
 				D7EC7D821B0CA3E4001C64E6 /* libz.dylib in Frameworks */,
 				D7EC7D811B0CA3CD001C64E6 /* SystemConfiguration.framework in Frameworks */,
-				D7A22D1A1B1684EB0024E894 /* libGoogleAnalyticsServices.a in Frameworks */,
+				D71E347D1B4335A4008A1B40 /* libGoogleAnalyticsServices.a in Frameworks */,
 				D7EC7D801B0CA3BE001C64E6 /* CoreData.framework in Frameworks */,
 				D78AD00D1AE99CBD00FD6CDC /* QuartzCore.framework in Frameworks */,
 				D742E8EF1AE969A9009A4904 /* CoreGraphics.framework in Frameworks */,
@@ -523,15 +523,11 @@
 		B1FD78341AB4B1EF009DB201 /* HomeWork Scribe */ = {
 			isa = PBXGroup;
 			children = (
+				D71E347C1B4335A4008A1B40 /* libGoogleAnalyticsServices.a */,
 				D7A22D271B16A4620024E894 /* OZLExpandableTableView.h */,
 				D7A22D281B16A4620024E894 /* OZLExpandableTableView.m */,
 				D7A22D241B169BFE0024E894 /* LCZoomTransition.h */,
 				D7A22D251B169BFE0024E894 /* LCZoomTransition.m */,
-				D7A22D211B16986F0024E894 /* UIColor+BFPaperColors.h */,
-				D7A22D221B16986F0024E894 /* UIColor+BFPaperColors.m */,
-				D7A22D1E1B1696E90024E894 /* BFPaperButton.h */,
-				D7A22D1F1B1696E90024E894 /* BFPaperButton.m */,
-				D7A22D191B1684EB0024E894 /* libGoogleAnalyticsServices.a */,
 				D7E1B27D1B04114D00560108 /* homeworkdb.sql */,
 				D7E1B23F1B03FB5F00560108 /* XLFormImageSelectorCell.h */,
 				D7E1B2401B03FB5F00560108 /* XLFormImageSelectorCell.m */,
@@ -611,6 +607,9 @@
 		B1FD78351AB4B1EF009DB201 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				D7E78F841B1BB49400D90086 /* banner6.png */,
+				D7E78F7C1B1BB38700D90086 /* banner6plus.png */,
+				D7E78F7D1B1BB38700D90086 /* banner45.png */,
 				D7BDE8F31B1669B900FB5607 /* iphone52.png */,
 				D7BDE8F41B1669B900FB5607 /* iphone53.png */,
 				D7BDE8F51B1669B900FB5607 /* iphone54.png */,
@@ -894,6 +893,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D7E78F801B1BB38700D90086 /* banner45.png in Resources */,
 				D7271DB31B12369C009FDD9E /* Icon120g.png in Resources */,
 				D7BBB9951AF6EE1B00149DF2 /* AboutScreenAppIcon.png in Resources */,
 				D7C9920F1AFB077000A3F48C /* list@3x.png in Resources */,
@@ -927,6 +927,7 @@
 				D7BDE8F81B1669B900FB5607 /* iphone53.png in Resources */,
 				D711FE361AF5B1A8005C1F6B /* 414X140Alt.png in Resources */,
 				B1FD78691AB4B627009DB201 /* navmenu.png in Resources */,
+				D7E78F851B1BB49400D90086 /* banner6.png in Resources */,
 				D7C992011AFB070800A3F48C /* calender.png in Resources */,
 				D7BBB9931AF6EE1B00149DF2 /* AboutScreenAppIcon@3x.png in Resources */,
 				D739F0191AECA1E7000C2FF1 /* 152.png in Resources */,
@@ -952,6 +953,7 @@
 				D784281F1AF0821D00669910 /* splahicon@3x.png in Resources */,
 				D7271DAF1B12369C009FDD9E /* Icon58g.png in Resources */,
 				D7EC7D891B0D1C34001C64E6 /* ic_email_black_24dp.png in Resources */,
+				D7E78F7F1B1BB38700D90086 /* banner6plus.png in Resources */,
 				D7C992031AFB070800A3F48C /* calender@3x.png in Resources */,
 				D711FD9E1AF3218B005C1F6B /* 375X140.png in Resources */,
 				D711FD9F1AF3218B005C1F6B /* 414X140.png in Resources */,
@@ -1047,9 +1049,7 @@
 				B1FD78941AB4BC27009DB201 /* PDTSimpleCalendarViewController.m in Sources */,
 				D7EDD1601AE8A650003EBABE /* colorPickerViewController.m in Sources */,
 				D7E1B2751B03FE6100560108 /* UIActivityIndicatorView+AFNetworking.m in Sources */,
-				D7A22D231B16986F0024E894 /* UIColor+BFPaperColors.m in Sources */,
 				D7EDD1791AE8A7FA003EBABE /* InfSourceColorView.m in Sources */,
-				D7A22D201B1696E90024E894 /* BFPaperButton.m in Sources */,
 				D7EA06F11B02AB3E00F85008 /* KxMenu.m in Sources */,
 				D7E1B2781B03FE6100560108 /* UIImageView+AFNetworking.m in Sources */,
 				D7BBB9891AF6DE4B00149DF2 /* notificationEditTableViewController.m in Sources */,
@@ -1233,12 +1233,56 @@
 					Scribe,
 					"$(PROJECT_DIR)/HomeWork",
 					Scribe,
+					"$(PROJECT_DIR)/HomeWork",
+					Scribe,
+					"$(PROJECT_DIR)/HomeWork",
+					Scribe,
+					"$(PROJECT_DIR)/HomeWork",
+					Scribe,
+					"$(PROJECT_DIR)/HomeWork",
+					Scribe,
+					"$(PROJECT_DIR)/HomeWork",
+					Scribe,
+					"$(PROJECT_DIR)/HomeWork",
+					Scribe,
+					"$(PROJECT_DIR)/HomeWork",
+					Scribe,
+					"$(PROJECT_DIR)/HomeWork",
+					Scribe,
+					"$(PROJECT_DIR)/HomeWork",
+					Scribe,
+					"$(PROJECT_DIR)/HomeWork",
+					Scribe,
+					"$(PROJECT_DIR)/HomeWork",
+					Scribe,
+					"$(PROJECT_DIR)/HomeWork",
+					Scribe,
+					"$(PROJECT_DIR)/HomeWork",
+					Scribe,
+					"$(PROJECT_DIR)/HomeWork",
+					Scribe,
+					"$(PROJECT_DIR)/HomeWork",
+					Scribe,
+					"$(PROJECT_DIR)/HomeWork",
+					Scribe,
+					"$(PROJECT_DIR)/HomeWork",
+					Scribe,
+					"$(PROJECT_DIR)/HomeWork",
+					Scribe,
+					"$(PROJECT_DIR)/HomeWork",
+					Scribe,
+					"$(PROJECT_DIR)/HomeWork",
+					Scribe,
+					"$(PROJECT_DIR)/HomeWork",
+					Scribe,
+					"$(PROJECT_DIR)/HomeWork",
+					Scribe,
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "a1ebca18-e2ba-4d9b-96a3-cafcf89b019b";
 				SWIFT_OBJC_BRIDGING_HEADER = "HomeWork Scribe/HomeWork Scribe-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				TARGETED_DEVICE_FAMILY = 1;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
@@ -1274,11 +1318,55 @@
 					Scribe,
 					"$(PROJECT_DIR)/HomeWork",
 					Scribe,
+					"$(PROJECT_DIR)/HomeWork",
+					Scribe,
+					"$(PROJECT_DIR)/HomeWork",
+					Scribe,
+					"$(PROJECT_DIR)/HomeWork",
+					Scribe,
+					"$(PROJECT_DIR)/HomeWork",
+					Scribe,
+					"$(PROJECT_DIR)/HomeWork",
+					Scribe,
+					"$(PROJECT_DIR)/HomeWork",
+					Scribe,
+					"$(PROJECT_DIR)/HomeWork",
+					Scribe,
+					"$(PROJECT_DIR)/HomeWork",
+					Scribe,
+					"$(PROJECT_DIR)/HomeWork",
+					Scribe,
+					"$(PROJECT_DIR)/HomeWork",
+					Scribe,
+					"$(PROJECT_DIR)/HomeWork",
+					Scribe,
+					"$(PROJECT_DIR)/HomeWork",
+					Scribe,
+					"$(PROJECT_DIR)/HomeWork",
+					Scribe,
+					"$(PROJECT_DIR)/HomeWork",
+					Scribe,
+					"$(PROJECT_DIR)/HomeWork",
+					Scribe,
+					"$(PROJECT_DIR)/HomeWork",
+					Scribe,
+					"$(PROJECT_DIR)/HomeWork",
+					Scribe,
+					"$(PROJECT_DIR)/HomeWork",
+					Scribe,
+					"$(PROJECT_DIR)/HomeWork",
+					Scribe,
+					"$(PROJECT_DIR)/HomeWork",
+					Scribe,
+					"$(PROJECT_DIR)/HomeWork",
+					Scribe,
+					"$(PROJECT_DIR)/HomeWork",
+					Scribe,
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "a1ebca18-e2ba-4d9b-96a3-cafcf89b019b";
 				SWIFT_OBJC_BRIDGING_HEADER = "HomeWork Scribe/HomeWork Scribe-Bridging-Header.h";
-				TARGETED_DEVICE_FAMILY = 1;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};

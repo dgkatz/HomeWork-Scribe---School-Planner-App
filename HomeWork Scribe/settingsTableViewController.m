@@ -9,6 +9,7 @@
 #import "settingsTableViewController.h"
 #import "allTableViewController.h"
 #import "SDiPhoneVersion.h"
+#import <Social/Social.h>
 @interface settingsTableViewController ()
 
 @end
@@ -18,10 +19,9 @@ NSArray *menu;
     [super viewDidLoad];
 
     self.dbManager = [[DBManager alloc] initWithDatabaseFilename:@"homeworkdb.sql"];
-    menu = @[@"first",@"second",@"sixth",@"third",@"fifth",@"fourth"];
+    menu = @[@"first",@"second",@"sixth",@"third",@"seventh",@"fifth",@"fourth"];
     // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
-    
+     self.clearsSelectionOnViewWillAppear = YES;
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
 }
@@ -51,7 +51,7 @@ NSArray *menu;
         romNum = 1;
     }
     else{
-        romNum = 2;
+        romNum = 3;
     }
     return romNum;
 }
@@ -75,6 +75,9 @@ NSArray *menu;
     }
     else{
         if (indexPath.row == 0) {
+            cellIdentifier = @"seventh";
+        }
+        else if (indexPath.row == 1){
             cellIdentifier = @"fifth";
         }
         else{
@@ -93,27 +96,28 @@ NSArray *menu;
         [deleteAlert show];
     }
     else if (indexPath.section == 3){
-        if (indexPath.row == 1) {
-        NSString *device = [SDiPhoneVersion deviceName];
-        NSString *df = [[UIDevice currentDevice] systemVersion];
-        NSString *emailTitle = @"HomeWork Scribe Feedback";
-        NSString *messageBody = [NSString stringWithFormat:@"\n\n\n\n\n----------------------------\nDevice Details:\n Platform: %@\n%@\nApp Version: 1.32",df,device];
-        NSArray *toRecipents = [NSArray arrayWithObject:@"info@strattonapps.com"];
-        
-        MFMailComposeViewController *mc = [[MFMailComposeViewController alloc] init];
-        mc.mailComposeDelegate = self;
-        [mc setSubject:emailTitle];
-        [mc setMessageBody:messageBody isHTML:NO];
-        [mc setToRecipients:toRecipents];
-        
-        // Present mail view controller on screen
-        mc.navigationBar.tintColor = [UIColor whiteColor];
-        
-        [self presentViewController:mc animated:YES completion:NULL];
-        }
-        else{
+        if (indexPath.row == 2) {
+            NSString *device = [SDiPhoneVersion deviceName];
+            NSString *df = [[UIDevice currentDevice] systemVersion];
             NSString *emailTitle = @"HomeWork Scribe Feedback";
-            NSString *messageBody = [NSString stringWithFormat:@"\n\n\nI thought you might enjoy the HomeWork Scribe App. Check it out at:<br/><br/><a href='https://itunes.apple.com/us/app/homework-scribe/id989963468?ls=1&mt=8'>HomeWork Scribe</a><br/><br/> HomeWork Scribe makes it easy to add, and keep track of homework assignments. All you have to do is add the assignment and your done."];
+            NSString *messageBody = [NSString stringWithFormat:@"\n\n\n\n\n----------------------------\nDevice Details:\n Platform: %@\n%@\nApp Version: 1.32",df,device];
+            NSArray *toRecipents = [NSArray arrayWithObject:@"info@strattonapps.com"];
+            
+            MFMailComposeViewController *mc = [[MFMailComposeViewController alloc] init];
+            mc.mailComposeDelegate = self;
+            [mc setSubject:emailTitle];
+            [mc setMessageBody:messageBody isHTML:NO];
+            [mc setToRecipients:toRecipents];
+            
+            // Present mail view controller on screen
+            mc.navigationBar.tintColor = [UIColor whiteColor];
+            
+            [self presentViewController:mc animated:YES completion:NULL];
+        }
+        else if (indexPath.row == 1){
+            
+            NSString *emailTitle = @"HomeWork Scribe App";
+            NSString *messageBody = [NSString stringWithFormat:@"\n\n\n I thought you might enjoy the HomeWork Scribe App. Check it out at:<a href='https://itunes.apple.com/us/app/homework-scribe/id989963468?ls=1&mt=8'>HomeWork Scribe</a> HomeWork Scribe makes it easy to add, and keep track of homework assignments. All you have to do is add the assignment and your done."];
             NSArray *toRecipents = [NSArray arrayWithObject:@""];
             MFMailComposeViewController *mc = [[MFMailComposeViewController alloc] init];
             mc.mailComposeDelegate = self;
@@ -125,7 +129,26 @@ NSArray *menu;
             mc.navigationBar.tintColor = [UIColor whiteColor];
             
             [self presentViewController:mc animated:YES completion:NULL];
-
+            
+        }
+        else{
+            NSLog(@"share fb clciked");
+            if([SLComposeViewController isAvailableForServiceType:SLServiceTypeFacebook]) {
+                NSLog(@"can use facebook");
+                NSLog(@"fb registered");
+                SLComposeViewController *controller = [SLComposeViewController composeViewControllerForServiceType:SLServiceTypeFacebook];
+                
+                [controller setInitialText:@"Check out the HomeWork Scribe app"];
+                [controller addURL:[NSURL URLWithString:@"https://itunes.apple.com/us/app/homework-scribe/id989963468?mt=8"]];
+                [controller addImage:[UIImage imageNamed:@"icon180g.png"]];
+                [self presentViewController:controller animated:YES completion:Nil];
+                
+            }
+            else{
+                NSLog(@"cant use facebook");
+                UIAlertView *faceBookAlert = [[UIAlertView alloc]initWithTitle:@"No FaceBook account" message:@"Got to your phones settings to add a facebook account" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+                [faceBookAlert show];
+            }
         }
     }
 }

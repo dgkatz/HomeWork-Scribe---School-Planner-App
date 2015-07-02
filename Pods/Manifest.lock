@@ -1,10 +1,24 @@
 PODS:
+  - BFPaperButton (2.0.18):
+    - UIColor+BFPaperColors
+  - BFPaperTableViewCell (2.3.3):
+    - UIColor+BFPaperColors
+  - BFPaperView (2.2.2):
+    - UIColor+BFPaperColors
+  - UIColor+BFPaperColors (1.7.1)
   - XLForm (2.1.0)
 
 DEPENDENCIES:
+  - BFPaperButton (~> 2.0.18)
+  - BFPaperTableViewCell (~> 2.3.3)
+  - BFPaperView (~> 2.2.2)
   - XLForm (~> 2.1.0)
 
 SPEC CHECKSUMS:
-  XLForm: 7d6855fe88df37b44ea00da80cc0cf3a945cfb1b
+  BFPaperButton: 16b3ec9c2964d24f89f623a4113321d3f003ed60
+  BFPaperTableViewCell: 71fbd5fc1b3479c0c8620dc121d31d2a6694b4a8
+  BFPaperView: ea36257ba88f041a6e755df41d9a4987e0f3352b
+  UIColor+BFPaperColors: b1efa4320e2f56c4b14f73232faf967ba0e5b4a2
+  XLForm: ba9e657a360a810ab1f64cc2cd6307fd99a86866
 
-COCOAPODS: 0.36.0
+COCOAPODS: 0.37.2
