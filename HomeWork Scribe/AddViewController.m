@@ -147,87 +147,94 @@ XLFormDescriptor * form;
         dataClass *obj = [dataClass getInstance];
         NSDictionary * values=[form formValues];
         //nslog(@"%@",[form formValues]);
-        if ([[values objectForKey:@"Description"]displayText]!=nil) {
-            NSString *Subject = [[values objectForKey:@"SubjectPicker"] displayText];
-            NSString *Description = [[values objectForKey:@"Description"] displayText];
-            NSString *notification = [[values objectForKey:@"notification"]displayText];
-            NSDate *date = [[values objectForKey:@"picker"]valueData];
-            //UIImage *img = [[values objectForKey:@"image"]valueData];
-            UIImage *img=[form formRowWithTag:@"image"].value;
-            //nslog(@"The value of valuedata = %@",img);
-            if ([values objectForKey:@"image"] == NULL) {
-                //nslog(@"Error: No image selected");
-            }
-            //else{
-                //img = [values objectForKey:@"image"];
-             //   img = [UIImage imageWithCGImage:(__bridge CGImageRef)([values objectForKey:@"image"])];
-            //}
-            NSString *base64ImgString;
-            if (img) {
-                NSData *dataFromImg = UIImagePNGRepresentation(img);
-                base64ImgString = [dataFromImg base64EncodedStringWithOptions:kNilOptions];
-            }
-            else{
-                //nslog(@"base 64 string is null");
-                base64ImgString = NULL;
-            }
-            ////nslog(@"the image : %@",img);
-            
-            //UInt8 *rawData = [dataFromImg bytes];
-            NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
-            [dateFormat setDateFormat:@"yyyy-MM-dd"];
-            NSString *newDate = [dateFormat stringFromDate:date];
-            NSDateFormatter *dateFormat2 = [[NSDateFormatter alloc] init];
-            [dateFormat2 setDateFormat:@"yyyy-MM-dd"];
-            NSDate *finalDate = [dateFormat2 dateFromString:newDate];
-            [obj.assignmentData_Subject addObject:Subject];
-            [obj.assignmentData_Description addObject:Description];
-            [obj.assignmentData_Date addObject:finalDate];
-            int d = [finalDate timeIntervalSince1970];
-            NSLog(@"%d",d);
-            //nslog(@"this is the date in add asignment%d",d);
-            //nslog(@"subject: %@ description: %@ date: %@",Subject,Description,date);
-            NSString *query = [NSString stringWithFormat:@"insert into assignmentData values(null,'%@','%@',%d,'%@','%@',%d)", Description, Subject, d,base64ImgString,notification,1];
-            ////nslog(@"query fot database ---> %@",query);
-            
-            // Execute the query.
-            [self.dbManager executeQuery:query];
-            
-            UILocalNotification* localNotification = [[UILocalNotification alloc] init];
-            localNotification.repeatInterval = 0;
-            localNotification.alertBody = [NSString stringWithFormat:@"You have an assignment due for %@: %@",obj.subject,obj.description1];
-            localNotification.alertAction = @"Show me the item";
-            localNotification.timeZone = [NSTimeZone defaultTimeZone];
-            localNotification.applicationIconBadgeNumber = [[UIApplication sharedApplication] applicationIconBadgeNumber] + 1;
-            int fireDate;
-            if ([notification isEqualToString:@"7:00 am on due date"]) {
-                fireDate = d + 10800;
-                localNotification.fireDate = [NSDate dateWithTimeIntervalSince1970:fireDate];
-                [[UIApplication sharedApplication] scheduleLocalNotification:localNotification];
-            }
-            else if ([notification isEqualToString:@"Night before due date"]){
-                fireDate = d - 36000;
-                localNotification.fireDate = [NSDate dateWithTimeIntervalSince1970:fireDate];
-                [[UIApplication sharedApplication] scheduleLocalNotification:localNotification];
-            }
-            else if ([notification isEqualToString:@"One day before due date"]){
-                fireDate = d - 57600;
-                localNotification.fireDate = [NSDate dateWithTimeIntervalSince1970:fireDate];
-                [[UIApplication sharedApplication] scheduleLocalNotification:localNotification];
-            }
-            else{
-                NSLog(@"do nothing");
-            }
-            /*allTableViewController *VC = (allTableViewController *)[self.storyboard instantiateViewControllerWithIdentifier:@"all"];
-            [self.navigationController presentViewController:VC animated:YES completion:nil];
-            */
+        NSString *Subject = [[values objectForKey:@"SubjectPicker"] displayText];
+        NSString *Description = [[values objectForKey:@"Description"] displayText];
+        NSString *notification = [[values objectForKey:@"notification"]displayText];
+        NSDate *date = [[values objectForKey:@"picker"]valueData];
+        //UIImage *img = [[values objectForKey:@"image"]valueData];
+        UIImage *img=[form formRowWithTag:@"image"].value;
+        //nslog(@"The value of valuedata = %@",img);
+        if ([values objectForKey:@"image"] == NULL) {
+            //nslog(@"Error: No image selected");
+        }
+        //else{
+        //img = [values objectForKey:@"image"];
+        //   img = [UIImage imageWithCGImage:(__bridge CGImageRef)([values objectForKey:@"image"])];
+        //}
+        NSString *base64ImgString;
+        if (img) {
+            NSData *dataFromImg = UIImagePNGRepresentation(img);
+            base64ImgString = [dataFromImg base64EncodedStringWithOptions:kNilOptions];
+        }
+        else{
+            //nslog(@"base 64 string is null");
+            base64ImgString = NULL;
+        }
+        ////nslog(@"the image : %@",img);
+        
+        //UInt8 *rawData = [dataFromImg bytes];
+        NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
+        [dateFormat setDateFormat:@"yyyy-MM-dd"];
+        NSString *newDate = [dateFormat stringFromDate:date];
+        NSDateFormatter *dateFormat2 = [[NSDateFormatter alloc] init];
+        [dateFormat2 setDateFormat:@"yyyy-MM-dd"];
+        NSDate *finalDate = [dateFormat2 dateFromString:newDate];
+        [obj.assignmentData_Subject addObject:Subject];
+        [obj.assignmentData_Description addObject:Description];
+        [obj.assignmentData_Date addObject:finalDate];
+        int d = [finalDate timeIntervalSince1970];
+        NSLog(@"%d",d);
+        //nslog(@"this is the date in add asignment%d",d);
+        //nslog(@"subject: %@ description: %@ date: %@",Subject,Description,date);
+        NSString *query = [NSString stringWithFormat:@"insert into assignmentData values(null,'%@','%@',%d,'%@','%@',%d)", Description, Subject, d,base64ImgString,notification,1];
+        ////nslog(@"query fot database ---> %@",query);
+        
+        // Execute the query.
+        [self.dbManager executeQuery:query];
+        
+        UILocalNotification* localNotification = [[UILocalNotification alloc] init];
+        localNotification.repeatInterval = 0;
+        localNotification.alertBody = [NSString stringWithFormat:@"You have an assignment due for %@: %@",obj.subject,obj.description1];
+        localNotification.alertAction = @"Show me the item";
+        localNotification.timeZone = [NSTimeZone defaultTimeZone];
+        localNotification.applicationIconBadgeNumber = [[UIApplication sharedApplication] applicationIconBadgeNumber] + 1;
+        int fireDate;
+        if ([notification isEqualToString:@"7:00 am on due date"]) {
+            fireDate = d + 10800;
+            localNotification.fireDate = [NSDate dateWithTimeIntervalSince1970:fireDate];
+            [[UIApplication sharedApplication] scheduleLocalNotification:localNotification];
+        }
+        else if ([notification isEqualToString:@"Night before due date"]){
+            fireDate = d - 36000;
+            localNotification.fireDate = [NSDate dateWithTimeIntervalSince1970:fireDate];
+            [[UIApplication sharedApplication] scheduleLocalNotification:localNotification];
+        }
+        else if ([notification isEqualToString:@"One day before due date"]){
+            fireDate = d - 57600;
+            localNotification.fireDate = [NSDate dateWithTimeIntervalSince1970:fireDate];
+            [[UIApplication sharedApplication] scheduleLocalNotification:localNotification];
+        }
+        else{
+            NSLog(@"do nothing");
         }
         
-        else{
-            UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"Add Description" message:@"description can't be empty" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
-            [alert show];
-        }
-
+    }
+}
+-(void)confirmButtonClicked{
+    NSLog(@"");
+}
+-(void)cancelButtonClicked{
+    NSLog(@"");
+}
+- (BOOL)shouldPerformSegueWithIdentifier:(NSString *)identifier sender:(id)sender{
+    NSDictionary * values=[form formValues];
+    if ([[values objectForKey:@"Description"]displayText]!=nil) {
+        return YES;
+    }
+    else{
+        MDAlertView *alert = [[MDAlertView alloc]initWithTitle:@"Add Description" message:@"description can't be empty" image:nil delegate:self cancelButtonTitle:@"OK" confirmButtonTitle:nil];
+        [alert show];
+        return NO;
     }
 }
 @end

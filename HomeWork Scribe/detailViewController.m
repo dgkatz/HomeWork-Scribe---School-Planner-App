@@ -124,10 +124,26 @@ UIImage *imag;
     self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
     // Do any additional setup after loading the view.
 }
+-(void)confirmButtonClicked{
+    MFMailComposeViewController *mc= [[MFMailComposeViewController alloc]init];
+    mc.mailComposeDelegate = self;
+    NSString *subject = @"HomeWork Scribe app";
+    NSString *body = [NSString stringWithFormat:@"Check out HomeWork Scribe in the App Store : %@",[NSURL URLWithString:@"https://itunes.apple.com/us/app/homework-scribe/id989963468?ls=1&mt=8"]];
+    UIImage *icon = [UIImage imageNamed:@"Icon180g.png"];
+    [mc addAttachmentData:UIImagePNGRepresentation(icon) mimeType:@"image/png" fileName:@"icon.png"];
+    [mc setSubject:subject];
+    [mc setMessageBody:body isHTML:NO];
+    [mc setToRecipients:@[]];
+    mc.navigationBar.tintColor = [UIColor whiteColor];
+    [self presentViewController:mc animated:YES completion:NULL];
+}
+-(void)cancelButtonClicked{
+    
+}
 -(void)share{
     BOOL shareEnableded = [[NSUserDefaults standardUserDefaults]boolForKey:@"UnlockSharing"];
     if (shareEnableded == NO) {
-        UIAlertView *share = [[UIAlertView alloc]initWithTitle:@"Feature not available" message:@"To unlcok sharing assignment feature, share the app with a friend first" delegate:self cancelButtonTitle:@"Maybe later" otherButtonTitles:@"Share with friend", nil];
+        MDAlertView *share = [[MDAlertView alloc]initWithTitle:@"Feature not available" message:@"To unlcok sharing assignment feature, share the app with a friend first" image:nil delegate:self cancelButtonTitle:@"later" confirmButtonTitle:@"Share!"];
         [share show];
     }
     else{

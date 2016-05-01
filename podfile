@@ -1,1 +1,4 @@
 pod 'XLForm', '~> 2.1.0'
+pod 'BFPaperTableViewCell', '~> 2.3.3'
+pod 'BFPaperButton', '~> 2.0.18'
+pod 'BFPaperView', '~> 2.2.2'

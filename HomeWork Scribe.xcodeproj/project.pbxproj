@@ -7,6 +7,50 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		657036C01BFD316700B6E894 /* libGoogleAnalyticsServices.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 657036BF1BFD316700B6E894 /* libGoogleAnalyticsServices.a */; };
+		65D894861B910ED300E59E2B /* AutoResizeTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 65D894851B910ED300E59E2B /* AutoResizeTextView.m */; };
+		65D8949D1B910EDE00E59E2B /* MDCalendar.m in Sources */ = {isa = PBXBuildFile; fileRef = 65D894881B910EDE00E59E2B /* MDCalendar.m */; };
+		65D8949E1B910EDE00E59E2B /* MDCalendarCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 65D8948A1B910EDE00E59E2B /* MDCalendarCell.m */; };
+		65D8949F1B910EDE00E59E2B /* MDCalendarDateHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 65D8948C1B910EDE00E59E2B /* MDCalendarDateHeader.m */; };
+		65D894A01B910EDE00E59E2B /* MDCalendarHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 65D8948E1B910EDE00E59E2B /* MDCalendarHeader.m */; };
+		65D894A11B910EDE00E59E2B /* MDCalendarYearSelector.m in Sources */ = {isa = PBXBuildFile; fileRef = 65D894901B910EDE00E59E2B /* MDCalendarYearSelector.m */; };
+		65D894A21B910EDE00E59E2B /* MDCalendarYearSelectorViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 65D894921B910EDE00E59E2B /* MDCalendarYearSelectorViewCell.m */; };
+		65D894A31B910EDE00E59E2B /* MDDatePicker.m in Sources */ = {isa = PBXBuildFile; fileRef = 65D894941B910EDE00E59E2B /* MDDatePicker.m */; };
+		65D894A41B910EDE00E59E2B /* MDDatePickerDialog.m in Sources */ = {isa = PBXBuildFile; fileRef = 65D894961B910EDE00E59E2B /* MDDatePickerDialog.m */; };
+		65D894A51B910EDE00E59E2B /* MDTimePickerDialog.m in Sources */ = {isa = PBXBuildFile; fileRef = 65D894981B910EDE00E59E2B /* MDTimePickerDialog.m */; };
+		65D894A61B910EDE00E59E2B /* NSCalendarHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 65D8949A1B910EDE00E59E2B /* NSCalendarHelper.m */; };
+		65D894A71B910EDE00E59E2B /* NSDate+MDExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 65D8949C1B910EDE00E59E2B /* NSDate+MDExtension.m */; };
+		65D894B41B910EEB00E59E2B /* MDDeviceHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 65D894A91B910EEB00E59E2B /* MDDeviceHelper.m */; };
+		65D894B51B910EEB00E59E2B /* MDMathHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 65D894AB1B910EEB00E59E2B /* MDMathHelper.m */; };
+		65D894B61B910EEB00E59E2B /* NSDateHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 65D894AD1B910EEB00E59E2B /* NSDateHelper.m */; };
+		65D894B71B910EEB00E59E2B /* UIColorHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 65D894AF1B910EEB00E59E2B /* UIColorHelper.m */; };
+		65D894B81B910EEB00E59E2B /* UIFontHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 65D894B11B910EEB00E59E2B /* UIFontHelper.m */; };
+		65D894B91B910EEB00E59E2B /* UIViewHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 65D894B31B910EEB00E59E2B /* UIViewHelper.m */; };
+		65D894D51B910EF400E59E2B /* MDButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 65D894BB1B910EF300E59E2B /* MDButton.m */; };
+		65D894D61B910EF400E59E2B /* MDCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 65D894BD1B910EF300E59E2B /* MDCollectionViewCell.m */; };
+		65D894D71B910EF400E59E2B /* MDProgress.m in Sources */ = {isa = PBXBuildFile; fileRef = 65D894C01B910EF300E59E2B /* MDProgress.m */; };
+		65D894D81B910EF400E59E2B /* MDRippleLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 65D894C21B910EF300E59E2B /* MDRippleLayer.m */; };
+		65D894D91B910EF400E59E2B /* MDSlider.m in Sources */ = {isa = PBXBuildFile; fileRef = 65D894C41B910EF300E59E2B /* MDSlider.m */; };
+		65D894DA1B910EF400E59E2B /* MDSnackbar.m in Sources */ = {isa = PBXBuildFile; fileRef = 65D894C61B910EF300E59E2B /* MDSnackbar.m */; };
+		65D894DB1B910EF400E59E2B /* MDSwitch.m in Sources */ = {isa = PBXBuildFile; fileRef = 65D894C81B910EF300E59E2B /* MDSwitch.m */; };
+		65D894DC1B910EF400E59E2B /* MDTabBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 65D894CA1B910EF400E59E2B /* MDTabBar.m */; };
+		65D894DD1B910EF400E59E2B /* MDTabBarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 65D894CC1B910EF400E59E2B /* MDTabBarViewController.m */; };
+		65D894DE1B910EF400E59E2B /* MDTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 65D894CE1B910EF400E59E2B /* MDTableViewCell.m */; };
+		65D894DF1B910EF400E59E2B /* MDTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 65D894D01B910EF400E59E2B /* MDTextField.m */; };
+		65D894E01B910EF400E59E2B /* MDToast.m in Sources */ = {isa = PBXBuildFile; fileRef = 65D894D21B910EF400E59E2B /* MDToast.m */; };
+		65D894E11B910EF400E59E2B /* MDTouchGestureRecognizer.m in Sources */ = {isa = PBXBuildFile; fileRef = 65D894D41B910EF400E59E2B /* MDTouchGestureRecognizer.m */; };
+		65D894E81B910EFE00E59E2B /* MDCircularProgressLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 65D894E31B910EFE00E59E2B /* MDCircularProgressLayer.m */; };
+		65D894E91B910EFE00E59E2B /* MDLinearProgressLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 65D894E51B910EFE00E59E2B /* MDLinearProgressLayer.m */; };
+		65D894EA1B910EFE00E59E2B /* MDProgressLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 65D894E71B910EFE00E59E2B /* MDProgressLayer.m */; };
+		65D894F31B910F0800E59E2B /* MDBubbleLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 65D894EC1B910F0800E59E2B /* MDBubbleLabel.m */; };
+		65D894F41B910F0800E59E2B /* MDSliderIcon.m in Sources */ = {isa = PBXBuildFile; fileRef = 65D894EE1B910F0800E59E2B /* MDSliderIcon.m */; };
+		65D894F51B910F0800E59E2B /* MDSliderThumbView.m in Sources */ = {isa = PBXBuildFile; fileRef = 65D894F01B910F0800E59E2B /* MDSliderThumbView.m */; };
+		65D894F61B910F0800E59E2B /* MDSliderTickMarksView.m in Sources */ = {isa = PBXBuildFile; fileRef = 65D894F21B910F0800E59E2B /* MDSliderTickMarksView.m */; };
+		65D894FB1B910F1300E59E2B /* MDSuggestPopupView.m in Sources */ = {isa = PBXBuildFile; fileRef = 65D894F81B910F1300E59E2B /* MDSuggestPopupView.m */; };
+		65D894FC1B910F1300E59E2B /* MDSuggestTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 65D894FA1B910F1300E59E2B /* MDSuggestTableView.m */; };
+		65D894FF1B910F1B00E59E2B /* UIView+MDExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 65D894FE1B910F1B00E59E2B /* UIView+MDExtension.m */; };
+		65D895151B911E1600E59E2B /* MDAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 65D895111B911E1600E59E2B /* MDAlertView.m */; };
+		65D895161B911E1600E59E2B /* UIColor+BFPaperColors.m in Sources */ = {isa = PBXBuildFile; fileRef = 65D895131B911E1600E59E2B /* UIColor+BFPaperColors.m */; };
 		B1FD78381AB4B1EF009DB201 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = B1FD78371AB4B1EF009DB201 /* main.m */; };
 		B1FD783B1AB4B1EF009DB201 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B1FD783A1AB4B1EF009DB201 /* AppDelegate.m */; };
 		B1FD783E1AB4B1EF009DB201 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B1FD783D1AB4B1EF009DB201 /* ViewController.m */; };
@@ -37,7 +81,6 @@
 		D71244F71AF85A4700566E9F /* setUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D71244F61AF85A4700566E9F /* setUpViewController.m */; };
 		D71244FA1AF85F6500566E9F /* subjectSetUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D71244F91AF85F6500566E9F /* subjectSetUpViewController.m */; };
 		D71244FD1AF986FF00566E9F /* customSubjectPickerTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D71244FC1AF986FF00566E9F /* customSubjectPickerTableViewController.m */; };
-		D71E347D1B4335A4008A1B40 /* libGoogleAnalyticsServices.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D71E347C1B4335A4008A1B40 /* libGoogleAnalyticsServices.a */; };
 		D7271DAD1B12369C009FDD9E /* Icon29g.png in Resources */ = {isa = PBXBuildFile; fileRef = D7271DA41B12369C009FDD9E /* Icon29g.png */; };
 		D7271DAE1B12369C009FDD9E /* Icon40g.png in Resources */ = {isa = PBXBuildFile; fileRef = D7271DA51B12369C009FDD9E /* Icon40g.png */; };
 		D7271DAF1B12369C009FDD9E /* Icon58g.png in Resources */ = {isa = PBXBuildFile; fileRef = D7271DA61B12369C009FDD9E /* Icon58g.png */; };
@@ -180,6 +223,106 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		657036BF1BFD316700B6E894 /* libGoogleAnalyticsServices.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libGoogleAnalyticsServices.a; sourceTree = "<group>"; };
+		65D894841B910ED300E59E2B /* AutoResizeTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AutoResizeTextView.h; sourceTree = "<group>"; };
+		65D894851B910ED300E59E2B /* AutoResizeTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AutoResizeTextView.m; sourceTree = "<group>"; };
+		65D894871B910EDE00E59E2B /* MDCalendar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDCalendar.h; sourceTree = "<group>"; };
+		65D894881B910EDE00E59E2B /* MDCalendar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDCalendar.m; sourceTree = "<group>"; };
+		65D894891B910EDE00E59E2B /* MDCalendarCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDCalendarCell.h; sourceTree = "<group>"; };
+		65D8948A1B910EDE00E59E2B /* MDCalendarCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDCalendarCell.m; sourceTree = "<group>"; };
+		65D8948B1B910EDE00E59E2B /* MDCalendarDateHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDCalendarDateHeader.h; sourceTree = "<group>"; };
+		65D8948C1B910EDE00E59E2B /* MDCalendarDateHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDCalendarDateHeader.m; sourceTree = "<group>"; };
+		65D8948D1B910EDE00E59E2B /* MDCalendarHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDCalendarHeader.h; sourceTree = "<group>"; };
+		65D8948E1B910EDE00E59E2B /* MDCalendarHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDCalendarHeader.m; sourceTree = "<group>"; };
+		65D8948F1B910EDE00E59E2B /* MDCalendarYearSelector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDCalendarYearSelector.h; sourceTree = "<group>"; };
+		65D894901B910EDE00E59E2B /* MDCalendarYearSelector.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDCalendarYearSelector.m; sourceTree = "<group>"; };
+		65D894911B910EDE00E59E2B /* MDCalendarYearSelectorViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDCalendarYearSelectorViewCell.h; sourceTree = "<group>"; };
+		65D894921B910EDE00E59E2B /* MDCalendarYearSelectorViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDCalendarYearSelectorViewCell.m; sourceTree = "<group>"; };
+		65D894931B910EDE00E59E2B /* MDDatePicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDDatePicker.h; sourceTree = "<group>"; };
+		65D894941B910EDE00E59E2B /* MDDatePicker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDDatePicker.m; sourceTree = "<group>"; };
+		65D894951B910EDE00E59E2B /* MDDatePickerDialog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDDatePickerDialog.h; sourceTree = "<group>"; };
+		65D894961B910EDE00E59E2B /* MDDatePickerDialog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDDatePickerDialog.m; sourceTree = "<group>"; };
+		65D894971B910EDE00E59E2B /* MDTimePickerDialog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDTimePickerDialog.h; sourceTree = "<group>"; };
+		65D894981B910EDE00E59E2B /* MDTimePickerDialog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDTimePickerDialog.m; sourceTree = "<group>"; };
+		65D894991B910EDE00E59E2B /* NSCalendarHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSCalendarHelper.h; sourceTree = "<group>"; };
+		65D8949A1B910EDE00E59E2B /* NSCalendarHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSCalendarHelper.m; sourceTree = "<group>"; };
+		65D8949B1B910EDE00E59E2B /* NSDate+MDExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+MDExtension.h"; sourceTree = "<group>"; };
+		65D8949C1B910EDE00E59E2B /* NSDate+MDExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+MDExtension.m"; sourceTree = "<group>"; };
+		65D894A81B910EEB00E59E2B /* MDDeviceHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDDeviceHelper.h; sourceTree = "<group>"; };
+		65D894A91B910EEB00E59E2B /* MDDeviceHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDDeviceHelper.m; sourceTree = "<group>"; };
+		65D894AA1B910EEB00E59E2B /* MDMathHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDMathHelper.h; sourceTree = "<group>"; };
+		65D894AB1B910EEB00E59E2B /* MDMathHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDMathHelper.m; sourceTree = "<group>"; };
+		65D894AC1B910EEB00E59E2B /* NSDateHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSDateHelper.h; sourceTree = "<group>"; };
+		65D894AD1B910EEB00E59E2B /* NSDateHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSDateHelper.m; sourceTree = "<group>"; };
+		65D894AE1B910EEB00E59E2B /* UIColorHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIColorHelper.h; sourceTree = "<group>"; };
+		65D894AF1B910EEB00E59E2B /* UIColorHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIColorHelper.m; sourceTree = "<group>"; };
+		65D894B01B910EEB00E59E2B /* UIFontHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIFontHelper.h; sourceTree = "<group>"; };
+		65D894B11B910EEB00E59E2B /* UIFontHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIFontHelper.m; sourceTree = "<group>"; };
+		65D894B21B910EEB00E59E2B /* UIViewHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIViewHelper.h; sourceTree = "<group>"; };
+		65D894B31B910EEB00E59E2B /* UIViewHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIViewHelper.m; sourceTree = "<group>"; };
+		65D894BA1B910EF300E59E2B /* MDButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDButton.h; sourceTree = "<group>"; };
+		65D894BB1B910EF300E59E2B /* MDButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDButton.m; sourceTree = "<group>"; };
+		65D894BC1B910EF300E59E2B /* MDCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDCollectionViewCell.h; sourceTree = "<group>"; };
+		65D894BD1B910EF300E59E2B /* MDCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDCollectionViewCell.m; sourceTree = "<group>"; };
+		65D894BE1B910EF300E59E2B /* MDConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDConstants.h; sourceTree = "<group>"; };
+		65D894BF1B910EF300E59E2B /* MDProgress.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDProgress.h; sourceTree = "<group>"; };
+		65D894C01B910EF300E59E2B /* MDProgress.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDProgress.m; sourceTree = "<group>"; };
+		65D894C11B910EF300E59E2B /* MDRippleLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDRippleLayer.h; sourceTree = "<group>"; };
+		65D894C21B910EF300E59E2B /* MDRippleLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDRippleLayer.m; sourceTree = "<group>"; };
+		65D894C31B910EF300E59E2B /* MDSlider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDSlider.h; sourceTree = "<group>"; };
+		65D894C41B910EF300E59E2B /* MDSlider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDSlider.m; sourceTree = "<group>"; };
+		65D894C51B910EF300E59E2B /* MDSnackbar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDSnackbar.h; sourceTree = "<group>"; };
+		65D894C61B910EF300E59E2B /* MDSnackbar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDSnackbar.m; sourceTree = "<group>"; };
+		65D894C71B910EF300E59E2B /* MDSwitch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDSwitch.h; sourceTree = "<group>"; };
+		65D894C81B910EF300E59E2B /* MDSwitch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDSwitch.m; sourceTree = "<group>"; };
+		65D894C91B910EF300E59E2B /* MDTabBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDTabBar.h; sourceTree = "<group>"; };
+		65D894CA1B910EF400E59E2B /* MDTabBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDTabBar.m; sourceTree = "<group>"; };
+		65D894CB1B910EF400E59E2B /* MDTabBarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDTabBarViewController.h; sourceTree = "<group>"; };
+		65D894CC1B910EF400E59E2B /* MDTabBarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDTabBarViewController.m; sourceTree = "<group>"; };
+		65D894CD1B910EF400E59E2B /* MDTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDTableViewCell.h; sourceTree = "<group>"; };
+		65D894CE1B910EF400E59E2B /* MDTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDTableViewCell.m; sourceTree = "<group>"; };
+		65D894CF1B910EF400E59E2B /* MDTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDTextField.h; sourceTree = "<group>"; };
+		65D894D01B910EF400E59E2B /* MDTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDTextField.m; sourceTree = "<group>"; };
+		65D894D11B910EF400E59E2B /* MDToast.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDToast.h; sourceTree = "<group>"; };
+		65D894D21B910EF400E59E2B /* MDToast.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDToast.m; sourceTree = "<group>"; };
+		65D894D31B910EF400E59E2B /* MDTouchGestureRecognizer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDTouchGestureRecognizer.h; sourceTree = "<group>"; };
+		65D894D41B910EF400E59E2B /* MDTouchGestureRecognizer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDTouchGestureRecognizer.m; sourceTree = "<group>"; };
+		65D894E21B910EFE00E59E2B /* MDCircularProgressLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDCircularProgressLayer.h; sourceTree = "<group>"; };
+		65D894E31B910EFE00E59E2B /* MDCircularProgressLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDCircularProgressLayer.m; sourceTree = "<group>"; };
+		65D894E41B910EFE00E59E2B /* MDLinearProgressLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDLinearProgressLayer.h; sourceTree = "<group>"; };
+		65D894E51B910EFE00E59E2B /* MDLinearProgressLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDLinearProgressLayer.m; sourceTree = "<group>"; };
+		65D894E61B910EFE00E59E2B /* MDProgressLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDProgressLayer.h; sourceTree = "<group>"; };
+		65D894E71B910EFE00E59E2B /* MDProgressLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDProgressLayer.m; sourceTree = "<group>"; };
+		65D894EB1B910F0800E59E2B /* MDBubbleLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDBubbleLabel.h; sourceTree = "<group>"; };
+		65D894EC1B910F0800E59E2B /* MDBubbleLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDBubbleLabel.m; sourceTree = "<group>"; };
+		65D894ED1B910F0800E59E2B /* MDSliderIcon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDSliderIcon.h; sourceTree = "<group>"; };
+		65D894EE1B910F0800E59E2B /* MDSliderIcon.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDSliderIcon.m; sourceTree = "<group>"; };
+		65D894EF1B910F0800E59E2B /* MDSliderThumbView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDSliderThumbView.h; sourceTree = "<group>"; };
+		65D894F01B910F0800E59E2B /* MDSliderThumbView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDSliderThumbView.m; sourceTree = "<group>"; };
+		65D894F11B910F0800E59E2B /* MDSliderTickMarksView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDSliderTickMarksView.h; sourceTree = "<group>"; };
+		65D894F21B910F0800E59E2B /* MDSliderTickMarksView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDSliderTickMarksView.m; sourceTree = "<group>"; };
+		65D894F71B910F1300E59E2B /* MDSuggestPopupView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDSuggestPopupView.h; sourceTree = "<group>"; };
+		65D894F81B910F1300E59E2B /* MDSuggestPopupView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDSuggestPopupView.m; sourceTree = "<group>"; };
+		65D894F91B910F1300E59E2B /* MDSuggestTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDSuggestTableView.h; sourceTree = "<group>"; };
+		65D894FA1B910F1300E59E2B /* MDSuggestTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDSuggestTableView.m; sourceTree = "<group>"; };
+		65D894FD1B910F1B00E59E2B /* UIView+MDExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+MDExtension.h"; sourceTree = "<group>"; };
+		65D894FE1B910F1B00E59E2B /* UIView+MDExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+MDExtension.m"; sourceTree = "<group>"; };
+		65D895001B910F6600E59E2B /* Roboto-Black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Black.ttf"; sourceTree = "<group>"; };
+		65D895011B910F6600E59E2B /* Roboto-BlackItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-BlackItalic.ttf"; sourceTree = "<group>"; };
+		65D895021B910F6600E59E2B /* Roboto-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Bold.ttf"; sourceTree = "<group>"; };
+		65D895031B910F6600E59E2B /* Roboto-BoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-BoldItalic.ttf"; sourceTree = "<group>"; };
+		65D895041B910F6600E59E2B /* Roboto-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Italic.ttf"; sourceTree = "<group>"; };
+		65D895051B910F6600E59E2B /* Roboto-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Light.ttf"; sourceTree = "<group>"; };
+		65D895061B910F6600E59E2B /* Roboto-LightItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-LightItalic.ttf"; sourceTree = "<group>"; };
+		65D895071B910F6600E59E2B /* Roboto-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Medium.ttf"; sourceTree = "<group>"; };
+		65D895081B910F6600E59E2B /* Roboto-MediumItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-MediumItalic.ttf"; sourceTree = "<group>"; };
+		65D895091B910F6600E59E2B /* Roboto-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Regular.ttf"; sourceTree = "<group>"; };
+		65D8950A1B910F6600E59E2B /* Roboto-Thin.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Thin.ttf"; sourceTree = "<group>"; };
+		65D8950B1B910F6600E59E2B /* Roboto-ThinItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-ThinItalic.ttf"; sourceTree = "<group>"; };
+		65D895101B911E1600E59E2B /* MDAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDAlertView.h; sourceTree = "<group>"; };
+		65D895111B911E1600E59E2B /* MDAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDAlertView.m; sourceTree = "<group>"; };
+		65D895121B911E1600E59E2B /* UIColor+BFPaperColors.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+BFPaperColors.h"; sourceTree = "<group>"; };
+		65D895131B911E1600E59E2B /* UIColor+BFPaperColors.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+BFPaperColors.m"; sourceTree = "<group>"; };
 		71B554221B66B59E7BB6B5DA /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		B1FD78321AB4B1EF009DB201 /* HomeWork Scribe.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "HomeWork Scribe.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B1FD78361AB4B1EF009DB201 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -231,7 +374,6 @@
 		D71244F91AF85F6500566E9F /* subjectSetUpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = subjectSetUpViewController.m; sourceTree = "<group>"; };
 		D71244FB1AF986FF00566E9F /* customSubjectPickerTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = customSubjectPickerTableViewController.h; sourceTree = "<group>"; };
 		D71244FC1AF986FF00566E9F /* customSubjectPickerTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = customSubjectPickerTableViewController.m; sourceTree = "<group>"; };
-		D71E347C1B4335A4008A1B40 /* libGoogleAnalyticsServices.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libGoogleAnalyticsServices.a; sourceTree = "<group>"; };
 		D7271DA41B12369C009FDD9E /* Icon29g.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon29g.png; sourceTree = "<group>"; };
 		D7271DA51B12369C009FDD9E /* Icon40g.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon40g.png; sourceTree = "<group>"; };
 		D7271DA61B12369C009FDD9E /* Icon58g.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon58g.png; sourceTree = "<group>"; };
@@ -447,7 +589,7 @@
 				D7EC7D8C1B0D1CD6001C64E6 /* MessageUI.framework in Frameworks */,
 				D7EC7D821B0CA3E4001C64E6 /* libz.dylib in Frameworks */,
 				D7EC7D811B0CA3CD001C64E6 /* SystemConfiguration.framework in Frameworks */,
-				D71E347D1B4335A4008A1B40 /* libGoogleAnalyticsServices.a in Frameworks */,
+				657036C01BFD316700B6E894 /* libGoogleAnalyticsServices.a in Frameworks */,
 				D7EC7D801B0CA3BE001C64E6 /* CoreData.framework in Frameworks */,
 				D78AD00D1AE99CBD00FD6CDC /* QuartzCore.framework in Frameworks */,
 				D742E8EF1AE969A9009A4904 /* CoreGraphics.framework in Frameworks */,
@@ -503,6 +645,7 @@
 		B1FD78291AB4B1EF009DB201 = {
 			isa = PBXGroup;
 			children = (
+				657036BF1BFD316700B6E894 /* libGoogleAnalyticsServices.a */,
 				B1FD78341AB4B1EF009DB201 /* HomeWork Scribe */,
 				B1FD784E1AB4B1EF009DB201 /* HomeWork ScribeTests */,
 				B1FD78331AB4B1EF009DB201 /* Products */,
@@ -523,7 +666,6 @@
 		B1FD78341AB4B1EF009DB201 /* HomeWork Scribe */ = {
 			isa = PBXGroup;
 			children = (
-				D71E347C1B4335A4008A1B40 /* libGoogleAnalyticsServices.a */,
 				D7A22D271B16A4620024E894 /* OZLExpandableTableView.h */,
 				D7A22D281B16A4620024E894 /* OZLExpandableTableView.m */,
 				D7A22D241B169BFE0024E894 /* LCZoomTransition.h */,
@@ -607,6 +749,105 @@
 		B1FD78351AB4B1EF009DB201 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				65D895101B911E1600E59E2B /* MDAlertView.h */,
+				65D895111B911E1600E59E2B /* MDAlertView.m */,
+				65D895121B911E1600E59E2B /* UIColor+BFPaperColors.h */,
+				65D895131B911E1600E59E2B /* UIColor+BFPaperColors.m */,
+				65D895001B910F6600E59E2B /* Roboto-Black.ttf */,
+				65D895011B910F6600E59E2B /* Roboto-BlackItalic.ttf */,
+				65D895021B910F6600E59E2B /* Roboto-Bold.ttf */,
+				65D895031B910F6600E59E2B /* Roboto-BoldItalic.ttf */,
+				65D895041B910F6600E59E2B /* Roboto-Italic.ttf */,
+				65D895051B910F6600E59E2B /* Roboto-Light.ttf */,
+				65D895061B910F6600E59E2B /* Roboto-LightItalic.ttf */,
+				65D895071B910F6600E59E2B /* Roboto-Medium.ttf */,
+				65D895081B910F6600E59E2B /* Roboto-MediumItalic.ttf */,
+				65D895091B910F6600E59E2B /* Roboto-Regular.ttf */,
+				65D8950A1B910F6600E59E2B /* Roboto-Thin.ttf */,
+				65D8950B1B910F6600E59E2B /* Roboto-ThinItalic.ttf */,
+				65D894FD1B910F1B00E59E2B /* UIView+MDExtension.h */,
+				65D894FE1B910F1B00E59E2B /* UIView+MDExtension.m */,
+				65D894F71B910F1300E59E2B /* MDSuggestPopupView.h */,
+				65D894F81B910F1300E59E2B /* MDSuggestPopupView.m */,
+				65D894F91B910F1300E59E2B /* MDSuggestTableView.h */,
+				65D894FA1B910F1300E59E2B /* MDSuggestTableView.m */,
+				65D894EB1B910F0800E59E2B /* MDBubbleLabel.h */,
+				65D894EC1B910F0800E59E2B /* MDBubbleLabel.m */,
+				65D894ED1B910F0800E59E2B /* MDSliderIcon.h */,
+				65D894EE1B910F0800E59E2B /* MDSliderIcon.m */,
+				65D894EF1B910F0800E59E2B /* MDSliderThumbView.h */,
+				65D894F01B910F0800E59E2B /* MDSliderThumbView.m */,
+				65D894F11B910F0800E59E2B /* MDSliderTickMarksView.h */,
+				65D894F21B910F0800E59E2B /* MDSliderTickMarksView.m */,
+				65D894E21B910EFE00E59E2B /* MDCircularProgressLayer.h */,
+				65D894E31B910EFE00E59E2B /* MDCircularProgressLayer.m */,
+				65D894E41B910EFE00E59E2B /* MDLinearProgressLayer.h */,
+				65D894E51B910EFE00E59E2B /* MDLinearProgressLayer.m */,
+				65D894E61B910EFE00E59E2B /* MDProgressLayer.h */,
+				65D894E71B910EFE00E59E2B /* MDProgressLayer.m */,
+				65D894BA1B910EF300E59E2B /* MDButton.h */,
+				65D894BB1B910EF300E59E2B /* MDButton.m */,
+				65D894BC1B910EF300E59E2B /* MDCollectionViewCell.h */,
+				65D894BD1B910EF300E59E2B /* MDCollectionViewCell.m */,
+				65D894BE1B910EF300E59E2B /* MDConstants.h */,
+				65D894BF1B910EF300E59E2B /* MDProgress.h */,
+				65D894C01B910EF300E59E2B /* MDProgress.m */,
+				65D894C11B910EF300E59E2B /* MDRippleLayer.h */,
+				65D894C21B910EF300E59E2B /* MDRippleLayer.m */,
+				65D894C31B910EF300E59E2B /* MDSlider.h */,
+				65D894C41B910EF300E59E2B /* MDSlider.m */,
+				65D894C51B910EF300E59E2B /* MDSnackbar.h */,
+				65D894C61B910EF300E59E2B /* MDSnackbar.m */,
+				65D894C71B910EF300E59E2B /* MDSwitch.h */,
+				65D894C81B910EF300E59E2B /* MDSwitch.m */,
+				65D894C91B910EF300E59E2B /* MDTabBar.h */,
+				65D894CA1B910EF400E59E2B /* MDTabBar.m */,
+				65D894CB1B910EF400E59E2B /* MDTabBarViewController.h */,
+				65D894CC1B910EF400E59E2B /* MDTabBarViewController.m */,
+				65D894CD1B910EF400E59E2B /* MDTableViewCell.h */,
+				65D894CE1B910EF400E59E2B /* MDTableViewCell.m */,
+				65D894CF1B910EF400E59E2B /* MDTextField.h */,
+				65D894D01B910EF400E59E2B /* MDTextField.m */,
+				65D894D11B910EF400E59E2B /* MDToast.h */,
+				65D894D21B910EF400E59E2B /* MDToast.m */,
+				65D894D31B910EF400E59E2B /* MDTouchGestureRecognizer.h */,
+				65D894D41B910EF400E59E2B /* MDTouchGestureRecognizer.m */,
+				65D894A81B910EEB00E59E2B /* MDDeviceHelper.h */,
+				65D894A91B910EEB00E59E2B /* MDDeviceHelper.m */,
+				65D894AA1B910EEB00E59E2B /* MDMathHelper.h */,
+				65D894AB1B910EEB00E59E2B /* MDMathHelper.m */,
+				65D894AC1B910EEB00E59E2B /* NSDateHelper.h */,
+				65D894AD1B910EEB00E59E2B /* NSDateHelper.m */,
+				65D894AE1B910EEB00E59E2B /* UIColorHelper.h */,
+				65D894AF1B910EEB00E59E2B /* UIColorHelper.m */,
+				65D894B01B910EEB00E59E2B /* UIFontHelper.h */,
+				65D894B11B910EEB00E59E2B /* UIFontHelper.m */,
+				65D894B21B910EEB00E59E2B /* UIViewHelper.h */,
+				65D894B31B910EEB00E59E2B /* UIViewHelper.m */,
+				65D894871B910EDE00E59E2B /* MDCalendar.h */,
+				65D894881B910EDE00E59E2B /* MDCalendar.m */,
+				65D894891B910EDE00E59E2B /* MDCalendarCell.h */,
+				65D8948A1B910EDE00E59E2B /* MDCalendarCell.m */,
+				65D8948B1B910EDE00E59E2B /* MDCalendarDateHeader.h */,
+				65D8948C1B910EDE00E59E2B /* MDCalendarDateHeader.m */,
+				65D8948D1B910EDE00E59E2B /* MDCalendarHeader.h */,
+				65D8948E1B910EDE00E59E2B /* MDCalendarHeader.m */,
+				65D8948F1B910EDE00E59E2B /* MDCalendarYearSelector.h */,
+				65D894901B910EDE00E59E2B /* MDCalendarYearSelector.m */,
+				65D894911B910EDE00E59E2B /* MDCalendarYearSelectorViewCell.h */,
+				65D894921B910EDE00E59E2B /* MDCalendarYearSelectorViewCell.m */,
+				65D894931B910EDE00E59E2B /* MDDatePicker.h */,
+				65D894941B910EDE00E59E2B /* MDDatePicker.m */,
+				65D894951B910EDE00E59E2B /* MDDatePickerDialog.h */,
+				65D894961B910EDE00E59E2B /* MDDatePickerDialog.m */,
+				65D894971B910EDE00E59E2B /* MDTimePickerDialog.h */,
+				65D894981B910EDE00E59E2B /* MDTimePickerDialog.m */,
+				65D894991B910EDE00E59E2B /* NSCalendarHelper.h */,
+				65D8949A1B910EDE00E59E2B /* NSCalendarHelper.m */,
+				65D8949B1B910EDE00E59E2B /* NSDate+MDExtension.h */,
+				65D8949C1B910EDE00E59E2B /* NSDate+MDExtension.m */,
+				65D894841B910ED300E59E2B /* AutoResizeTextView.h */,
+				65D894851B910ED300E59E2B /* AutoResizeTextView.m */,
 				D7E78F841B1BB49400D90086 /* banner6.png */,
 				D7E78F7C1B1BB38700D90086 /* banner6plus.png */,
 				D7E78F7D1B1BB38700D90086 /* banner45.png */,
@@ -1015,74 +1256,117 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				65D894B91B910EEB00E59E2B /* UIViewHelper.m in Sources */,
 				D7E1B25F1B03FE4C00560108 /* AFURLConnectionOperation.m in Sources */,
+				65D894D61B910EF400E59E2B /* MDCollectionViewCell.m in Sources */,
 				D7BDE8F21B1668CB00FB5607 /* rootViewController.m in Sources */,
 				D7EDD1771AE8A7FA003EBABE /* InfColorSquarePicker.m in Sources */,
+				65D894F41B910F0800E59E2B /* MDSliderIcon.m in Sources */,
 				B1FD785D1AB4B21D009DB201 /* navigationViewController.m in Sources */,
+				65D894B61B910EEB00E59E2B /* NSDateHelper.m in Sources */,
 				B1FD78951AB4BC27009DB201 /* PDTSimpleCalendarViewFlowLayout.m in Sources */,
+				65D894DB1B910EF400E59E2B /* MDSwitch.m in Sources */,
 				B1FD789A1AB4C461009DB201 /* AddViewController.m in Sources */,
 				D757E5701AE9FFCE00654044 /* notePadViewController.m in Sources */,
+				65D8949D1B910EDE00E59E2B /* MDCalendar.m in Sources */,
 				D71244F71AF85A4700566E9F /* setUpViewController.m in Sources */,
 				D7342E701AE813C600394432 /* detailViewController.m in Sources */,
 				D7A22D291B16A4620024E894 /* OZLExpandableTableView.m in Sources */,
 				B1FD78651AB4B479009DB201 /* calanderTableViewController.m in Sources */,
+				65D8949F1B910EDE00E59E2B /* MDCalendarDateHeader.m in Sources */,
 				B1FD783E1AB4B1EF009DB201 /* ViewController.m in Sources */,
 				D7E1B2601B03FE4C00560108 /* AFURLRequestSerialization.m in Sources */,
+				65D895161B911E1600E59E2B /* UIColor+BFPaperColors.m in Sources */,
+				65D8949E1B910EDE00E59E2B /* MDCalendarCell.m in Sources */,
+				65D894FC1B910F1300E59E2B /* MDSuggestTableView.m in Sources */,
 				D7EC7D721B0B7A87001C64E6 /* detailImageViewController.m in Sources */,
 				D739F0901AF03C6D000C2FF1 /* SDiPhoneVersion.m in Sources */,
 				D7E1B2741B03FE6100560108 /* AFNetworkActivityIndicatorManager.m in Sources */,
 				B1FD78701AB4B728009DB201 /* dataClass.m in Sources */,
 				D757E56D1AE9FE9B00654044 /* notesTableViewController.m in Sources */,
+				65D894861B910ED300E59E2B /* AutoResizeTextView.m in Sources */,
 				D7E1B25D1B03FE4C00560108 /* AFNetworkReachabilityManager.m in Sources */,
 				D7E1B2771B03FE6100560108 /* UIButton+AFNetworking.m in Sources */,
 				D7E1B2621B03FE4C00560108 /* AFURLSessionManager.m in Sources */,
 				D742E8EB1AE9699D009A4904 /* NSInvocation+Constructors.m in Sources */,
 				D7E1B25A1B03FE4C00560108 /* AFHTTPRequestOperation.m in Sources */,
+				65D894F31B910F0800E59E2B /* MDBubbleLabel.m in Sources */,
+				65D894E81B910EFE00E59E2B /* MDCircularProgressLayer.m in Sources */,
 				D7EDD1721AE8A7FA003EBABE /* InfColorBarPicker.m in Sources */,
+				65D894D71B910EF400E59E2B /* MDProgress.m in Sources */,
+				65D894B51B910EEB00E59E2B /* MDMathHelper.m in Sources */,
 				D7BDE8EF1B1663E500FB5607 /* tutorialViewController.m in Sources */,
 				B1FD78601AB4B22D009DB201 /* SWRevealViewController.m in Sources */,
 				D71244FD1AF986FF00566E9F /* customSubjectPickerTableViewController.m in Sources */,
 				D7EDD1441AE8A4AD003EBABE /* colorsettingsTableViewController.m in Sources */,
 				D7E1B27A1B03FE6100560108 /* UIRefreshControl+AFNetworking.m in Sources */,
 				D7EDD13E1AE89D03003EBABE /* settingsTableViewController.m in Sources */,
+				65D894A41B910EDE00E59E2B /* MDDatePickerDialog.m in Sources */,
+				65D894DC1B910EF400E59E2B /* MDTabBar.m in Sources */,
+				65D894F51B910F0800E59E2B /* MDSliderThumbView.m in Sources */,
 				B1FD78A11AB6097A009DB201 /* DBManager.m in Sources */,
 				B1FD78941AB4BC27009DB201 /* PDTSimpleCalendarViewController.m in Sources */,
+				65D894DA1B910EF400E59E2B /* MDSnackbar.m in Sources */,
 				D7EDD1601AE8A650003EBABE /* colorPickerViewController.m in Sources */,
 				D7E1B2751B03FE6100560108 /* UIActivityIndicatorView+AFNetworking.m in Sources */,
+				65D894A21B910EDE00E59E2B /* MDCalendarYearSelectorViewCell.m in Sources */,
+				65D894DF1B910EF400E59E2B /* MDTextField.m in Sources */,
 				D7EDD1791AE8A7FA003EBABE /* InfSourceColorView.m in Sources */,
+				65D894E01B910EF400E59E2B /* MDToast.m in Sources */,
 				D7EA06F11B02AB3E00F85008 /* KxMenu.m in Sources */,
 				D7E1B2781B03FE6100560108 /* UIImageView+AFNetworking.m in Sources */,
+				65D894FB1B910F1300E59E2B /* MDSuggestPopupView.m in Sources */,
 				D7BBB9891AF6DE4B00149DF2 /* notificationEditTableViewController.m in Sources */,
+				65D894F61B910F0800E59E2B /* MDSliderTickMarksView.m in Sources */,
 				B1FD78931AB4BC27009DB201 /* PDTSimpleCalendarViewCell.m in Sources */,
+				65D894EA1B910EFE00E59E2B /* MDProgressLayer.m in Sources */,
 				D7EDD1371AE87282003EBABE /* editAssignmentViewController.m in Sources */,
 				D742E8EA1AE9699D009A4904 /* JFMinimalNotificationArt.m in Sources */,
 				D742E8E91AE9699D009A4904 /* JFMinimalNotification.m in Sources */,
 				D7E1B27B1B03FE6100560108 /* UIWebView+AFNetworking.m in Sources */,
+				65D894A01B910EDE00E59E2B /* MDCalendarHeader.m in Sources */,
 				D78AD0211AE9B3BB00FD6CDC /* UpcomingController.m in Sources */,
 				B1FD78961AB4BC27009DB201 /* PDTSimpleCalendarViewHeader.m in Sources */,
 				D7DDE7021AF5C66000C7D0EC /* CWStatusBarNotification.m in Sources */,
 				D739F0931AF07367000C2FF1 /* animator.m in Sources */,
 				D7EDD1751AE8A7FA003EBABE /* InfColorPickerNavigationController.m in Sources */,
 				D7E1B2761B03FE6100560108 /* UIAlertView+AFNetworking.m in Sources */,
+				65D894A61B910EDE00E59E2B /* NSCalendarHelper.m in Sources */,
 				B1FD783B1AB4B1EF009DB201 /* AppDelegate.m in Sources */,
+				65D894E11B910EF400E59E2B /* MDTouchGestureRecognizer.m in Sources */,
 				D742E8EC1AE9699D009A4904 /* UIColor+JFMinimalNotificationColors.m in Sources */,
 				D7607E791AB53B840042F642 /* allTableViewController.m in Sources */,
+				65D894D91B910EF400E59E2B /* MDSlider.m in Sources */,
 				D7E1B2411B03FB5F00560108 /* XLFormImageSelectorCell.m in Sources */,
 				D7E1B25B1B03FE4C00560108 /* AFHTTPRequestOperationManager.m in Sources */,
+				65D894B41B910EEB00E59E2B /* MDDeviceHelper.m in Sources */,
+				65D894E91B910EFE00E59E2B /* MDLinearProgressLayer.m in Sources */,
+				65D894D51B910EF400E59E2B /* MDButton.m in Sources */,
+				65D894A11B910EDE00E59E2B /* MDCalendarYearSelector.m in Sources */,
+				65D894DE1B910EF400E59E2B /* MDTableViewCell.m in Sources */,
 				D7EDD1741AE8A7FA003EBABE /* InfColorPickerController.m in Sources */,
 				D7E1B25C1B03FE4C00560108 /* AFHTTPSessionManager.m in Sources */,
 				D77A7B741B10E53600CFE091 /* subjectDetailViewController.m in Sources */,
+				65D894D81B910EF400E59E2B /* MDRippleLayer.m in Sources */,
+				65D894A51B910EDE00E59E2B /* MDTimePickerDialog.m in Sources */,
+				65D894DD1B910EF400E59E2B /* MDTabBarViewController.m in Sources */,
+				65D894A31B910EDE00E59E2B /* MDDatePicker.m in Sources */,
 				D742E8ED1AE9699D009A4904 /* UIView+Round.m in Sources */,
+				65D894FF1B910F1B00E59E2B /* UIView+MDExtension.m in Sources */,
+				65D894A71B910EDE00E59E2B /* NSDate+MDExtension.m in Sources */,
 				D7E1B25E1B03FE4C00560108 /* AFSecurityPolicy.m in Sources */,
 				D7E1B2611B03FE4C00560108 /* AFURLResponseSerialization.m in Sources */,
 				D7F315B01AE6E26800397044 /* Assignment.m in Sources */,
 				D7E1B2791B03FE6100560108 /* UIProgressView+AFNetworking.m in Sources */,
 				D7EDD1781AE8A7FA003EBABE /* InfHSBSupport.m in Sources */,
+				65D894B81B910EEB00E59E2B /* UIFontHelper.m in Sources */,
 				D7A22D261B169BFE0024E894 /* LCZoomTransition.m in Sources */,
 				D7EDD1731AE8A7FA003EBABE /* InfColorIndicatorView.m in Sources */,
 				D7C992431AFC2A2D00A3F48C /* selectdateSmallViewController.m in Sources */,
 				D71244FA1AF85F6500566E9F /* subjectSetUpViewController.m in Sources */,
+				65D895151B911E1600E59E2B /* MDAlertView.m in Sources */,
 				D7EDD1411AE8A0CF003EBABE /* aboutTableViewController.m in Sources */,
+				65D894B71B910EEB00E59E2B /* UIColorHelper.m in Sources */,
 				B1FD78381AB4B1EF009DB201 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1216,11 +1500,17 @@
 					Scribe,
 					"$(PROJECT_DIR)/HomeWork",
 					Scribe,
+					"$(PROJECT_DIR)/HomeWork",
+					Scribe,
+					"$(PROJECT_DIR)/HomeWork",
+					Scribe,
+					"$(PROJECT_DIR)/HomeWork",
+					Scribe,
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = NO;
 				GCC_PREFIX_HEADER = "";
 				INFOPLIST_FILE = "HomeWork Scribe/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1277,6 +1567,11 @@
 					Scribe,
 					"$(PROJECT_DIR)/HomeWork",
 					Scribe,
+					"$(PROJECT_DIR)/HomeWork",
+					Scribe,
+					"$(PROJECT_DIR)/HomeWork",
+					Scribe,
+					"$(PROJECT_DIR)",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "a1ebca18-e2ba-4d9b-96a3-cafcf89b019b";
@@ -1301,11 +1596,17 @@
 					Scribe,
 					"$(PROJECT_DIR)/HomeWork",
 					Scribe,
+					"$(PROJECT_DIR)/HomeWork",
+					Scribe,
+					"$(PROJECT_DIR)/HomeWork",
+					Scribe,
+					"$(PROJECT_DIR)/HomeWork",
+					Scribe,
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = NO;
 				GCC_PREFIX_HEADER = "";
 				INFOPLIST_FILE = "HomeWork Scribe/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1362,6 +1663,11 @@
 					Scribe,
 					"$(PROJECT_DIR)/HomeWork",
 					Scribe,
+					"$(PROJECT_DIR)/HomeWork",
+					Scribe,
+					"$(PROJECT_DIR)/HomeWork",
+					Scribe,
+					"$(PROJECT_DIR)",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "a1ebca18-e2ba-4d9b-96a3-cafcf89b019b";

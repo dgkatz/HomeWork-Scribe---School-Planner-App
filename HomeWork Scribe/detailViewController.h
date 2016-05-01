@@ -10,7 +10,8 @@
 #import "DBManager.h"
 #import <MessageUI/MessageUI.h>
 #import <BFPaperView/BFPaperView.h>
-@interface detailViewController : UIViewController<UITableViewDataSource,UITableViewDelegate,UIAlertViewDelegate,MFMailComposeViewControllerDelegate,UIActionSheetDelegate,MFMessageComposeViewControllerDelegate>
+#import "MDAlertView.h"
+@interface detailViewController : UIViewController<UITableViewDataSource,UITableViewDelegate,MDAlertViewDelegate,MFMailComposeViewControllerDelegate,UIActionSheetDelegate,MFMessageComposeViewControllerDelegate>
 @property (strong, nonatomic) IBOutlet UITableView *assignmentTableView;
 @property (nonatomic, strong) DBManager *dbManager;
 @property (strong, nonatomic) IBOutlet UIButton *assingmentcomButton;

@@ -21,6 +21,7 @@
 #import <BFPaperTableViewCell/BFPaperTableViewCell.h>
 #import <BFPaperButton/BFPaperButton.h>
 #import <UIColor+BFPaperColors.h>
+#import "MDButton.h"
 @interface allTableViewController ()
 @property (nonatomic, strong) JFMinimalNotification* minimalNotification;
 @property (strong,nonatomic) detailViewController *expander;
@@ -28,7 +29,7 @@
 
 @end
 int selected;
-BFPaperButton *addButtonCircle;
+MDButton *addButtonCircle;
 UILabel *buttonLabel;
 NSMutableArray *results;
 UIView *selectionLine;
@@ -130,10 +131,14 @@ UILabel *noAssignmentsLabel;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    addButtonCircle = [[BFPaperButton alloc] initWithFrame:CGRectMake(self.tableView.frame.size.width - 80, self.tableView.frame.size.height - 150, 56, 56) raised:YES];
+    self.navigationController.navigationBar.layer.masksToBounds = NO;
+    self.navigationController.navigationBar.layer.shadowColor = [UIColor blackColor].CGColor;
+    self.navigationController.navigationBar.layer.shadowOffset = CGSizeMake(0.0, 2.0);
+    self.navigationController.navigationBar.layer.shadowOpacity = 0.3;
+    addButtonCircle = [[MDButton alloc]initWithFrame:CGRectMake(self.tableView.frame.size.width - 80, self.tableView.frame.size.height - 150, 56, 56) type:2 rippleColor:[UIColor darkGrayColor]];
     [addButtonCircle setBackgroundColor:[UIColor orangeColor]];
-    addButtonCircle.cornerRadius = addButtonCircle.frame.size.width / 2;
-    addButtonCircle.rippleFromTapLocation = YES;
+    //addButtonCircle.cornerRadius = addButtonCircle.frame.size.width / 2;
+    //addButtonCircle.rippleFromTapLocation = YES;
     [addButtonCircle addTarget:self action:@selector(addAssignmentSegue) forControlEvents:UIControlEventTouchUpInside];
     [self.tableView addSubview:addButtonCircle];
     buttonLabel = [[UILabel alloc]initWithFrame:CGRectMake(addButtonCircle.frame.origin.x - 20, addButtonCircle.frame.origin.y - 21, addButtonCircle.frame.size.width + 40, addButtonCircle.frame.size.height + 40)];

@@ -9,8 +9,8 @@
 #import <UIKit/UIKit.h>
 #import "XLFormViewController.h"
 #import "DBManager.h"
-
-@interface AddViewController : XLFormViewController<UIAlertViewDelegate,UITextViewDelegate,XLFormDescriptorDelegate>
+#import "MDAlertView.h"
+@interface AddViewController : XLFormViewController<MDAlertViewDelegate,UITextViewDelegate,XLFormDescriptorDelegate>
 @property(weak,nonatomic) IBOutlet UIBarButtonItem *barButton;
 @property (nonatomic, strong) DBManager *dbManager;
 extern NSString *const XLFormRowDescriptorTypeImage;
